@@ -76,13 +76,6 @@ module.exports = function(grunt) {
 					host: '<%= rsync.options.hostservers.stageserver %>'
 				}
 			},
-			//sajtkollen
-			stage_sajtkollen: {
-				options: {
-					dest: '<%= rsync.options.basefolder %>stage.sajtkollen.se<%= rsync.options.pluginfolder %>',
-					host: '<%= rsync.options.hostservers.stageserver %>'
-				}
-			},
 			prod_sajtkollen: {
 				options: {
 					dest: '<%= rsync.options.basefolder %>sajtkollen.se<%= rsync.options.pluginfolder %>',
