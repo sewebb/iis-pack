@@ -443,6 +443,7 @@ class Se_Fox extends Se_Plugin_Base {
 		$domain = str_replace( '.dev', '.se', $domain );
 		$domain = str_replace( 'local.', 'www.', $domain );
 		$domain = str_replace( 'vvv.', 'www.', $domain );
+		$domain = str_replace( 'www.stage.', 'www.', $domain );
 		$domain = str_replace( 'stage.', 'www.', $domain );
 		$domain = str_replace( 'iis.web1.common.', 'www.', $domain );
 		$domain = str_replace( 'soi.se', 'www.soi2013.se', $domain );
