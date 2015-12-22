@@ -1,14 +1,9 @@
-=== IIS Pack ===
-Contributors: (this should be a list of wordpress.org userid's)
-Donate link: https://www.iis.se
-Tags: FaceBook Open Graph, Twitter Cards, Google Analytics, IIS Fox meny
-Requires at least: 4.0
-Tested up to: 4.3
-Stable tag: 4.3
+IIS Pack
+========
 
 IIS Pack är ett generellt plugin för alla IIS-sajter - sådant som vi alltid behöver
 
-== Description ==
+# Om IIS Pack
 
 Vårt generella plugin lägger till följande:
 
@@ -18,7 +13,8 @@ Vårt generella plugin lägger till följande:
 * Fox menyn med dess utseende inline
 
 
-== Installation ==
+Installation
+============
 
 * Placera `iis-pack` i `/wp-content/plugins/`
 * Kontrollera att inga plugin gör samma saker som IIS Pack
@@ -28,8 +24,9 @@ Vårt generella plugin lägger till följande:
 * Fyll i fälten under `Inställningar` -> `IIS Pack`
 
 
-== Changelog ==
+Changelog
+=========
 
-= 1.0.0 =
+#### 1.0.0
 * Första commiten
 
