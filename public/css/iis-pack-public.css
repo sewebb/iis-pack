@@ -1,0 +1,8 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ *
+ * Det finns en src mapp i denna katalog där det bör ligga scss-kod som genererar denna fil
+ * I Gruntfile.js ska det i fallet att vi behöver css också läggas till metod för minifiering och versionshantering
+ */
+

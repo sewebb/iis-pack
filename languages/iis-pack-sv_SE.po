@@ -1,0 +1,132 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Language: sv_SE\n"
+"X-Generator: Poedit 1.8.6\n"
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Complete url. Try to get from static.iis.se Default image is IIS logo"
+msgstr "Fullständig URL till bilden. Bör ligga på static.iis.se Standardbilden är IIS logotyp om ingen anges"
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Default og:image"
+msgstr "Standard og:image"
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Facebook open graph"
+msgstr "Facebook open graph"
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Fox Menu"
+msgstr "Foxmenyn"
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Global settings for Twitter Cards"
+msgstr "Globala inställningar för Twitter kort"
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Google Analytics"
+msgstr ""
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Google Analytics ID"
+msgstr ""
+
+#. Text in echo
+#: iis-pack/admin/class-iis-pack-admin.php:339
+msgid "Hide Fox menu"
+msgstr "Dölj Foxmenyn"
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "IIS Pack"
+msgstr "IIS Pack"
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "IIS Pack Settings"
+msgstr "Inställningarna för IIS-Pack"
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:342
+msgid "If the site has more than one admin, seperate them with comma (,)"
+msgstr "Om sajten har mer än en Facebookadministratör - använd kommatecken för att avgränsa idnummer [ex 12,34,56]"
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Protocol"
+msgstr "Protokoll för sajten"
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Settings for Facebook open graph tags per site "
+msgstr "Inställningar för Facebook open graph-taggar per webbplats"
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Settings for Google Analytics"
+msgstr "Inställningar för Google Analytics"
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Should this site show the Fox menu on top of pages?"
+msgstr "Ska sajten visa Foxmenyn överst på sidorna? (i 99,99% av fallen - JA!)"
+
+#. Text in echo
+#: iis-pack/admin/class-iis-pack-admin.php:334
+msgid "Show Fox menu"
+msgstr "Visa Foxmenyn"
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:342
+msgid "The sites main account, for example @iis on www.iis.se"
+msgstr "Sajten huvudsakliga Twitter-konto, t.ex. @iis för www.iis.se eller @internetmuseum för internetmuseum.se"
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Twitter Cards"
+msgstr ""
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Twitter site"
+msgstr "Twitterkonto för sajten"
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Use Fox menu?"
+msgstr "Använd Foxmenyn?"
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "ev. Facebook Admin(s)"
+msgstr ""
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "ev. Facebook AppId"
+msgstr ""
+
+#. Text in echo
+#: iis-pack/admin/class-iis-pack-admin.php:275
+msgid "http"
+msgstr ""
+
+#. Text in echo
+#: iis-pack/admin/class-iis-pack-admin.php:270
+msgid "https (SSL)"
+msgstr ""

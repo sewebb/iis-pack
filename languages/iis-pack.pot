@@ -1,0 +1,124 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Complete url. Try to get from static.iis.se Default image is IIS logo"
+msgstr ""
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Default og:image"
+msgstr ""
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Facebook open graph"
+msgstr ""
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Fox Menu"
+msgstr ""
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Global settings for Twitter Cards"
+msgstr ""
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Google Analytics"
+msgstr ""
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Google Analytics ID"
+msgstr ""
+
+#. Text in echo
+#: iis-pack/admin/class-iis-pack-admin.php:339
+msgid "Hide Fox menu"
+msgstr ""
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "IIS Pack"
+msgstr ""
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "IIS Pack Settings"
+msgstr ""
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:342
+msgid "If the site has more than one admin, seperate them with comma (,)"
+msgstr ""
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Protocol"
+msgstr ""
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Settings for Facebook open graph tags per site "
+msgstr ""
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Settings for Google Analytics"
+msgstr ""
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Should this site show the Fox menu on top of pages?"
+msgstr ""
+
+#. Text in echo
+#: iis-pack/admin/class-iis-pack-admin.php:334
+msgid "Show Fox menu"
+msgstr ""
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:342
+msgid "The sites main account, for example @iis on www.iis.se"
+msgstr ""
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Twitter Cards"
+msgstr ""
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Twitter site"
+msgstr ""
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "Use Fox menu?"
+msgstr ""
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "ev. Facebook Admin(s)"
+msgstr ""
+
+#. Text in function
+#: iis-pack/admin/class-iis-pack-admin.php:1
+msgid "ev. Facebook AppId"
+msgstr ""
+
+#. Text in echo
+#: iis-pack/admin/class-iis-pack-admin.php:275
+msgid "http"
+msgstr ""
+
+#. Text in echo
+#: iis-pack/admin/class-iis-pack-admin.php:270
+msgid "https (SSL)"
+msgstr ""
