@@ -52,7 +52,13 @@ if ( is_singular() || is_home() || is_archive() || is_front_page() ) {
 
 	if ( has_post_thumbnail( $post->ID ) && ! is_home() && ! is_archive() ) {
 		$arr_thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
-		$og_image = $protocol . '://' . $servername . $arr_thumb[0];
+		// En del bilder verkar ha sparats med hela sökvägen
+		if ( false === strpos( $arr_thumb[0], 'http' ) ) {
+			$og_image = $protocol . '://' . $servername . $arr_thumb[0];
+		} else {
+			$og_image = $arr_thumb[0];
+		}
+
 		$og_img_set = true;
 
 	} else {

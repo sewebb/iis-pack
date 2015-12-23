@@ -167,6 +167,19 @@ module.exports = function(grunt) {
 					host: '<%= rsync.options.hostservers.prodserver %>'
 				}
 			},
+			// Sambi
+			stage_sambi: {
+				options: {
+					dest: '<%= rsync.options.basefolder %>stage.sambi.se<%= rsync.options.pluginfolder %>',
+					host: '<%= rsync.options.hostservers.stageserver %>'
+				}
+			},
+			prod_sambi: {
+				options: {
+					dest: '<%= rsync.options.basefolder %>sambi.se<%= rsync.options.pluginfolder %>',
+					host: '<%= rsync.options.hostservers.prodserver %>'
+				}
+			},
 			//nästa sajt som ska gå att deploya till
 		},
 		slack: {
@@ -227,7 +240,15 @@ module.exports = function(grunt) {
 			prod_soi2013: {
 				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
 			},
+			// Sambi
+			stage_sambi: {
+				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
+			},
+			prod_sambi: {
+				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
+			},
 			//nästa sajt som ska gå att deploya till
+			//wp search-replace 'www.sambi.se' 'stage.sambi.se' wp_options --dry-run
 		},
 		version: {
 			assets: {
