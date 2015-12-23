@@ -25,7 +25,7 @@
  * @since      1.0.0
  * @package    Iis_Pack
  * @subpackage Iis_Pack/includes
- * @author     IIS Webb <webbgruppen@iis.se>
+ * @author     The IIS Team <webbgruppen@iis.se>
  */
 class Iis_Pack {
 

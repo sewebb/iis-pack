@@ -17,7 +17,7 @@
  * Plugin URI:        https://www.iis.se
  * Description:       Gemensamma plugin för IIS sajter
  * Version:           1.0.0
- * Author:            IIS Webb
+ * Author:            The IIS Team
  * Author URI:        https://www.iis.se
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt

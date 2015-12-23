@@ -12,6 +12,8 @@ Vårt generella plugin lägger till följande:
 * Google Analytics enligt vår standard
 * Fox menyn med dess utseende inline
 
+Som grund för IIS Pack används denna boilerplate:  
+https://github.com/DevinVinson/WordPress-Plugin-Boilerplate
 
 Installation
 ============
@@ -19,7 +21,7 @@ Installation
 * Placera `iis-pack` i `/wp-content/plugins/`
 * Kontrollera att inga plugin gör samma saker som IIS Pack
 * Kontrollera att temat inte gör samma saker som IIS Pack
-* Kontrollera att wp_head() & wp_footer() finns i temat
+* Kontrollera att wp_head() och wp_footer() samt body_class() finns i temat
 * När ovan är gjort (plugins & tema-funktioner avaktiverade) - AKTIVERA IIS Pack
 * Fyll i fälten under `Inställningar` -> `IIS Pack`
 
