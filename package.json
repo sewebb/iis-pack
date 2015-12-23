@@ -1,7 +1,7 @@
 {
   "name": "IISPack",
   "version": "1.0.0",
-  "author": "IIS webb",
+  "author": "The IIS Team",
   "homepage": "http://www.iis.se",
   "engines": {
     "node": ">= 0.10.0"

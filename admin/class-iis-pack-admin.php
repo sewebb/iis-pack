@@ -18,7 +18,7 @@
  *
  * @package    Iis_Pack
  * @subpackage Iis_Pack/admin
- * @author     IIS Webb <webbgruppen@iis.se>
+ * @author     The IIS Team <webbgruppen@iis.se>
  */
 
 
