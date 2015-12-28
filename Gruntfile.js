@@ -60,6 +60,7 @@ module.exports = function(grunt) {
 				pluginname: 'IIS Pack',
 				basefolder: '/var/www/sites/',
 				pluginfolder: '/wordpress/wp-content/plugins/iis-pack',
+				nowordpressfolder: '/wp-content/plugins/iis-pack',
 				hostservers: {
 					stageserver: 'extweb1.stage.iis.se',
 					prodserver: 'extweb1.common.iis.se'
@@ -180,6 +181,19 @@ module.exports = function(grunt) {
 					host: '<%= rsync.options.hostservers.prodserver %>'
 				}
 			},
+			// seDirekt - saknar vanliga /wordpress/-foldern, använder "nowordpressfolder"
+			stage_sedirekt: {
+				options: {
+					dest: '<%= rsync.options.basefolder %>stage.sedirekt.se<%= rsync.options.nowordpressfolder %>',
+					host: '<%= rsync.options.hostservers.stageserver %>'
+				}
+			},
+			prod_sedirekt: {
+				options: {
+					dest: '<%= rsync.options.basefolder %>sedirekt.se<%= rsync.options.nowordpressfolder %>',
+					host: '<%= rsync.options.hostservers.prodserver %>'
+				}
+			},
 			//nästa sajt som ska gå att deploya till
 		},
 		slack: {
@@ -247,8 +261,14 @@ module.exports = function(grunt) {
 			prod_sambi: {
 				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
 			},
+			// seDirekt
+			stage_sedirekt: {
+				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
+			},
+			prod_sedirekt: {
+				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
+			},
 			//nästa sajt som ska gå att deploya till
-			//wp search-replace 'www.sambi.se' 'stage.sambi.se' wp_options --dry-run
 		},
 		version: {
 			assets: {

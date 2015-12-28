@@ -180,8 +180,8 @@ class Iis_Pack {
 		$plugin_public = new Iis_Pack_Public( $this->get_plugin_name(), $this->get_version() );
 
 		// Dra inte in innan vi behöver css
-		// $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		// $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'iis_pack_enqueue_styles' );
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'iis_pack_enqueue_scripts' );
 
 		// Våra plugins finns som "sub"-plugg i /public/partials
 		// Kallas i class Iis_Plugins_Public
