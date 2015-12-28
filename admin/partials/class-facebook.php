@@ -31,11 +31,12 @@ class FacebookMeta {
 	/**
 	 * Lägger till metaboxen i admin
 	 * @since 1.0.0
+	 * @since 1.0.1 Visa inte i bilagesidan
 	 * @param string $post_type sätt till de typer vi behöver
 	 */
 	public function add_facebook_meta_box( $post_type ) {
-		// $post_types = array( 'post', 'page' );   //limit meta box to certain post types
-		// if ( in_array( $post_type, $post_types ) ) {
+		$post_types = array( 'attachment' );   // Visa inte i redigera media
+		if ( ! in_array( $post_type, $post_types ) ) {
 			add_meta_box(
 				'facebook_meta_box' // $id
 				,__( 'FaceBook og: tags', 'iis-pack' ) // $title
@@ -44,7 +45,7 @@ class FacebookMeta {
 				,'normal' // $context
 				,'high' // $priority
 			);
-			// }
+		}
 	}
 
 	public function add_facebook_fields() {

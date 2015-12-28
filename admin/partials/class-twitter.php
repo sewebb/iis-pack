@@ -31,11 +31,12 @@ class TwitterMeta {
 	/**
 	 * Lägger till metaboxen i admin
 	 * @since 1.0.0
+	 * @since 1.0.1 Visa inte i bilagesidan
 	 * @param string $post_type sätt till de typer vi behöver
 	 */
 	public function add_twitter_meta_box( $post_type ) {
-		// $post_types = array( 'post', 'page' );   //limit meta box to certain post types
-		// if ( in_array( $post_type, $post_types ) ) {
+		$post_types = array( 'attachment' );   // Visa inte i redigera media
+		if ( ! in_array( $post_type, $post_types ) ) {
 			add_meta_box(
 				'twitter_meta_box' // $id
 				,__( 'Twitter Cards', 'iis-pack' ) // $title
@@ -44,7 +45,7 @@ class TwitterMeta {
 				,'normal' // $context
 				,'high' // $priority
 			);
-			// }
+		}
 	}
 
 	public function add_twitter_fields() {

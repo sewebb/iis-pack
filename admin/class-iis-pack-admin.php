@@ -376,9 +376,11 @@ class Iis_Pack_Admin {
 	public function include_meta_fields() {
 		include_once 'partials/class-facebook.php';
 		include_once 'partials/class-twitter.php';
+		include_once 'partials/class-images-meta.php';
 
 		call_facebook();
 		call_twitter();
+		call_images_media();
 	}
 
 

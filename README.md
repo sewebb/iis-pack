@@ -11,8 +11,9 @@ Vårt generella plugin lägger till följande:
 * Twitter Card av typen "summery_large_image"
 * Google Analytics enligt vår standard
 * Fox menyn med dess utseende inline
+* Metafält för bilder/media
 
-Som grund för IIS Pack används denna boilerplate:  
+Som grund för IIS Pack används denna boilerplate:
 https://github.com/DevinVinson/WordPress-Plugin-Boilerplate
 
 Installation
@@ -28,6 +29,10 @@ Installation
 
 Changelog
 =========
+
+#### 1.0.1
+* Metafält för bilder/media
+* Visa inte FaceBook & Twitter Cards fält i redigera media
 
 #### 1.0.0
 * Första commiten
