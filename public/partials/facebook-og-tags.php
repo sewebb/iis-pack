@@ -103,9 +103,8 @@ if ( is_singular() || is_home() || is_archive() || is_front_page() ) {
 
 	$str_excerpt = ( strlen( $str_excerpt ) > 0 && ! is_home() ) ? str_replace( '"', '&quot;', $str_excerpt ) : $site_description;
 
-	if ( ! $str_excerpt ) {
-		$str_excerpt = apply_filters( 'iis_og_description', $str_excerpt );
-	}
+	$str_excerpt = apply_filters( 'iis_og_description', $str_excerpt, $post->ID );
+
 
 	if ( empty( $str_title ) ) {
 		$str_title = trim( wp_title( '', false, 'right' ) );

@@ -62,7 +62,7 @@
 				}
 			}
 			// If the link is external
-		 	if ( ( href.match(/^http/) ) && ( !href.match(document.domain) ) && ( downloadTracked == false ) ) {
+		 	if ( ( href.match(/^http/) ) && ( href.indexOf(document.domain) === -1 ) && ( downloadTracked == false ) ) {
 		    	// Add the tracking code
 				a.click(function() {
 					ga('send', 'event', 'Outbound Traffic', href.match(/:\/\/(.[^/]+)/)[1], href);

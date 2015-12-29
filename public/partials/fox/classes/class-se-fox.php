@@ -457,12 +457,13 @@ class Se_Fox extends Se_Plugin_Base {
 
 	function add_foxbar() {
 		$domain      = $this->get_fox_domain();
+		$utm_source  = str_replace( '.', '_', $domain );
 		$site_config = $this->get_site_config();
 		?>
 
 		<section class="brand-nav">
 			<section class="brand-nav-fullgrid">
-				<a href="https://www.iis.se/?utm_source=<?php echo $domain; ?>&utm_medium=fox" class="brand-nav-logo<?php echo ( $site_config['hide_logo'] ) ? ' hide' : ''; ?>">
+				<a href="https://www.iis.se/?utm_source=<?php echo $utm_source; ?>&utm_medium=fox" class="brand-nav-logo<?php echo ( $site_config['hide_logo'] ) ? ' hide' : ''; ?>">
 					<span class="brand-nav-logo-text">En webbplats från</span>
 
 					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -489,9 +490,9 @@ class Se_Fox extends Se_Plugin_Base {
 						$fi = self::$fox_items[ $fox_item ];
 						?>
 						<li>
-							<a href="<?php echo $fi['link']; ?>?utm_source=<?php echo $domain; ?>&utm_medium=fox" class="brand-nav-headline"><?php echo $fi['name']; ?></a>
+							<a href="<?php echo $fi['link']; ?>?utm_source=<?php echo $utm_source; ?>&utm_medium=fox" class="brand-nav-headline"><?php echo $fi['name']; ?></a>
 								<section>
-								<a href="<?php echo $fi['link']; ?>?utm_source=<?php echo $domain; ?>&utm_medium=fox">
+								<a href="<?php echo $fi['link']; ?>?utm_source=<?php echo $utm_source; ?>&utm_medium=fox">
 									<span class="linkedelement">
 										<span class="filcontent"><?php echo $fi['content']; ?></span>
 										<span class="fillinktext"><?php echo $fi['linktext']; ?> ›</span>
