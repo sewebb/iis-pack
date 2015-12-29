@@ -27,8 +27,8 @@ if ( ! empty( $fbadmins ) ) {
 	$arrlength = count( $fbadmins );
 	for ( $x = 0; $x < $arrlength; $x++ ) {
 	    $ogprint .= '<meta property="fb:admins" content="' . $fbadmins[ $x ] .'" />';
-	    $ogprint .= "\n";
 	}
+	$ogprint .= "\n";
 }
 
 if ( ! empty( $fbappid ) ) {
@@ -40,15 +40,19 @@ if ( ! empty( $fbappid ) ) {
 $ogprint .= '<meta property="og:url" content="' . $protocol . '://' . $servername . esc_attr( strip_tags( $_SERVER['REQUEST_URI'] ) ) . '" />';
 $ogprint .= "\n";
 // Ersätts om möjligt längre ner
-$str_excerpt      = '';
-$str_title        = '';
-$site_description = get_bloginfo( 'description' );
+$str_excerpt                    = '';
+$str_title                      = '';
+$site_description               = get_bloginfo( 'description' );
+$before_filter_og_image_changed = '';
+$og_image_width                 = '';
+$og_image_height                = '';
 
 if ( is_singular() || is_home() || is_archive() || is_front_page() ) {
 
 	global $post;
 	$og_img_set = false;
 	$no_og_type = false;
+
 
 	if ( has_post_thumbnail( $post->ID ) && ! is_home() && ! is_archive() ) {
 		$arr_thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
@@ -58,8 +62,12 @@ if ( is_singular() || is_home() || is_archive() || is_front_page() ) {
 		} else {
 			$og_image = $arr_thumb[0];
 		}
+		// Om vi kan använda widt & height så kommer fb att visa bilden även vid första delningen
+		$og_image_width  = $arr_thumb[1];
+		$og_image_height = $arr_thumb[2];
 
-		$og_img_set = true;
+		$before_filter_og_image = $og_image;
+		$og_img_set      = true;
 
 	} else {
 		$og_image = $default_og_image;
@@ -114,6 +122,10 @@ if ( is_singular() || is_home() || is_archive() || is_front_page() ) {
 
 	$ogprint .= '<meta property="og:image" content="' . $og_image . '" />';
 	$ogprint .= "\n";
+	if ( $before_filter_og_image === $og_image && '' !== $before_filter_og_image ) {
+		$ogprint .= '<meta property="og:image:width" content="' . $og_image_width . '" /><meta property="og:image:height" content="' . $og_image_height . '" />';
+		$ogprint .= "\n";
+	}
 	$ogprint .= '<meta property="og:title" content="' . $str_title . '" />';
 	$ogprint .= "\n";
 	$ogprint .= '<meta property="og:description" content="' . $str_excerpt . '" />';
