@@ -370,8 +370,9 @@ class Iis_Pack_Admin {
 	}
 
 	/**
-	 * Inkludera klasser för extrafält på post & page
+	 * Inkludera klasser för extrafält på post & page // extrafält attachements
 	 * @since  1.0.0
+	 * @since  1.0.1 CC-fält på images (class-images-meta.php)
 	 */
 	public function include_meta_fields() {
 		include_once 'partials/class-facebook.php';
@@ -381,8 +382,31 @@ class Iis_Pack_Admin {
 		call_facebook();
 		call_twitter();
 		call_images_media();
+		//TODO
+		//Se om vi kan få till fälten när man klickar på bilden i editorn
+		// include_once 'partials/image-edit-advanced.php';
 	}
 
+	/**
+	 * Register the JavaScript for the admin area.
+	 *
+	 * @since    1.0.1
+	 */
+	public function enqueue_scripts() {
+		/**
+		 * This function is provided for demonstration purposes only.
+		 *
+		 * An instance of this class should be passed to the run() function
+		 * defined in Plugin_Name_Loader as all of the hooks are defined
+		 * in that particular class.
+		 *
+		 * The Plugin_Name_Loader will then create the relationship
+		 * between the defined hooks and the functions defined in this
+		 * class.
+		 */
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/iis-pack-admin.js', array( 'jquery' ), $this->version, false );
+
+	}
 
 
 }

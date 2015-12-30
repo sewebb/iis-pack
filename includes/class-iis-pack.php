@@ -159,12 +159,14 @@ class Iis_Pack {
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_options_page' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_setting' );
 
-		// När vi vill ladda vår extra fält för pages, posts, custom post types
-		$this->loader->add_action( 'load-post.php', $plugin_admin, 'include_meta_fields' );
-		$this->loader->add_action( 'load-post-new.php', $plugin_admin, 'include_meta_fields' );
+		// När vi vill ladda vår extra fält för pages, posts, custom post types & mediauppladdaren (CC-fält)
+		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'include_meta_fields' );
 
 		// Om det saknas support för featured image
 		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'add_support_for_featured_image' );
+
+		//Åtminstone för CC-fields
+		// $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
 	}
 
