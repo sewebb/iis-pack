@@ -15,10 +15,10 @@ defined( 'WPINC' ) or die;
 $iis_show_object_credits = '';
 $iis_show_object_credits = get_option( 'iis_pack_show_object_credits' );
 
-// if ( 'true' === $iis_show_object_credits ) {
+if ( 'true' === $iis_show_object_credits ) {
 	add_filter( 'the_content', 'find_images' );
 	add_filter( 'post_thumbnail_html', 'filter_featured_image', 11, 3 );
-// }
+}
 
 /**
  * Sök efter bilder i content
