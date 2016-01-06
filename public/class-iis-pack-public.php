@@ -76,6 +76,14 @@ class Iis_Pack_Public {
 	}
 
 	/**
+	 * Åtgärder som filtrerar the_content
+	 * @since 1.0.1 Kod som lägger till licensdata på bilder
+	 */
+	public function filter_the_content() {
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/add-license-to-images.php';
+	}
+
+	/**
 	 * Register the JavaScript for the public-facing side of the site.
 	 *
 	 * @since    1.0.0

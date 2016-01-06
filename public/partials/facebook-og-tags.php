@@ -40,12 +40,12 @@ if ( ! empty( $fbappid ) ) {
 $ogprint .= '<meta property="og:url" content="' . $protocol . '://' . $servername . esc_attr( strip_tags( $_SERVER['REQUEST_URI'] ) ) . '" />';
 $ogprint .= "\n";
 // Ersätts om möjligt längre ner
-$str_excerpt                    = '';
-$str_title                      = '';
-$site_description               = get_bloginfo( 'description' );
-$before_filter_og_image_changed = '';
-$og_image_width                 = '';
-$og_image_height                = '';
+$str_excerpt            = '';
+$str_title              = '';
+$site_description       = get_bloginfo( 'description' );
+$before_filter_og_image = '';
+$og_image_width         = '';
+$og_image_height        = '';
 
 if ( is_singular() || is_home() || is_archive() || is_front_page() ) {
 

@@ -190,6 +190,9 @@ class Iis_Pack {
 		$this->loader->add_action( 'wp_head', $plugin_public, 'include_in_head' );
 		$this->loader->add_action( 'wp_footer', $plugin_public, 'include_in_footer' );
 
+		// Content filters. T.ex. filter för bilder så att vi kan visa licensdatan
+		$this->loader->add_action( 'the_post', $plugin_public, 'filter_the_content' );
+
 	}
 
 	/**

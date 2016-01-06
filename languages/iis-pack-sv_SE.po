@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: IIS Pack\n"
-"POT-Creation-Date: 2015-12-23 13:17+0100\n"
-"PO-Revision-Date: 2015-12-29 17:45+0100\n"
+"POT-Creation-Date: 2016-01-06 13:48+0100\n"
+"PO-Revision-Date: 2016-01-06 13:52+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
-"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
@@ -27,128 +27,181 @@ msgstr "Inställningarna för IIS-Pack"
 #. Plugin Name of the plugin/theme
 #: admin/class-iis-pack-admin.php:75
 msgid "IIS Pack"
-msgstr ""
+msgstr "IIS Pack"
 
 #: admin/class-iis-pack-admin.php:106
-msgid "Facebook open graph"
-msgstr ""
+msgid "Object attribution"
+msgstr "Bildattribution"
 
-#: admin/class-iis-pack-admin.php:114
+#: admin/class-iis-pack-admin.php:113
+msgid "Print Object attribution?"
+msgstr "Skriv ut bildattribution under bilder på sidorna?"
+
+#: admin/class-iis-pack-admin.php:125
+msgid "Facebook open graph"
+msgstr "Facebook open graph"
+
+#: admin/class-iis-pack-admin.php:133
 msgid "Default og:image"
 msgstr "Standard og:image"
 
-#: admin/class-iis-pack-admin.php:123
+#: admin/class-iis-pack-admin.php:142
 msgid "Protocol"
 msgstr "Protokoll för sajten"
 
-#: admin/class-iis-pack-admin.php:132
+#: admin/class-iis-pack-admin.php:151
 msgid "ev. Facebook AppId"
-msgstr ""
+msgstr "ev. Facebook AppID"
 
-#: admin/class-iis-pack-admin.php:141
+#: admin/class-iis-pack-admin.php:160
 msgid "ev. Facebook Admin(s)"
-msgstr ""
+msgstr "ev. Facebook Admin(s)"
 
-#: admin/class-iis-pack-admin.php:156 admin/partials/class-twitter.php:41
+#: admin/class-iis-pack-admin.php:175 admin/partials/class-twitter.php:42
 msgid "Twitter Cards"
-msgstr ""
-
-#: admin/class-iis-pack-admin.php:163
-msgid "Twitter site"
-msgstr ""
-
-#: admin/class-iis-pack-admin.php:175
-msgid "Google Analytics"
-msgstr ""
+msgstr "Globala inställningar för Twitter kort"
 
 #: admin/class-iis-pack-admin.php:182
-msgid "Google Analytics ID"
-msgstr ""
+msgid "Twitter site"
+msgstr "Twitterkonto för sajten"
 
 #: admin/class-iis-pack-admin.php:194
+msgid "Google Analytics"
+msgstr "Google Analytics"
+
+#: admin/class-iis-pack-admin.php:201
+msgid "Google Analytics ID"
+msgstr "Google Analytics ID"
+
+#: admin/class-iis-pack-admin.php:213
 msgid "Fox Menu"
 msgstr "Foxmenyn"
 
-#: admin/class-iis-pack-admin.php:201
+#: admin/class-iis-pack-admin.php:220
 msgid "Use Fox menu?"
 msgstr "Använd Foxmenyn?"
 
-#: admin/class-iis-pack-admin.php:217
+#: admin/class-iis-pack-admin.php:236
+msgid "Should this site fetch and print attachement credits "
+msgstr ""
+"Ska denna sajten hämta och skriva ut licensfälten för bilder tillagda på "
+"sidor?"
+
+#: admin/class-iis-pack-admin.php:245
 msgid "Settings for Facebook open graph tags per site "
 msgstr "Inställningar för Facebook open graph-taggar per webbplats"
 
-#: admin/class-iis-pack-admin.php:226
+#: admin/class-iis-pack-admin.php:254
 msgid "Global settings for Twitter Cards"
 msgstr "Globala inställningar för Twitter kort"
 
-#: admin/class-iis-pack-admin.php:235
+#: admin/class-iis-pack-admin.php:263
 msgid "Settings for Google Analytics"
 msgstr "Inställningar för Google Analytics"
 
-#: admin/class-iis-pack-admin.php:244
+#: admin/class-iis-pack-admin.php:272
 msgid "Should this site show the Fox menu on top of pages?"
-msgstr ""
-"Ska sajten visa Foxmenyn överst på sidorna? (i 99,99% av fallen - JA!)"
+msgstr "Ska sajten visa Foxmenyn överst på sidorna? (i 99,99% av fallen - JA!)"
 
-#: admin/class-iis-pack-admin.php:256
+#: admin/class-iis-pack-admin.php:287
+msgid "Show Object Attribution"
+msgstr "Visa Bildattribution under bilder"
+
+#: admin/class-iis-pack-admin.php:292
+msgid "Hide Object Attribution"
+msgstr "Dölj Bildattribution under bilder"
+
+#: admin/class-iis-pack-admin.php:306
 msgid "Complete url. Try to get from static.iis.se Default image is IIS logo"
 msgstr ""
 "Fullständig URL till bilden. Bör ligga på static.iis.se Standardbilden är "
 "IIS logotyp om ingen anges"
 
-#: admin/class-iis-pack-admin.php:270
+#: admin/class-iis-pack-admin.php:320
 msgid "https (SSL)"
-msgstr ""
+msgstr "https (SSL)"
 
-#: admin/class-iis-pack-admin.php:275
+#: admin/class-iis-pack-admin.php:325
 msgid "http"
-msgstr ""
+msgstr "http"
 
-#: admin/class-iis-pack-admin.php:299
+#: admin/class-iis-pack-admin.php:349
 msgid "If the site has more than one admin, seperate them with comma (,)"
 msgstr ""
 "Om sajten har mer än en Facebookadministratör - använd kommatecken för att "
-"avgränsa idnummer [ex 12,34,56]"
+"avgränsa indämmer [ex 12,34,56]"
 
-#: admin/class-iis-pack-admin.php:310
+#: admin/class-iis-pack-admin.php:360
 msgid "The sites main account, for example @iis on www.iis.se"
 msgstr ""
 "Sajten huvudsakliga Twitter-konto, t.ex. @iis för www.iis.se eller "
 "@internetmuseum för internetmuseum.se"
 
-#: admin/class-iis-pack-admin.php:334
+#: admin/class-iis-pack-admin.php:384
 msgid "Show Fox menu"
 msgstr "Visa Foxmenyn"
 
-#: admin/class-iis-pack-admin.php:339
+#: admin/class-iis-pack-admin.php:389
 msgid "Hide Fox menu"
 msgstr "Dölj Foxmenyn"
 
-#: admin/partials/class-facebook.php:41
+#: admin/partials/class-facebook.php:42
 msgid "FaceBook og: tags"
 msgstr "FaceBook og: taggar"
 
-#: admin/partials/class-facebook.php:55
+#: admin/partials/class-facebook.php:56
 msgid "Alternative og:title"
 msgstr "Alternativ og:title"
 
-#: admin/partials/class-facebook.php:56
+#: admin/partials/class-facebook.php:57
 msgid "If you want a different title for the page when shared on FaceBook"
 msgstr "Om du vill ha en annan titel för sidan när delas på FaceBook"
 
-#: admin/partials/class-facebook.php:61
-msgid "og:description"
-msgstr ""
-
 #: admin/partials/class-facebook.php:62
+msgid "og:description"
+msgstr "og: description"
+
+#: admin/partials/class-facebook.php:63
 msgid "Add a nice descriptive text then page is shared on Facebook"
 msgstr "Lägg till en trevlig beskrivande text då sida delas på Facebook"
 
-#: admin/partials/class-twitter.php:55
+#: admin/partials/class-images-meta.php:20
+msgid "Object URL"
+msgstr "Bildens URL"
+
+#: admin/partials/class-images-meta.php:24
+msgid "Fetch data from Flickr"
+msgstr "Hämta data från Flickr"
+
+#: admin/partials/class-images-meta.php:28
+msgid "Object name"
+msgstr "Bildens namn"
+
+#: admin/partials/class-images-meta.php:33
+msgid "License (ex. CC-BY)"
+msgstr "Licenstyp (t.ex. CC BY)"
+
+#: admin/partials/class-images-meta.php:39
+msgid "License field is required"
+msgstr "Licensefältet är obligatoriskt"
+
+#: admin/partials/class-images-meta.php:45
+msgid "License URL"
+msgstr "Licens-URL"
+
+#: admin/partials/class-images-meta.php:49
+msgid "Licens holder name"
+msgstr "Fotografens namn"
+
+#: admin/partials/class-images-meta.php:53
+msgid "Licens holder URL"
+msgstr "Fotografens URL"
+
+#: admin/partials/class-twitter.php:56
 msgid "Alternative twitter:title"
 msgstr "Alternativ twitter:title"
 
-#: admin/partials/class-twitter.php:56
+#: admin/partials/class-twitter.php:57
 msgid ""
 "If you want a different title for the page when shared on Twitter. If you "
 "want the same as on Facebook - just leave it empty"
@@ -156,11 +209,11 @@ msgstr ""
 "Om du vill ha en annan titel för sidan när den delas på Twitter. Om du vill "
 "ha samma som på Facebook - lämna fältet tomt"
 
-#: admin/partials/class-twitter.php:61
-msgid "twitter:description"
-msgstr ""
-
 #: admin/partials/class-twitter.php:62
+msgid "twitter:description"
+msgstr "twitter: description"
+
+#: admin/partials/class-twitter.php:63
 msgid ""
 "Add a nice descriptive text then page is shared on Twitter. If you want the "
 "same as on Facebook - just leave it empty"
@@ -168,15 +221,36 @@ msgstr ""
 "Lägg till en trevlig beskrivande text då sidas delas på Twitter. Om du vill "
 "ha samma som på Facebook - lämna fältet tomt"
 
+#: public/partials/add-license-to-images.php:52
+#: public/partials/add-license-to-images.php:117
+msgid "Photo: "
+msgstr "Foto: "
+
+#: public/partials/add-license-to-images.php:67
+#: public/partials/add-license-to-images.php:132
+msgid "by "
+msgstr "av "
+
+#: public/partials/add-license-to-images.php:69
+#: public/partials/add-license-to-images.php:134
+msgid "Photo by "
+msgstr "Foto av "
+
 #. Plugin URI of the plugin/theme
 #. Author URI of the plugin/theme
 msgid "https://www.iis.se"
-msgstr ""
+msgstr "https://www.iis.se"
 
 #. Description of the plugin/theme
 msgid "Gemensamma plugin för IIS sajter"
-msgstr ""
+msgstr "Gemensamma plugin för IIS sajter"
 
 #. Author of the plugin/theme
 msgid "The IIS Team"
-msgstr ""
+msgstr "The IIS Team"
+
+#~ msgid "Border Width"
+#~ msgstr "Rambredd"
+
+#~ msgid "Border Color"
+#~ msgstr "Ramfärg"

@@ -100,6 +100,25 @@ class Iis_Pack_Admin {
 	}
 
 	public function register_setting() {
+		// Lägg till sektion för Foto-credits
+		add_settings_section(
+			$this->option_name . '_object_credits',
+			__( 'Object attribution', 'iis-pack' ),
+			array( $this, $this->option_name . '_object_credits_cb' ),
+			$this->plugin_name
+		);
+
+		add_settings_field(
+			$this->option_name . '_show_object_credits',
+			__( 'Print Object attribution?', 'iis-pack' ),
+			array( $this, $this->option_name . '_show_object_credits_cb' ),
+			$this->plugin_name,
+			$this->option_name . '_object_credits',
+			array( 'label_for' => $this->option_name . '_show_object_credits' )
+		);
+
+		register_setting( $this->plugin_name, $this->option_name . '_show_object_credits', array( $this, $this->option_name . '_sanitize_true_false' ) );
+
 		// Lägg till sektion för Facebook OG taggar
 		add_settings_section(
 			$this->option_name . '_og_tags',
@@ -205,7 +224,16 @@ class Iis_Pack_Admin {
 			array( 'label_for' => $this->option_name . '_show_fox_menu' )
 		);
 
-		register_setting( $this->plugin_name, $this->option_name . '_show_fox_menu', array( $this, $this->option_name . '_sanitize_show_fox_menu' ) );
+		register_setting( $this->plugin_name, $this->option_name . '_show_fox_menu', array( $this, $this->option_name . '_sanitize_true_false' ) );
+	}
+
+	/**
+	 * Underrubrik Bildattribution
+	 *
+	 * @since  1.0.1
+	 */
+	public function iis_pack_object_credits_cb() {
+		echo '<p>' . __( 'Should this site fetch and print attachement credits ', 'iis-pack' ) . '</p>';
 	}
 
 	/**
@@ -245,6 +273,28 @@ class Iis_Pack_Admin {
 	}
 
 	// INPUT FÄLT
+	/**
+	 * Input för radioknappar visa /dölj utskrift av Bildattribution
+	 *
+	 * @since  1.0.1
+	 */
+	public function iis_pack_show_object_credits_cb() {
+		$show_object_credits = get_option( $this->option_name . '_show_object_credits' );
+		?>
+			<fieldset>
+				<label>
+					<input type="radio" name="<?php echo $this->option_name . '_show_object_credits' ?>" id="<?php echo $this->option_name . '_show_object_credits' ?>" value="true" <?php checked( $show_object_credits, 'true' ); ?>>
+					<?php _e( 'Show Object Attribution', 'iis-pack' ); ?>
+				</label>
+				<br>
+				<label>
+					<input type="radio" name="<?php echo $this->option_name . '_show_object_credits' ?>" value="false" <?php checked( $show_object_credits, 'false' ); ?>>
+					<?php _e( 'Hide Object Attribution', 'iis-pack' ); ?>
+				</label>
+			</fieldset>
+		<?php
+	}
+
 	/**
 	 * Input för standard og:image
 	 *
@@ -357,15 +407,16 @@ class Iis_Pack_Admin {
 	}
 
 	/**
-	 * Sanera true / false för Foxmenyn
+	 * Sanera true / false för Foxmenyn, Bildattribution
 	 *
-	 * @param  string $show_fox_menu $_POST value
+	 * @param  string $true_false $_POST value
 	 * @since  1.0.0
+	 * @since  1.0.1 Ändrat för att sanera true / false allmännt
 	 * @return string           Sanitized value
 	 */
-	public function iis_pack_sanitize_show_fox_menu( $show_fox_menu ) {
-		if ( in_array( $show_fox_menu, array( 'true', 'false' ), true ) ) {
-	        return $show_fox_menu;
+	public function iis_pack_sanitize_true_false( $true_false ) {
+		if ( in_array( $true_false, array( 'true', 'false' ), true ) ) {
+	        return $true_false;
 	    }
 	}
 
@@ -382,9 +433,6 @@ class Iis_Pack_Admin {
 		call_facebook();
 		call_twitter();
 		call_images_media();
-		//TODO
-		//Se om vi kan få till fälten när man klickar på bilden i editorn
-		// include_once 'partials/image-edit-advanced.php';
 	}
 
 	/**
