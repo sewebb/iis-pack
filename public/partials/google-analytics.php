@@ -33,6 +33,8 @@ function add_iis_google_analytics() {
 		$printscript .= "ga('create', '" . $iis_ga_option_trackingid . "', 'auto');";
 		$printscript .= "ga('send', 'pageview');";
 
+
+
 		$printscript .= '</script>';
 
 		echo $printscript;

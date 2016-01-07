@@ -412,6 +412,9 @@ class Se_Fox extends Se_Plugin_Base {
 			width: <?php echo $width; ?>;
 			<?php echo $padding; ?>
 		}
+		.buorg {
+			top: 32px!important;
+		}
 
 		@media ( max-width: <?php echo $max_width; ?> ) {
 			.brand-nav {
@@ -423,7 +426,11 @@ class Se_Fox extends Se_Plugin_Base {
 			.sewebb-nav-space.webbstjarnan > #header {
 				margin-top: 0;
 			}
+			.buorg {
+				top: 0!important;
+			}
 		}
+
 		</style>
 		<?php
 

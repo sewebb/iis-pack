@@ -19,6 +19,9 @@ module.exports = function(grunt) {
 			]
 		},
 		uglify: {
+			// options: {
+		 //      mangle: false
+		 //    },
 			dist: {
 				files: {
 					'public/js/iis-pack-public.min.js': [
