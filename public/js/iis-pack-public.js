@@ -85,8 +85,8 @@
 function $buo_f(){
 	var $buoop = {
 		vs:{i:9,f:39,o:12.1,s:7,n:12,c:44}, // lägsta-nivå för webbläsare Behöver kanske uppdateras då och då
-		// reminder:24, // hur ofta meddelandet ska visas. 0 visar det alltid. (24 betyder vänta 24 timmar & är standard)
-		// reminderClosed:168, // standard 1 (168 h) vecka, visas först efter en vecka om man stängt meddelandet
+		// reminder:0, // hur ofta meddelandet ska visas. 0 visar det alltid. (24 betyder vänta 24 timmar & är standard)
+		// reminderClosed:0, // standard 1 (168 h) vecka, visas först efter en vecka om man stängt meddelandet
 		// test:false, // använd [ test:true ] om du vill se hur det ser ut fast du har en ny webbläsare
 		// newwindow:true,
 	};
