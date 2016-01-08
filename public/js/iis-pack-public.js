@@ -74,7 +74,15 @@
 		}
 		// SLUT Google analytics
 
+		// Om det är mac eller windows
+		if (navigator.userAgent.indexOf('Mac OS X') != -1) {
+		  $("body").addClass("mac");
+		} else {
+		  $("body").addClass("pc");
+		}
+
 	});
+
 
 })( jQuery );
 
@@ -84,21 +92,20 @@
 
 function $buo_f(){
 	var $buoop = {
-		vs:{i:9,f:39,o:12.1,s:7,n:12,c:44}, // lägsta-nivå för webbläsare Behöver kanske uppdateras då och då
+		vs:{i:10,f:39,o:12.1,s:7,n:12,c:44}, // lägsta-nivå för webbläsare Behöver kanske uppdateras då och då
 		// reminder:0, // hur ofta meddelandet ska visas. 0 visar det alltid. (24 betyder vänta 24 timmar & är standard)
 		// reminderClosed:0, // standard 1 (168 h) vecka, visas först efter en vecka om man stängt meddelandet
-		// test:false, // använd [ test:true ] om du vill se hur det ser ut fast du har en ny webbläsare
-		// newwindow:true,
+		test:false, // använd [ test:true ] om du vill se hur det ser ut fast du har en ny webbläsare
+		newwindow:true, // öppna vår länk i nytt fönster eller inte
+		url:"//www.iis.se/uppdatera-din-webblasare/", // url att gå till när man klickar på meddelandet
+		url:"//www.stage.iis.se/uppdatera-din-webblasare/", // för test på stage
+		text:"Vi vill göra dig uppmärksam på att <strong>din webbläsarversion</strong> (%s) <strong>är föråldrad</strong>. <a%s>Uppdatera din webbläsare</a> för bättre säkerhet och en roligare webb.",
 	};
 	var $buo = function(op, test) {
-	    var jsv = 18;
+	    // var jsv = 18; //referens för orginalskriptets version
 	    var n = window.navigator,
 	        b;
 	    this.op = op || {};
-	    var langset = "sv";
-	    // this.op.l = op.l || (n.languages ? n.languages[0] : null) || n.language || n.browserLanguage || n.userLanguage || document.documentElement.getAttribute("lang") || "en";
-	    // this.op.l = this.op.l.replace("_", "-").toLowerCase();
-	    var ll = "sv";
 	    this.op.vsakt = {
 	        i: 12,
 	        f: 43,
@@ -122,7 +129,6 @@ function $buo_f(){
 	        s: 5.1,
 	        n: 12
 	    };
-	    // var myvs = op.vs || {};
 	    this.op.vs = op.vs || this.op.vsdefault;
 	    for (b in this.op.vsakt) {
 	        if (this.op.vs[b] >= this.op.vsakt[b]) this.op.vs[b] = this.op.vsakt[b] - 0.2;
@@ -133,9 +139,6 @@ function $buo_f(){
 	    else this.op.reminder = op.reminder || 24;
 	    this.op.reminderClosed = op.reminderClosed || (24 * 7);
 
-	    if (langset) this.op.url = op.url || "//browser-update.org/" + ll + "/update-browser.html#" + jsv + ":" + (location.hostname || "x");
-	    else this.op.url = op.url || "//browser-update.org/update-browser.html#" + jsv + ":" + (location.hostname || "x");
-	    // this.op.pageurl = op.pageurl || window.location.hostname || "unknown";
 	    this.op.newwindow = (op.newwindow !== false);
 	    this.op.test = test || op.test || false;
 	    if (window.location.hash == "#test-bu") this.op.test = true;
@@ -213,20 +216,15 @@ function $buo_f(){
 		    this.op.onclick = op.onclick || function(stat) {};
 		    this.op.onclose = op.onclose || function(stat) {};
 		}
-
+		//avslutar scriptet om vi inte ska visa meddelandet
 	    if (!this.op.test && (!this.op.browser || !this.op.browser.n || this.op.browser.n == "x" || this.op.browser.donotnotify !== false || (document.cookie.indexOf("browserupdateorg=pause") > -1 && this.op.reminder > 0) || this.op.browser.v > this.op.vs[this.op.browser.n])) return;
-	    // if (!this.op.test && Math.round(Math.random() * 5000) < 1) {
-	    //     var i = new Image();
-	    //     i.src = "//browser-update.org/viewcount.php?n=" + this.op.browser.n + "&v=" + this.op.browser.v + "&p=" + escape(this.op.pageurl) + "&jsv=" + jsv + "&inv=" + this.op.v + "&vs=" + myvs.i + "," + myvs.f + "," + myvs.o + "," + myvs.s;
-	    // }
 
 	    function setCookie(hours) {
 	        var d = new Date(new Date().getTime() + 1000 * 3600 * hours);
 	        document.cookie = 'browserupdateorg=pause; expires=' + d.toGMTString() + '; path=/';
 	    }
 	    if (this.op.reminder > 0) setCookie(this.op.reminder);
-	    var languages = "xx,sv";
-	    if (languages.indexOf(ll) > 0) this.op.url = "//browser-update.org/update.html#" + jsv + "@" + (location.hostname || "x");
+
 	    var tar = "";
 	    if (this.op.newwindow) tar = ' target="_blank"';
 
@@ -236,11 +234,9 @@ function $buo_f(){
 	        for (var k = 1; k < args.length; ++k) data = data.replace(/%s/, args[k]);
 	        return data;
 	    }
-	    var t = 'This website would like to remind you: Your browser (%s) is <strong>out of date</strong>.         <a%s>Update your browser</a> for more security, comfort and the best experience on this site.';
-	    if (ll == "sv") t = 'Vi vill göra dig uppmärksam på att <strong>din webbläsarversion</strong> (%s) <strong>är föråldrad</strong>. <a%s>Uppdatera din webbläsare</a> för bättre säkerhet och en roligare webb.';
 
+	    var t = '';
 	    if (op.text) t = op.text;
-	    if (op["text_" + ll]) t = op["text_" + ll];
 	    this.op.text = busprintf(t, this.op.browser.t, ' href="' + this.op.url + '"' + tar);
 	    var div = document.createElement("div");
 	    this.op.div = div;
@@ -248,7 +244,7 @@ function $buo_f(){
 	    div.className = "buorg";
 	    div.innerHTML = '<div>' + this.op.text + '<div id="buorgclose">&times;</div></div>';
 	    var sheet = document.createElement("style");
-	    var style = ".buorg {position:absolute;z-index:111111;width:100%; top:0; left:0; background:#fff399 no-repeat 13px center url(//browser-update.org/img/small/" + this.op.browser.n + ".png);text-align:left; cursor:pointer; color:#000; font-size: 11px;}.buorg div { padding:5px 36px 5px 40px; } .buorg a,.buorg a:visited  {color: #3284bf; text-decoration: underline;}#buorgclose { position: absolute; right: 6px; top:0; height: 20px; width: 12px; font-weight: bold;font-size:18px; padding:0; }";
+	    var style = ".buorg {position:absolute;z-index:9999;width:100%; top:0; left:0; background:#fff399 no-repeat 13px center url(//browser-update.org/img/small/" + this.op.browser.n + ".png);text-align:left; cursor:pointer; color:#000; font-size: 11px;}.buorg div { padding:5px 36px 5px 40px; } .buorg a,.buorg a:visited  {color: #3284bf; text-decoration: underline;}#buorgclose { position: absolute; right: 6px; top:0; height: 20px; width: 12px; font-weight: bold;font-size:18px; padding:0; }";
 	    document.body.insertBefore(div, document.body.firstChild);
 	    document.getElementsByTagName("head")[0].appendChild(sheet);
 	    try {

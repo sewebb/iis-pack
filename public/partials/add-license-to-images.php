@@ -113,9 +113,10 @@ function filter_featured_image( $html, $post_id, $post_image_id ) {
 		$license     = get_post_meta( $post_image_id, '_iis_pack_license', true );
 
 		if ( ! empty( $license ) && '' !== $license ) {
-			$return .= $html;
-			$return .= '<div class="iis-pack-credits-container">';
 
+			$return .= $html; //före eller efter bilden?
+			$return .= '<div class="iis-pack-credits-container">';
+			// $return .= $html; //före eller efter bilden?
 			$object_url  = get_post_meta( $post_image_id, '_iis_pack_object_url', true );
 			$object_name = get_post_meta( $post_image_id, '_iis_pack_object_name', true );
 
