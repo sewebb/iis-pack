@@ -95,10 +95,10 @@ function $buo_f(){
 		vs:{i:10,f:39,o:12.1,s:7,n:12,c:44}, // lägsta-nivå för webbläsare Behöver kanske uppdateras då och då
 		// reminder:0, // hur ofta meddelandet ska visas. 0 visar det alltid. (24 betyder vänta 24 timmar & är standard)
 		// reminderClosed:0, // standard 1 (168 h) vecka, visas först efter en vecka om man stängt meddelandet
-		test:false, // använd [ test:true ] om du vill se hur det ser ut fast du har en ny webbläsare
+		// test:true, // använd [ test:true ] om du vill se hur det ser ut fast du har en ny webbläsare
 		newwindow:true, // öppna vår länk i nytt fönster eller inte
 		url:"//www.iis.se/uppdatera-din-webblasare/", // url att gå till när man klickar på meddelandet
-		url:"//www.stage.iis.se/uppdatera-din-webblasare/", // för test på stage
+		// url:"//www.stage.iis.se/uppdatera-din-webblasare/", // för test på stage
 		text:"Vi vill göra dig uppmärksam på att <strong>din webbläsarversion</strong> (%s) <strong>är föråldrad</strong>. <a%s>Uppdatera din webbläsare</a> för bättre säkerhet och en roligare webb.",
 	};
 	var $buo = function(op, test) {
@@ -142,7 +142,9 @@ function $buo_f(){
 	    this.op.newwindow = (op.newwindow !== false);
 	    this.op.test = test || op.test || false;
 	    if (window.location.hash == "#test-bu") this.op.test = true;
-
+	    // Om extraoldbrowser blir true (för < IE9) så blir meddelandet större
+	    // bortkommenterat längre ned i koden i väntan på beslut om hur det ska funka
+	    var extraoldbrowser = false;
 	    function getBrowser(ua_str) {
 	        var n, v, t, ua = ua_str || navigator.userAgent;
 	        var names = {
@@ -193,8 +195,14 @@ function $buo_f(){
 	            if (v > 6) v = 11;
 	            else if (v > 5) v = 10;
 	            else if (v > 4) v = 9;
-	            else if (v > 3.1) v = 8;
-	            else if (v > 3) v = 7;
+	            else if (v > 3.1) {
+	            	v = 8;
+	            	// extraoldbrowser = true;
+	            }
+	            else if (v > 3) {
+	            	v = 7;
+	            	// extraoldbrowser = true;
+	            }
 	            else v = 9;
 	        }
 	        return {
@@ -244,15 +252,21 @@ function $buo_f(){
 	    div.className = "buorg";
 	    div.innerHTML = '<div>' + this.op.text + '<div id="buorgclose">&times;</div></div>';
 	    var sheet = document.createElement("style");
+	    // Om extraoldbrowser blir true (för < IE9) så blir meddelandet större
+	    // bortkommenterat i väntan på beslut om hur det ska funka
+	    var extraoldbrowserstyle = '';
 	    var style = ".buorg {position:absolute;z-index:9999;width:100%; top:0; left:0; background:#fff399 no-repeat 13px center url(//browser-update.org/img/small/" + this.op.browser.n + ".png);text-align:left; cursor:pointer; color:#000; font-size: 11px;}.buorg div { padding:5px 36px 5px 40px; } .buorg a,.buorg a:visited  {color: #3284bf; text-decoration: underline;}#buorgclose { position: absolute; right: 6px; top:0; height: 20px; width: 12px; font-weight: bold;font-size:18px; padding:0; }";
+	    // if ( extraoldbrowser ) {
+	    // 	extraoldbrowserstyle = ".buorg div { padding:25px 36px 25px 40px; font-size: 14px;}#buorgclose { right: 18px; top:18px; font-size:24px; }";
+	    // }
 	    document.body.insertBefore(div, document.body.firstChild);
 	    document.getElementsByTagName("head")[0].appendChild(sheet);
 	    try {
-	        sheet.innerText = style;
-	        sheet.innerHTML = style;
+	        sheet.innerText = style + extraoldbrowserstyle;
+	        sheet.innerHTML = style + extraoldbrowserstyle;
 	    } catch (e) {
 	        try {
-	            sheet.styleSheet.cssText = style;
+	            sheet.styleSheet.cssText = style + extraoldbrowserstyle;
 	        } catch (e) {
 	            return;
 	        }

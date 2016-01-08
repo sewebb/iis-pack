@@ -91,7 +91,7 @@ class Iis_Pack_Public {
 	public function iis_pack_enqueue_scripts() {
 
 		// Sammanslagen js för samtliga plugin
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/iis-pack-public.9dc9ad27.min.js', array( 'jquery' ), null, true );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/iis-pack-public.c160b1da.min.js', array( 'jquery' ), null, true );
 
 	}
 
