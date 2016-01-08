@@ -165,9 +165,6 @@ class Iis_Pack {
 		// Om det saknas support för featured image
 		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'add_support_for_featured_image' );
 
-		//Åtminstone för CC-fields
-		// $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-
 	}
 
 	/**
@@ -192,6 +189,8 @@ class Iis_Pack {
 
 		// Content filters. T.ex. filter för bilder så att vi kan visa licensdatan
 		$this->loader->add_action( 'the_post', $plugin_public, 'filter_the_content' );
+
+		$this->loader->add_action( 'init', $plugin_public, 'disable_all_emojis' );
 
 	}
 

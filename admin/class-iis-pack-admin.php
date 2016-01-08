@@ -225,6 +225,25 @@ class Iis_Pack_Admin {
 		);
 
 		register_setting( $this->plugin_name, $this->option_name . '_show_fox_menu', array( $this, $this->option_name . '_sanitize_true_false' ) );
+
+		// Diverse av och på
+		add_settings_section(
+			$this->option_name . '_other_stuff',
+			__( 'Other stuff', 'iis-pack' ),
+			array( $this, $this->option_name . '_other_stuff_cb' ),
+			$this->plugin_name
+		);
+
+		add_settings_field(
+			$this->option_name . '_disable_emojis',
+			__( 'Remove emoji scripts', 'iis-pack' ),
+			array( $this, $this->option_name . '_disable_emojis_cb' ),
+			$this->plugin_name,
+			$this->option_name . '_other_stuff',
+			array( 'label_for' => $this->option_name . '_disable_emojis' )
+		);
+
+		register_setting( $this->plugin_name, $this->option_name . '_disable_emojis', array( $this, $this->option_name . '_sanitize_true_false' ) );
 	}
 
 	/**
@@ -271,6 +290,7 @@ class Iis_Pack_Admin {
 	public function iis_pack_fox_menu_cb() {
 		echo '<p>' . __( 'Should this site show the Fox menu on top of pages?', 'iis-pack' ) . '</p>';
 	}
+
 
 	// INPUT FÄLT
 	/**
@@ -387,6 +407,28 @@ class Iis_Pack_Admin {
 				<label>
 					<input type="radio" name="<?php echo $this->option_name . '_show_fox_menu' ?>" value="false" <?php checked( $show_fox_menu, 'false' ); ?>>
 					<?php _e( 'Hide Fox menu', 'iis-pack' ); ?>
+				</label>
+			</fieldset>
+		<?php
+	}
+
+	/**
+	 * Input för radioknappar visa /dölj emojisar
+	 *
+	 * @since  1.0.1
+	 */
+	public function iis_pack_disable_emojis_cb() {
+		$disable_emojis = get_option( $this->option_name . '_disable_emojis' );
+		?>
+			<fieldset>
+				<label>
+					<input type="radio" name="<?php echo $this->option_name . '_disable_emojis' ?>" id="<?php echo $this->option_name . '_disable_emojis' ?>" value="true" <?php checked( $disable_emojis, 'true' ); ?>>
+					<?php _e( 'Remove emojis (default)', 'iis-pack' ); ?>
+				</label>
+				<br>
+				<label>
+					<input type="radio" name="<?php echo $this->option_name . '_disable_emojis' ?>" value="false" <?php checked( $disable_emojis, 'false' ); ?>>
+					<?php _e( 'Use Emojis', 'iis-pack' ); ?>
 				</label>
 			</fieldset>
 		<?php

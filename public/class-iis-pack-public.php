@@ -84,6 +84,11 @@ class Iis_Pack_Public {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/responsive-oembed.php';
 	}
 
+
+	public function disable_all_emojis() {
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/disable-emojis.php';
+	}
+
 	/**
 	 * Register the JavaScript for the public-facing side of the site.
 	 *
