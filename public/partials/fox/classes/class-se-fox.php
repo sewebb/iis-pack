@@ -415,6 +415,12 @@ class Se_Fox extends Se_Plugin_Base {
 		.buorg {
 			top: 32px!important;
 		}
+		<?php
+		if ( $site_config[ 'csshack' ] ) {
+			// /* Webbstjärnan */ ?>
+			.sewebb-nav-space.webbstjarnan .buorg { margin-top: -64px; }
+		<?php
+		} ?>
 
 		@media ( max-width: <?php echo $max_width; ?> ) {
 			.brand-nav {
@@ -423,12 +429,19 @@ class Se_Fox extends Se_Plugin_Base {
 			.sewebb-nav-space {
 				border: 0;
 			}
-			.sewebb-nav-space.webbstjarnan > #header {
-				margin-top: 0;
-			}
+
 			.buorg {
 				top: 0!important;
 			}
+			<?php
+			if ( $site_config[ 'csshack' ] ) {
+				// /* Webbstjärnan */ ?>
+				.sewebb-nav-space.webbstjarnan > #header {
+					margin-top: 0;
+				}
+				.sewebb-nav-space.webbstjarnan .buorg { margin-top: -32px; }
+			<?php
+			} ?>
 		}
 
 		</style>
