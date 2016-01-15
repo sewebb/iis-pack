@@ -21,6 +21,7 @@ function iis_pack_custom_youtube_oembed( $code ) {
 		$code = str_replace( '</iframe>', '</iframe></div>', $code );
 		return $code;
 	}
+	return $code;
 }
 
 add_filter( 'the_content', 'iis_pack_custom_youtube_oembed' );
