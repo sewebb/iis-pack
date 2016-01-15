@@ -291,6 +291,14 @@ class Iis_Pack_Admin {
 		echo '<p>' . __( 'Should this site show the Fox menu on top of pages?', 'iis-pack' ) . '</p>';
 	}
 
+	/**
+	 * Underrubrik Other stuff
+	 *
+	 * @since  1.0.0
+	 */
+	public function iis_pack_other_stuff_cb() {
+		echo '<p>' . __( 'Bits and pieces', 'iis-pack' ) . '</p>';
+	}
 
 	// INPUT FÄLT
 	/**

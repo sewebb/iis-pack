@@ -97,7 +97,7 @@ class Iis_Pack_Public {
 	public function iis_pack_enqueue_scripts() {
 
 		// Sammanslagen js för samtliga plugin
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/iis-pack-public.3b82cb82.min.js', array( 'jquery' ), null, true );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/iis-pack-public.df51c6d8.min.js', array( 'jquery' ), null, true );
 
 	}
 
@@ -110,7 +110,7 @@ class Iis_Pack_Public {
 	public function iis_pack_enqueue_styles() {
 		// Sammanslagen css för samtliga plugin
 		// Inte använd ännu
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/iis-pack-public.k81caa8b.css', array(), null, 'screen' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/iis-pack-public.2bac5923.min.css', array(), null, 'screen' );
 
 	}
 }

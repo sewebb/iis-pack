@@ -11,62 +11,62 @@ class Se_Fox extends Se_Plugin_Base {
 		'www.iis.se' => array(
 			'load_font' => false,
 			'hide_logo' => true,
-			'csshack'	=> false,
+			'site'	    => 'iis',
 		),
 		'internetdagarna.se' => array(
 			'load_font' => true,
 			'hide_logo' => false,
-			'csshack'	=> false,
+			'site'	    => 'internetdagarna',
 		),
 		'stage.internetdagarna.se' => array(
 			'load_font' => true,
 			'hide_logo' => false,
-			'csshack'	=> false,
+			'site'	    => 'internetdagarna',
 		),
 		'www.internetfonden.se' => array(
 			'load_font' => true,
 			'hide_logo' => false,
-			'csshack'	=> false,
+			'site'	    => 'internetfonden',
 		),
 		'www.internetstatistik.se' => array(
 			'load_font' => true,
 			'hide_logo' => false,
-			'csshack'	=> false,
+			'site'	    => 'internetstatistik',
 		),
 		'www.soi2013.se' => array(
 			'load_font' => true,
 			'hide_logo' => false,
-			'csshack'	=> false,
+			'site'	    => 'soi2013',
 		),
 		'www.soi2014.se' => array(
 			'load_font' => true,
 			'hide_logo' => false,
-			'csshack'	=> false,
+			'site'	    => 'soi2014',
 		),
 		'www.soi2015.se' => array(
 			'load_font' => true,
 			'hide_logo' => false,
-			'csshack'	=> false,
+			'site'	    => 'soi2015',
 		),
 		'www.webbstjarnan.se' => array(
 			'load_font' => true,
 			'hide_logo' => false,
-			'csshack'	=> true,
+			'site'	    => 'webbstjarnan',
 		),
 		'www.poi2014.se' => array(
 			'load_font' => true,
 			'hide_logo' => false,
-			'csshack'	=> false,
+			'site'	    => 'poi2014',
 		),
 		'www.sajtkollen.se' => array(
 			'load_font' => false,
 			'hide_logo' => false,
-			'csshack'	=> true,
+			'site'	    => 'sajtkollen',
 		),
 		'www.internetmuseum.se' => array(
 			'load_font' => false,
 			'hide_logo' => false,
-			'csshack'	=> false,
+			'site'	    => 'internetmuseum',
 		)
 	);
 
@@ -297,7 +297,7 @@ class Se_Fox extends Se_Plugin_Base {
 		$load_fox = true;
 		$load_fox = apply_filters( 'fox_load', $load_fox );
 		if ( $load_fox ) {
-			add_action( 'wp_head', array( $this, 'inline_style' ) );
+			// add_action( 'wp_head', array( $this, 'inline_style' ) );
 			add_filter( 'body_class', array( $this, 'body_class' ) );
 			add_action( 'wp_footer', array( $this, 'add_foxbar' ) );
 		} else {
@@ -319,9 +319,9 @@ class Se_Fox extends Se_Plugin_Base {
 		add_action( 'after_setup_theme', array( $this, '_fox_after_setup_theme' ) );
 	}
 
-	function enqueue_scripts() {
-		wp_enqueue_style( 'iis-fox', plugins_url( '/css/style.php', dirname( __FILE__ ) ), array(), '0.0.1' );
-	}
+	// function enqueue_scripts() {
+	// 	wp_enqueue_style( 'iis-fox', plugins_url( '/css/style.php', dirname( __FILE__ ) ), array(), '0.0.1' );
+	// }
 	function inline_style() {
 		$site_config = $this->get_site_config();
 
@@ -336,7 +336,6 @@ class Se_Fox extends Se_Plugin_Base {
 				$padding   = '';
 			}
 			if ( $site_config[ 'load_font' ] ) {
-				//echo '@import url( //fonts.googleapis.com/css?family=Open+Sans );';
 				echo "<link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>";
 			}
 		}
@@ -345,12 +344,13 @@ class Se_Fox extends Se_Plugin_Base {
 		<style type="text/css">
 		.sewebb-nav-space { border-top: 32px solid transparent; }
 		<?php
-		if ( $site_config[ 'csshack' ] ) {
+		if ( 'webbstjarnan' === $site_config[ 'site' ] ) {
 			// /* Webbstjärnan */ ?>
 			.sewebb-nav-space.webbstjarnan > #header { margin-top: 32px; }
-			<?php // /* sajtkollen */ ?>
-			.sewebb-nav-space.sajtkollen .brand-nav { z-index: 9999; }
-			.sewebb-nav-space.sajtkollen.home #masthead { top: 32px; }
+			<?php
+		} // /* sajtkollen */
+		if ( 'sajtkollen' === $site_config[ 'site' ] ) {?>
+			.sewebb-nav-space.sajtkollen .brand-nav { z-index: 9999; } .sewebb-nav-space.sajtkollen.home #masthead { top: 32px; }
 		<?php
 		} ?>
 		<?php // /* Om man är inloggad i WP och ser WP:s admin-meny. */ ?>
@@ -361,7 +361,6 @@ class Se_Fox extends Se_Plugin_Base {
 			position: absolute; top: 0; width: 100%; background: #323232; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 11px;
 			line-height: 12px; color: #b3b3b3; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 		.brand-nav-fullgrid { position: relative; display: block; width: 1160px; margin: 0 auto; }
-
 		.brand-nav a { text-decoration: none; }
 		.brand-nav a:hover { text-decoration: none; }
 
@@ -383,63 +382,49 @@ class Se_Fox extends Se_Plugin_Base {
 		.brand-nav-list > li > section > a span.filcontent { width: 220px; color: #000; }
 		.brand-nav-list > li > section > a span.fillinktext { display: block; margin-top: 5px; font-size: 11px; color: #000; }
 		.brand-nav-list > li > section > a span.fillinktext:hover { color: #4d4d4d; }
-
 		.brand-nav-list > li:hover { background: #fff; }
 		.brand-nav-list > li:hover > section { left: 0; }
 		.brand-nav-list > li:hover > .brand-nav-headline, .brand-nav-list > li:hover > section { color: #000; }
-
-
 		.brand-nav-list > li > section > .brand-nav-icon { width: 50px; }
 
 		<?php // /* .SE-logo och text */ ?>
 		.brand-nav-logo-text { float: left; padding: 11px 5px 0 0; }
-
 		.brand-nav-logo-symbol { width: 28px; height: 28px; margin-top: 2px; opacity: 0.5; }
 		.brand-nav-logo:hover .brand-nav-logo-symbol { opacity: 1; }
 		.brand-nav-logo-bg { fill: transparent; }
 		.brand-nav-logo-part { fill: #fff; }
 		.brand-nav-logo:hover .brand-nav-logo-bg { fill: #ffdf00; }
 		.brand-nav-logo:hover .brand-nav-logo-part { fill: #2d83c0; }
-
 		.brand-nav > .brand-nav-fullgrid > .brand-nav-logo { display: block; float: right; padding: 0; font-size: 11px; color: #b3b3b3; }
 		.brand-nav > .brand-nav-fullgrid > .brand-nav-logo > span { display: block; margin-top: 0; }
 
 		<?php // /* Göm logo om det är inställt så */ ?>
 		.brand-nav > .brand-nav-fullgrid > .hide.brand-nav-logo { display: none; }
-
-
-		.brand-nav-fullgrid {
-			width: <?php echo $width; ?>;
-			<?php echo $padding; ?>
-		}
-		.buorg {
-			top: 32px!important;
-		}
+		.brand-nav-fullgrid { width: <?php echo $width; ?>; <?php echo $padding; ?>}
+		.buorg { top: 32px!important; }
 		<?php
-		if ( $site_config[ 'csshack' ] ) {
+		if ( 'webbstjarnan' === $site_config[ 'site' ] ) {
 			// /* Webbstjärnan */ ?>
 			.sewebb-nav-space.webbstjarnan .buorg { margin-top: -64px; }
+		<?php
+		}
+		if ( 'internetfonden' === $site_config[ 'site' ] ) {
+			// /* Webbstjärnan */ ?>
+			.sewebb-nav-space.internetfonden .buorg { margin-top: -68px; }
 		<?php
 		} ?>
 
 		@media ( max-width: <?php echo $max_width; ?> ) {
-			.brand-nav {
-				display: none;
-			}
-			.sewebb-nav-space {
-				border: 0;
-			}
-
-			.buorg {
-				top: 0!important;
-			}
+			.brand-nav { display: none; } .sewebb-nav-space { border: 0; } .buorg { top: 0!important;}
 			<?php
-			if ( $site_config[ 'csshack' ] ) {
+			if ( 'webbstjarnan' === $site_config[ 'site' ] ) {
 				// /* Webbstjärnan */ ?>
-				.sewebb-nav-space.webbstjarnan > #header {
-					margin-top: 0;
-				}
-				.sewebb-nav-space.webbstjarnan .buorg { margin-top: -32px; }
+				.sewebb-nav-space.webbstjarnan > #header { margin-top: 0; } .sewebb-nav-space.webbstjarnan .buorg { margin-top: -32px; }
+			<?php
+			}
+			if ( 'internetfonden' === $site_config[ 'site' ] ) {
+			// /* internetfonden */ ?>
+				.sewebb-nav-space.internetfonden .buorg { margin-top: -35px; }
 			<?php
 			} ?>
 		}

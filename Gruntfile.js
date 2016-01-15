@@ -33,10 +33,18 @@ module.exports = function(grunt) {
 		clean: {
 			dist: [
 				'public/js/iis-pack-public.min.js',
-				'public/js/iis-pack-public.*.min.js'
+				'public/js/iis-pack-public.*.min.js',
+				'public/css/iis-pack-public.*.min.css'
 			]
 		},
 		watch: {
+			css: {
+				files: 'public/css/src/*.scss',
+				tasks: [ 'clean', 'sass', 'cssmin', 'version' ],
+				options: {
+					spawn: false,
+				},
+			},
 			js: {
 				files: [
 					'<%= jshint.all %>',
@@ -47,6 +55,29 @@ module.exports = function(grunt) {
 					spawn: false,
 				},
 			},
+		},
+		sass: {
+			dist: {
+				options: {
+					'sourcemap': 'none'
+				},
+				files: {
+					'public/css/iis-pack-public.css': 'public/css/src/source-iis-pack-public.scss'
+				}
+			}
+		},
+		cssmin: {
+			add_banner: {
+				options: {
+					banner: '/* This is a generated file, no changes here please, thanks. */'
+					// processImport: false
+				},
+				files: {
+					'public/css/iis-pack-public.min.css': [
+						"public/css/iis-pack-public.css"
+					]
+				}
+			}
 		},
 		// deploy via rsync
 		// behöver grunt-rsync ~0.6.2 (package.json)
@@ -295,7 +326,7 @@ module.exports = function(grunt) {
 		},
 		version: {
 			assets: {
-				src: ['public/js/iis-pack-public.min.js'],
+				src: ['public/js/iis-pack-public.min.js','public/css/iis-pack-public.min.css'],
 				dest: 'public/class-iis-pack-public.php'
 			}
 		},
@@ -334,6 +365,8 @@ module.exports = function(grunt) {
 			return grunt.warn('Build target must be specified, like deploy:stage_sajtnamn.');
 		}
 		grunt.task.run('clean');
+		grunt.task.run('sass');
+		grunt.task.run('cssmin');
 		grunt.task.run('uglify');
 		grunt.task.run('version');
 		grunt.task.run('gitinfo');
@@ -344,13 +377,15 @@ module.exports = function(grunt) {
 	// Register tasks
 	grunt.registerTask('default', [
 		'clean',
+		'sass',
+		'cssmin',
 		'uglify',
 		'version'
 	]);
 	grunt.registerTask('multiversion', 'more than one file to wp-version', function(mode) {
 		var config = {
 			assets: {
-				src: ['public/js/iis-pack-public.min.js'],
+				src: ['public/js/iis-pack-public.min.js','public/css/iis-pack-public.min.css'],
 				dest: 'public/class-iis-pack-public.php'
 			}
 		};

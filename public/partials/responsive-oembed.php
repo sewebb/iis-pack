@@ -22,4 +22,5 @@ function iis_pack_custom_youtube_oembed( $code ) {
 		return $code;
 	}
 }
-add_filter( 'embed_oembed_html', 'iis_pack_custom_youtube_oembed' );
+
+add_filter( 'the_content', 'iis_pack_custom_youtube_oembed' );

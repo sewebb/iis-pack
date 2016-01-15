@@ -255,7 +255,8 @@ function $buo_f(){
 	    // Om extraoldbrowser blir true (för < IE9) så blir meddelandet större
 	    // bortkommenterat i väntan på beslut om hur det ska funka
 	    var extraoldbrowserstyle = '';
-	    var style = ".buorg {position:absolute;z-index:9999;width:100%; top:0; left:0; background:#fff399 no-repeat 13px center url(//browser-update.org/img/small/" + this.op.browser.n + ".png);text-align:left; cursor:pointer; color:#000; font-size: 11px; border-bottom: 1px solid #e6cb00;}.buorg div { padding:11px 36px 9px 40px; } .buorg a,.buorg a:visited  {color: #3284bf; text-decoration: underline;}#buorgclose { position: absolute; right: 13px; top:3px; line-height:normal; height: 20px; width: 12px; font-weight: bold;font-size:25px; padding:0; }";
+	    // resten av odynamisk css finns i source-iis-pack-public.scss
+	    var style = ".buorg {background:#fff399 no-repeat 13px center url(//browser-update.org/img/small/" + this.op.browser.n + ".png);}";
 	    // if ( extraoldbrowser ) {
 	    // 	extraoldbrowserstyle = ".buorg div { padding:25px 36px 25px 40px; font-size: 14px;}#buorgclose { right: 18px; top:18px; font-size:24px; }";
 	    // }
