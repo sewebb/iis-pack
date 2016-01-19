@@ -64,6 +64,12 @@ class TwitterMeta {
 				'id'    => $prefix . 'description',
 				'type'  => 'textarea',
 			),
+			array(
+				'label' => __( 'Hashtags', 'iis-pack' ),
+				'desc'  => __( 'Add hashtags for this page. If more than one - seperate with comma, no spaces. (internetguider,iis)', 'iis-pack' ),
+				'id'    => $prefix . 'page_hashtags',
+				'type'  => 'text',
+			),
 		);
 		return $twitter_meta_fields;
 	}

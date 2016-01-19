@@ -64,6 +64,12 @@ class FacebookMeta {
 				'id'    => $prefix . 'description',
 				'type'  => 'textarea',
 			),
+			array(
+				'label' => __( 'FB App id', 'iis-pack' ),
+				'desc'  => __( 'If this page belongs to a special App ID (for example internetguider) - add idnumber', 'iis-pack' ),
+				'id'    => $prefix . 'page_app_id',
+				'type'  => 'text',
+			),
 		);
 		return $facebook_meta_fields;
 	}

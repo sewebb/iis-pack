@@ -157,6 +157,7 @@ class Iis_Pack {
 		$plugin_admin = new Iis_Pack_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_options_page' );
+		$this->loader->add_action( 'load-settings_page_iis-pack', $plugin_admin, 'iis_pack_add_help_tab' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_setting' );
 
 		// När vi vill ladda vår extra fält för pages, posts, custom post types & mediauppladdaren (CC-fält)
@@ -164,7 +165,6 @@ class Iis_Pack {
 
 		// Om det saknas support för featured image
 		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'add_support_for_featured_image' );
-
 	}
 
 	/**

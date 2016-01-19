@@ -1,173 +1,4 @@
 <?php
-
-/**
- * The admin-specific functionality of the plugin.
- *
- * @link       https://www.iis.se
- * @since      1.0.0
- *
- * @package    Iis_Pack
- * @subpackage Iis_Pack/admin
- */
-
-/**
- * The admin-specific functionality of the plugin.
- *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
- *
- * @package    Iis_Pack
- * @subpackage Iis_Pack/admin
- * @author     The IIS Team <webbgruppen@iis.se>
- */
-class Iis_Pack_Admin {
-	/**
-	 * The ID of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $plugin_name    The ID of this plugin.
-	 */
-	private $plugin_name;
-
-	/**
-	 * The version of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $version    The current version of this plugin.
-	 */
-	private $version;
-
-	/**
-	 * Initialize the class and set its properties.
-	 *
-	 * @since    1.0.0
-	 * @param string $plugin_name 	The name of this plugin.
-	 * @param string $version    The version of this plugin.
-	 */
-	public function __construct( $plugin_name, $version ) {
-
-		$this->plugin_name = $plugin_name;
-		$this->version = $version;
-
-	}
-
-	/**
-	 * The options name to be used in this plugin
-	 *
-	 * @since  	1.0.0
-	 * @access 	private
-	 * @var  	string 		$option_name 	Option name of this plugin
-	 */
-	private $option_name = 'iis_pack';
-
-	/**
-	 * En viktig sak med facebook & twitter är möjligheten att lägga till en unik bild.
-	 * Så det gör vi om temat missat det
-	 * @since 1.0.0
-	 */
-	public function add_support_for_featured_image() {
-		$has_featured_image_support = get_theme_support( 'post-thumbnails' );
-
-		if ( false === $has_featured_image_support ) {
-			add_theme_support( 'post-thumbnails' );
-		}
-	}
-
-	/**
-	 * Inkludera klasser för extrafält på post & page // extrafält attachements
-	 * @since  1.0.0
-	 * @since  1.0.1 CC-fält på images (class-images-meta.php)
-	 */
-	public function include_meta_fields() {
-		include_once 'partials/class-facebook.php';
-		include_once 'partials/class-twitter.php';
-		include_once 'partials/class-images-meta.php';
-
-		call_facebook();
-		call_twitter();
-		call_images_media();
-	}
-
-	/**
-	 * Register the JavaScript for the admin area.
-	 *
-	 * @since    1.0.1
-	 */
-	public function enqueue_scripts() {
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Plugin_Name_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Plugin_Name_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/iis-pack-admin.js', array( 'jquery' ), $this->version, false );
-
-	}
-
-	/**
-	 * Lägger till inställningar för vårt plugin under menyn Inställningar
-	 * @since 1.0.0
-	 */
-	public function add_options_page() {
-
-		$this->plugin_screen_hook_suffix = add_options_page(
-			__( 'IIS Pack Settings', 'iis-pack' ),
-			__( 'IIS Pack', 'iis-pack' ),
-			'manage_options',
-			$this->plugin_name,
-			array( $this, 'display_options_page' )
-		);
-
-	}
-
-	/**
-	 * Lägger till hjälptexter för inställningssidan
-	 * @since 1.0.2
-	 */
-	public function iis_pack_add_help_tab () {
-		$screen = get_current_screen();
-
-		$screen->add_help_tab( array(
-				'id'      => 'share_buttons',
-				'title'   => __( 'Share buttons', 'iis-pack' ),
-				'content' => __( '<h4>How it works:</h4>
-					<p>Default setting is no buttons showing on pages/posts without an added shortcode <code>[fastsocial]</code> either in the content or added with the page template.</p>
-					<p>BUT - you can choose to print before or after the content and still avoide printing on certain post types.
-					For example, if you dont want any buttons on normal pages add "<code>page</code>" to the <em>"Remove from"</em> field.
-					Or if you use a special template to show for example Internetguider - add "<code>guide</code>" to the field. (Or a combination like "<code>page,guide</code>")</code></p>
-					<p><em>"Activate"</em>-settings are default for the hole site. If you activate all networks you can still choose not to show a certain button on / in a post or template
-					with for example <code>[fastsocial pinterest=no]</code> (or if a network is not choosen for all pages - activate it with <code>[fastsocial pinterest=yes]</code></p>
-						<p>On each page / post you can also add a special Facebook App ID, <strong>different</strong> from the sitewide ID.
-						Or you can add it to the do_shortcode in a template with <code>[fastsocial fbappid=<em>{idnumber}</em>]</code></p>
-						<p>Hashtags for the Twitter-button could be added in the same manner (per post/page or by shortcode) <code>[fastsocial hashtags=internetguider,internetstiftelsen]</code></p>', 'iis-pack' ),
-				)
-		);
-		$screen->add_help_tab( array(
-				'id'      => 'object_attribution',
-				'title'   => __( 'Object attribution', 'iis-pack' ),
-				'content' => __( '<h4>Adding license to images</h4>
-					<p>In the media library there are fields for each object that can hold object attributions.</p>
-					<p>If added to an image it could be printed automatically under each image - or you use your own function in your theme</p>', 'iis-pack' ),
-				)
-		);
-	}
-
-	/**
-	 * Skapa inställningssidan
-	 * @since 1.0.0
-	 * @since 1.0.2 Fast Social Share buttons
-	 */
-	public function display_options_page() {
-		include_once 'partials/iis-pack-admin-display.php';
-	}
-
 	/**
 	 * [register_setting description]
 	 * @since 1.0.0
@@ -472,9 +303,31 @@ class Iis_Pack_Admin {
 	// INPUT FÄLT
 	/**
 	 * Input för radioknappar - var ska Fast Social Share -knapparna visas
-	 * @param array $args knapparnas läge
+	 *
 	 * @since  1.0.2
 	 */
+	public function xxiis_pack_show_fast_social_share_cb() {
+		$show_fast_social_share = get_option( $this->option_name . '_show_fast_social_share' );
+		?>
+			<fieldset>
+				<label>
+					<input type="radio" name="<?php echo $this->option_name . '_show_fast_social_share' ?>" id="<?php echo $this->option_name . '_show_fast_social_share' ?>" value="beforecontent" <?php checked( $show_fast_social_share, 'beforecontent' ); ?>>
+					<?php _e( 'Print buttons before content', 'iis-pack' ); ?>
+				</label>
+				<br>
+				<label>
+					<input type="radio" name="<?php echo $this->option_name . '_show_fast_social_share' ?>" value="aftercontent" <?php checked( $show_fast_social_share, 'aftercontent' ); ?>>
+					<?php _e( 'Print buttons after content', 'iis-pack' ); ?>
+				</label>
+				<br>
+				<label>
+					<input type="radio" name="<?php echo $this->option_name . '_show_fast_social_share' ?>" value="shortcode" <?php checked( $show_fast_social_share, 'shortcode' ); ?>>
+					<?php _e( 'Do not print buttons (default) - use shortcode <code>[fastsocial]</code> in post content or page template', 'iis-pack' ); ?>
+				</label>
+			</fieldset>
+		<?php
+	}
+
 	public function iis_pack_show_fast_social_share_cb( $args ) {
 		$options = get_option( $this->option_name . '_show_fast_social_share' ); ?>
 		<input id="<?php echo $args[0]; ?>" name="iis_pack_show_fast_social_share[<?php echo $args[0]; ?>]"  type="checkbox" value="1" <?php checked( $options[ $args[0] ], 1 ); ?> />
@@ -488,17 +341,9 @@ class Iis_Pack_Admin {
 	 * @since  1.0.2 Anger fält för post types (page, post, custom post type)
 	 */
 	public function iis_pack_remove_fss_from_type_cb() {
-		$args = array(
-			'public'   => true,
-		);
-		$post_types = get_post_types( $args );
-		foreach ( $post_types as $post_type ) {
-			$allposttypes .= '<code>' . $post_type . '</code>&nbsp;&nbsp;';
-		}
 		$remove_fss_from_type = get_option( $this->option_name . '_remove_fss_from_type' );
 		echo '<input type="text" class="large-text" name="' . $this->option_name . '_remove_fss_from_type' . '" id="' . $this->option_name . '_remove_fss_from_type' . '" value="' . $remove_fss_from_type . '"> ';
 		echo '<p class="description">' . __( 'Add post types to be avoided if above setting is set to Print before or Print after content. (ex: se-tech,guide)', 'iis-pack' ) . '</p>';
-		echo '<p>' . __( 'Choose from theese post types: ', 'iis-pack' ) . '<br>' . $allposttypes . '</p>';
 	}
 
 	/**
@@ -508,21 +353,15 @@ class Iis_Pack_Admin {
 	 * @since  1.0.2 Anger fält för page template (tpl-guidelista.php, ect)
 	 */
 	public function iis_pack_remove_fss_from_template_cb() {
-		$templates = get_page_templates();
-		foreach ( $templates as $template_name => $template_filename ) {
-			$alltemplates .= "<em>$template_name:</em> <code>$template_filename</code>&nbsp;&nbsp;";
-		}
 		$remove_fss_from_template = get_option( $this->option_name . '_remove_fss_from_template' );
 		echo '<input type="text" class="large-text" name="' . $this->option_name . '_remove_fss_from_template' . '" id="' . $this->option_name . '_remove_fss_from_template' . '" value="' . $remove_fss_from_template . '"> ';
-		echo '<p class="description">' . __( 'Add templates to be avoided if above setting is set to Print before or Print after content.', 'iis-pack' ) . '</p>';
-		echo '<p>' . __( 'Choose from theese templates: ', 'iis-pack' ) . '<br>' . $alltemplates . '</p>';
+		echo '<p class="description">' . __( 'Add templates to be avoided if above setting is set to Print before or Print after content. (ex: <strong>tpl-guidelista.php</strong> or if template is in a folder: <strong>templates/template.php</strong>)', 'iis-pack' ) . '</p>';
 	}
 
 	/**
-	 * Checkbox var vilka nätverk ska visas
+	 * Checkbox var ska Fast Social Share -knapparna visas
 	 *
-	 * @since 1.0.2
-	 * @param array $args nätverken
+	 * @since  1.0.2
 	 */
 	public function iis_pack_checkbox_enable_cb( $args ) {
 		$options = get_option( $this->option_name . '_choose_social_share' ); ?>
@@ -706,7 +545,7 @@ class Iis_Pack_Admin {
 	/**
 	 * Sanera checkboxar Fast Social Share
 	 *
-	 * @param  string $input kollar alla inkommamde värde så att de är numeriska
+	 * @param  string $input
 	 * @since  1.0.2
 	 * @return string           Sanitized value
 	 */
@@ -767,4 +606,3 @@ class Iis_Pack_Admin {
 	        return $true_false;
 	    }
 	}
-}

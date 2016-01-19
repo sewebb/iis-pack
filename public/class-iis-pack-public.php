@@ -82,6 +82,7 @@ class Iis_Pack_Public {
 	public function filter_the_content() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/add-license-to-images.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/responsive-oembed.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/fast-social-share-buttons.php';
 	}
 
 
@@ -97,7 +98,7 @@ class Iis_Pack_Public {
 	public function iis_pack_enqueue_scripts() {
 
 		// Sammanslagen js för samtliga plugin
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/iis-pack-public.df51c6d8.min.js', array( 'jquery' ), null, true );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/iis-pack-public.ba033de2.min.js', array( 'jquery' ), null, true );
 
 	}
 
@@ -110,7 +111,7 @@ class Iis_Pack_Public {
 	public function iis_pack_enqueue_styles() {
 		// Sammanslagen css för samtliga plugin
 		// Inte använd ännu
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/iis-pack-public.2bac5923.min.css', array(), null, 'screen' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/iis-pack-public.0e90997c.min.css', array(), null, 'screen' );
 
 	}
 }

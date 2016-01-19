@@ -81,6 +81,137 @@
 		  $("body").addClass("pc");
 		}
 
+		// START avsnitt for Fast Social Share
+		socialclick(this);
+	    function socialclick() {
+	        var that = this, // needed in click handler below
+	            facebookclick = $(".fss-share-facebook"),
+	            twitterclick = $(".fss-share-twitter"),
+	            linkedinclick = $(".fss-share-linkedin"),
+	            pinterestclick = $(".fss-share-pinterest"),
+	            pagedescription = $('meta[property="og:description"]').attr("content"),
+	            sitelang = $('html').attr('lang'),
+	            twitterlang = sitelang,
+	            pagetitle = $('meta[property="og:title"]').attr("content"),
+	            pageurl = $(location).attr('href'),
+	            facebook_appid = $(".fast-social-share").data("fbappid"), //$('meta[property="fb:app_id"]').attr("content"),
+	            protocol = location.protocol,
+	            domain = window.location.host,
+	            facebookpicture = "",
+	            facebookurl = "",
+	            selectedimageexists = false,
+	            selectedimage = getShareImage(),
+	            hashtags = $(".fast-social-share").data("hashtags");
+
+	        //special social meta propertys could be lacking
+	        if ("" === pagetitle || undefined === pagetitle ) {
+	            pagetitle = document.title;
+	        }
+	        // modify variables to suite our needs
+	        if ("" === pagedescription || undefined === pagedescription) {
+	            pagedescription = $('meta[name="description"]').attr("content");
+	        }
+	        if ("" === pagedescription || undefined === pagedescription) {
+	            pagedescription = "-";
+	        } else {
+	            pagedescription = encodeURIComponent(pagedescription);
+	        }
+
+	        pagetitle = encodeURIComponent(pagetitle);
+	        pageurl = pageurl.replace('vvv.', '');
+	        pageurl = pageurl.replace('stage.', '');
+	        pageurl = encodeURIComponent(pageurl);
+	         if ("" === twitterlang || undefined === twitterlang) {
+	            twitterlang = "sv";
+	            sitelang = "sv";
+	        } else {
+	            twitterlang = twitterlang.substr(0, 2);
+	        }
+
+	        function getShareImage() {
+				var ogImage = $('meta[property="og:image"]').attr('content');
+				if (undefined === ogImage || "" === ogImage) {
+					return '';
+				} else {
+					return ogImage;
+				}
+			}
+
+	        // check to see if we have an featured image or og:image
+	        // ska inte inträffa på sajter med IIS Pack aktiverat eftersom og:image alltid läggs till
+	        if ("" !== selectedimage && undefined !== selectedimage) {
+	            facebookpicture = "&picture=" + selectedimage;
+	            selectedimageexists = true;
+	        } else {
+	             facebookpicture = "";
+	        }
+
+	        $(facebookclick).click(function (e) {
+	            //if we don't have facebook_appid belonging to this site, we share without the app
+	            if ("" !== facebook_appid && undefined !== facebook_appid) {
+	                var redirect = protocol + "//" + domain + "/wp-content/plugins/iis-pack/public/assets/close-popup.html";
+	                facebookurl = protocol + "//www.facebook.com/dialog/feed?app_id=" + facebook_appid + "&link=" + pageurl + "&name=" + pagetitle + "&description=" + pagedescription + "&display=popup&redirect_uri=" + redirect + facebookpicture;
+	            } else {
+	                facebookurl = protocol + "//www.facebook.com/sharer.php?u=" + pageurl;
+	            }
+	            popupwindow(facebookurl, 'Facebook', '580', '400');
+	            return false;
+	        });
+
+
+	        $(twitterclick).click(function (e) {
+	           var twitterurl = protocol + "//twitter.com/intent/tweet?lang=" + twitterlang + "&text=" + pagetitle + "&url=" + pageurl + "&hashtags=" + hashtags;
+	            popupwindow(twitterurl, 'Twitter', '550', '260');
+	            return false;
+	        });
+
+	        $(linkedinclick).click(function (e) {
+	            var linkedinurl = protocol + "//www.linkedin.com/shareArticle?mini=true&url=" + pageurl +"&title=" + pagetitle;
+	            popupwindow(linkedinurl, 'LinkedIn', '600', '600');
+	            return false;
+	        });
+
+	        //in case we don't have an image for Pinterest, it does not work. Then hide button
+	        if (selectedimageexists) {
+	            var pinteresturl = protocol + "//pinterest.com/pin/create/button/?url=" + pageurl + "&media=" + selectedimage + "&description=" + pagedescription;
+	            $(pinterestclick).on('click', function (e) {
+	                popupwindow(pinteresturl, 'Pinterest', '750', '600');
+	            });
+	        } else {
+	              $(pinterestclick).css("display", "none");
+	        }
+	        function popupwindow(url, title, w, h) {
+	          var left = (screen.width/2)-(w/2) + FindLeftWindowBoundry(),
+	                top = (screen.height/2)-(h/2) + FindTopWindowBoundry();
+	          return window.open(url, title, 'scrollbars=yes, resizable=yes, width='+w+', height='+h+', top='+top+', left='+left+'');
+	        }
+	        // Find Left Boundry of current Window
+	        function FindLeftWindowBoundry() {
+	            // In Internet Explorer window.screenLeft is the window's left boundry
+	            if (window.screenLeft) {
+	                return window.screenLeft;
+	            }
+	            // In Firefox window.screenX is the window's left boundry
+	            if (window.screenX)
+	                return window.screenX;
+
+	            return 0;
+	        }
+	        // Find Left Boundry of current Window
+	        function FindTopWindowBoundry() {
+	            // In Internet Explorer window.screenLeft is the window's left boundry
+	            if (window.screenTop) {
+	                return window.screenTop;
+	            }
+
+	            // In Firefox window.screenY is the window's left boundry
+	            if (window.screenY)
+	                return window.screenY;
+	            return 0;
+	        }
+	    }
+		// SLUT Fast Social Share
+
 	});
 
 
