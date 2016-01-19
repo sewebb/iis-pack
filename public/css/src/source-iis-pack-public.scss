@@ -287,11 +287,11 @@ $small-font-size  : 13px;
 
 .iis-fss {
   //Mest nytta av denna i lokala teman men satter en standard botten-margin baserad pa iis.se sa lange
-  .beforecontent {
+  &.beforecontent {
     margin-bottom: 1em;
   }
-  .aftercontent {
-
+  &.aftercontent {
+    margin-top: 30px;
   }
 }
 .fast-social-share {

@@ -51,8 +51,7 @@ if ( '' !== $iis_remove_fss_from_type || '' !== $iis_remove_fss_from_template ) 
 		$excludefrom_template = is_page_template( $do_not_show_on_this_template );
 	}
 }
-_log($iis_show_fss_beforecontent);
-_log($iis_show_fss_aftercontent);
+
 if ( ! $excludefrom_type && ! $excludefrom_template ) {
 	if ( $iis_show_fss_beforecontent ) {
 
@@ -68,12 +67,6 @@ if ( ! $excludefrom_type && ! $excludefrom_template ) {
 	}
 }
 
-// } elseif ( 'shortcode' === $iis_show_fss_beforecontent && ( $excludefrom_type || $excludefrom_template ) ) {
-
-// 	if ( ! is_archive() ) {
-// 		add_filter( 'the_content', 'share_buttons_after_content' );
-// 	}
-// }
 
 /**
  * [share_buttons_before_content description]
@@ -83,7 +76,7 @@ if ( ! $excludefrom_type && ! $excludefrom_template ) {
 function share_buttons_before_content( $content ) {
 	// kollar om det redan finns shortcode i content - isf lägger vi inte ut igen
 	if ( ! has_shortcode( $content, 'fastsocial' ) ) {
-		$content = do_shortcode( '[fastsocial]' ) . $content;
+		$content = do_shortcode( '[fastsocial position=beforecontent]' ) . $content;
 	}
 	return $content;
 }
@@ -95,7 +88,7 @@ function share_buttons_before_content( $content ) {
  */
 function share_buttons_after_content( $content ) {
 	if ( ! has_shortcode( $content, 'fastsocial' ) ) {
-		$content .= do_shortcode( '[fastsocial]' );
+		$content .= do_shortcode( '[fastsocial position=aftercontent]' );
 	}
 	return $content;
 }
@@ -130,6 +123,7 @@ function fast_social( $atts ) {
 				'pinterest'     => ''. $option_pinterest . '',
 				'hashtags'      => ''. $hashtags . '',
 				'fbappid'       => ''. $fbappid . '',
+				'position'      => '',
 			),
 			$atts
 		)
@@ -202,7 +196,12 @@ function fast_social( $atts ) {
 
 		$output .= '</ul>';
 
-		$innerhtml = '<div class="iis-fss' . $class . '">' . $output . '</div>';
+		$extraclass = '';
+		if ( '' !== $position ) {
+			$extraclass = ' ' . $position;
+		}
+
+		$innerhtml = '<div class="iis-fss' . $extraclass . '">' . $output . '</div>';
 		echo $innerhtml;
 		return ob_get_clean();
 	}
