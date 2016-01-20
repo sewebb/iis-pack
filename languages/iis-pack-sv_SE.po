@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IIS Pack\n"
 "POT-Creation-Date: 2016-01-20 15:54+0100\n"
-"PO-Revision-Date: 2016-01-20 16:48+0100\n"
+"PO-Revision-Date: 2016-01-20 16:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -116,12 +116,12 @@ msgstr ""
 #: admin/class-iis-pack-admin.php:189 admin/partials/option-fields.php:19
 #: admin/partials/option-fields.php:315
 msgid "Print buttons before content"
-msgstr "Lägg ut knappar innan sidans text"
+msgstr "Knappar innan sidans text"
 
 #: admin/class-iis-pack-admin.php:198 admin/partials/option-fields.php:28
 #: admin/partials/option-fields.php:320
 msgid "Print buttons after content"
-msgstr "Lägg ut knappar efter sidans text"
+msgstr "Knappar efter sidans text"
 
 #: admin/class-iis-pack-admin.php:207 admin/partials/option-fields.php:37
 msgid "Remove from types"
