@@ -146,6 +146,13 @@
 	             facebookpicture = "";
 	        }
 
+	        function sendToAnanlytics(network,target) {
+	        	ga('send', 'social', {
+					'socialNetwork': network,
+					'socialAction': 'share',
+					'socialTarget': pageurl
+				})
+	        }
 	        $(facebookclick).click(function (e) {
 	            //if we don't have facebook_appid belonging to this site, we share without the app
 	            if ("" !== facebook_appid && undefined !== facebook_appid) {
@@ -155,6 +162,7 @@
 	                facebookurl = protocol + "//www.facebook.com/sharer.php?u=" + pageurl;
 	            }
 	            popupwindow(facebookurl, 'Facebook', '580', '400');
+	            sendToAnanlytics('facebook',pageurl);
 	            return false;
 	        });
 
@@ -162,12 +170,14 @@
 	        $(twitterclick).click(function (e) {
 	           var twitterurl = protocol + "//twitter.com/intent/tweet?lang=" + twitterlang + "&text=" + pagetitle + "&url=" + pageurl + "&hashtags=" + hashtags;
 	            popupwindow(twitterurl, 'Twitter', '550', '260');
+	            sendToAnanlytics('twitter',pageurl);
 	            return false;
 	        });
 
 	        $(linkedinclick).click(function (e) {
 	            var linkedinurl = protocol + "//www.linkedin.com/shareArticle?mini=true&url=" + pageurl +"&title=" + pagetitle;
 	            popupwindow(linkedinurl, 'LinkedIn', '600', '600');
+	            sendToAnanlytics('linkedin',pageurl);
 	            return false;
 	        });
 
@@ -176,6 +186,7 @@
 	            var pinteresturl = protocol + "//pinterest.com/pin/create/button/?url=" + pageurl + "&media=" + selectedimage + "&description=" + pagedescription;
 	            $(pinterestclick).on('click', function (e) {
 	                popupwindow(pinteresturl, 'Pinterest', '750', '600');
+	                sendToAnanlytics('pinterest',pageurl);
 	            });
 	        } else {
 	              $(pinterestclick).css("display", "none");
