@@ -135,7 +135,7 @@ class Iis_Pack_Admin {
 		$screen = get_current_screen();
 
 		$screen->add_help_tab( array(
-				'id'      => 'share_buttons',
+				'id'      => 'fss_share_buttons',
 				'title'   => __( 'Share buttons', 'iis-pack' ),
 				'content' => __( '<h4>How it works:</h4>
 					<p>Default setting is no buttons showing on pages/posts without an added shortcode <code>[fastsocial]</code> either in the content or added with the page template.</p>
@@ -150,8 +150,31 @@ class Iis_Pack_Admin {
 						<p>To remove fastsocial for a specific page / post that would normaly magically add the buttons, add <code>[fastsocial remove=yes]</code> to post content (in editor)</p>', 'iis-pack' ),
 				)
 		);
+
+		$templates = get_page_templates();
+		foreach ( $templates as $template_name => $template_filename ) {
+			$alltemplates .= "<em>$template_name:</em> <code>$template_filename</code>&nbsp;&nbsp;";
+		}
 		$screen->add_help_tab( array(
-				'id'      => 'object_attribution',
+				'id'      => 'fss_template_files',
+				'title'   => __( 'Choose from theese templates: ', 'iis-pack' ),
+				'content' => '<p>' . $alltemplates . '</p>',
+				)
+		);
+
+		$post_types = get_post_types( $args );
+		foreach ( $post_types as $post_type ) {
+			$allposttypes .= '<code>' . $post_type . '</code>&nbsp;&nbsp;';
+		}
+		$screen->add_help_tab( array(
+				'id'      => 'fss_post_types',
+				'title'   => __( 'Choose from theese post types: ', 'iis-pack' ),
+				'content' => '<p>' . $allposttypes . '</p>',
+				)
+		);
+
+		$screen->add_help_tab( array(
+				'id'      => 'fss_object_attribution',
 				'title'   => __( 'Object attribution', 'iis-pack' ),
 				'content' => __( '<h4>Adding license to images</h4>
 					<p>In the media library there are fields for each object that can hold object attributions.</p>
@@ -492,14 +515,10 @@ class Iis_Pack_Admin {
 		$args = array(
 			'public'   => true,
 		);
-		$post_types = get_post_types( $args );
-		foreach ( $post_types as $post_type ) {
-			$allposttypes .= '<code>' . $post_type . '</code>&nbsp;&nbsp;';
-		}
 		$remove_fss_from_type = get_option( $this->option_name . '_remove_fss_from_type' );
 		echo '<input type="text" class="large-text" name="' . $this->option_name . '_remove_fss_from_type' . '" id="' . $this->option_name . '_remove_fss_from_type' . '" value="' . $remove_fss_from_type . '"> ';
 		echo '<p class="description">' . __( 'Add post types to be avoided if above setting is set to Print before or Print after content. (ex: se-tech,guide)', 'iis-pack' ) . '</p>';
-		echo '<p>' . __( 'Choose from theese post types: ', 'iis-pack' ) . '<br>' . $allposttypes . '</p>';
+		echo '<p>' . __( 'Choose from theese post types: ', 'iis-pack' ) . __( '( <em>see help menu</em> ) ', 'iis-pack' ) . '</p>';
 	}
 
 	/**
@@ -509,14 +528,10 @@ class Iis_Pack_Admin {
 	 * @since  1.0.2 Anger fält för page template (tpl-guidelista.php, ect)
 	 */
 	public function iis_pack_remove_fss_from_template_cb() {
-		$templates = get_page_templates();
-		foreach ( $templates as $template_name => $template_filename ) {
-			$alltemplates .= "<em>$template_name:</em> <code>$template_filename</code>&nbsp;&nbsp;";
-		}
 		$remove_fss_from_template = get_option( $this->option_name . '_remove_fss_from_template' );
 		echo '<input type="text" class="large-text" name="' . $this->option_name . '_remove_fss_from_template' . '" id="' . $this->option_name . '_remove_fss_from_template' . '" value="' . $remove_fss_from_template . '"> ';
 		echo '<p class="description">' . __( 'Add templates to be avoided if above setting is set to Print before or Print after content.', 'iis-pack' ) . '</p>';
-		echo '<p>' . __( 'Choose from theese templates: ', 'iis-pack' ) . '<br>' . $alltemplates . '</p>';
+		echo '<p>' . __( 'Choose from theese templates: ', 'iis-pack' ) . __( '( <em>see help menu</em> ) ', 'iis-pack' ) . '</p>';
 	}
 
 	/**

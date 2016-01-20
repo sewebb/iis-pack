@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: IIS Pack\n"
-"POT-Creation-Date: 2016-01-20 15:54+0100\n"
-"PO-Revision-Date: 2016-01-20 16:51+0100\n"
+"POT-Creation-Date: 2016-01-20 17:24+0100\n"
+"PO-Revision-Date: 2016-01-20 17:24+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -29,8 +29,7 @@ msgstr "Inställningarna för IIS-Pack"
 msgid "IIS Pack"
 msgstr "IIS Pack"
 
-#: admin/class-iis-pack-admin.php:139 admin/class-iis-pack-admin.php:182
-#: admin/partials/option-fields.php:12
+#: admin/class-iis-pack-admin.php:139 admin/class-iis-pack-admin.php:205
 msgid "Share buttons"
 msgstr "Dela-knappar"
 
@@ -93,12 +92,19 @@ msgstr ""
 "sida / post som normalt automatiskt skulle haft knapparna, lägg till "
 "<code>[fastsocial remove=yes]</code> i post content (i editorn)</p>"
 
-#: admin/class-iis-pack-admin.php:155 admin/class-iis-pack-admin.php:268
-#: admin/partials/option-fields.php:98
+#: admin/class-iis-pack-admin.php:160 admin/class-iis-pack-admin.php:534
+msgid "Choose from theese templates: "
+msgstr "Välj från dessa sidmallar: "
+
+#: admin/class-iis-pack-admin.php:171 admin/class-iis-pack-admin.php:521
+msgid "Choose from theese post types: "
+msgstr "Välj från dessa posttyper: "
+
+#: admin/class-iis-pack-admin.php:178 admin/class-iis-pack-admin.php:291
 msgid "Object attribution"
 msgstr "Bildattribution"
 
-#: admin/class-iis-pack-admin.php:156
+#: admin/class-iis-pack-admin.php:179
 msgid ""
 "<h4>Adding license to images</h4>\n"
 "\t\t\t\t\t<p>In the media library there are fields for each object that can "
@@ -113,98 +119,95 @@ msgstr ""
 "automatiskt under varje bild - eller så kan du använda din egen funktion i "
 "ditt tema.</p>"
 
-#: admin/class-iis-pack-admin.php:189 admin/partials/option-fields.php:19
-#: admin/partials/option-fields.php:315
+#: admin/class-iis-pack-admin.php:212
 msgid "Print buttons before content"
 msgstr "Knappar innan sidans text"
 
-#: admin/class-iis-pack-admin.php:198 admin/partials/option-fields.php:28
-#: admin/partials/option-fields.php:320
+#: admin/class-iis-pack-admin.php:221
 msgid "Print buttons after content"
 msgstr "Knappar efter sidans text"
 
-#: admin/class-iis-pack-admin.php:207 admin/partials/option-fields.php:37
+#: admin/class-iis-pack-admin.php:230
 msgid "Remove from types"
 msgstr "Lägg inte ut på typerna"
 
-#: admin/class-iis-pack-admin.php:216 admin/partials/option-fields.php:46
+#: admin/class-iis-pack-admin.php:239
 msgid "Remove from templates"
 msgstr "Lägg inte ut i sidmallarna"
 
-#: admin/class-iis-pack-admin.php:225 admin/partials/option-fields.php:55
+#: admin/class-iis-pack-admin.php:248
 msgid "Activate Facebook"
 msgstr "Aktivera Facebook"
 
-#: admin/class-iis-pack-admin.php:233 admin/partials/option-fields.php:63
+#: admin/class-iis-pack-admin.php:256
 msgid "Activate Twitter"
 msgstr "Aktivera Twitter"
 
-#: admin/class-iis-pack-admin.php:241 admin/partials/option-fields.php:71
+#: admin/class-iis-pack-admin.php:264
 msgid "Activate LinkedIn"
 msgstr "Aktivera LinkedIn"
 
-#: admin/class-iis-pack-admin.php:249 admin/partials/option-fields.php:79
+#: admin/class-iis-pack-admin.php:272
 msgid "Activate Pinterest"
 msgstr "Aktivera Pinterest"
 
-#: admin/class-iis-pack-admin.php:275 admin/partials/option-fields.php:105
+#: admin/class-iis-pack-admin.php:298
 msgid "Print Object attribution?"
 msgstr "Skriv ut bildattribution under bilder på sidorna?"
 
-#: admin/class-iis-pack-admin.php:287 admin/partials/option-fields.php:117
+#: admin/class-iis-pack-admin.php:310
 msgid "Facebook open graph"
 msgstr "Facebook open graph"
 
-#: admin/class-iis-pack-admin.php:295 admin/partials/option-fields.php:125
+#: admin/class-iis-pack-admin.php:318
 msgid "Default og:image"
 msgstr "Standard og:image"
 
-#: admin/class-iis-pack-admin.php:304 admin/partials/option-fields.php:134
+#: admin/class-iis-pack-admin.php:327
 msgid "Protocol"
 msgstr "Protokoll för sajten"
 
-#: admin/class-iis-pack-admin.php:313 admin/partials/option-fields.php:143
+#: admin/class-iis-pack-admin.php:336
 msgid "ev. Facebook AppId"
 msgstr "ev. Facebook AppID"
 
-#: admin/class-iis-pack-admin.php:322 admin/partials/option-fields.php:152
+#: admin/class-iis-pack-admin.php:345
 msgid "ev. Facebook Admin(s)"
 msgstr "ev. Facebook Admin(s)"
 
-#: admin/class-iis-pack-admin.php:337 admin/partials/class-twitter.php:42
-#: admin/partials/option-fields.php:167
+#: admin/class-iis-pack-admin.php:360 admin/partials/class-twitter.php:42
 msgid "Twitter Cards"
 msgstr "Twitter Kort"
 
-#: admin/class-iis-pack-admin.php:344 admin/partials/option-fields.php:174
+#: admin/class-iis-pack-admin.php:367
 msgid "Twitter site"
 msgstr "Twitterkonto för sajten"
 
-#: admin/class-iis-pack-admin.php:356 admin/partials/option-fields.php:186
+#: admin/class-iis-pack-admin.php:379
 msgid "Google Analytics"
 msgstr "Google Analytics"
 
-#: admin/class-iis-pack-admin.php:363 admin/partials/option-fields.php:193
+#: admin/class-iis-pack-admin.php:386
 msgid "Google Analytics ID"
 msgstr "Google Analytics ID"
 
-#: admin/class-iis-pack-admin.php:375 admin/partials/option-fields.php:205
+#: admin/class-iis-pack-admin.php:398
 msgid "Fox Menu"
 msgstr "Foxmenyn"
 
-#: admin/class-iis-pack-admin.php:382 admin/partials/option-fields.php:212
+#: admin/class-iis-pack-admin.php:405
 msgid "Use Fox menu?"
 msgstr "Använd Foxmenyn?"
 
-#: admin/class-iis-pack-admin.php:394 admin/partials/option-fields.php:224
+#: admin/class-iis-pack-admin.php:417
 msgid "Other stuff"
 msgstr "Andra inställningar"
 
-#: admin/class-iis-pack-admin.php:401 admin/partials/option-fields.php:231
+#: admin/class-iis-pack-admin.php:424
 msgid "Remove emoji scripts"
 msgstr "Avlägsna emoji skript"
 
-#: admin/class-iis-pack-admin.php:416 admin/partials/option-fields.php:246
+#: admin/class-iis-pack-admin.php:439
 msgid ""
 "Choose where social share buttons should be shown. See Help menu for more "
 "info (under \"Hi, {logged in user}\")"
@@ -212,33 +215,33 @@ msgstr ""
 "Välj var knapparna för att dela på social nätverk ska synas. Se “Hjälp” för "
 "mer info. (Uppe till höger på denna sidan)"
 
-#: admin/class-iis-pack-admin.php:425 admin/partials/option-fields.php:255
+#: admin/class-iis-pack-admin.php:448
 msgid "Should this site fetch and print attachement credits "
 msgstr ""
 "Ska denna sajten hämta och skriva ut licensfälten för bilder tillagda på "
 "sidor?"
 
-#: admin/class-iis-pack-admin.php:434 admin/partials/option-fields.php:264
+#: admin/class-iis-pack-admin.php:457
 msgid "Settings for Facebook open graph tags per site "
 msgstr "Inställningar för Facebook open graph-taggar per webbplats"
 
-#: admin/class-iis-pack-admin.php:443 admin/partials/option-fields.php:273
+#: admin/class-iis-pack-admin.php:466
 msgid "Global settings for Twitter Cards"
 msgstr "Globala inställningar för Twitter kort"
 
-#: admin/class-iis-pack-admin.php:452 admin/partials/option-fields.php:282
+#: admin/class-iis-pack-admin.php:475
 msgid "Settings for Google Analytics"
 msgstr "Inställningar för Google Analytics"
 
-#: admin/class-iis-pack-admin.php:461 admin/partials/option-fields.php:291
+#: admin/class-iis-pack-admin.php:484
 msgid "Should this site show the Fox menu on top of pages?"
 msgstr "Ska sajten visa Foxmenyn överst på sidorna? (i 99,99% av fallen - JA!)"
 
-#: admin/class-iis-pack-admin.php:470 admin/partials/option-fields.php:300
+#: admin/class-iis-pack-admin.php:493
 msgid "Bits and pieces"
 msgstr "Lite av varje"
 
-#: admin/class-iis-pack-admin.php:501 admin/partials/option-fields.php:346
+#: admin/class-iis-pack-admin.php:520
 msgid ""
 "Add post types to be avoided if above setting is set to Print before or "
 "Print after content. (ex: se-tech,guide)"
@@ -246,68 +249,64 @@ msgstr ""
 "Lägg till posttyper som inte ska få knapparna utskrivna om något av “Lägg "
 "ut”-valen ovan är valt"
 
-#: admin/class-iis-pack-admin.php:502
-msgid "Choose from theese post types: "
-msgstr "Välj från dessa posttyper: "
+#: admin/class-iis-pack-admin.php:521 admin/class-iis-pack-admin.php:534
+msgid "( <em>see help menu</em> ) "
+msgstr "( <em>se vilka du kan välja mellan i hjälpmenyn</em> ) "
 
-#: admin/class-iis-pack-admin.php:518
+#: admin/class-iis-pack-admin.php:533
 msgid ""
 "Add templates to be avoided if above setting is set to Print before or Print "
 "after content."
 msgstr ""
 "Lägg till sidmallar som inte ska ha knapparna automatiskt. (hela filnamnet)"
 
-#: admin/class-iis-pack-admin.php:519
-msgid "Choose from theese templates: "
-msgstr "Välj från dessa sidmallar: "
-
-#: admin/class-iis-pack-admin.php:550 admin/partials/option-fields.php:388
+#: admin/class-iis-pack-admin.php:565
 msgid "Show Object Attribution"
 msgstr "Visa Bildattribution under bilder"
 
-#: admin/class-iis-pack-admin.php:555 admin/partials/option-fields.php:393
+#: admin/class-iis-pack-admin.php:570
 msgid "Hide Object Attribution"
 msgstr "Dölj Bildattribution under bilder"
 
-#: admin/class-iis-pack-admin.php:569 admin/partials/option-fields.php:407
+#: admin/class-iis-pack-admin.php:584
 msgid "Complete url. Try to get from static.iis.se Default image is IIS logo"
 msgstr ""
 "Fullständig URL till bilden. Bör ligga på static.iis.se Standardbilden är "
 "IIS logotyp om ingen anges"
 
-#: admin/class-iis-pack-admin.php:583 admin/partials/option-fields.php:421
+#: admin/class-iis-pack-admin.php:598
 msgid "https (SSL)"
 msgstr "https (SSL)"
 
-#: admin/class-iis-pack-admin.php:588 admin/partials/option-fields.php:426
+#: admin/class-iis-pack-admin.php:603
 msgid "http"
 msgstr "http"
 
-#: admin/class-iis-pack-admin.php:612 admin/partials/option-fields.php:450
+#: admin/class-iis-pack-admin.php:627
 msgid "If the site has more than one admin, seperate them with comma (,)"
 msgstr ""
 "Om sajten har mer än en Facebookadministratör - använd kommatecken för att "
 "avgränsa indämmer [ex 12,34,56]"
 
-#: admin/class-iis-pack-admin.php:623 admin/partials/option-fields.php:461
+#: admin/class-iis-pack-admin.php:638
 msgid "The sites main account, for example @iis on www.iis.se"
 msgstr ""
 "Sajten huvudsakliga Twitter-konto, t.ex. @iis för www.iis.se eller "
 "@internetmuseum för internetmuseum.se"
 
-#: admin/class-iis-pack-admin.php:647 admin/partials/option-fields.php:485
+#: admin/class-iis-pack-admin.php:662
 msgid "Show Fox menu"
 msgstr "Visa Foxmenyn"
 
-#: admin/class-iis-pack-admin.php:652 admin/partials/option-fields.php:490
+#: admin/class-iis-pack-admin.php:667
 msgid "Hide Fox menu"
 msgstr "Dölj Foxmenyn"
 
-#: admin/class-iis-pack-admin.php:669 admin/partials/option-fields.php:507
+#: admin/class-iis-pack-admin.php:684
 msgid "Remove emojis (default)"
 msgstr "Skriv inte ut emoji-script (standard)"
 
-#: admin/class-iis-pack-admin.php:674 admin/partials/option-fields.php:512
+#: admin/class-iis-pack-admin.php:689
 msgid "Use Emojis"
 msgstr "Använd Emojis"
 
@@ -411,21 +410,6 @@ msgstr ""
 "Lägg till hashtaggar för den här sidan. Om du har mer en en - separera med "
 "kommatecken utan mellanslag. (internetguider,iis)"
 
-#: admin/partials/option-fields.php:325
-msgid ""
-"Do not print buttons (default) - use shortcode <code>[fastsocial]</code> in "
-"post content or page template"
-msgstr ""
-"Lägg inte ut knapparn (standard) - använd shortcode <code>[fastsocial]</"
-"code> i post content eller i sidmallen"
-
-#: admin/partials/option-fields.php:358
-msgid ""
-"Add templates to be avoided if above setting is set to Print before or Print "
-"after content. (ex: <strong>tpl-guidelista.php</strong> or if template is in "
-"a folder: <strong>templates/template.php</strong>)"
-msgstr ""
-
 #: public/partials/add-license-to-images.php:55
 #: public/partials/add-license-to-images.php:124
 msgid "Photo: "
@@ -457,3 +441,10 @@ msgstr ""
 #. Author of the plugin/theme
 msgid "The IIS Team"
 msgstr "The IIS Team"
+
+#~ msgid ""
+#~ "Do not print buttons (default) - use shortcode <code>[fastsocial]</code> "
+#~ "in post content or page template"
+#~ msgstr ""
+#~ "Lägg inte ut knapparn (standard) - använd shortcode <code>[fastsocial]</"
+#~ "code> i post content eller i sidmallen"
