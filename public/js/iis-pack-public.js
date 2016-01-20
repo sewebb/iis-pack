@@ -147,11 +147,13 @@
 	        }
 
 	        function sendToAnanlytics(network,target) {
-	        	ga('send', 'social', {
-					'socialNetwork': network,
-					'socialAction': 'share',
-					'socialTarget': pageurl
-				})
+	        	if (typeof ga === 'function') {
+		        	ga('send', 'social', {
+						'socialNetwork': network,
+						'socialAction': 'share',
+						'socialTarget': pageurl
+					})
+		        }
 	        }
 	        $(facebookclick).click(function (e) {
 	            //if we don't have facebook_appid belonging to this site, we share without the app
