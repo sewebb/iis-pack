@@ -55,18 +55,17 @@ if ( '' !== $iis_remove_fss_from_type || '' !== $iis_remove_fss_from_template ) 
 if ( ! $excludefrom_type && ! $excludefrom_template ) {
 	if ( $iis_show_fss_beforecontent ) {
 
-		if ( ! is_archive() ) {
+		if ( ! is_archive() && ! is_home() ) {
 			add_filter( 'the_content', 'share_buttons_before_content' );
 		}
 	}
 	if ( $iis_show_fss_aftercontent ) {
 
-		if ( ! is_archive() ) {
+		if ( ! is_archive() && ! is_home() ) {
 			add_filter( 'the_content', 'share_buttons_after_content' );
 		}
 	}
 }
-
 
 /**
  * [share_buttons_before_content description]
@@ -92,7 +91,6 @@ function share_buttons_after_content( $content ) {
 	}
 	return $content;
 }
-
 
 /**
  * [fast_social description]
