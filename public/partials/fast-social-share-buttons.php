@@ -124,6 +124,9 @@ function fast_social( $atts ) {
 				'hashtags'      => ''. $hashtags . '',
 				'fbappid'       => ''. $fbappid . '',
 				'position'      => '',
+				'margintop'     => '',
+				'marginbottom'  => '',
+				'remove'        => 'no',
 			),
 			$atts
 		)
@@ -151,7 +154,7 @@ function fast_social( $atts ) {
 		$pinterest_enabled = false;
 	}
 
-	if ( $facebook_enabled or $twitter_enabled or $linkedin_enabled  or $pinterest_enabled ) {
+	if ( ( $facebook_enabled or $twitter_enabled or $linkedin_enabled  or $pinterest_enabled) && 'no' === $remove ) {
 		ob_start();
 
 		if ( '' === $hashtags ) {
@@ -167,6 +170,14 @@ function fast_social( $atts ) {
 		if ( empty( $fbappid ) ) {
 			$fbappid = '';
 		}
+		if ( function_exists( 'iis_get_current_language' ) ) {
+			$lang = iis_get_current_language();
+		} else {
+			// en pytte namnändring ifall att
+			$lang = iis_pack_get_current_language();
+		}
+		$share = ( 'se' === $lang ) ? 'Dela' : 'Share';
+		$tweet = ( 'se' === $lang ) ? 'Twittra' : 'Tweet';
 
 		$output = '<ul class="fast-social-share" data-hashtags="' . esc_attr( $hashtags ) . '" data-fbappid="' . esc_attr( $fbappid ) . '">';
 
@@ -175,17 +186,17 @@ function fast_social( $atts ) {
 			// $output .= '</li>';
 
 			if ( $facebook_enabled ) {
-				$output .= '<li class="fss-button fss-share-facebook"><span class="fss-btn ' . $iconclass . '"><span class="fa fa-lg fa-fw fa-facebook"></span> <span>Dela</span></span>';
+				$output .= '<li class="fss-button fss-share-facebook"><span class="fss-btn ' . $iconclass . '"><span class="fa fa-lg fa-fw fa-facebook"></span> <span>' . $share . '</span></span>';
 				$output .= '</li>';
 			}
 
 			if ( $twitter_enabled ) {
-				$output .= '<li class="fss-button fss-share-twitter"><span class="fss-btn ' . $iconclass . '"><span class="fa fa-lg fa-fw fa-twitter"></span> <span>Twittra</span></span>';
+				$output .= '<li class="fss-button fss-share-twitter"><span class="fss-btn ' . $iconclass . '"><span class="fa fa-lg fa-fw fa-twitter"></span> <span>' . $tweet . '</span></span>';
 				$output .= '</li>';
 			}
 
 			if ( $linkedin_enabled ) {
-				$output .= '<li class="fss-button fss-share-linkedin"><span class="fss-btn ' . $iconclass . '"><span class="fa fa-lg va-no fa-fw fa-linkedin"></span> <span>Dela</span></span>';
+				$output .= '<li class="fss-button fss-share-linkedin"><span class="fss-btn ' . $iconclass . '"><span class="fa fa-lg va-no fa-fw fa-linkedin"></span> <span>' . $share . '</span></span>';
 				$output .= '</li>';
 			}
 
@@ -200,9 +211,50 @@ function fast_social( $atts ) {
 		if ( '' !== $position ) {
 			$extraclass = ' ' . $position;
 		}
+		$style = '';
+		if ( '' !== $margintop || '' !== $marginbottom ) {
+			$style = ' style="';
+			if ( '' !== $margintop ) {
+				$style .= 'margin-top:' . $margintop . ';';
+			}
+			if ( '' !== $marginbottom ) {
+				$style .= 'margin-bottom:' . $marginbottom . ';';
+			}
+			$style .= '"';
+		}
 
 		$innerhtml = '<div class="iis-fss' . $extraclass . '">' . $output . '</div>';
 		echo $innerhtml;
 		return ob_get_clean();
+	}
+}
+
+/**
+ * [iis_pack_get_current_languag]
+ * En dålig dubblering av koden för att kolla språk. Möjligen borde
+ * det vara en gemensam funktion för alla sajter - också flyttas till ett bättre ställe
+ * och innehålla alla översättningar för pluggen, och alla sökvägar på olika sajter
+ * @return string språk
+ */
+function iis_pack_get_current_language() {
+	if ( substr( $_SERVER['REQUEST_URI'], 0, 8 ) == '/english' ) {
+		return 'en';
+	}
+
+	if ( function_exists( 'get_queried_object' ) ) {
+		$obj = get_queried_object();
+		if ( ! is_null( $obj ) && ('se-tech' === $obj->name || 'se-tech' === $obj->post_type ) ) {
+			return 'en';
+		}
+	}
+
+	$lang = isset( $_GET['lang'] ) ? strip_tags( $_GET['lang'] ) : '';
+	if ( strlen( $lang ) > 0 ) {
+		return $lang;
+	}
+	if ( strlen( $_SESSION['lang'] ) > 0 ) {
+		return $_SESSION['lang'];
+	} else {
+		return 'se';
 	}
 }

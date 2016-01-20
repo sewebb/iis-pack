@@ -146,7 +146,8 @@ class Iis_Pack_Admin {
 					with for example <code>[fastsocial pinterest=no]</code> (or if a network is not choosen for all pages - activate it with <code>[fastsocial pinterest=yes]</code></p>
 						<p>On each page / post you can also add a special Facebook App ID, <strong>different</strong> from the sitewide ID.
 						Or you can add it to the do_shortcode in a template with <code>[fastsocial fbappid=<em>{idnumber}</em>]</code></p>
-						<p>Hashtags for the Twitter-button could be added in the same manner (per post/page or by shortcode) <code>[fastsocial hashtags=internetguider,internetstiftelsen]</code></p>', 'iis-pack' ),
+						<p>Hashtags for the Twitter-button could be added in the same manner (per post/page or by shortcode) <code>[fastsocial hashtags=internetguider,internetstiftelsen]</code></p>
+						<p>To remove fastsocial for a specific page / post that would normaly magically add the buttons, add <code>[fastsocial remove=yes]</code> to post content (in editor)</p>', 'iis-pack' ),
 				)
 		);
 		$screen->add_help_tab( array(
