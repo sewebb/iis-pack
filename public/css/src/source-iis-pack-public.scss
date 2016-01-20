@@ -314,10 +314,11 @@ $small-font-size  : 13px;
   white-space: nowrap;
 
   .fss-btn {
-    padding: 4px 8px;
+    padding: 4px 10px 4px 8px;
     font-size: $small-font-size;
     color: $white;
     font-weight: bold;
+    border-radius: 2px;
 
     .fa {
       background-color: transparent;
@@ -406,6 +407,10 @@ $small-font-size  : 13px;
   -moz-osx-font-smoothing: grayscale;
   padding: 2px 3px;
   text-transform: none;
+
+  &.fa-facebook {
+    padding-right: 5px;
+  }
 }
 /* makes the font 33% larger relative to the icon container */
 .fa-lg {

@@ -184,22 +184,22 @@ function fast_social( $atts ) {
 			// $output .= '</li>';
 
 			if ( $facebook_enabled ) {
-				$output .= '<li class="fss-button fss-share-facebook"><span class="fss-btn ' . $iconclass . '"><span class="fa fa-lg fa-fw fa-facebook"></span> <span>' . $share . '</span></span>';
+				$output .= '<li class="fss-button fss-share-facebook"><span class="fss-btn ' . $iconclass . '"><span class="fa fa-lg fa-facebook"></span> <span>' . $share . '</span></span>';
 				$output .= '</li>';
 			}
 
 			if ( $twitter_enabled ) {
-				$output .= '<li class="fss-button fss-share-twitter"><span class="fss-btn ' . $iconclass . '"><span class="fa fa-lg fa-fw fa-twitter"></span> <span>' . $tweet . '</span></span>';
+				$output .= '<li class="fss-button fss-share-twitter"><span class="fss-btn ' . $iconclass . '"><span class="fa fa-lg fa-twitter"></span> <span>' . $tweet . '</span></span>';
 				$output .= '</li>';
 			}
 
 			if ( $linkedin_enabled ) {
-				$output .= '<li class="fss-button fss-share-linkedin"><span class="fss-btn ' . $iconclass . '"><span class="fa fa-lg va-no fa-fw fa-linkedin"></span> <span>' . $share . '</span></span>';
+				$output .= '<li class="fss-button fss-share-linkedin"><span class="fss-btn ' . $iconclass . '"><span class="fa fa-lg va-no fa-linkedin"></span> <span>' . $share . '</span></span>';
 				$output .= '</li>';
 			}
 
 			if ( $pinterest_enabled ) {
-				$output .= '<li class="fss-button fss-share-pinterest"><span class="fss-btn ' . $iconclass . '"><span class="fa fa-lg va-no fa-fw fa-pinterest"></span> <span>Pin it</span></span>';
+				$output .= '<li class="fss-button fss-share-pinterest"><span class="fss-btn ' . $iconclass . '"><span class="fa fa-lg va-no fa-pinterest"></span> <span>Pin it</span></span>';
 				$output .= '</li>';
 			}
 

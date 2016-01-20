@@ -222,10 +222,11 @@ iframe {
   cursor: pointer;
   white-space: nowrap; }
   .fss-button .fss-btn {
-    padding: 4px 8px;
+    padding: 4px 10px 4px 8px;
     font-size: 13px;
     color: #fff;
-    font-weight: bold; }
+    font-weight: bold;
+    border-radius: 2px; }
     .fss-button .fss-btn .fa {
       background-color: transparent; }
   .fss-button.fss-share-facebook .fss-btn {
@@ -280,6 +281,8 @@ iframe {
   -moz-osx-font-smoothing: grayscale;
   padding: 2px 3px;
   text-transform: none; }
+  .fa.fa-facebook {
+    padding-right: 5px; }
 
 /* makes the font 33% larger relative to the icon container */
 .fa-lg {
