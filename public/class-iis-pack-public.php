@@ -85,7 +85,10 @@ class Iis_Pack_Public {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/fast-social-share-buttons.php';
 	}
 
-
+	/**
+	 * Ta bort alla emojisar
+	 * @since 1.0.1
+	 */
 	public function disable_all_emojis() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/disable-emojis.php';
 	}
@@ -99,7 +102,6 @@ class Iis_Pack_Public {
 
 		// Sammanslagen js för samtliga plugin
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/iis-pack-public.b4b55832.min.js', array( 'jquery' ), null, true );
-
 	}
 
 	/**
