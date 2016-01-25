@@ -67,6 +67,11 @@ class Se_Fox extends Se_Plugin_Base {
 			'load_font' => false,
 			'hide_logo' => false,
 			'site'	    => 'internetmuseum',
+		),
+		'www.styleguide.se' => array(
+			'load_font' => false,
+			'hide_logo' => false,
+			'site'	    => 'styleguide',
 		)
 	);
 
@@ -199,6 +204,17 @@ class Se_Fox extends Se_Plugin_Base {
 			'internetmuseum',
 		),
 		'www.sajtkollen.se' => array(
+			'domaner',
+			'bredbandskollen',
+			'internetdagarna',
+			'internetstatistik',
+			'soi',
+			'iisblogg',
+			'guider',
+			'internetfonden',
+			'internetmuseum',
+		),
+		'www.styleguide.se' => array(
 			'domaner',
 			'bredbandskollen',
 			'internetdagarna',
