@@ -35,7 +35,7 @@ class TwitterMeta {
 	 * @param string $post_type sätt till de typer vi behöver
 	 */
 	public function add_twitter_meta_box( $post_type ) {
-		$post_types = array( 'attachment' );   // Visa inte i redigera media
+		$post_types = array( 'attachment', 'acf-field-group', 'acf-field', 'nav_menu_item' );   // Visa inte i redigera media
 		if ( ! in_array( $post_type, $post_types ) ) {
 			add_meta_box(
 				'twitter_meta_box' // $id
