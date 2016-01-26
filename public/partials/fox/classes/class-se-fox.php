@@ -482,7 +482,7 @@ class Se_Fox extends Se_Plugin_Base {
 		$site_config = $this->get_site_config();
 		?>
 
-		<section class="brand-nav">
+		<section class="brand-nav" id="iis-fox-menu">
 			<section class="brand-nav-fullgrid">
 				<a href="https://www.iis.se/?utm_source=<?php echo $utm_source; ?>&utm_medium=fox" class="brand-nav-logo<?php echo ( $site_config['hide_logo'] ) ? ' hide' : ''; ?>">
 					<span class="brand-nav-logo-text">En webbplats från</span>
