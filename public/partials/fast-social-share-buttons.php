@@ -179,27 +179,23 @@ function fast_social( $atts ) {
 
 		$output = '<ul class="fast-social-share" data-hashtags="' . esc_attr( $hashtags ) . '" data-fbappid="' . esc_attr( $fbappid ) . '">';
 
-			// $output .= '<li class="share_label">';
-			// $output .= $sharelabel; //defaults to empty but can be set with option or shortcode
-			// $output .= '</li>';
-
 			if ( $facebook_enabled ) {
-				$output .= '<li class="fss-button fss-share-facebook"><span class="fss-btn ' . $iconclass . '"><span class="fa fa-lg fa-facebook"></span> <span>' . $share . '</span></span>';
+				$output .= '<li class="fss-button fss-share-facebook"><span class="fss-btn"><span class="fa fa-lg fa-facebook"></span> <span>' . $share . '</span></span>';
 				$output .= '</li>';
 			}
 
 			if ( $twitter_enabled ) {
-				$output .= '<li class="fss-button fss-share-twitter"><span class="fss-btn ' . $iconclass . '"><span class="fa fa-lg fa-twitter"></span> <span>' . $tweet . '</span></span>';
+				$output .= '<li class="fss-button fss-share-twitter"><span class="fss-btn"><span class="fa fa-lg fa-twitter"></span> <span>' . $tweet . '</span></span>';
 				$output .= '</li>';
 			}
 
 			if ( $linkedin_enabled ) {
-				$output .= '<li class="fss-button fss-share-linkedin"><span class="fss-btn ' . $iconclass . '"><span class="fa fa-lg va-no fa-linkedin"></span> <span>' . $share . '</span></span>';
+				$output .= '<li class="fss-button fss-share-linkedin"><span class="fss-btn"><span class="fa fa-lg va-no fa-linkedin"></span> <span>' . $share . '</span></span>';
 				$output .= '</li>';
 			}
 
 			if ( $pinterest_enabled ) {
-				$output .= '<li class="fss-button fss-share-pinterest"><span class="fss-btn ' . $iconclass . '"><span class="fa fa-lg va-no fa-pinterest"></span> <span>Pin it</span></span>';
+				$output .= '<li class="fss-button fss-share-pinterest"><span class="fss-btn"><span class="fa fa-lg va-no fa-pinterest"></span> <span>Pin it</span></span>';
 				$output .= '</li>';
 			}
 
@@ -241,17 +237,18 @@ function iis_pack_get_current_language() {
 
 	if ( function_exists( 'get_queried_object' ) ) {
 		$obj = get_queried_object();
-		if ( ! is_null( $obj ) && ('se-tech' === $obj->name || 'se-tech' === $obj->post_type ) ) {
+		if ( ! is_null( $obj ) && ( 'se-tech' === $obj->name ) ) {
 			return 'en';
 		}
 	}
 
-	$lang = isset( $_GET['lang'] ) ? strip_tags( $_GET['lang'] ) : '';
+	$lang        = isset( $_GET['lang'] ) ? strip_tags( $_GET['lang'] ) : '';
+	$sessionlang = isset( $_SESSION['lang'] ) ? strip_tags( $_SESSION['lang'] ) : '';
 	if ( strlen( $lang ) > 0 ) {
 		return $lang;
 	}
-	if ( strlen( $_SESSION['lang'] ) > 0 ) {
-		return $_SESSION['lang'];
+	if ( strlen( $sessionlang ) > 0 ) {
+		return $sessionlang;
 	} else {
 		return 'se';
 	}

@@ -132,7 +132,9 @@ class Iis_Pack_Admin {
 	 * @since 1.0.2
 	 */
 	public function iis_pack_add_help_tab () {
-		$screen = get_current_screen();
+		$alltemplates = '';
+		$allposttypes = '';
+		$screen       = get_current_screen();
 
 		$screen->add_help_tab( array(
 				'id'      => 'fss_share_buttons',
@@ -162,7 +164,7 @@ class Iis_Pack_Admin {
 				)
 		);
 
-		$post_types = get_post_types( $args );
+		$post_types = get_post_types();
 		foreach ( $post_types as $post_type ) {
 			$allposttypes .= '<code>' . $post_type . '</code>&nbsp;&nbsp;';
 		}
