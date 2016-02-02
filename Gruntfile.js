@@ -370,7 +370,7 @@ module.exports = function(grunt) {
 		grunt.task.run('uglify');
 		grunt.task.run('version');
 		grunt.task.run('gitinfo');
-		// grunt.task.run('slack:' + target);
+		grunt.task.run('slack:' + target);
 		grunt.task.run('rsync:' + target);
 	});
 
