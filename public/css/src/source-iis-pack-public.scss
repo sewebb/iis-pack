@@ -431,3 +431,16 @@ $small-font-size  : 13px;
   width: 1.28571429em;
   text-align: center;
 }
+
+/*
+ * Bildattribution
+ */
+.iis-pack-credits-container {
+  padding: 3px 1px;
+  line-height: 1.2;
+  font-size: 90%;
+  &.in-page {
+    margin-top: -20px;
+  }
+}
+

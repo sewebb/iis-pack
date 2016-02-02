@@ -38,7 +38,7 @@ function find_images( $content ) {
  * @return [type]         [description]
  */
 function attach_image_credit( $images ) {
-	$return = $images[0];
+	$return   = $images[0];
 	$langpack = 'iis-pack';
 
 	// Get the image ID from the unique class added by insert to editor: "wp-image-ID"
@@ -46,7 +46,7 @@ function attach_image_credit( $images ) {
 		$license     = get_post_meta( $match[1] /* Captured image ID */, '_iis_pack_license', true );
 
 		if ( ! empty( $license ) && '' !== $license ) {
-			$return .= '<div class="iis-pack-credits-container">';
+			$return .= '<div class="iis-pack-credits-container in-page">';
 
 			$object_url  = get_post_meta( $match[1], '_iis_pack_object_url', true );
 			$object_name = get_post_meta( $match[1], '_iis_pack_object_name', true );
