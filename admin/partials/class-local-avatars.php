@@ -26,8 +26,6 @@ class LocalAvatars {
 	public function __construct() {
 		add_filter( 'get_avatar', array( $this, 'get_avatar' ), 10, 5 );
 
-		add_action( 'admin_init', array( $this, 'admin_init' ) );
-
 		add_action( 'show_user_profile', array( $this, 'edit_user_profile' ) );
 		add_action( 'edit_user_profile', array( $this, 'edit_user_profile' ) );
 
@@ -196,7 +194,7 @@ class LocalAvatars {
 			$this->avatar_delete( $user_id );
 			// save user information (overwriting old)
 			update_user_meta( $user_id, 'simple_local_avatar', array( 'full' => $avatar['url'] ) );
-		} elseif ( isset( $_POST['simple-local-avatar-erase'] ) && 1 === $_POST['simple-local-avatar-erase'] ) {
+		} elseif ( isset( $_POST['simple-local-avatar-erase'] ) && 1 == $_POST['simple-local-avatar-erase'] ) {
 			$this->avatar_delete( $user_id );
 		}
 	}
@@ -217,14 +215,6 @@ class LocalAvatars {
 	 */
 	public function avatar_delete( $user_id ) {
 		$old_avatars = get_user_meta( $user_id, 'simple_local_avatar', true );
-		$upload_path = wp_upload_dir();
-
-		if ( is_array( $old_avatars ) ) {
-			foreach ( $old_avatars as $old_avatar ) {
-				$old_avatar_path = str_replace( $upload_path['baseurl'], $upload_path['basedir'], $old_avatar );
-				@unlink( $old_avatar_path );
-			}
-		}
 
 		delete_user_meta( $user_id, 'simple_local_avatar' );
 	}
