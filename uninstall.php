@@ -29,3 +29,18 @@
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
+
+/**
+ * Förberett för avinstallation av pluggen och detta fallet för att ta bort lokala bilder
+ * @since 1.1
+ */
+function simple_local_avatars_uninstall() {
+	$simple_local_avatars = new simple_local_avatars;
+	$users = get_users_of_blog();
+
+	foreach ( $users as $user ) {
+		$simple_local_avatars->avatar_delete( $user->user_id );
+	}
+
+	delete_option( 'simple_local_avatars_caps' );
+}

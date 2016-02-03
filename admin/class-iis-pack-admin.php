@@ -91,6 +91,16 @@ class Iis_Pack_Admin {
 	}
 
 	/**
+	 * Lägger till möjlighet att ladda upp lokal avatar i Användarprofilen
+	 * @since 1.1 Är en kopia av gamla IIS Simple Local Avatars
+	 */
+	public function in_user_profile() {
+		include_once 'partials/class-local-avatars.php';
+
+		call_simple_local_avatars();
+	}
+
+	/**
 	 * Register the JavaScript for the admin area.
 	 *
 	 * @since    1.0.1

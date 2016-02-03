@@ -165,6 +165,9 @@ class Iis_Pack {
 
 		// Om det saknas support för featured image
 		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'add_support_for_featured_image' );
+
+		// I User profile
+		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'in_user_profile' );
 	}
 
 	/**
