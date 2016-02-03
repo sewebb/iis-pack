@@ -105,68 +105,35 @@ class LocalAvatars {
 	}
 
 	/**
-	 * [admin_init description]
-	 */
-	public function admin_init() {
-		register_setting( 'discussion', 'simple_local_avatars_caps', array( $this, 'sanitize_options' ) );
-		add_settings_field( 'simple-local-avatars-caps', __( 'Local Avatar Permissions','iis-pack' ), array( $this, 'avatar_settings_field' ), 'discussion', 'avatars' );
-	}
-
-	/**
-	 * [sanitize_options description]
-	 * @param  [type] $input [description]
-	 * @return [type] $new_input      [description]
-	 */
-	public function sanitize_options( $input ) {
-		$new_input['simple_local_avatars_caps'] = empty( $input['simple_local_avatars_caps'] ) ? 0 : 1;
-		return $new_input;
-	}
-
-	/**
-	 * [avatar_settings_field description]
-	 * @param  [type] $args [description]
-	 */
-	public function avatar_settings_field( $args ) {
-		$options = get_option( 'simple_local_avatars_caps' );
-
-		echo '
-			<label for="simple_local_avatars_caps">
-				<input type="checkbox" name="simple_local_avatars_caps" id="simple_local_avatars_caps" value="1" ' . @checked( $options['simple_local_avatars_caps'], 1, false ) . ' />
-				' . __( 'Only allow users with file upload capabilities to upload local avatars (Authors and above)','iis-pack' ) . '
-			</label>
-		';
-	}
-
-	/**
 	 * [edit_user_profile description]
 	 * @param  [type] $profileuser [description]
 	 */
 	public function edit_user_profile( $profileuser ) {
 	?>
-		<h3><?php _e( 'Avatar','iis-pack' ); ?></h3>
+		<h3><?php _e( 'Locale Profile Picture.  Replaces your Gravatar picture ONLY FOR THIS SITE.','iis-pack' ); ?></h3>
 
 		<table class="form-table">
 			<tr>
-				<th><label for="simple-local-avatar"><?php _e( 'Upload Avatar','iis-pack' ); ?></label></th>
+				<th><label for="simple-local-avatar"><?php _e( 'Upload profile picture','iis-pack' ); ?></label></th>
 				<td style="width: 50px;" valign="top">
 					<?php echo get_avatar( $profileuser->ID ); ?>
 				</td>
 				<td>
 				<?php
-					$options = get_option( 'simple_local_avatars_caps' );
+					$options = get_option( 'iis_pack_simple_local_avatars_caps' );
 
-					if ( empty( $options['simple_local_avatars_caps'] ) || current_user_can( 'upload_files' ) ) {
+					if ( empty( $options['iis_pack_simple_local_avatars_caps'] ) || current_user_can( 'upload_files' ) ) {
 						do_action( 'simple_local_avatar_notices' );
 						wp_nonce_field( 'simple_local_avatar_nonce', '_simple_local_avatar_nonce', false );
 				?>
 						<input type="file" name="simple-local-avatar" id="simple-local-avatar" /><br />
 				<?php
 						if ( empty( $profileuser->simple_local_avatar ) ) {
-							echo '<span class="description">' . __( 'No local avatar is set. Use the upload field to add a local avatar.','iis-pack' ) . '</span>';
+							echo '<span class="description">' . __( 'No local profile picture is set. Use the upload field to add a local avatar for this site.','iis-pack' ) . '</span>';
 						} else {
 							echo '
-								<input type="checkbox" name="simple-local-avatar-erase" value="1" /> ' . __( 'Delete local avatar','iis-pack' ) . '<br />
-								<span class="description">' . __( 'Replace the local avatar by uploading a new avatar, or erase the local avatar (falling back to a gravatar) by checking the delete option.','iis-pack' ) . '</span>
+								<input type="checkbox" name="simple-local-avatar-erase" value="1" /> ' . __( 'Delete local profile picture','iis-pack' ) . '<br />
+								<span class="description">' . __( 'Replace the local profile picture by uploading a new image, or erase the local profile picture (falling back to a Gravatar) by checking the delete option.','iis-pack' ) . '</span>
 							';
 						}
 					} else {
@@ -174,7 +141,7 @@ class LocalAvatars {
 							echo '<span class="description">' . __( 'No local avatar is set. Set up your avatar at Gravatar.com.','iis-pack' ) . '</span>';
 						} else {
 							echo '
-								<span class="description">' . __( 'You do not have media management permissions. To change your local avatar, contact the blog administrator.','iis-pack' ) . '</span>
+								<span class="description">' . __( 'You do not have media management permissions. To change your local profile picture, contact the blog administrator.','iis-pack' ) . '</span>
 							';
 						}
 					}
@@ -217,10 +184,10 @@ class LocalAvatars {
 			if ( empty( $avatar['file'] ) ) {
 				switch ( $avatar['error'] ) {
 					case 'File type does not meet security guidelines. Try another.' :
-						add_action( 'user_profile_update_errors', create_function( '$a','$a->add("avatar_error",__("Please upload a valid image file for the avatar.","iis-pack"));' ) );
+						add_action( 'user_profile_update_errors', create_function( '$a','$a->add("avatar_error",__("Please upload a valid image file for the Profile Picture.","iis-pack"));' ) );
 						break;
 					default :
-						add_action( 'user_profile_update_errors', create_function( '$a','$a->add("avatar_error","<strong>".__("There was an error uploading the avatar:","iis-pack")."</strong> ' . esc_attr( $avatar['error'] ) . '");' ) );
+						add_action( 'user_profile_update_errors', create_function( '$a','$a->add("avatar_error","<strong>".__("There was an error uploading the Profile Picture:","iis-pack")."</strong> ' . esc_attr( $avatar['error'] ) . '");' ) );
 				}
 
 				return;

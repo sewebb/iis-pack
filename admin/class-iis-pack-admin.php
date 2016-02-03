@@ -440,7 +440,41 @@ class Iis_Pack_Admin {
 			array( 'label_for' => $this->option_name . '_disable_emojis' )
 		);
 
+		add_settings_field( $this->option_name . 'simple_local_avatars_caps',
+			__( 'Local Profile Picture', 'iis-pack' ),
+			array( $this, $this->option_name . '_avatar_settings_field_cb' ),
+			$this->plugin_name,
+			$this->option_name . '_other_stuff',
+			array( $this->option_name . '_simple_local_avatars_caps', __( 'Only allow users with file upload capabilities to upload local profile pictures (Authors and above)', 'iis-pack' ), 'label_for' => $this->option_name . '_simple_local_avatars_caps' )
+		);
+
 		register_setting( $this->plugin_name, $this->option_name . '_disable_emojis', array( $this, $this->option_name . '_sanitize_true_false' ) );
+		register_setting(
+			$this->plugin_name, // Option group
+			$this->option_name . '_simple_local_avatars_caps', // Option name
+			array( $this, $this->option_name . '_sanitize_checkbox' ) // Sanitize
+		);
+
+
+				// /**
+				//  * [admin_init description]
+				//  */
+				// public function admin_init() {
+				// 	register_setting( 'discussion', 'simple_local_avatars_caps', array( $this, 'sanitize_options' ) );
+				// 	add_settings_field( 'simple-local-avatars-caps', __( 'Local Avatar Permissions','iis-pack' ), array( $this, 'avatar_settings_field' ), 'discussion', 'avatars' );
+				// }
+
+				// /**
+				//  * [sanitize_options description]
+				//  * @param  [type] $input [description]
+				//  * @return [type] $new_input      [description]
+				//  */
+				// public function sanitize_options( $input ) {
+				// 	$new_input['simple_local_avatars_caps'] = empty( $input['simple_local_avatars_caps'] ) ? 0 : 1;
+				// 	return $new_input;
+				// }
+
+
 	}
 	/**
 	 * Underrubrik Fast Social Share
@@ -507,7 +541,7 @@ class Iis_Pack_Admin {
 
 	// INPUT FÄLT
 	/**
-	 * Input för radioknappar - var ska Fast Social Share -knapparna visas
+	 * Input för checkboxar - var ska Fast Social Share -knapparna visas
 	 * @param array $args knapparnas läge
 	 * @since  1.0.2
 	 */
@@ -704,6 +738,21 @@ class Iis_Pack_Admin {
 		<?php
 	}
 
+	/**
+	 * Förhindra (om ikryssad) att någon annan än författare & uppåt får lägga till egen Profile Picture
+	 * @param array $args på eller av
+	 * @since  1.1
+	 */
+	public function iis_pack_avatar_settings_field_cb( $args ) {
+		$options = get_option( $this->option_name . '_simple_local_avatars_caps' ); ?>
+		<input id="<?php echo $args[0]; ?>" name="iis_pack_simple_local_avatars_caps[<?php echo $args[0]; ?>]"  type="checkbox" value="1" <?php checked( $options[ $args[0] ], 1 ); ?> />
+		<?php
+		if ( '' != $args[1] ) {
+			echo $args[1];
+		}
+	}
+
+
 	// SANERA
 	/**
 	 * Sanitize protokoll value https / http (mest för att man kan :-)
@@ -778,6 +827,11 @@ class Iis_Pack_Admin {
 		} else {
 
 			$new_input[ $this->option_name . '_enable_pinterest' ] = 'no';
+		}
+
+		// Lokala avatarer / profile picture
+		if ( isset( $input[ $this->option_name . '_simple_local_avatars_caps' ] ) ) {
+			$new_input[ $this->option_name . '_simple_local_avatars_caps' ] = absint( $input[ $this->option_name . '_simple_local_avatars_caps' ] );
 		}
 
 		return $new_input;
