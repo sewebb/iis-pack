@@ -12,18 +12,18 @@
  * Calls the class
  */
 function call_simple_local_avatars() {
-	$simple_local_avatars = new LocalAvatars;
+	new LocalAvatars;
 }
 
 /**
  * Add field to user profiles
  */
-class LocalAvatars
-{
+class LocalAvatars {
 	/**
 	 * [simple_local_avatars description]
 	 */
-	function simple_local_avatars() {
+
+	public function __construct() {
 		add_filter( 'get_avatar', array( $this, 'get_avatar' ), 10, 5 );
 
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
@@ -46,7 +46,7 @@ class LocalAvatars
 	 * @param  boolean $alt         [description]
 	 * @return [type]  $avatar;     [description]
 	 */
-	function get_avatar( $avatar = '', $id_or_email, $size = '96', $default = '', $alt = false ) {
+	public function get_avatar( $avatar = '', $id_or_email, $size = '96', $default = '', $alt = false ) {
 		if ( is_numeric( $id_or_email ) ) {
 			$user_id = (int) $id_or_email;
 		} elseif ( is_string( $id_or_email ) ) {
@@ -107,7 +107,7 @@ class LocalAvatars
 	/**
 	 * [admin_init description]
 	 */
-	function admin_init() {
+	public function admin_init() {
 		register_setting( 'discussion', 'simple_local_avatars_caps', array( $this, 'sanitize_options' ) );
 		add_settings_field( 'simple-local-avatars-caps', __( 'Local Avatar Permissions','iis-pack' ), array( $this, 'avatar_settings_field' ), 'discussion', 'avatars' );
 	}
@@ -117,7 +117,7 @@ class LocalAvatars
 	 * @param  [type] $input [description]
 	 * @return [type] $new_input      [description]
 	 */
-	function sanitize_options( $input ) {
+	public function sanitize_options( $input ) {
 		$new_input['simple_local_avatars_caps'] = empty( $input['simple_local_avatars_caps'] ) ? 0 : 1;
 		return $new_input;
 	}
@@ -126,7 +126,7 @@ class LocalAvatars
 	 * [avatar_settings_field description]
 	 * @param  [type] $args [description]
 	 */
-	function avatar_settings_field( $args ) {
+	public function avatar_settings_field( $args ) {
 		$options = get_option( 'simple_local_avatars_caps' );
 
 		echo '
@@ -141,7 +141,7 @@ class LocalAvatars
 	 * [edit_user_profile description]
 	 * @param  [type] $profileuser [description]
 	 */
-	function edit_user_profile( $profileuser ) {
+	public function edit_user_profile( $profileuser ) {
 	?>
 		<h3><?php _e( 'Avatar','iis-pack' ); ?></h3>
 
@@ -197,7 +197,7 @@ class LocalAvatars
 	 * @param  [type] $user_id [description]
 	 * @return [type]          [description]
 	 */
-	function edit_user_profile_update( $user_id ) {
+	public function edit_user_profile_update( $user_id ) {
 		//security
 		if ( ! wp_verify_nonce( $_POST['_simple_local_avatar_nonce'], 'simple_local_avatar_nonce' ) ) {
 			return;
@@ -239,7 +239,7 @@ class LocalAvatars
 	 * @param  [type] $avatar_defaults [description]
 	 * @return [type]                  [description]
 	 */
-	function avatar_defaults( $avatar_defaults ) {
+	public function avatar_defaults( $avatar_defaults ) {
 		remove_action( 'get_avatar', array( $this, 'get_avatar' ) );
 		return $avatar_defaults;
 	}
@@ -248,7 +248,7 @@ class LocalAvatars
 	 * Delete avatars based on user_id
 	 * @param  [type] $user_id [description]
 	 */
-	function avatar_delete( $user_id ) {
+	public function avatar_delete( $user_id ) {
 		$old_avatars = get_user_meta( $user_id, 'simple_local_avatar', true );
 		$upload_path = wp_upload_dir();
 
