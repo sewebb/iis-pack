@@ -173,8 +173,6 @@ class LocalAvatars {
 				'jpg|jpeg|jpe' => 'image/jpeg',
 				'gif'          => 'image/gif',
 				'png'          => 'image/png',
-				'bmp'          => 'image/bmp',
-				'tif|tiff'     => 'image/tiff',
 			);
 
 			$avatar = wp_handle_upload( $_FILES['simple-local-avatar'], array( 'mimes' => $mimes, 'test_form' => false ) );
