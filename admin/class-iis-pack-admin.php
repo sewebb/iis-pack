@@ -546,8 +546,12 @@ class Iis_Pack_Admin {
 	 * @since  1.0.2
 	 */
 	public function iis_pack_show_fast_social_share_cb( $args ) {
-		$options = get_option( $this->option_name . '_show_fast_social_share' ); ?>
-		<input id="<?php echo $args[0]; ?>" name="iis_pack_show_fast_social_share[<?php echo $args[0]; ?>]"  type="checkbox" value="1" <?php checked( $options[ $args[0] ], 1 ); ?> />
+		$options = get_option( $this->option_name . '_show_fast_social_share' );
+	?>
+		<input id="<?php echo $args[0]; ?>" name="iis_pack_show_fast_social_share[<?php echo $args[0]; ?>]"  type="checkbox" value="1" <?php
+		if ( isset( $options[ $args[0] ] ) ) {
+			checked( $options[ $args[0] ], 1 );
+		} ?> />
 	<?php
 	}
 
@@ -588,7 +592,11 @@ class Iis_Pack_Admin {
 	 */
 	public function iis_pack_checkbox_enable_cb( $args ) {
 		$options = get_option( $this->option_name . '_choose_social_share' ); ?>
-		<input id="<?php echo $args[0]; ?>" name="iis_pack_choose_social_share[<?php echo $args[0]; ?>]"  type="checkbox" value="1" <?php checked( $options[ $args[0] ], 1 ); ?> />
+		<input id="<?php echo $args[0]; ?>" name="iis_pack_choose_social_share[<?php echo $args[0]; ?>]"  type="checkbox" value="1"
+		<?php
+		if ( isset( $options[ $args[0] ] ) ) {
+			checked( $options[ $args[0] ], 1 );
+		} ?> />
 		<?php
 		if ( '' != $args[1] ) { ?>
 			<small>[fastsocial <?php echo $args[1]; ?>="yes"]</small>
@@ -745,7 +753,10 @@ class Iis_Pack_Admin {
 	 */
 	public function iis_pack_avatar_settings_field_cb( $args ) {
 		$options = get_option( $this->option_name . '_simple_local_avatars_caps' ); ?>
-		<input id="<?php echo $args[0]; ?>" name="iis_pack_simple_local_avatars_caps[<?php echo $args[0]; ?>]"  type="checkbox" value="1" <?php checked( $options[ $args[0] ], 1 ); ?> />
+		<input id="<?php echo $args[0]; ?>" name="iis_pack_simple_local_avatars_caps[<?php echo $args[0]; ?>]"  type="checkbox" value="1" <?php
+		if ( isset( $options[ $args[0] ] ) ) {
+			checked( $options[ $args[0] ], 1 );
+		} ?> />
 		<?php
 		if ( '' != $args[1] ) {
 			echo $args[1];
