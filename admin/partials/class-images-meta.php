@@ -248,7 +248,11 @@ class ImagesMediaMeta {
 							break;
 					}
 
-					$license_holder_name = $rsp_obj['photo']['owner']['realname'];
+					$license_holder_name = isset( $rsp_obj['photo']['owner']['realname'] ) ? $rsp_obj['photo']['owner']['realname'] : '' ;
+
+					if ( '' === $license_holder_name ) {
+						$license_holder_name = $rsp_obj['photo']['owner']['username'];
+					}
 					$license_holder_url  = $rsp_obj['photo']['owner']['path_alias'];
 					$license_holder_url  = 'https://www.flickr.com/photos/' . $license_holder_url;
 
