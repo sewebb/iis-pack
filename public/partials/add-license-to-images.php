@@ -4,6 +4,7 @@
  *
  * @link       https://www.iis.se
  * @since      1.0.1
+ * @since      1.1.1 Bildattribution kan döljas på featured images, i de fall alternativ finns i temat
  *
  * @package    Iis_Pack
  * @subpackage Iis_Pack/public/partials
@@ -12,15 +13,20 @@
 defined( 'WPINC' ) or die;
 
 // True or False
-$iis_show_object_credits = '';
-$iis_show_object_credits = get_option( 'iis_pack_show_object_credits' );
+$iis_show_object_credits          = '';
+$iis_show_object_credits          = get_option( 'iis_pack_show_object_credits' );
+
+$options                          = get_option( 'iis_pack_show_object_credits_featured' );
+$iis_hide_object_credits_featured = isset( $options['iis_pack_show_object_credits_featured'] ) ? $options['iis_pack_show_object_credits_featured'] : '';
 
 if ( 'true' === $iis_show_object_credits ) {
-	if ( ( is_single() || is_page() ) && ! is_archive() )  {
+	if ( ( is_single() || is_page() ) && ! is_archive() ) {
 		add_filter( 'the_content', 'find_images' );
-		add_filter( 'post_thumbnail_html', 'filter_featured_image', 11, 3 );
+		// Om det inte är valt att dölja utskrift på featured image
+		if ( '' === $iis_hide_object_credits_featured ) {
+			add_filter( 'post_thumbnail_html', 'filter_featured_image', 11, 3 );
+		}
 	}
-
 }
 
 /**

@@ -314,7 +314,17 @@ class Iis_Pack_Admin {
 			array( 'label_for' => $this->option_name . '_show_object_credits' )
 		);
 
+		add_settings_field(
+			$this->option_name . '_show_object_credits_featured',
+			__( 'Hide on featured image', 'iis-pack' ),
+			array( $this, $this->option_name . '_show_object_credits_featured_cb' ),
+			$this->plugin_name,
+			$this->option_name . '_object_credits',
+			array( $this->option_name . '_show_object_credits_featured', 'label_for' => $this->option_name . '_show_object_credits_featured' )
+		);
+
 		register_setting( $this->plugin_name, $this->option_name . '_show_object_credits', array( $this, $this->option_name . '_sanitize_true_false' ) );
+		register_setting( $this->plugin_name, $this->option_name . '_show_object_credits_featured', array( $this, $this->option_name . '_sanitize_checkbox' ) );
 
 		// Lägg till sektion för Facebook OG taggar
 		add_settings_section(
@@ -454,28 +464,8 @@ class Iis_Pack_Admin {
 			$this->option_name . '_simple_local_avatars_caps', // Option name
 			array( $this, $this->option_name . '_sanitize_checkbox' ) // Sanitize
 		);
-
-
-				// /**
-				//  * [admin_init description]
-				//  */
-				// public function admin_init() {
-				// 	register_setting( 'discussion', 'simple_local_avatars_caps', array( $this, 'sanitize_options' ) );
-				// 	add_settings_field( 'simple-local-avatars-caps', __( 'Local Avatar Permissions','iis-pack' ), array( $this, 'avatar_settings_field' ), 'discussion', 'avatars' );
-				// }
-
-				// /**
-				//  * [sanitize_options description]
-				//  * @param  [type] $input [description]
-				//  * @return [type] $new_input      [description]
-				//  */
-				// public function sanitize_options( $input ) {
-				// 	$new_input['simple_local_avatars_caps'] = empty( $input['simple_local_avatars_caps'] ) ? 0 : 1;
-				// 	return $new_input;
-				// }
-
-
 	}
+
 	/**
 	 * Underrubrik Fast Social Share
 	 *
@@ -625,6 +615,23 @@ class Iis_Pack_Admin {
 				</label>
 			</fieldset>
 		<?php
+	}
+
+	/**
+	 * Input för checkbox för att dölja bildattribution på featured images (men visa i sidan)
+	 * Används för de fall teman gör egna saker med featured image men ändån vill visa bildattr. på vanliga bilder i posten/sidan
+	 * @param array $args knapparnas läge
+	 * @since  1.1.1
+	 */
+	public function iis_pack_show_object_credits_featured_cb( $args ) {
+		$options = get_option( $this->option_name . '_show_object_credits_featured' );
+	?>
+		<input id="<?php echo $args[0]; ?>" name="iis_pack_show_object_credits_featured[<?php echo $args[0]; ?>]"  type="checkbox" value="1" <?php
+		if ( isset( $options[ $args[0] ] ) ) {
+			checked( $options[ $args[0] ], 1 );
+		} ?> />
+		<?php _e( 'If you choose "Show" you can tick this to hide on featured image. <em>(Then your theme rolls its own variant)</em>', 'iis-pack' ); ?>
+	<?php
 	}
 
 	/**
@@ -843,6 +850,11 @@ class Iis_Pack_Admin {
 		// Lokala avatarer / profile picture
 		if ( isset( $input[ $this->option_name . '_simple_local_avatars_caps' ] ) ) {
 			$new_input[ $this->option_name . '_simple_local_avatars_caps' ] = absint( $input[ $this->option_name . '_simple_local_avatars_caps' ] );
+		}
+
+		// Bildattribution
+		if ( isset( $input[ $this->option_name . '_show_object_credits_featured' ] ) ) {
+			$new_input[ $this->option_name . '_show_object_credits_featured' ] = absint( $input[ $this->option_name . '_show_object_credits_featured' ] );
 		}
 
 		return $new_input;
