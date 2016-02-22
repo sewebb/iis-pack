@@ -236,7 +236,7 @@
 		    var that = this;
 		    var detect = function(){
 		        if ( that.oldHash != window.location.hash || that.oldHref != window.location.href ){
-console.log(document.title);
+
 		            that.oldHash = window.location.hash;
 		            that.oldHref = window.location.href;
 		            socialclick(this);
