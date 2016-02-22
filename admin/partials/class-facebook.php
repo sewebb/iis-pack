@@ -43,7 +43,7 @@ class FacebookMeta {
 				,array( $this, 'show_facebook_meta_box' ) // $callback
 				,$post_type // överallt
 				,'normal' // $context
-				,'high' // $priority
+				,'low' // $priority
 			);
 		}
 	}

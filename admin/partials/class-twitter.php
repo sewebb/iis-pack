@@ -43,7 +43,7 @@ class TwitterMeta {
 				,array( $this, 'show_twitter_meta_box' ) // $callback
 				,$post_type // överallt
 				,'normal' // $context
-				,'high' // $priority
+				,'low' // $priority
 			);
 		}
 	}
