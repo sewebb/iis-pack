@@ -82,13 +82,13 @@
 		}
 
 		// START avsnitt for Fast Social Share
-		socialclick(this);
+	    socialclick(this);
 	    function socialclick() {
 	        var that = this, // needed in click handler below
-	            facebookclick = $(".fss-share-facebook"),
-	            twitterclick = $(".fss-share-twitter"),
-	            linkedinclick = $(".fss-share-linkedin"),
-	            pinterestclick = $(".fss-share-pinterest"),
+	            facebookclick = '.fss-share-facebook',
+	            twitterclick = '.fss-share-twitter',
+	            linkedinclick = '.fss-share-linkedin',
+	            pinterestclick = '.fss-share-pinterest',
 	            pagedescription = $('meta[property="og:description"]').attr("content"),
 	            sitelang = $('html').attr('lang'),
 	            twitterlang = sitelang,
@@ -102,6 +102,7 @@
 	            selectedimageexists = false,
 	            selectedimage = getShareImage(),
 	            hashtags = $(".fast-social-share").data("hashtags");
+
 
 	        //special social meta propertys could be lacking
 	        if ("" === pagetitle || undefined === pagetitle ) {
@@ -155,7 +156,8 @@
 					})
 		        }
 	        }
-	        $(facebookclick).click(function (e) {
+	        // $(facebookclick).click(function (e) {
+	        $(document).on('click', facebookclick, function(e) {
 	            //if we don't have facebook_appid belonging to this site, we share without the app
 	            if ("" !== facebook_appid && undefined !== facebook_appid) {
 	                var redirect = protocol + "//" + domain + "/wp-content/plugins/iis-pack/public/assets/close-popup.html";
@@ -168,15 +170,16 @@
 	            return false;
 	        });
 
-
-	        $(twitterclick).click(function (e) {
+	        // $(twitterclick).click(function (e) {
+	        $(document).on('click', twitterclick, function(e) {
 	           var twitterurl = protocol + "//twitter.com/intent/tweet?lang=" + twitterlang + "&text=" + pagetitle + "&url=" + pageurl + "&hashtags=" + hashtags;
 	            popupwindow(twitterurl, 'Twitter', '550', '260');
 	            sendToAnanlytics('twitter',pageurl);
 	            return false;
 	        });
 
-	        $(linkedinclick).click(function (e) {
+	        // $(linkedinclick).click(function (e) {
+	        $(document).on('click', linkedinclick, function(e) {
 	            var linkedinurl = protocol + "//www.linkedin.com/shareArticle?mini=true&url=" + pageurl +"&title=" + pagetitle;
 	            popupwindow(linkedinurl, 'LinkedIn', '600', '600');
 	            sendToAnanlytics('linkedin',pageurl);
@@ -186,7 +189,8 @@
 	        //in case we don't have an image for Pinterest, it does not work. Then hide button
 	        if (selectedimageexists) {
 	            var pinteresturl = protocol + "//pinterest.com/pin/create/button/?url=" + pageurl + "&media=" + selectedimage + "&description=" + pagedescription;
-	            $(pinterestclick).on('click', function (e) {
+	            // $(pinterestclick).on('click', function (e) {
+	            $(document).on('click', pinterestclick, function(e) {
 	                popupwindow(pinteresturl, 'Pinterest', '750', '600');
 	                sendToAnanlytics('pinterest',pageurl);
 	            });
@@ -223,12 +227,33 @@
 	            return 0;
 	        }
 	    }
+	    // Funktion för att kunna hantera ajaxhämtade sidor samt #hashurls (kunskapsportalen t.ex.)
+	    function hashHandler(){
+		    this.oldHash = window.location.hash;
+		    this.oldHref = window.location.href;
+		    this.Check;
+
+		    var that = this;
+		    var detect = function(){
+		        if ( that.oldHash != window.location.hash || that.oldHref != window.location.href ){
+console.log(document.title);
+		            that.oldHash = window.location.hash;
+		            that.oldHref = window.location.href;
+		            socialclick(this);
+		        }
+		    };
+		    this.Check = setInterval(function(){ detect() }, 100);
+		}
+
+		var hashDetection = new hashHandler();
 		// SLUT Fast Social Share
 
 	});
 
 
+
 })( jQuery );
+
 
 //*** Funktion för att visa browser-warning om man har gammal webbläsare
 // se exempel på versioner https://browser-update.org/#install om vi vill ändra dessa
