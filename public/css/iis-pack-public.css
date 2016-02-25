@@ -227,7 +227,7 @@ iframe {
     color: #fff;
     font-weight: bold;
     border-radius: 2px; }
-    .fss-button .fss-btn .fa {
+    .fss-button .fss-btn .ip-fa {
       background-color: transparent; }
   .fss-button.fss-share-facebook .fss-btn {
     background-color: #3b5998; }
@@ -260,19 +260,19 @@ iframe {
   font-weight: normal;
   font-style: normal; }
 /*icons selected from fontello.com*/
-.fa-linkedin:before {
+.ip-fa-linkedin:before {
   content: '\e801'; }
 
-.fa-facebook:before {
+.ip-fa-facebook:before {
   content: '\e804'; }
 
-.fa-twitter:before {
+.ip-fa-twitter:before {
   content: '\e80f'; }
 
-.fa-pinterest:before {
+.ip-fa-pinterest:before {
   content: '\e810'; }
 
-.fa {
+.ip-fa {
   display: inline-block;
   font: normal normal normal 14px/1 "fss-icons";
   font-size: inherit;
@@ -281,11 +281,11 @@ iframe {
   -moz-osx-font-smoothing: grayscale;
   padding: 2px 3px;
   text-transform: none; }
-  .fa.fa-facebook {
+  .ip-fa.ip-fa-facebook {
     padding-right: 5px; }
 
 /* makes the font 33% larger relative to the icon container */
-.fa-lg {
+.ip-fa-lg {
   font-size: 1.33333333em;
   line-height: 0.75em;
   vertical-align: -15%; }
@@ -293,13 +293,13 @@ iframe {
 .va-no {
   vertical-align: 0; }
 
-.fa-2x {
+.ip-fa-2x {
   font-size: 2em; }
 
-.fa-3x {
+.ip-fa-3x {
   font-size: 3em; }
 
-.fa-fw {
+.ip-fa-fw {
   width: 1.28571429em;
   text-align: center; }
 

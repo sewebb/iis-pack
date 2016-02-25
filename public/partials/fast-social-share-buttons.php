@@ -180,22 +180,22 @@ function fast_social( $atts ) {
 		$output = '<ul class="fast-social-share" data-hashtags="' . esc_attr( $hashtags ) . '" data-fbappid="' . esc_attr( $fbappid ) . '">';
 
 			if ( $facebook_enabled ) {
-				$output .= '<li class="fss-button fss-share-facebook"><span class="fss-btn"><span class="fa fa-lg fa-facebook"></span> <span>' . $share . '</span></span>';
+				$output .= '<li class="fss-button fss-share-facebook"><span class="fss-btn"><span class="ip-fa ip-fa-lg ip-fa-facebook"></span> <span>' . $share . '</span></span>';
 				$output .= '</li>';
 			}
 
 			if ( $twitter_enabled ) {
-				$output .= '<li class="fss-button fss-share-twitter"><span class="fss-btn"><span class="fa fa-lg fa-twitter"></span> <span>' . $tweet . '</span></span>';
+				$output .= '<li class="fss-button fss-share-twitter"><span class="fss-btn"><span class="ip-fa ip-fa-lg ip-fa-twitter"></span> <span>' . $tweet . '</span></span>';
 				$output .= '</li>';
 			}
 
 			if ( $linkedin_enabled ) {
-				$output .= '<li class="fss-button fss-share-linkedin"><span class="fss-btn"><span class="fa fa-lg va-no fa-linkedin"></span> <span>' . $share . '</span></span>';
+				$output .= '<li class="fss-button fss-share-linkedin"><span class="fss-btn"><span class="ip-fa ip-fa-lg va-no ip-fa-linkedin"></span> <span>' . $share . '</span></span>';
 				$output .= '</li>';
 			}
 
 			if ( $pinterest_enabled ) {
-				$output .= '<li class="fss-button fss-share-pinterest"><span class="fss-btn"><span class="fa fa-lg va-no fa-pinterest"></span> <span>Pin it</span></span>';
+				$output .= '<li class="fss-button fss-share-pinterest"><span class="fss-btn"><span class="ip-fa ip-fa-lg va-no ip-fa-pinterest"></span> <span>Pin it</span></span>';
 				$output .= '</li>';
 			}
 
