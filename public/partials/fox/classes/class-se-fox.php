@@ -229,10 +229,12 @@ class Se_Fox extends Se_Plugin_Base {
 
 	/**
 	 * All the available links for the top bar.
+	 * @since 1.2 hashtags i egen variabel (Statistik & Fakta)
 	 */
 	private static $fox_items = array(
 		'domaner' => array(
 			'link' => 'http://www.iis.se/domaner',
+			'hashtags' => '',
 			'name' => 'Domäner',
 //			'image' => 'domaner.svg',
 			'content' => 'Registrera din .se- eller .nu-domän här',
@@ -240,6 +242,7 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'bredbandskollen' => array(
 			'link' => 'http://www.bredbandskollen.se',
+			'hashtags' => '',
 			'name' => 'Bredbandskollen',
 //			'image' => 'bbk.svg',
 			'content' => 'Verktyget som hjälper dig att testa uppkopplingen på ditt bredband',
@@ -247,6 +250,7 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'webbstjarnan' => array(
 			'link' => 'http://www.webbstjarnan.se',
+			'hashtags' => '',
 			'name' => 'Webbstjärnan',
 //			'image' => 'ws.svg',
 			'content' => 'Skoltävling där lärare och elever lär sig att skapa webbplatser',
@@ -254,6 +258,7 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'internetdagarna' => array(
 			'link' => 'https://internetdagarna.se',
+			'hashtags' => '',
 			'name' => 'Internetdagarna',
 //			'image' => 'ind.svg',
 			'content' => 'Sveriges viktigaste mötesplats för alla som jobbar med internet',
@@ -261,6 +266,7 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'internetstatistik' => array(
 			'link' => 'http://www.internetstatistik.se',
+			'hashtags' => '',
 			'name' => 'Internetstatistik',
 //			'image' => 'inetstat.svg',
 			'content' => 'Aktuell statistik om internet i Sverige',
@@ -268,6 +274,7 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'soi' => array(
 			'link' => 'http://www.soi2015.se',
+			'hashtags' => '',
 			'name' => 'Svenskarna & internet',
 //			'image' => 'soi.svg',
 			'content' => 'Sveriges viktigaste undersökning om svenskarnas internetvanor',
@@ -275,13 +282,16 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'iisblogg' => array(
 			'link' => 'https://www.iis.se/blogg',
+			'hashtags' => '',
 			'name' => 'IIS-bloggen',
 //			'image' => 'bloggen.svg',
 			'content' => 'Nyheter och kommentarer från internetvärlden',
 			'linktext' => 'Till IIS-bloggen',
 		),
 		'guider' => array(
-			'link' => 'https://www.iis.se/guider',
+			'link' => 'https://www.iis.se/fakta/',
+			// hashtags måste skrivas ut efter utm_source etc för att fungera, anges därför som egen variabel
+			'hashtags' => '#typ=internetguider',
 			'name' => 'Internetguider',
 //			'image' => 'guider.svg',
 			'content' => 'Gratis kunskap om internet, paketerat i lättillgängliga guider',
@@ -289,6 +299,7 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'internetfonden' => array(
 			'link' => 'http://www.internetfonden.se',
+			'hashtags' => '',
 			'name' => 'Internetfonden',
 //			'image' => 'fonden.svg',
 			'content' => 'Finansierar projekt som syftar till att förbättra internet i Sverige',
@@ -296,6 +307,7 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'internetmuseum' => array(
 			'link' => 'http://www.internetmuseum.se',
+			'hashtags' => '',
 			'name' => 'Internetmuseum',
 //			'image' => 'fonden.svg',
 			'content' => 'Här tar vi dig med på en resa genom den svenska internethistorien',
@@ -511,9 +523,9 @@ class Se_Fox extends Se_Plugin_Base {
 						$fi = self::$fox_items[ $fox_item ];
 						?>
 						<li>
-							<a href="<?php echo $fi['link']; ?>?utm_source=<?php echo $utm_source; ?>&utm_medium=fox&utm_campaign=Fox" class="brand-nav-headline"><?php echo $fi['name']; ?></a>
+							<a href="<?php echo $fi['link']; ?>?utm_source=<?php echo $utm_source; ?>&utm_medium=fox&utm_campaign=Fox<?php echo $fi['hashtags']; ?>" class="brand-nav-headline"><?php echo $fi['name']; ?></a>
 								<section>
-								<a href="<?php echo $fi['link']; ?>?utm_source=<?php echo $utm_source; ?>&utm_medium=fox&utm_campaign=Fox">
+								<a href="<?php echo $fi['link']; ?>?utm_source=<?php echo $utm_source; ?>&utm_medium=fox&utm_campaign=Fox<?php echo $fi['hashtags']; ?>">
 									<span class="linkedelement">
 										<span class="filcontent"><?php echo $fi['content']; ?></span>
 										<span class="fillinktext"><?php echo $fi['linktext']; ?> ›</span>
