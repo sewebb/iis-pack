@@ -122,6 +122,11 @@
 	        pageurl = pageurl.replace('vvv.', '');
 	        pageurl = pageurl.replace('stage.', '');
 	        pageurl = encodeURIComponent(pageurl);
+	        //"Dubbelencodad" för spaces hos twitter
+	        var replacespace = /%20/g;
+			var twitterDoubleEncoded = pageurl.replace(replacespace, function clearRes(x){return '%2520';});
+	        console.log(twitterDoubleEncoded);
+
 	         if ("" === twitterlang || undefined === twitterlang) {
 	            twitterlang = "sv";
 	            sitelang = "sv";
@@ -172,7 +177,7 @@
 
 	        // $(twitterclick).click(function (e) {
 	        $(document).on('click', twitterclick, function(e) {
-	           var twitterurl = protocol + "//twitter.com/intent/tweet?lang=" + twitterlang + "&text=" + pagetitle + "&url=" + pageurl + "&hashtags=" + hashtags;
+	           var twitterurl = protocol + "//twitter.com/intent/tweet?lang=" + twitterlang + "&text=" + pagetitle + "&url=" + twitterDoubleEncoded + "&hashtags=" + hashtags;
 	            popupwindow(twitterurl, 'Twitter', '550', '260');
 	            sendToAnanlytics('twitter',pageurl);
 	            return false;
