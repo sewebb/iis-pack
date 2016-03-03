@@ -125,7 +125,6 @@
 	        //"Dubbelencodad" för spaces hos twitter
 	        var replacespace = /%20/g;
 			var twitterDoubleEncoded = pageurl.replace(replacespace, function clearRes(x){return '%2520';});
-	        console.log(twitterDoubleEncoded);
 
 	         if ("" === twitterlang || undefined === twitterlang) {
 	            twitterlang = "sv";
