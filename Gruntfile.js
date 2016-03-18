@@ -241,6 +241,19 @@ module.exports = function(grunt) {
 					host: '<%= rsync.options.hostservers.prodserver %>'
 				}
 			},
+			// arkiv.internetmuseum
+			stage_internetarkiv: {
+				options: {
+					dest: '<%= rsync.options.basefolder %>stage.arkiv.internetmuseum.se<%= rsync.options.pluginfolder %>',
+					host: '<%= rsync.options.hostservers.stageserver %>'
+				}
+			},
+			prod_internetarkiv: {
+				options: {
+					dest: '<%= rsync.options.basefolder %>arkiv.internetmuseum.se<%= rsync.options.pluginfolder %>',
+					host: '<%= rsync.options.hostservers.prodserver %>'
+				}
+			},
 			//nästa sajt som ska gå att deploya till
 		},
 		slack: {
@@ -315,11 +328,18 @@ module.exports = function(grunt) {
 			prod_sedirekt: {
 				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
 			},
-			// seDirekt
+			// skolfederation
 			stage_skolfederation: {
 				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
 			},
 			prod_skolfederation: {
+				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
+			},
+			// arkiv.internetmuseum
+			stage_internetarkiv: {
+				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
+			},
+			prod_internetarkiv: {
 				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
 			},
 			//nästa sajt som ska gå att deploya till
