@@ -36,19 +36,19 @@
 			var analyticsFileTypes = ['jpg','jpeg','gif','png','pdf','mp3','wav','zip','pps','ppt','xls','doc', 'pptx', 'xlsx', 'docx'];
 
 			$('a').each(function() {
-				var a = $(this);
-				var href = a.attr('href');
+				var a = $(this),
+					href = a.attr('href');
 
 				// Check if the a tag has a href, if not, stop for the current link
 				if ( href == undefined || href =="")
 					return;
 
-				var url = href.replace('http://','').replace('https://','');
-				var hrefArray = href.split('.').reverse();
-				var extension = hrefArray[0].toLowerCase();
-				var hrefArray = href.split('/').reverse();
-				var domain = hrefArray[2];
-				var downloadTracked = false;
+				var url = href.replace('http://','').replace('https://',''),
+					hrefArray = href.split('.').reverse(),
+					extension = hrefArray[0].toLowerCase(),
+					hrefArray = href.split('/').reverse(),
+					domain = hrefArray[2],
+					downloadTracked = false;
 
 				if (typeof analyticsFileTypes != "undefined") {
 					// If the link is a download
@@ -63,6 +63,7 @@
 						});
 					}
 				}
+
 				// If the link is external
 			 	if ( ( href.match(/^http/) ) && ( href.indexOf(document.domain) === -1 ) && ( downloadTracked == false ) ) {
 			    	// Add the tracking code
