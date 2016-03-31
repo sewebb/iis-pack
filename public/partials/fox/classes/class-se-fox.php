@@ -79,6 +79,7 @@ class Se_Fox extends Se_Plugin_Base {
 	 * Decide which links to display for each site
 	 * To add a new site, you insert a new item into the array $fox_mapping, example:
 	 * $fox_mapping['www.the-new-site-com'] = array( 'webbstjarnan', 'bredbandskollen', 'soi' );
+	 * @since 1.2.1 arkiv.internetmuseum.se
 	 */
 	private static $fox_mapping = array(
 		'www.iis.se' => array(
@@ -224,7 +225,17 @@ class Se_Fox extends Se_Plugin_Base {
 			'guider',
 			'internetfonden',
 			'internetmuseum',
-		)
+		),
+		'arkiv.internetmuseum.se' => array(
+			'domaner',
+			'webbstjarnan',
+			'bredbandskollen',
+			'internetdagarna',
+			'internetstatistik',
+			'soi',
+			'iisblogg',
+			'guider',
+		),
 	);
 
 	/**
@@ -236,7 +247,7 @@ class Se_Fox extends Se_Plugin_Base {
 			'link' => 'http://www.iis.se/domaner',
 			'hashtags' => '',
 			'name' => 'Domäner',
-//			'image' => 'domaner.svg',
+			// 'image' => 'domaner.svg',
 			'content' => 'Registrera din .se- eller .nu-domän här',
 			'linktext' => 'Till domäner',
 		),
@@ -244,7 +255,7 @@ class Se_Fox extends Se_Plugin_Base {
 			'link' => 'http://www.bredbandskollen.se',
 			'hashtags' => '',
 			'name' => 'Bredbandskollen',
-//			'image' => 'bbk.svg',
+			// 'image' => 'bbk.svg',
 			'content' => 'Verktyget som hjälper dig att testa uppkopplingen på ditt bredband',
 			'linktext' => 'Till bredbandskollen.se',
 		),
@@ -252,7 +263,7 @@ class Se_Fox extends Se_Plugin_Base {
 			'link' => 'http://www.webbstjarnan.se',
 			'hashtags' => '',
 			'name' => 'Webbstjärnan',
-//			'image' => 'ws.svg',
+			// 'image' => 'ws.svg',
 			'content' => 'Skoltävling där lärare och elever lär sig att skapa webbplatser',
 			'linktext' => 'Till webbstjärnan.se',
 		),
@@ -260,7 +271,7 @@ class Se_Fox extends Se_Plugin_Base {
 			'link' => 'https://internetdagarna.se',
 			'hashtags' => '',
 			'name' => 'Internetdagarna',
-//			'image' => 'ind.svg',
+			// 'image' => 'ind.svg',
 			'content' => 'Sveriges viktigaste mötesplats för alla som jobbar med internet',
 			'linktext' => 'Till internetdagarna.se',
 		),
@@ -268,7 +279,7 @@ class Se_Fox extends Se_Plugin_Base {
 			'link' => 'http://www.internetstatistik.se',
 			'hashtags' => '',
 			'name' => 'Internetstatistik',
-//			'image' => 'inetstat.svg',
+			// 'image' => 'inetstat.svg',
 			'content' => 'Aktuell statistik om internet i Sverige',
 			'linktext' => 'Till internetstatistik.se',
 		),
@@ -276,7 +287,7 @@ class Se_Fox extends Se_Plugin_Base {
 			'link' => 'http://www.soi2015.se',
 			'hashtags' => '',
 			'name' => 'Svenskarna & internet',
-//			'image' => 'soi.svg',
+			// 'image' => 'soi.svg',
 			'content' => 'Sveriges viktigaste undersökning om svenskarnas internetvanor',
 			'linktext' => 'Till soi2015.se',
 		),
@@ -284,7 +295,7 @@ class Se_Fox extends Se_Plugin_Base {
 			'link' => 'https://www.iis.se/blogg',
 			'hashtags' => '',
 			'name' => 'IIS-bloggen',
-//			'image' => 'bloggen.svg',
+			// 'image' => 'bloggen.svg',
 			'content' => 'Nyheter och kommentarer från internetvärlden',
 			'linktext' => 'Till IIS-bloggen',
 		),
@@ -293,7 +304,7 @@ class Se_Fox extends Se_Plugin_Base {
 			// hashtags måste skrivas ut efter utm_source etc för att fungera, anges därför som egen variabel
 			'hashtags' => '#typ=internetguider',
 			'name' => 'Internetguider',
-//			'image' => 'guider.svg',
+			// 'image' => 'guider.svg',
 			'content' => 'Gratis kunskap om internet, paketerat i lättillgängliga guider',
 			'linktext' => 'Till internetguider',
 		),
@@ -301,7 +312,7 @@ class Se_Fox extends Se_Plugin_Base {
 			'link' => 'http://www.internetfonden.se',
 			'hashtags' => '',
 			'name' => 'Internetfonden',
-//			'image' => 'fonden.svg',
+			// 'image' => 'fonden.svg',
 			'content' => 'Finansierar projekt som syftar till att förbättra internet i Sverige',
 			'linktext' => 'Till internetfonden.se',
 		),
@@ -309,7 +320,7 @@ class Se_Fox extends Se_Plugin_Base {
 			'link' => 'http://www.internetmuseum.se',
 			'hashtags' => '',
 			'name' => 'Internetmuseum',
-//			'image' => 'fonden.svg',
+			// 'image' => 'fonden.svg',
 			'content' => 'Här tar vi dig med på en resa genom den svenska internethistorien',
 			'linktext' => 'Till internetmuseum.se',
 		)
@@ -477,9 +488,10 @@ class Se_Fox extends Se_Plugin_Base {
 		$domain = str_replace( 'local.', 'www.', $domain );
 		$domain = str_replace( 'vvv.', 'www.', $domain );
 		$domain = str_replace( 'www.stage.', 'www.', $domain );
+		$domain = str_replace( 'stage.arkiv.', 'arkiv.', $domain );
 		$domain = str_replace( 'stage.', 'www.', $domain );
 		$domain = str_replace( 'iis.web1.common.', 'www.', $domain );
-		$domain = str_replace( 'soi.se', 'www.soi2013.se', $domain );
+		$domain = str_replace( 'soi.se', 'www.soi2015.se', $domain );
 		return $domain;
 	}
 
