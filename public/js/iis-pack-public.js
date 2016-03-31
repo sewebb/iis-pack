@@ -35,7 +35,7 @@
 	    if (typeof ga === 'function') {
 			var analyticsFileTypes = ['jpg','jpeg','gif','png','pdf','mp3','wav','zip','pps','ppt','xls','doc', 'pptx', 'xlsx', 'docx'];
 
-			$('a').each(function() {
+			$( document ).on( 'click', 'a', function() {
 				var a = $(this),
 					href = a.attr('href');
 
@@ -57,19 +57,14 @@
 						downloadTracked = true;
 
 						// Add the tracking code
-						a.click(function() {
-							ga('send', 'event', 'Downloads', extension.toUpperCase(), href);
-							// console.log(extension.toUpperCase());
-						});
+						ga('send', 'event', 'Downloads', extension.toUpperCase(), href);
 					}
 				}
 
 				// If the link is external
 			 	if ( ( href.match(/^http/) ) && ( href.indexOf(document.domain) === -1 ) && ( downloadTracked == false ) ) {
 			    	// Add the tracking code
-					a.click(function() {
-						ga('send', 'event', 'Outbound Traffic', href.match(/:\/\/(.[^/]+)/)[1], href);
-					});
+					ga('send', 'event', 'Outbound Traffic', href.match(/:\/\/(.[^/]+)/)[1], href);
 				}
 			});
 		}
