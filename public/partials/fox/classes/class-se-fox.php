@@ -504,11 +504,18 @@ class Se_Fox extends Se_Plugin_Base {
 		$domain      = $this->get_fox_domain();
 		$utm_source  = str_replace( '.', '_', $domain );
 		$site_config = $this->get_site_config();
+		// Vi vill inte ha med 'utm_source' när det är "interna" IIS-länkar
+		// Just logo-länken borde egentligen inte hända på IIS eftersom vi inte visar den där men...
+		if ( 'www_iis_se' !== $utm_source ) {
+			$print_utm_source = '&utm_source=' . $utm_source;
+		} else {
+			$print_utm_source = '';
+		}
 		?>
 
 		<section class="brand-nav" id="iis-fox-menu">
 			<section class="brand-nav-fullgrid">
-				<a href="https://www.iis.se/?utm_source=<?php echo $utm_source; ?>&utm_medium=fox&utm_campaign=Fox" class="brand-nav-logo<?php echo ( $site_config['hide_logo'] ) ? ' hide' : ''; ?>">
+				<a href="https://www.iis.se/?utm_medium=fox&utm_campaign=Fox<?php echo $print_utm_source; ?>" class="brand-nav-logo<?php echo ( $site_config['hide_logo'] ) ? ' hide' : ''; ?>">
 					<span class="brand-nav-logo-text">En webbplats från</span>
 
 					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -532,12 +539,20 @@ class Se_Fox extends Se_Plugin_Base {
 				<ul class="brand-nav-list">
 					<?php
 					foreach ( self::$fox_mapping[ $domain ] as $fox_item ) :
-						$fi = self::$fox_items[ $fox_item ];
+						$fi   = self::$fox_items[ $fox_item ];
+						$link = $fi['link'];
+						// Vi vill inte ha med 'utm_source' när det är "interna" IIS-länkar
+						if ( 'www_iis_se' === $utm_source && strpos( $link, 'www.iis.se' ) !== false ) {
+							$link_utm_source = '';
+						} else {
+							$link_utm_source = '&utm_source=' . $utm_source;
+						}
+
 						?>
 						<li>
-							<a href="<?php echo $fi['link']; ?>?utm_source=<?php echo $utm_source; ?>&utm_medium=fox&utm_campaign=Fox<?php echo $fi['hashtags']; ?>" class="brand-nav-headline"><?php echo $fi['name']; ?></a>
+							<a href="<?php echo $link; ?>?utm_medium=fox&utm_campaign=Fox<?php echo $fi['hashtags']; ?><?php echo $link_utm_source; ?>" class="brand-nav-headline"><?php echo $fi['name']; ?></a>
 								<section>
-								<a href="<?php echo $fi['link']; ?>?utm_source=<?php echo $utm_source; ?>&utm_medium=fox&utm_campaign=Fox<?php echo $fi['hashtags']; ?>">
+								<a href="<?php echo $link; ?>?utm_medium=fox&utm_campaign=Fox<?php echo $fi['hashtags']; ?><?php echo $link_utm_source; ?>">
 									<span class="linkedelement">
 										<span class="filcontent"><?php echo $fi['content']; ?></span>
 										<span class="fillinktext"><?php echo $fi['linktext']; ?> ›</span>
