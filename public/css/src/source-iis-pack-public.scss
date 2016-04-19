@@ -1,36 +1,36 @@
 //css for outdated browser
 .buorg {
-	position: absolute;
-	z-index: 9999;
-	width: 100%;
-	top: 0;
-	left: 0;
-	//Av naturliga reasons finns denna kod i .js-filen
-	//background: #fff399 no-repeat 13px center url(//browser-update.org/img/small/" + this.op.browser.n + ".png);
-	text-align: left;
-	cursor: pointer;
-	color:#000;
-	font-size: 11px;
-	border-bottom: 1px solid #e6cb00;
+  position: absolute;
+  z-index: 9999;
+  width: 100%;
+  top: 0;
+  left: 0;
+  //Av naturliga reasons finns denna kod i .js-filen
+  //background: #fff399 no-repeat 13px center url(//browser-update.org/img/small/" + this.op.browser.n + ".png);
+  text-align: left;
+  cursor: pointer;
+  color:#000;
+  font-size: 11px;
+  border-bottom: 1px solid #e6cb00;
 
-	div {
-		padding:11px 36px 9px 40px;
-	}
-	a, a:visited  {
-		color: #3284bf; text-decoration: underline;
-	}
+  div {
+    padding:11px 36px 9px 40px;
+  }
+  a, a:visited  {
+    color: #3284bf; text-decoration: underline;
+  }
 
-	#buorgclose {
-		position: absolute;
-		right: 13px;
-		top: 3px;
-		line-height: normal;
-		height: 20px;
-		width: 12px;
-		font-weight: bold;
-		font-size: 25px;
-		padding: 0;
-	}
+  #buorgclose {
+    position: absolute;
+    right: 13px;
+    top: 3px;
+    line-height: normal;
+    height: 20px;
+    width: 12px;
+    font-weight: bold;
+    font-size: 25px;
+    padding: 0;
+  }
 }//.buorg
 
 //the mighty fox menu
@@ -258,7 +258,7 @@
 
 
 iframe {
-	max-width: 100%;
+  max-width: 100%;
 }
 //Just nu mest for YouTube
 .embed-container {
@@ -268,12 +268,12 @@ iframe {
     overflow: hidden;
     max-width: 100%;
     iframe, object, embed  {
-	    position: absolute;
-	    top: 0;
-	    left: 0;
-	    width: 100%;
-	    height: 100%;
-	}
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+  }
 }
 
 // CSS for fast-social-share
@@ -286,12 +286,13 @@ $pinterest  : #d4002a;
 $small-font-size  : 13px;
 
 .iis-fss {
+  clear: left;
   //Mest nytta av denna i lokala teman men satter en standard botten-margin baserad pa iis.se sa lange
   &.beforecontent {
     margin-bottom: 1em;
   }
   &.aftercontent {
-    margin-top: 30px;
+    padding-top: 1em;
   }
 }
 .fast-social-share {
