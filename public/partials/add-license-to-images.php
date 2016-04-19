@@ -49,9 +49,10 @@ function attach_image_credit( $images ) {
 
 	// Get the image ID from the unique class added by insert to editor: "wp-image-ID"
 	if ( preg_match( '/wp-image-([0-9]+)/', $return, $match ) ) {
-		$license     = get_post_meta( $match[1] /* Captured image ID */, '_iis_pack_license', true );
+		$license             = get_post_meta( $match[1] /* Captured image ID */, '_iis_pack_license', true );
+		$license_holder_name = get_post_meta( $match[1] /* Captured image ID */, '_iis_pack_license_holder_name', true );
 
-		if ( ! empty( $license ) && '' !== $license ) {
+		if ( ( ! empty( $license ) && '' !== $license )  || ( ! empty( $license_holder_name ) && '' !== $license_holder_name ) ) {
 			$return .= '<div class="iis-pack-credits-container in-page">';
 
 			$object_url  = get_post_meta( $match[1], '_iis_pack_object_url', true );
@@ -89,15 +90,17 @@ function attach_image_credit( $images ) {
 			}
 
 			$license_url = get_post_meta( $match[1], '_iis_pack_license_url', true );
-			$return      .= '<span class="iis-pack-license">(';
-
+			if ( '' !== $license ) {
+				$return      .= '<span class="iis-pack-license">(';
+			}
 			if ( '' !== $license_url ) {
 				$return .= '<a href="' . $license_url . '" target="_blank">' . $license . '</a>';
 			} else {
 				$return .= $license;
 			}
-			$return .= ')</span>';
-
+			if ( '' !== $license ) {
+				$return .= ')</span>';
+			}
 			$return .= '</div>';
 		}
 	}
@@ -116,9 +119,10 @@ function filter_featured_image( $html, $post_id, $post_image_id ) {
 	$langpack = 'iis-pack';
 
 	if ( has_post_thumbnail( $post_id ) ) {
-		$license     = get_post_meta( $post_image_id, '_iis_pack_license', true );
+		$license             = get_post_meta( $post_image_id, '_iis_pack_license', true );
+		$license_holder_name = get_post_meta( $post_image_id, '_iis_pack_license_holder_name', true );
 
-		if ( ! empty( $license ) && '' !== $license ) {
+		if ( ( ! empty( $license ) && '' !== $license )  || ( ! empty( $license_holder_name ) && '' !== $license_holder_name ) ) {
 
 			$return = $html; //före eller efter bilden?
 			$return .= '<div class="iis-pack-credits-container">';
@@ -137,7 +141,7 @@ function filter_featured_image( $html, $post_id, $post_image_id ) {
 				$return .= '&nbsp;</span>';
 			}
 
-			$license_holder_name = get_post_meta( $post_image_id, '_iis_pack_license_holder_name', true );
+
 			$license_holder_url  = get_post_meta( $post_image_id, '_iis_pack_license_holder_url', true );
 
 			if ( '' !== $license_holder_name ) {
@@ -159,14 +163,18 @@ function filter_featured_image( $html, $post_id, $post_image_id ) {
 			}
 
 			$license_url = get_post_meta( $post_image_id, '_iis_pack_license_url', true );
-			$return .= '<span class="iis-pack-license">(';
+			if ( '' !== $license ) {
+				$return .= '<span class="iis-pack-license">(';
+			}
 
 			if ( '' !== $license_url ) {
 				$return .= '<a href="' . $license_url . '" target="_blank">' . $license . '</a>';
 			} else {
 				$return .= $license;
 			}
-			$return .= ')</span>';
+			if ( '' !== $license ) {
+				$return .= ')</span>';
+			}
 
 			$return .= '</div>';
 

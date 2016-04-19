@@ -203,10 +203,12 @@ iframe {
     width: 100%;
     height: 100%; }
 
-.iis-fss.beforecontent {
-  margin-bottom: 1em; }
-.iis-fss.aftercontent {
-  margin-top: 30px; }
+.iis-fss {
+  clear: left; }
+  .iis-fss.beforecontent {
+    margin-bottom: 1em; }
+  .iis-fss.aftercontent {
+    padding-top: 1em; }
 
 .fast-social-share {
   list-style: none;
