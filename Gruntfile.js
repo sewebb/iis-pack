@@ -254,6 +254,19 @@ module.exports = function(grunt) {
 					host: '<%= rsync.options.hostservers.prodserver %>'
 				}
 			},
+			// datahotell.se
+			stage_datahotell: {
+				options: {
+					dest: '<%= rsync.options.basefolder %>stage.datahotell.se<%= rsync.options.pluginfolder %>',
+					host: '<%= rsync.options.hostservers.stageserver %>'
+				}
+			},
+			prod_datahotell: {
+				options: {
+					dest: '<%= rsync.options.basefolder %>datahotell.se<%= rsync.options.pluginfolder %>',
+					host: '<%= rsync.options.hostservers.prodserver %>'
+				}
+			},
 			//nästa sajt som ska gå att deploya till
 		},
 		slack: {
@@ -340,6 +353,13 @@ module.exports = function(grunt) {
 				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
 			},
 			prod_internetarkiv: {
+				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
+			},
+			// datahotell.se
+			stage_datahotell: {
+				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
+			},
+			prod_datahotell: {
 				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
 			},
 			//nästa sajt som ska gå att deploya till
