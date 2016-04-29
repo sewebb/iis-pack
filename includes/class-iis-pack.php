@@ -150,6 +150,7 @@ class Iis_Pack {
 	 * of the plugin.
 	 *
 	 * @since    1.0.0
+	 * @since    1.2.2 add_support_for_page_excerpt
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
@@ -165,6 +166,8 @@ class Iis_Pack {
 
 		// Om det saknas support för featured image
 		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'add_support_for_featured_image' );
+		// Om det saknas support för page excerpt
+		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'add_support_for_page_excerpt' );
 
 		// I User profile
 		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'in_user_profile' );

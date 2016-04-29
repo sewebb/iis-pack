@@ -76,6 +76,19 @@ class Iis_Pack_Admin {
 	}
 
 	/**
+	 * Vi tycker det är bra att kunna ha excerpts även på post_type page
+	 * Lägger till om det saknas
+	 * @since 1.2.2
+	 */
+	public function add_support_for_page_excerpt() {
+		$has_page_excerpts_support = post_type_supports( 'page', 'excerpt' );
+
+		if ( false === $has_page_excerpts_support ) {
+			add_post_type_support( 'page', 'excerpt' );
+		}
+	}
+
+	/**
 	 * Inkludera klasser för extrafält på post & page // extrafält attachements
 	 * @since  1.0.0
 	 * @since  1.0.1 CC-fält på images (class-images-meta.php)

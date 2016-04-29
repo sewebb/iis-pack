@@ -29,6 +29,21 @@ Installation
 
 Changelog
 =========
+#### 1.2.2
+* post_type page har nu Utdrag / Excerpt tillagt om inte temat redan stödjer det
+
+#### 1.2.1
+* arkiv.internetmuseum.se
+* datahotell.se
+
+#### 1.1.1
+* Bildattribution kan döljas på featured images, i de fall alternativ finns i temat
+
+#### 1.1
+* Lägger till möjlighet att ladda upp lokal avatar i Användarprofilen
+
+#### 1.0.2
+* Fast Social Share buttons
 
 #### 1.0.1
 * Metafält för bilder/media
