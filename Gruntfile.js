@@ -57,10 +57,10 @@ module.exports = function(grunt) {
 			},
 		},
 		sass: {
+			options: {
+				'sourcemap': 'none'
+			},
 			dist: {
-				options: {
-					'sourcemap': 'none'
-				},
 				files: {
 					'public/css/iis-pack-public.css': 'public/css/src/source-iis-pack-public.scss'
 				}

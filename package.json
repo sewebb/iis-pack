@@ -1,28 +1,23 @@
 {
-  "name": "IISPack",
-  "version": "1.0.1",
-  "author": "The IIS Team",
-  "homepage": "http://www.iis.se",
-  "engines": {
-    "node": ">= 0.10.0"
-  },
-  "devDependencies": {
-    "grunt": "~0.4.1",
-    "matchdep": "",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-cssmin": "",
-    "grunt-contrib-sass": "^0.9.2",
-    "grunt-contrib-jshint": "~0.6.4",
-    "grunt-contrib-uglify": "~0.2.4",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-gitinfo": "",
-    "grunt-slack-hook": "",
-    "async": "~0.2.9",
-    "grunt-wp-assets": "",
-    "grunt-rsync": "~0.6.2",
-    "grunt-replace": ""
-  },
-  "peerDependencies": {
-    "grunt-cli": ""
-  }
+	"name": "iis-pack",
+	"version": "1.1.0",
+	"author": "iis",
+	"homepage": "https://www.iis.se",
+	"engines": {
+		"node": ">= 5.0.0"
+	},
+	"devDependencies": {
+		"grunt": "~1.0.1",
+		"grunt-contrib-clean": "",
+		"grunt-contrib-cssmin": "",
+		"grunt-sass": "~1.2.0",
+		"grunt-contrib-jshint": "",
+		"grunt-contrib-uglify": "",
+		"grunt-contrib-watch": "",
+		"grunt-gitinfo": "",
+		"grunt-rsync": "~1.0.1",
+		"grunt-slack-hook": "",
+		"grunt-wp-assets": "",
+		"matchdep": ""
+	}
 }
