@@ -29,6 +29,10 @@ Installation
 
 Changelog
 =========
+#### 1.3.0
+* Förenklingar av beskrivningar, defaultvärde https Facebook Open Graph när man sparar inställningar
+* Zonemaster deploy
+
 #### 1.2.2
 * post_type page har nu Utdrag / Excerpt tillagt om inte temat redan stödjer det
 

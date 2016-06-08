@@ -655,7 +655,7 @@ class Iis_Pack_Admin {
 	public function iis_pack_default_og_image_cb() {
 		$default_og_image = get_option( $this->option_name . '_default_og_image' );
 		echo '<input type="text" class="large-text" name="' . $this->option_name . '_default_og_image' . '" id="' . $this->option_name . '_default_og_image' . '" value="' . $default_og_image . '"> ';
-		echo '<p class="description">' . __( 'Complete url. Try to get from static.iis.se Default image is IIS logo', 'iis-pack' ) . '</p>';
+		echo '<p class="description">' . __( 'Complete url. Default image is IIS logo', 'iis-pack' ) . '</p>';
 	}
 
 	/**
@@ -791,10 +791,14 @@ class Iis_Pack_Admin {
 	 * @param  string $protocol $_POST value
 	 * @since  1.0.0
 	 * @return string           Sanitized value
+	 * @since  1.3.0            Default value should be set to https/ssl
 	 */
 	public function iis_pack_sanitize_protocol( $protocol ) {
+		if ( empty( $protocol ) ) {
+			return 'https';
+		}
 		if ( in_array( $protocol, array( 'https', 'http' ), true ) ) {
-	        return $protocol;
+			return $protocol;
 	    }
 	}
 

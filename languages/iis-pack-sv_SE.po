@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: IIS Pack\n"
-"POT-Creation-Date: 2016-02-11 16:13+0100\n"
-"PO-Revision-Date: 2016-02-11 16:16+0100\n"
+"POT-Creation-Date: 2016-06-08 08:05+0200\n"
+"PO-Revision-Date: 2016-06-08 08:07+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -20,20 +20,20 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: admin/class-iis-pack-admin.php:131
+#: admin/class-iis-pack-admin.php:144
 msgid "IIS Pack Settings"
 msgstr "Inställningarna för IIS-Pack"
 
 #. Plugin Name of the plugin/theme
-#: admin/class-iis-pack-admin.php:132
+#: admin/class-iis-pack-admin.php:145
 msgid "IIS Pack"
 msgstr "IIS Pack"
 
-#: admin/class-iis-pack-admin.php:151 admin/class-iis-pack-admin.php:217
+#: admin/class-iis-pack-admin.php:164 admin/class-iis-pack-admin.php:230
 msgid "Share buttons"
 msgstr "Dela-knappar"
 
-#: admin/class-iis-pack-admin.php:152
+#: admin/class-iis-pack-admin.php:165
 msgid ""
 "<h4>How it works:</h4>\n"
 "\t\t\t\t\t<p>Default setting is no buttons showing on pages/posts without an "
@@ -92,19 +92,19 @@ msgstr ""
 "sida / post som normalt automatiskt skulle haft knapparna, lägg till "
 "<code>[fastsocial remove=yes]</code> i post content (i editorn)</p>"
 
-#: admin/class-iis-pack-admin.php:172 admin/class-iis-pack-admin.php:574
+#: admin/class-iis-pack-admin.php:185 admin/class-iis-pack-admin.php:587
 msgid "Choose from theese templates: "
 msgstr "Välj från dessa sidmallar: "
 
-#: admin/class-iis-pack-admin.php:183 admin/class-iis-pack-admin.php:561
+#: admin/class-iis-pack-admin.php:196 admin/class-iis-pack-admin.php:574
 msgid "Choose from theese post types: "
 msgstr "Välj från dessa posttyper: "
 
-#: admin/class-iis-pack-admin.php:190 admin/class-iis-pack-admin.php:303
+#: admin/class-iis-pack-admin.php:203 admin/class-iis-pack-admin.php:316
 msgid "Object attribution"
 msgstr "Bildattribution"
 
-#: admin/class-iis-pack-admin.php:191
+#: admin/class-iis-pack-admin.php:204
 msgid ""
 "<h4>Adding license to images</h4>\n"
 "\t\t\t\t\t<p>In the media library there are fields for each object that can "
@@ -119,103 +119,103 @@ msgstr ""
 "automatiskt under varje bild - eller så kan du använda din egen funktion i "
 "ditt tema.</p>"
 
-#: admin/class-iis-pack-admin.php:224
+#: admin/class-iis-pack-admin.php:237
 msgid "Print buttons before content"
 msgstr "Knappar innan sidans text"
 
-#: admin/class-iis-pack-admin.php:233
+#: admin/class-iis-pack-admin.php:246
 msgid "Print buttons after content"
 msgstr "Knappar efter sidans text"
 
-#: admin/class-iis-pack-admin.php:242
+#: admin/class-iis-pack-admin.php:255
 msgid "Remove from types"
 msgstr "Lägg inte ut på typerna"
 
-#: admin/class-iis-pack-admin.php:251
+#: admin/class-iis-pack-admin.php:264
 msgid "Remove from templates"
 msgstr "Lägg inte ut i sidmallarna"
 
-#: admin/class-iis-pack-admin.php:260
+#: admin/class-iis-pack-admin.php:273
 msgid "Activate Facebook"
 msgstr "Aktivera Facebook"
 
-#: admin/class-iis-pack-admin.php:268
+#: admin/class-iis-pack-admin.php:281
 msgid "Activate Twitter"
 msgstr "Aktivera Twitter"
 
-#: admin/class-iis-pack-admin.php:276
+#: admin/class-iis-pack-admin.php:289
 msgid "Activate LinkedIn"
 msgstr "Aktivera LinkedIn"
 
-#: admin/class-iis-pack-admin.php:284
+#: admin/class-iis-pack-admin.php:297
 msgid "Activate Pinterest"
 msgstr "Aktivera Pinterest"
 
-#: admin/class-iis-pack-admin.php:310
+#: admin/class-iis-pack-admin.php:323
 msgid "Print Object attribution?"
 msgstr "Skriv ut bildattribution under bilder på sidorna?"
 
-#: admin/class-iis-pack-admin.php:319
+#: admin/class-iis-pack-admin.php:332
 msgid "Hide on featured image"
 msgstr "Dölj på utvald bild"
 
-#: admin/class-iis-pack-admin.php:332
+#: admin/class-iis-pack-admin.php:345
 msgid "Facebook open graph"
 msgstr "Facebook open graph"
 
-#: admin/class-iis-pack-admin.php:340
+#: admin/class-iis-pack-admin.php:353
 msgid "Default og:image"
 msgstr "Standard og:image"
 
-#: admin/class-iis-pack-admin.php:349
+#: admin/class-iis-pack-admin.php:362
 msgid "Protocol"
 msgstr "Protokoll för sajten"
 
-#: admin/class-iis-pack-admin.php:358
+#: admin/class-iis-pack-admin.php:371
 msgid "ev. Facebook AppId"
 msgstr "ev. Facebook AppID"
 
-#: admin/class-iis-pack-admin.php:367
+#: admin/class-iis-pack-admin.php:380
 msgid "ev. Facebook Admin(s)"
 msgstr "ev. Facebook Admin(s)"
 
-#: admin/class-iis-pack-admin.php:382 admin/partials/class-twitter.php:42
+#: admin/class-iis-pack-admin.php:395 admin/partials/class-twitter.php:42
 msgid "Twitter Cards"
 msgstr "Twitter Kort"
 
-#: admin/class-iis-pack-admin.php:389
+#: admin/class-iis-pack-admin.php:402
 msgid "Twitter site"
 msgstr "Twitterkonto för sajten"
 
-#: admin/class-iis-pack-admin.php:401
+#: admin/class-iis-pack-admin.php:414
 msgid "Google Analytics"
 msgstr "Google Analytics"
 
-#: admin/class-iis-pack-admin.php:408
+#: admin/class-iis-pack-admin.php:421
 msgid "Google Analytics ID"
 msgstr "Google Analytics ID"
 
-#: admin/class-iis-pack-admin.php:420
+#: admin/class-iis-pack-admin.php:433
 msgid "Fox Menu"
 msgstr "Foxmenyn"
 
-#: admin/class-iis-pack-admin.php:427
+#: admin/class-iis-pack-admin.php:440
 msgid "Use Fox menu?"
 msgstr "Använd Foxmenyn?"
 
-#: admin/class-iis-pack-admin.php:439
+#: admin/class-iis-pack-admin.php:452
 msgid "Other stuff"
 msgstr "Andra inställningar"
 
-#: admin/class-iis-pack-admin.php:446
+#: admin/class-iis-pack-admin.php:459
 msgid "Remove emoji scripts"
 msgstr "Avlägsna emoji skript"
 
-#: admin/class-iis-pack-admin.php:454
+#: admin/class-iis-pack-admin.php:467
 msgid "Local Profile Picture"
 msgstr "Lokal profilbild"
 
-#: admin/class-iis-pack-admin.php:458
+#: admin/class-iis-pack-admin.php:471
 msgid ""
 "Only allow users with file upload capabilities to upload local profile "
 "pictures (Authors and above)"
@@ -223,7 +223,7 @@ msgstr ""
 "Kryssa i om enbart Författare och uppåt ska få lov att ändra sina "
 "profilbilder."
 
-#: admin/class-iis-pack-admin.php:475
+#: admin/class-iis-pack-admin.php:488
 msgid ""
 "Choose where social share buttons should be shown. See Help menu for more "
 "info (under \"Hi, {logged in user}\")"
@@ -231,33 +231,33 @@ msgstr ""
 "Välj var knapparna för att dela på social nätverk ska synas. Se “Hjälp” för "
 "mer info. (Uppe till höger på denna sidan)"
 
-#: admin/class-iis-pack-admin.php:484
+#: admin/class-iis-pack-admin.php:497
 msgid "Should this site fetch and print attachement credits "
 msgstr ""
 "Ska denna sajten hämta och skriva ut licensfälten för bilder tillagda på "
 "sidor?"
 
-#: admin/class-iis-pack-admin.php:493
+#: admin/class-iis-pack-admin.php:506
 msgid "Settings for Facebook open graph tags per site "
 msgstr "Inställningar för Facebook open graph-taggar per webbplats"
 
-#: admin/class-iis-pack-admin.php:502
+#: admin/class-iis-pack-admin.php:515
 msgid "Global settings for Twitter Cards"
 msgstr "Globala inställningar för Twitter kort"
 
-#: admin/class-iis-pack-admin.php:511
+#: admin/class-iis-pack-admin.php:524
 msgid "Settings for Google Analytics"
 msgstr "Inställningar för Google Analytics"
 
-#: admin/class-iis-pack-admin.php:520
+#: admin/class-iis-pack-admin.php:533
 msgid "Should this site show the Fox menu on top of pages?"
 msgstr "Ska sajten visa Foxmenyn överst på sidorna? (i 99,99% av fallen - JA!)"
 
-#: admin/class-iis-pack-admin.php:529
+#: admin/class-iis-pack-admin.php:542
 msgid "Bits and pieces"
 msgstr "Lite av varje"
 
-#: admin/class-iis-pack-admin.php:560
+#: admin/class-iis-pack-admin.php:573
 msgid ""
 "Add post types to be avoided if above setting is set to Print before or "
 "Print after content. (ex: se-tech,guide)"
@@ -265,26 +265,26 @@ msgstr ""
 "Lägg till posttyper som inte ska få knapparna utskrivna om något av “Lägg "
 "ut”-valen ovan är valt"
 
-#: admin/class-iis-pack-admin.php:561 admin/class-iis-pack-admin.php:574
+#: admin/class-iis-pack-admin.php:574 admin/class-iis-pack-admin.php:587
 msgid "( <em>see help menu</em> ) "
 msgstr "( <em>se vilka du kan välja mellan i hjälpmenyn</em> ) "
 
-#: admin/class-iis-pack-admin.php:573
+#: admin/class-iis-pack-admin.php:586
 msgid ""
 "Add templates to be avoided if above setting is set to Print before or Print "
 "after content."
 msgstr ""
 "Lägg till sidmallar som inte ska ha knapparna automatiskt. (hela filnamnet)"
 
-#: admin/class-iis-pack-admin.php:609
+#: admin/class-iis-pack-admin.php:622
 msgid "Show Object Attribution"
 msgstr "Visa Bildattribution under bilder"
 
-#: admin/class-iis-pack-admin.php:614
+#: admin/class-iis-pack-admin.php:627
 msgid "Hide Object Attribution"
 msgstr "Dölj Bildattribution under bilder"
 
-#: admin/class-iis-pack-admin.php:633
+#: admin/class-iis-pack-admin.php:646
 msgid ""
 "If you choose \"Show\" you can tick this to hide on featured image. "
 "<em>(Then your theme rolls its own variant)</em>"
@@ -293,45 +293,43 @@ msgstr ""
 "bildattributionsutskriften från IIS Pack på “Utvald bild”. <em>(När temat "
 "har en egen variant sedan förr)</em>"
 
-#: admin/class-iis-pack-admin.php:645
-msgid "Complete url. Try to get from static.iis.se Default image is IIS logo"
-msgstr ""
-"Fullständig URL till bilden. Bör ligga på static.iis.se Standardbilden är "
-"IIS logotyp om ingen anges"
+#: admin/class-iis-pack-admin.php:658
+msgid "Complete url. Default image is IIS logo"
+msgstr "Fullständig sökväg till bilden. Standardbilden är IIS logotyp"
 
-#: admin/class-iis-pack-admin.php:659
+#: admin/class-iis-pack-admin.php:672
 msgid "https (SSL)"
 msgstr "https (SSL)"
 
-#: admin/class-iis-pack-admin.php:664
+#: admin/class-iis-pack-admin.php:677
 msgid "http"
 msgstr "http"
 
-#: admin/class-iis-pack-admin.php:688
+#: admin/class-iis-pack-admin.php:701
 msgid "If the site has more than one admin, seperate them with comma (,)"
 msgstr ""
 "Om sajten har mer än en Facebookadministratör - använd kommatecken för att "
 "avgränsa indämmer [ex 12,34,56]"
 
-#: admin/class-iis-pack-admin.php:699
+#: admin/class-iis-pack-admin.php:712
 msgid "The sites main account, for example @iis on www.iis.se"
 msgstr ""
 "Sajten huvudsakliga Twitter-konto, t.ex. @iis för www.iis.se eller "
 "@internetmuseum för internetmuseum.se"
 
-#: admin/class-iis-pack-admin.php:723
+#: admin/class-iis-pack-admin.php:736
 msgid "Show Fox menu"
 msgstr "Visa Foxmenyn"
 
-#: admin/class-iis-pack-admin.php:728
+#: admin/class-iis-pack-admin.php:741
 msgid "Hide Fox menu"
 msgstr "Dölj Foxmenyn"
 
-#: admin/class-iis-pack-admin.php:745
+#: admin/class-iis-pack-admin.php:758
 msgid "Remove emojis (default)"
 msgstr "Skriv inte ut emoji-script (standard)"
 
-#: admin/class-iis-pack-admin.php:750
+#: admin/class-iis-pack-admin.php:763
 msgid "Use Emojis"
 msgstr "Använd Emojis"
 
@@ -482,18 +480,18 @@ msgstr ""
 "Lägg till hashtaggar för den här sidan. Om du har mer en en - separera med "
 "kommatecken utan mellanslag. (internetguider,iis)"
 
-#: public/partials/add-license-to-images.php:61
-#: public/partials/add-license-to-images.php:130
+#: public/partials/add-license-to-images.php:62
+#: public/partials/add-license-to-images.php:134
 msgid "Photo: "
 msgstr "Foto: "
 
-#: public/partials/add-license-to-images.php:77
-#: public/partials/add-license-to-images.php:147
+#: public/partials/add-license-to-images.php:78
+#: public/partials/add-license-to-images.php:151
 msgid "by "
 msgstr "av "
 
-#: public/partials/add-license-to-images.php:79
-#: public/partials/add-license-to-images.php:149
+#: public/partials/add-license-to-images.php:80
+#: public/partials/add-license-to-images.php:153
 msgid "Photo by "
 msgstr "Foto av "
 
@@ -513,6 +511,12 @@ msgstr ""
 #. Author of the plugin/theme
 msgid "The IIS Team"
 msgstr "The IIS Team"
+
+#~ msgid ""
+#~ "Complete url. Try to get from static.iis.se Default image is IIS logo"
+#~ msgstr ""
+#~ "Fullständig URL till bilden. Bör ligga på static.iis.se Standardbilden är "
+#~ "IIS logotyp om ingen anges"
 
 #~ msgid ""
 #~ "Gemensamma plugin för IIS sajter: GA, OG-taggar, Bildattribution, Share "
