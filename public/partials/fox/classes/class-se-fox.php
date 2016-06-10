@@ -72,6 +72,11 @@ class Se_Fox extends Se_Plugin_Base {
 			'load_font' => false,
 			'hide_logo' => false,
 			'site'	    => 'styleguide',
+		),
+		'kurser.iis.se' => array(
+			'load_font' => false,
+			'hide_logo' => false,
+			'site'	    => 'kurser',
 		)
 	);
 
@@ -235,6 +240,18 @@ class Se_Fox extends Se_Plugin_Base {
 			'soi',
 			'iisblogg',
 			'guider',
+		),
+		'kurser.iis.se' => array(
+			'domaner',
+			'webbstjarnan',
+			'bredbandskollen',
+			'internetdagarna',
+			'internetstatistik',
+			'soi',
+			'iisblogg',
+			'guider',
+			'internetfonden',
+			'internetmuseum',
 		),
 	);
 
@@ -486,6 +503,7 @@ class Se_Fox extends Se_Plugin_Base {
 		$domain = $_SERVER['SERVER_NAME'];
 		$domain = str_replace( '.dev', '.se', $domain );
 		$domain = str_replace( 'local.', 'www.', $domain );
+		$domain = str_replace( 'vvv.kurser.se', 'kurser.iis.se', $domain );
 		$domain = str_replace( 'vvv.', 'www.', $domain );
 		$domain = str_replace( 'www.stage.', 'www.', $domain );
 		$domain = str_replace( 'stage.arkiv.', 'arkiv.', $domain );

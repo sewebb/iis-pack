@@ -29,6 +29,9 @@ Installation
 
 Changelog
 =========
+#### 1.3.1
+* kurser.iis.se i foxmenyn
+
 #### 1.3.0
 * Förenklingar av beskrivningar, defaultvärde https Facebook Open Graph när man sparar inställningar
 * Zonemaster deploy
