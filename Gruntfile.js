@@ -280,6 +280,19 @@ module.exports = function(grunt) {
 					host: '<%= rsync.options.hostservers.prodserver %>'
 				}
 			},
+			// kurser.iis.se
+			stage_kurser: {
+				options: {
+					dest: '<%= rsync.options.basefolder %>stage.kurser.iis.se<%= rsync.options.pluginfolder %>',
+					host: '<%= rsync.options.hostservers.stageserver %>'
+				}
+			},
+			prod_kurser: {
+				options: {
+					dest: '<%= rsync.options.basefolder %>kurser.iis.se<%= rsync.options.pluginfolder %>',
+					host: '<%= rsync.options.hostservers.prodserver %>'
+				}
+			},
 			//nästa sajt som ska gå att deploya till
 		},
 		slack: {
@@ -380,6 +393,13 @@ module.exports = function(grunt) {
 				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
 			},
 			prod_zonemaster: {
+				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
+			},
+			// kurser.iis.se
+			stage_kurser: {
+				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
+			},
+			prod_kurser: {
 				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
 			},
 			//nästa sajt som ska gå att deploya till
