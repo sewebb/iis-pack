@@ -75,7 +75,7 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'kurser.iis.se' => array(
 			'load_font' => false,
-			'hide_logo' => false,
+			'hide_logo' => true,
 			'site'	    => 'kurser',
 		)
 	);
