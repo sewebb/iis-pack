@@ -36,50 +36,55 @@ if ( ! empty( $twitter_site ) ) {
 	if ( is_singular() || is_home() || is_archive() || is_front_page() ) {
 
 		global $post;
-		// Det finns just nu ingen anledning att använda twitter:image eftersom Twitter kommer ta og:image när den saknas
-		// Vi avvaktiverar det för tillfället
-		// $twitter_image_set = false;
 
-		// if ( has_post_thumbnail( $post->ID ) && ! is_home() && ! is_archive() ) {
-		// 	$arr_thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
-		// 	// En del bilder verkar ha sparats med hela sökvägen
-		// 	if ( false === strpos( $arr_thumb[0], 'http' ) ) {
-		// 		$twitter_image = $protocol . '://' . $servername . $arr_thumb[0];
-		// 	} else {
-		// 		$twitter_image = $arr_thumb[0];
-		// 	}
-
-		// 	$twitter_image_set = true;
-
-		// }
-		// $twitter_image = apply_filters( 'iis_twitter_image' , $twitter_image, $post->ID, $twitter_image_set );
-
-		if ( ! is_404() ) {
-			$show_twitter_card = true;
-			$twitterprint .= '<meta name="twitter:card" content="' . $twitter_card . '">';
-			$twitterprint .= "\n";
-			$twitterprint .= '<meta name="twitter:site" content="' . $twitter_site . '">';
-			$twitterprint .= "\n";
-			// Twitter använder og-taggar för twitter: description, title & image om dessa saknas
-			// https://dev.twitter.com/cards/markup
-			// Så vi behöver inte göra tester fram och tillbaka på vad som ska visas, om twitter:-fälten
-			// inte är ifyllda så låter vi Twitter ta från det vi räknat ut gällade Facebook open graph
-			$twitter_description = get_post_meta( $post->ID, 'twitter_description', true );
-			$twitter_title       = get_post_meta( $post->ID, 'twitter_title', true );
+		// Problem som hittades på IIS Academy reinvented
+		if ( isset( $post->ID ) && '' !== trim( $post->ID ) ) {
 
 			// Det finns just nu ingen anledning att använda twitter:image eftersom Twitter kommer ta og:image när den saknas
 			// Vi avvaktiverar det för tillfället
-			// if ( $twitter_image_set ) {
-			// 	$twitterprint .= '<meta name="twitter:image" content="' . $twitter_image . '" />';
-			// 	$twitterprint .= "\n";
+			// $twitter_image_set = false;
+
+			// if ( has_post_thumbnail( $post->ID ) && ! is_home() && ! is_archive() ) {
+			// 	$arr_thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
+			// 	// En del bilder verkar ha sparats med hela sökvägen
+			// 	if ( false === strpos( $arr_thumb[0], 'http' ) ) {
+			// 		$twitter_image = $protocol . '://' . $servername . $arr_thumb[0];
+			// 	} else {
+			// 		$twitter_image = $arr_thumb[0];
+			// 	}
+
+			// 	$twitter_image_set = true;
+
 			// }
-			if ( ! empty( $twitter_title ) ) {
-				$twitterprint .= '<meta name="twitter:title" content="' . $twitter_title . '" />';
+			// $twitter_image = apply_filters( 'iis_twitter_image' , $twitter_image, $post->ID, $twitter_image_set );
+
+			if ( ! is_404() ) {
+				$show_twitter_card = true;
+				$twitterprint .= '<meta name="twitter:card" content="' . $twitter_card . '">';
 				$twitterprint .= "\n";
-			}
-			if ( ! empty( $twitter_description ) ) {
-				$twitterprint .= '<meta name="twitter:description" content="' . $twitter_description . '" />';
+				$twitterprint .= '<meta name="twitter:site" content="' . $twitter_site . '">';
 				$twitterprint .= "\n";
+				// Twitter använder og-taggar för twitter: description, title & image om dessa saknas
+				// https://dev.twitter.com/cards/markup
+				// Så vi behöver inte göra tester fram och tillbaka på vad som ska visas, om twitter:-fälten
+				// inte är ifyllda så låter vi Twitter ta från det vi räknat ut gällade Facebook open graph
+				$twitter_description = get_post_meta( $post->ID, 'twitter_description', true );
+				$twitter_title       = get_post_meta( $post->ID, 'twitter_title', true );
+
+				// Det finns just nu ingen anledning att använda twitter:image eftersom Twitter kommer ta og:image när den saknas
+				// Vi avvaktiverar det för tillfället
+				// if ( $twitter_image_set ) {
+				// 	$twitterprint .= '<meta name="twitter:image" content="' . $twitter_image . '" />';
+				// 	$twitterprint .= "\n";
+				// }
+				if ( ! empty( $twitter_title ) ) {
+					$twitterprint .= '<meta name="twitter:title" content="' . $twitter_title . '" />';
+					$twitterprint .= "\n";
+				}
+				if ( ! empty( $twitter_description ) ) {
+					$twitterprint .= '<meta name="twitter:description" content="' . $twitter_description . '" />';
+					$twitterprint .= "\n";
+				}
 			}
 		}
 	}
