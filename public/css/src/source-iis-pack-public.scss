@@ -49,13 +49,13 @@
   }
 }
 
-.logged-in {
+.logged-in.admin-bar {
   .brand-nav {
     border-top: 32px solid transparent;
   }
-  &.kurser-iis .brand-nav {
-    border-top: 0;
-  }
+  // &.kurser-iis .brand-nav {
+  //   border-top: 0;
+  // }
 }
 
 .brand-nav {
