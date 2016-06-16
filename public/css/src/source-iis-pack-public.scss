@@ -49,8 +49,13 @@
   }
 }
 
-.logged-in .brand-nav {
-  border-top: 32px solid transparent;
+.logged-in {
+  .brand-nav {
+    border-top: 32px solid transparent;
+  }
+  &.kurser-iis .brand-nav {
+    border-top: 0;
+  }
 }
 
 .brand-nav {

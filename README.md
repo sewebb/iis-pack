@@ -29,6 +29,10 @@ Installation
 
 Changelog
 =========
+#### 1.3.2
+* Anpassningar för när man är inloggad på kurser.iis
+* Städat bort gammal inline css som inte användes iaf (finns sedan länge ett stylesheet)
+
 #### 1.3.1
 * kurser.iis.se i foxmenyn
 
