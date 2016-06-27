@@ -160,7 +160,7 @@ class Iis_Pack {
 
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'iis_pack_add_options_page' );
 		$this->loader->add_action( 'load-settings_page_iis-pack', $plugin_admin, 'iis_pack_add_help_tab' );
-		$this->loader->add_action( 'admin_init', $plugin_admin, 'iis_pack_register_setting' );
+		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_setting' );
 
 		// När vi vill ladda vår extra fält för pages, posts, custom post types & mediauppladdaren (CC-fält)
 		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'iis_pack_include_meta_fields' );
