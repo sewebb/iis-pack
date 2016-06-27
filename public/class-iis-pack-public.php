@@ -43,9 +43,9 @@ class Iis_Pack_Public {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of the plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @since  1.0.0
+	 * @param string  $plugin_name       The name of the plugin.
+	 * @param string  $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
@@ -59,7 +59,7 @@ class Iis_Pack_Public {
 	 * Koden som innehåller funktioner för OG:-taggar & Twitter cards som skrivs ut i <head>
 	 * @since 1.0
 	 */
-	public function include_in_head() {
+	public function iis_pack_include_in_head() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/facebook-og-tags.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/twitter-cards.php';
 	}
@@ -71,7 +71,7 @@ class Iis_Pack_Public {
 	 * Javascriptet som behövs finns inbakat i iis-pack-public.js
 	 * @since 1.0
 	 */
-	public function include_in_footer() {
+	public function iis_pack_include_in_footer() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/google-analytics.php';
 	}
 
@@ -79,7 +79,7 @@ class Iis_Pack_Public {
 	 * Åtgärder som filtrerar the_content
 	 * @since 1.0.1 Kod som lägger till licensdata på bilder
 	 */
-	public function filter_the_content() {
+	public function iis_pack_filter_the_content() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/add-license-to-images.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/responsive-oembed.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/fast-social-share-buttons.php';
@@ -89,7 +89,7 @@ class Iis_Pack_Public {
 	 * Ta bort alla emojisar
 	 * @since 1.0.1
 	 */
-	public function disable_all_emojis() {
+	public function iis_pack_disable_all_emojis() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/disable-emojis.php';
 	}
 

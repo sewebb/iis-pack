@@ -67,7 +67,7 @@ class Iis_Pack_Admin {
 	 * Så det gör vi om temat missat det
 	 * @since 1.0.0
 	 */
-	public function add_support_for_featured_image() {
+	public function iis_pack_add_support_for_featured_image() {
 		$has_featured_image_support = get_theme_support( 'post-thumbnails' );
 
 		if ( false === $has_featured_image_support ) {
@@ -80,7 +80,7 @@ class Iis_Pack_Admin {
 	 * Lägger till om det saknas
 	 * @since 1.2.2
 	 */
-	public function add_support_for_page_excerpt() {
+	public function iis_pack_add_support_for_page_excerpt() {
 		$has_page_excerpts_support = post_type_supports( 'page', 'excerpt' );
 
 		if ( false === $has_page_excerpts_support ) {
@@ -93,7 +93,7 @@ class Iis_Pack_Admin {
 	 * @since  1.0.0
 	 * @since  1.0.1 CC-fält på images (class-images-meta.php)
 	 */
-	public function include_meta_fields() {
+	public function iis_pack_include_meta_fields() {
 		include_once 'partials/class-facebook.php';
 		include_once 'partials/class-twitter.php';
 		include_once 'partials/class-images-meta.php';
@@ -107,10 +107,20 @@ class Iis_Pack_Admin {
 	 * Lägger till möjlighet att ladda upp lokal avatar i Användarprofilen
 	 * @since 1.1 Är en kopia av gamla IIS Simple Local Avatars
 	 */
-	public function in_user_profile() {
+	public function iis_pack_in_user_profile() {
 		include_once 'partials/class-local-avatars.php';
 
 		call_simple_local_avatars();
+	}
+
+	/**
+	 * Funktioner som kan köras i samband med comments i admin
+	 * @since 1.4  Ta bort interna pingbacks iis_pack_comment_stuff
+	 */
+	public function iis_pack_comment_stuff() {
+		include_once 'partials/class-disable-internal-pingbacks.php';
+
+		call_disable_internal_pingbacks();
 	}
 
 	/**
@@ -138,7 +148,7 @@ class Iis_Pack_Admin {
 	 * Lägger till inställningar för vårt plugin under menyn Inställningar
 	 * @since 1.0.0
 	 */
-	public function add_options_page() {
+	public function iis_pack_add_options_page() {
 
 		$this->plugin_screen_hook_suffix = add_options_page(
 			__( 'IIS Pack Settings', 'iis-pack' ),

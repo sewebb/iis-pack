@@ -69,7 +69,7 @@ class Iis_Pack {
 	public function __construct() {
 
 		$this->plugin_name = 'iis-pack';
-		$this->version = '1.0.0';
+		$this->version = '1.4';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -151,26 +151,29 @@ class Iis_Pack {
 	 *
 	 * @since    1.0.0
 	 * @since    1.2.2 add_support_for_page_excerpt
+	 * @since    1.4   ta bort interna pingar pre_ping
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
 
 		$plugin_admin = new Iis_Pack_Admin( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_options_page' );
+		$this->loader->add_action( 'admin_menu', $plugin_admin, 'iis_pack_add_options_page' );
 		$this->loader->add_action( 'load-settings_page_iis-pack', $plugin_admin, 'iis_pack_add_help_tab' );
-		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_setting' );
+		$this->loader->add_action( 'admin_init', $plugin_admin, 'iis_pack_register_setting' );
 
 		// När vi vill ladda vår extra fält för pages, posts, custom post types & mediauppladdaren (CC-fält)
-		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'include_meta_fields' );
+		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'iis_pack_include_meta_fields' );
 
 		// Om det saknas support för featured image
-		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'add_support_for_featured_image' );
+		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'iis_pack_add_support_for_featured_image' );
 		// Om det saknas support för page excerpt
-		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'add_support_for_page_excerpt' );
+		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'iis_pack_add_support_for_page_excerpt' );
 
 		// I User profile
-		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'in_user_profile' );
+		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'iis_pack_in_user_profile' );
+
+		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'iis_pack_comment_stuff' );
 	}
 
 	/**
@@ -189,13 +192,14 @@ class Iis_Pack {
 
 		// Våra plugins finns som "sub"-plugg i /public/partials
 		// Kallas i class Iis_Plugins_Public
-		$this->loader->add_action( 'wp_head', $plugin_public, 'include_in_head' );
-		$this->loader->add_action( 'wp_footer', $plugin_public, 'include_in_footer' );
+		$this->loader->add_action( 'wp_head', $plugin_public, 'iis_pack_include_in_head' );
+		$this->loader->add_action( 'wp_footer', $plugin_public, 'iis_pack_include_in_footer' );
 
 		// Content filters. T.ex. filter för bilder så att vi kan visa licensdatan
-		$this->loader->add_action( 'the_post', $plugin_public, 'filter_the_content' );
+		$this->loader->add_action( 'the_post', $plugin_public, 'iis_pack_filter_the_content' );
 
-		$this->loader->add_action( 'init', $plugin_public, 'disable_all_emojis' );
+		$this->loader->add_action( 'init', $plugin_public, 'iis_pack_disable_all_emojis' );
+
 
 	}
 

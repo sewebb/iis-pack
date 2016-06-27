@@ -29,6 +29,10 @@ Installation
 
 Changelog
 =========
+#### 1.4
+* Tar bort interna pingbacks
+* Publika funktionsnamn ändradr till iis-pack_xxx
+
 #### 1.3.2
 * Anpassningar för när man är inloggad på kurser.iis
 * Städat bort gammal inline css som inte användes iaf (finns sedan länge ett stylesheet)
