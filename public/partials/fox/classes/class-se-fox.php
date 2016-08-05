@@ -64,6 +64,10 @@ class Se_Fox extends Se_Plugin_Base {
 			'hide_logo' => true,
 			'site'	    => 'kurser',
 		),
+		'www.datahotell.se' => array(
+			'hide_logo' => false,
+			'site'	    => 'datahotell',
+		),
 	);
 
 	/**
@@ -228,6 +232,18 @@ class Se_Fox extends Se_Plugin_Base {
 			'guider',
 		),
 		'kurser.iis.se' => array(
+			'domaner',
+			'webbstjarnan',
+			'bredbandskollen',
+			'internetdagarna',
+			'internetstatistik',
+			'soi',
+			'iisblogg',
+			'guider',
+			'internetfonden',
+			'internetmuseum',
+		),
+		'www.datahotell.se' => array(
 			'domaner',
 			'webbstjarnan',
 			'bredbandskollen',
