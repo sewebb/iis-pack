@@ -68,6 +68,10 @@ class Se_Fox extends Se_Plugin_Base {
 			'hide_logo' => false,
 			'site'	    => 'datahotell',
 		),
+		'webbpedagog.se' => array(
+			'hide_logo' => false,
+			'site'	    => 'webbpedagog',
+		),
 	);
 
 	/**
@@ -244,6 +248,18 @@ class Se_Fox extends Se_Plugin_Base {
 			'internetmuseum',
 		),
 		'www.datahotell.se' => array(
+			'domaner',
+			'webbstjarnan',
+			'bredbandskollen',
+			'internetdagarna',
+			'internetstatistik',
+			'soi',
+			'iisblogg',
+			'guider',
+			'internetfonden',
+			'internetmuseum',
+		),
+		'webbpedagog.se' => array(
 			'domaner',
 			'webbstjarnan',
 			'bredbandskollen',
