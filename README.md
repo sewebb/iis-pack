@@ -29,6 +29,9 @@ Installation
 
 Changelog
 =========
+#### 1.4.1
+* Sanera dåliga filnamn
+
 #### 1.4
 * Tar bort interna pingbacks
 * Publika funktionsnamn ändradr till iis-pack_xxx

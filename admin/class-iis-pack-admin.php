@@ -115,12 +115,24 @@ class Iis_Pack_Admin {
 
 	/**
 	 * Funktioner som kan köras i samband med comments i admin
+	 *
 	 * @since 1.4  Ta bort interna pingbacks iis_pack_comment_stuff
 	 */
 	public function iis_pack_comment_stuff() {
 		include_once 'partials/class-disable-internal-pingbacks.php';
 
 		call_disable_internal_pingbacks();
+	}
+
+	/**
+	 * Sanera dåliga filnamn
+	 *
+	 * @since 1.4.1  Santize filenames, gets called from class-iis-pack.php
+	 */
+	public function iis_pack_sanitize_filename() {
+		include_once 'partials/class-sanitize-filename.php';
+
+		call_sanitize_filename();
 	}
 
 	/**
