@@ -94,6 +94,8 @@ function share_buttons_after_content( $content ) {
 
 /**
  * [fast_social description]
+ *
+ * @since  1.4.2  Check hashtags for wrong format (#tagg #taggtwo -> tagg,taggtwo)
  * @param  [type] $atts [description]
  * @return [type]       [description]
  */
@@ -157,6 +159,11 @@ function fast_social( $atts ) {
 
 		if ( '' === $hashtags ) {
 			$hashtags = get_post_meta( $post->ID, 'twitter_page_hashtags', true );
+			if ( '' !== $hashtags ) {
+				$hashtags = str_replace( '#', '', $hashtags );
+				$hashtags = str_replace( ' ', ',', $hashtags );
+			}
+			_log( $hashtags );
 		}
 		if ( '' === $fbappid ) {
 			$fbappid = get_post_meta( $post->ID, 'facebook_page_app_id', true );

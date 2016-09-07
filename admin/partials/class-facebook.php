@@ -76,10 +76,11 @@ class FacebookMeta {
 	/**
 	 * Visa i admin
 	 * @since 1.0.0
+	 * @since 1.4.2 Sätter post_id på show_facebook_meta_box istf global post
 	 */
-	public function show_facebook_meta_box() {
+	public function show_facebook_meta_box( $post_id ) {
 		$facebook_meta_fields = $this->add_facebook_fields();
-		global $post;
+
 		// Use nonce for verification
 		wp_nonce_field( basename( __FILE__ ), 'facebook_meta_box_nonce' );
 
@@ -87,7 +88,7 @@ class FacebookMeta {
 		echo '<table class="form-table">';
 		foreach ( $facebook_meta_fields as $field ) {
 			// get value of this field if it exists for this post
-			$meta = get_post_meta( $post->ID, $field['id'], true );
+			$meta = get_post_meta( $post_id->ID, $field['id'], true );
 			// begin a table row with
 			echo '<tr>
 			<th><label for="' . $field['id'] . '">' . $field['label'] . '</label></th>

@@ -29,6 +29,9 @@ Installation
 
 Changelog
 =========
+#### 1.4.2
+* Buggfix för FaceBook & Twitterboxar på Evenemang IND
+
 #### 1.4.1
 * Sanera dåliga filnamn
 

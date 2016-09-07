@@ -32,6 +32,7 @@ class TwitterMeta {
 	 * Lägger till metaboxen i admin
 	 * @since 1.0.0
 	 * @since 1.0.1 Visa inte i bilagesidan
+	 * @since 1.4.2 Sätter post_id på show_twitter_meta istf global post
 	 * @param string $post_type sätt till de typer vi behöver
 	 */
 	public function add_twitter_meta_box( $post_type ) {
@@ -77,9 +78,8 @@ class TwitterMeta {
 	 * Visa i admin
 	 * @since 1.0.0
 	 */
-	public function show_twitter_meta_box() {
+	public function show_twitter_meta_box( $post_id ) {
 		$twitter_meta_fields = $this->add_twitter_fields();
-		global $post;
 		// Use nonce for verification
 		wp_nonce_field( basename( __FILE__ ), 'twitter_meta_box_nonce' );
 
@@ -87,7 +87,7 @@ class TwitterMeta {
 		echo '<table class="form-table">';
 		foreach ( $twitter_meta_fields as $field ) {
 			// get value of this field if it exists for this post
-			$meta = get_post_meta( $post->ID, $field['id'], true );
+			$meta = get_post_meta( $post_id->ID, $field['id'], true );
 			// begin a table row with
 			echo '<tr>
 			<th><label for="' . $field['id'] . '">' . $field['label'] . '</label></th>
@@ -147,5 +147,4 @@ class TwitterMeta {
 			}
 		} // end foreach
 	}
-
 } // END class
