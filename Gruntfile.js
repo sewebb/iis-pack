@@ -293,21 +293,21 @@ module.exports = function(grunt) {
 					host: '<%= rsync.options.hostservers.prodserver %>'
 				}
 			},
-			// Speciella hostservrar och sökvägar för webbpedagog.se
-			stage_webbpedagog: {
-				options: {
-					dest: '<%= rsync.options.basefolder %>webbpedagog.se<%= rsync.options.pluginfolder %>',
-					// TODO correct server
-					// host: 'www-adm@extweb5.iis.se'
-				}
-			},
-			prod_webbpedagog: {
-				options: {
-					dest: '<%= rsync.options.basefolder %>webbpedagog.se<%= rsync.options.pluginfolder %>',
-					// TODO correct server
-					// host: 'www-adm@extweb6.iis.se'
-				}
-			},
+			// // Speciella hostservrar och sökvägar för webbpedagog.se
+			// stage_webbpedagog: {
+			// 	options: {
+			// 		dest: '<%= rsync.options.basefolder %>webbpedagog.se<%= rsync.options.pluginfolder %>',
+			// 		// TODO correct server
+			// 		// host: 'www-adm@extweb5.iis.se'
+			// 	}
+			// },
+			// prod_webbpedagog: {
+			// 	options: {
+			// 		dest: '<%= rsync.options.basefolder %>webbpedagog.se<%= rsync.options.pluginfolder %>',
+			// 		// TODO correct server
+			// 		// host: 'www-adm@extweb6.iis.se'
+			// 	}
+			// },
 			//nästa sajt som ska gå att deploya till
 		},
 		slack: {
@@ -417,13 +417,13 @@ module.exports = function(grunt) {
 			prod_kurser: {
 				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
 			},
-			// webbpedagog.se
-			stage_webbpedagog: {
-				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
-			},
-			prod_webbpedagog: {
-				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
-			},
+			// // webbpedagog.se
+			// stage_webbpedagog: {
+			// 	text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
+			// },
+			// prod_webbpedagog: {
+			// 	text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
+			// },
 			//nästa sajt som ska gå att deploya till
 		},
 		version: {
@@ -472,7 +472,7 @@ module.exports = function(grunt) {
 		grunt.task.run('uglify');
 		grunt.task.run('version');
 		grunt.task.run('gitinfo');
-		grunt.task.run('slack:' + target);
+		// grunt.task.run('slack:' + target);
 		grunt.task.run('rsync:' + target);
 	});
 

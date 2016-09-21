@@ -163,7 +163,6 @@ function fast_social( $atts ) {
 				$hashtags = str_replace( '#', '', $hashtags );
 				$hashtags = str_replace( ' ', ',', $hashtags );
 			}
-			_log( $hashtags );
 		}
 		if ( '' === $fbappid ) {
 			$fbappid = get_post_meta( $post->ID, 'facebook_page_app_id', true );

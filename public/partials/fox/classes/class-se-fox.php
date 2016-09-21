@@ -72,6 +72,10 @@ class Se_Fox extends Se_Plugin_Base {
 			'hide_logo' => false,
 			'site'	    => 'webbpedagog',
 		),
+		'zonemaster.iis.se' => array(
+			'hide_logo' => false,
+			'site'	    => 'zonemaster',
+		),
 	);
 
 	/**
@@ -271,6 +275,18 @@ class Se_Fox extends Se_Plugin_Base {
 			'internetfonden',
 			'internetmuseum',
 		),
+		'zonemaster.iis.se' => array(
+			'domaner',
+			'webbstjarnan',
+			'bredbandskollen',
+			'internetdagarna',
+			'internetstatistik',
+			'soi',
+			'iisblogg',
+			'guider',
+			'internetfonden',
+			'internetmuseum',
+		),
 	);
 
 	/**
@@ -399,9 +415,12 @@ class Se_Fox extends Se_Plugin_Base {
 		$domain = str_replace( '.dev', '.se', $domain );
 		$domain = str_replace( 'local.', 'www.', $domain );
 		$domain = str_replace( 'vvv.kurser.se', 'kurser.iis.se', $domain );
+		$domain = str_replace( 'vvv.zonemaster.se', 'zonemaster.iis.se', $domain );
 		$domain = str_replace( 'vvv.', 'www.', $domain );
 		$domain = str_replace( 'www.stage.', 'www.', $domain );
 		$domain = str_replace( 'stage.arkiv.', 'arkiv.', $domain );
+		$domain = str_replace( 'stage.zonemaster.', 'zonemaster.', $domain );
+		$domain = str_replace( 'stage.internetdagarna.', 'internetdagarna.', $domain );
 		$domain = str_replace( 'stage.', 'www.', $domain );
 		$domain = str_replace( 'iis.web1.common.', 'www.', $domain );
 		$domain = str_replace( 'soi.se', 'www.soi2015.se', $domain );

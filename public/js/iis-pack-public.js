@@ -76,6 +76,12 @@
 		} else {
 		  $("body").addClass("pc");
 		}
+		// Edge browsers, InternetMuseum for now
+		if (navigator.userAgent.indexOf('Chrome') != -1 || navigator.userAgent.indexOf('Safari') != -1) {
+			$("body").addClass("chrome-safari");
+		} else {
+			$("body").addClass("not-cr-saf");
+		}
 
 		// START avsnitt for Fast Social Share
 	    socialclick(this);
