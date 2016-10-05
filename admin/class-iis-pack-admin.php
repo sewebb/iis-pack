@@ -18,7 +18,7 @@
  *
  * @package    Iis_Pack
  * @subpackage Iis_Pack/admin
- * @author     The IIS Team <webbgruppen@iis.se>
+ * @author     IIS Web Team <webbgruppen@iis.se>
  */
 class Iis_Pack_Admin {
 	/**
@@ -502,21 +502,12 @@ class Iis_Pack_Admin {
 	}
 
 	/**
-	 * Underrubrik Fast Social Share
+	 * Underrubrik Fast Social share
 	 *
 	 * @since  1.0.2
 	 */
 	public function iis_pack_fast_social_share_cb() {
 		echo '<p>' . __( 'Choose where social share buttons should be shown. See Help menu for more info (under "Hi, {logged in user}")', 'iis-pack' ) . '</p>';
-	}
-
-	/**
-	 * Underrubrik Bildattribution
-	 *
-	 * @since  1.0.1
-	 */
-	public function iis_pack_object_credits_cb() {
-		echo '<p>' . __( 'Should this site fetch and print attachement credits ', 'iis-pack' ) . '</p>';
 	}
 
 	/**
@@ -526,42 +517,6 @@ class Iis_Pack_Admin {
 	 */
 	public function iis_pack_og_tags_cb() {
 		echo '<p>' . __( 'Settings for Facebook open graph tags per site ', 'iis-pack' ) . '</p>';
-	}
-
-	/**
-	 * Underrubrik Twitter cards
-	 *
-	 * @since  1.0.0
-	 */
-	public function iis_pack_twitter_cards_cb() {
-		echo '<p>' . __( 'Global settings for Twitter Cards', 'iis-pack' ) . '</p>';
-	}
-
-	/**
-	 * Underrubrik Google Analytics
-	 *
-	 * @since  1.0.0
-	 */
-	public function iis_pack_google_analytics_cb() {
-		echo '<p>' . __( 'Settings for Google Analytics', 'iis-pack' ) . '</p>';
-	}
-
-	/**
-	 * Underrubrik Fox menyn
-	 *
-	 * @since  1.0.0
-	 */
-	public function iis_pack_fox_menu_cb() {
-		echo '<p>' . __( 'Should this site show the Fox menu on top of pages?', 'iis-pack' ) . '</p>';
-	}
-
-	/**
-	 * Underrubrik Other stuff
-	 *
-	 * @since  1.0.0
-	 */
-	public function iis_pack_other_stuff_cb() {
-		echo '<p>' . __( 'Bits and pieces', 'iis-pack' ) . '</p>';
 	}
 
 	// INPUT FÄLT

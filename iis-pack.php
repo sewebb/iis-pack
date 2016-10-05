@@ -15,9 +15,9 @@
  * @wordpress-plugin
  * Plugin Name:       IIS Pack
  * Plugin URI:        https://www.iis.se
- * Description:       Gemensamma plugin för IIS sajter: GA, OG-taggar, Bildattribution, Share buttons, Foxmeny, Lokala Avatarer etc
+ * Description:       Gemensamma plugins för IIS sajter: GA, OG-taggar, bildattribution, dela-knappar, Foxmeny, lokala avatarer etc
  * Version:           1.4.2
- * Author:            The IIS Team
+ * Author:            IIS Web Team
  * Author URI:        https://www.iis.se
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt

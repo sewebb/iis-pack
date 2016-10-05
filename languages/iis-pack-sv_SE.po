@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IIS Pack\n"
 "POT-Creation-Date: 2016-06-08 08:05+0200\n"
-"PO-Revision-Date: 2016-06-08 08:07+0200\n"
+"PO-Revision-Date: 2016-10-05 22:21+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 1.8.9\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: iis-pack.php\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -72,7 +72,7 @@ msgstr ""
 "eller sidmallar.\n"
 "\t\t\t\t\tTill exempel, om du inte vill ha knapparna på vanliga sidor, lägg "
 "till \"<code>page</code>\" i  <em>”Lägg inte ut på typerna”</em> fältet\n"
-"\t\t\t\t\tEller om du använder en special sidmall för att visa t.ex. "
+"\t\t\t\t\tEller om du använder en special sidmall för att visa t ex "
 "internetguider - ange \"<code>guide</code>\" i fältet. (Eller en kombination "
 "\"<code>page,guide</code>\")</code></p>\n"
 "\t\t\t\t\t<p><em>”Aktivera”</em>-inställningen är standard för hela sajten. "
@@ -181,7 +181,7 @@ msgstr "ev. Facebook Admin(s)"
 
 #: admin/class-iis-pack-admin.php:395 admin/partials/class-twitter.php:42
 msgid "Twitter Cards"
-msgstr "Twitter Kort"
+msgstr "Twitter-kort"
 
 #: admin/class-iis-pack-admin.php:402
 msgid "Twitter site"
@@ -205,11 +205,11 @@ msgstr "Använd Foxmenyn?"
 
 #: admin/class-iis-pack-admin.php:452
 msgid "Other stuff"
-msgstr "Andra inställningar"
+msgstr "Övrigt"
 
 #: admin/class-iis-pack-admin.php:459
 msgid "Remove emoji scripts"
-msgstr "Avlägsna emoji skript"
+msgstr "Ta bort emoji-script"
 
 #: admin/class-iis-pack-admin.php:467
 msgid "Local Profile Picture"
@@ -220,7 +220,7 @@ msgid ""
 "Only allow users with file upload capabilities to upload local profile "
 "pictures (Authors and above)"
 msgstr ""
-"Kryssa i om enbart Författare och uppåt ska få lov att ändra sina "
+"Kryssa i om enbart ”Författare” och uppåt ska få lov att ändra sina "
 "profilbilder."
 
 #: admin/class-iis-pack-admin.php:488
@@ -228,8 +228,8 @@ msgid ""
 "Choose where social share buttons should be shown. See Help menu for more "
 "info (under \"Hi, {logged in user}\")"
 msgstr ""
-"Välj var knapparna för att dela på social nätverk ska synas. Se “Hjälp” för "
-"mer info. (Uppe till höger på denna sidan)"
+"Välj var knapparna för att dela på social nätverk ska synas. Se “Hjälp” uppe "
+"till höger på denna sidan för mer info."
 
 #: admin/class-iis-pack-admin.php:497
 msgid "Should this site fetch and print attachement credits "
@@ -241,29 +241,13 @@ msgstr ""
 msgid "Settings for Facebook open graph tags per site "
 msgstr "Inställningar för Facebook open graph-taggar per webbplats"
 
-#: admin/class-iis-pack-admin.php:515
-msgid "Global settings for Twitter Cards"
-msgstr "Globala inställningar för Twitter kort"
-
-#: admin/class-iis-pack-admin.php:524
-msgid "Settings for Google Analytics"
-msgstr "Inställningar för Google Analytics"
-
-#: admin/class-iis-pack-admin.php:533
-msgid "Should this site show the Fox menu on top of pages?"
-msgstr "Ska sajten visa Foxmenyn överst på sidorna? (i 99,99% av fallen - JA!)"
-
-#: admin/class-iis-pack-admin.php:542
-msgid "Bits and pieces"
-msgstr "Lite av varje"
-
 #: admin/class-iis-pack-admin.php:573
 msgid ""
 "Add post types to be avoided if above setting is set to Print before or "
 "Print after content. (ex: se-tech,guide)"
 msgstr ""
 "Lägg till posttyper som inte ska få knapparna utskrivna om något av “Lägg "
-"ut”-valen ovan är valt"
+"ut”-valen ovan är valt."
 
 #: admin/class-iis-pack-admin.php:574 admin/class-iis-pack-admin.php:587
 msgid "( <em>see help menu</em> ) "
@@ -278,11 +262,11 @@ msgstr ""
 
 #: admin/class-iis-pack-admin.php:622
 msgid "Show Object Attribution"
-msgstr "Visa Bildattribution under bilder"
+msgstr "Visa"
 
 #: admin/class-iis-pack-admin.php:627
 msgid "Hide Object Attribution"
-msgstr "Dölj Bildattribution under bilder"
+msgstr "Dölj"
 
 #: admin/class-iis-pack-admin.php:646
 msgid ""
@@ -295,11 +279,11 @@ msgstr ""
 
 #: admin/class-iis-pack-admin.php:658
 msgid "Complete url. Default image is IIS logo"
-msgstr "Fullständig sökväg till bilden. Standardbilden är IIS logotyp"
+msgstr "Fullständig sökväg till bilden. IIS logotyp visas som standard."
 
 #: admin/class-iis-pack-admin.php:672
 msgid "https (SSL)"
-msgstr "https (SSL)"
+msgstr "https"
 
 #: admin/class-iis-pack-admin.php:677
 msgid "http"
@@ -308,22 +292,22 @@ msgstr "http"
 #: admin/class-iis-pack-admin.php:701
 msgid "If the site has more than one admin, seperate them with comma (,)"
 msgstr ""
-"Om sajten har mer än en Facebookadministratör - använd kommatecken för att "
-"avgränsa indämmer [ex 12,34,56]"
+"Om sajten har mer än en Facebook-administratör så används kommatecken som "
+"avskiljare, t ex ”12,34,56”."
 
 #: admin/class-iis-pack-admin.php:712
 msgid "The sites main account, for example @iis on www.iis.se"
 msgstr ""
-"Sajten huvudsakliga Twitter-konto, t.ex. @iis för www.iis.se eller "
-"@internetmuseum för internetmuseum.se"
+"Sajtens huvudsakliga Twitter-konto, t ex @iis för www.iis.se eller "
+"@internetmuseum för internetmuseum.se."
 
 #: admin/class-iis-pack-admin.php:736
 msgid "Show Fox menu"
-msgstr "Visa Foxmenyn"
+msgstr "Visa"
 
 #: admin/class-iis-pack-admin.php:741
 msgid "Hide Fox menu"
-msgstr "Dölj Foxmenyn"
+msgstr "Dölj"
 
 #: admin/class-iis-pack-admin.php:758
 msgid "Remove emojis (default)"
@@ -343,7 +327,7 @@ msgstr "Alternativ og:title"
 
 #: admin/partials/class-facebook.php:57
 msgid "If you want a different title for the page when shared on FaceBook"
-msgstr "Om du vill ha en annan titel för sidan när delas på FaceBook"
+msgstr "Anpassad titel för sidan när den delas på Facebook."
 
 #: admin/partials/class-facebook.php:62
 msgid "og:description"
@@ -351,7 +335,7 @@ msgstr "og: description"
 
 #: admin/partials/class-facebook.php:63
 msgid "Add a nice descriptive text then page is shared on Facebook"
-msgstr "Lägg till en trevlig beskrivande text då sida delas på Facebook"
+msgstr "Anpassad beskrivande text för sidan när den delas på Facebook."
 
 #: admin/partials/class-facebook.php:68
 msgid "FB App id"
@@ -362,8 +346,7 @@ msgid ""
 "If this page belongs to a special App ID (for example internetguider) - add "
 "idnumber"
 msgstr ""
-"Om just den här sidan tillhör ett speciellt App id (t.ex. internetguider) - "
-"lägg till FB idnummer"
+"Om just den här sidan tillhör ett speciellt App ID (t ex Internetguider)."
 
 #: admin/partials/class-images-meta.php:20
 msgid "Object URL"
@@ -379,11 +362,11 @@ msgstr "Bildens namn"
 
 #: admin/partials/class-images-meta.php:33
 msgid "License (ex. CC-BY)"
-msgstr "Licenstyp (t.ex. CC BY)"
+msgstr "Licenstyp (t ex CC BY)"
 
 #: admin/partials/class-images-meta.php:39
 msgid "License field is required"
-msgstr "Licensefältet är obligatoriskt"
+msgstr "Licensfältet är obligatoriskt."
 
 #: admin/partials/class-images-meta.php:45
 msgid "License URL"
@@ -401,7 +384,7 @@ msgstr "Fotografens URL"
 msgid ""
 "Locale Profile Picture.  Replaces your Gravatar picture ONLY FOR THIS SITE."
 msgstr ""
-"Sajspecifik Profilbild. Ersätter din Gravatarbild - men enbart på denna "
+"Sajtspecifik profilbild. Ersätter din Gravatarbild - men enbart på denna "
 "sajten."
 
 #: admin/partials/class-local-avatars.php:115
@@ -414,7 +397,7 @@ msgid ""
 "for this site."
 msgstr ""
 "Ingen lokal profilbild är vald. Använd uppladdningsknappen för att lägga "
-"till en egen lokal profilbild / avatar för denna sajten."
+"till en egen lokal profilbild för denna sajten."
 
 #: admin/partials/class-local-avatars.php:133
 msgid "Delete local profile picture"
@@ -426,15 +409,15 @@ msgid ""
 "local profile picture (falling back to a Gravatar) by checking the delete "
 "option."
 msgstr ""
-"Ersätt den lokala profilbilden genom att ladda upp en ny bild. Eller ta bort "
-"den lokala bilden genom att kryssa i Ta bort. Gravatarbilden (om du har en "
-"sådan) kommer att användas istället."
+"Ersätt den lokala profilbilden genom att ladda upp en ny bild. Ta bort den "
+"lokala bilden genom att kryssa i ”Ta bort”, har du en ”Gravatar” kommer den "
+"i så fall att visas istället."
 
 #: admin/partials/class-local-avatars.php:139
 msgid "No local avatar is set. Set up your avatar at Gravatar.com."
 msgstr ""
 "Ingen lokal profilbild finns. Du kan skapa en på gravatar.com som är kopplad "
-"till din e-postadress"
+"till din e-postadress."
 
 #: admin/partials/class-local-avatars.php:142
 msgid ""
@@ -442,7 +425,7 @@ msgid ""
 "picture, contact the blog administrator."
 msgstr ""
 "Du kan tyvärr inte själv byta din lokala profilbild. Kontakta "
-"administratören för din sajt så kan hen hjälpa till."
+"administratören för hjälp."
 
 #: admin/partials/class-twitter.php:56
 msgid "Alternative twitter:title"
@@ -453,8 +436,8 @@ msgid ""
 "If you want a different title for the page when shared on Twitter. If you "
 "want the same as on Facebook - just leave it empty"
 msgstr ""
-"Om du vill ha en annan titel för sidan när den delas på Twitter. Om du vill "
-"ha samma som på Facebook - lämna fältet tomt"
+"Anpassad titel för sidan när den delas på Twitter. Om du vill ha samma som "
+"på Facebook - lämna fältet tomt."
 
 #: admin/partials/class-twitter.php:62
 msgid "twitter:description"
@@ -465,8 +448,8 @@ msgid ""
 "Add a nice descriptive text then page is shared on Twitter. If you want the "
 "same as on Facebook - just leave it empty"
 msgstr ""
-"Lägg till en trevlig beskrivande text då sidas delas på Twitter. Om du vill "
-"ha samma som på Facebook - lämna fältet tomt"
+"Anpassad beskrivande text för sidan när den delas på Twitter. Om du vill ha "
+"samma som på Facebook - lämna fältet tomt."
 
 #: admin/partials/class-twitter.php:68
 msgid "Hashtags"
@@ -477,8 +460,8 @@ msgid ""
 "Add hashtags for this page. If more than one - seperate with comma, no "
 "spaces. (internetguider,iis)"
 msgstr ""
-"Lägg till hashtaggar för den här sidan. Om du har mer en en - separera med "
-"kommatecken utan mellanslag. (internetguider,iis)"
+"Lägg till hashtaggar för den här sidan. Om du har mer en en så separera med "
+"kommatecken utan mellanslag, t ex ”internetguider,iis”."
 
 #: public/partials/add-license-to-images.php:62
 #: public/partials/add-license-to-images.php:134
@@ -505,12 +488,12 @@ msgid ""
 "Gemensamma plugin för IIS sajter: GA, OG-taggar, Bildattribution, Share "
 "buttons, Foxmeny, Lokala Avatarer etc"
 msgstr ""
-"Gemensamma plugin för IIS sajter: GA, OG-taggar, Bildattribution, Share "
-"buttons, Foxmeny, Lokala Avatarer etc"
+"Gemensamma plugins för IIS sajter: GA, OG-taggar, bildattribution, dela-"
+"knappar, Foxmeny, lokala avatarer etc."
 
 #. Author of the plugin/theme
 msgid "The IIS Team"
-msgstr "The IIS Team"
+msgstr "IIS Web Team"
 
 #~ msgid ""
 #~ "Complete url. Try to get from static.iis.se Default image is IIS logo"
