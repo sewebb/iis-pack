@@ -76,6 +76,10 @@ class Se_Fox extends Se_Plugin_Base {
 			'hide_logo' => false,
 			'site'	    => 'zonemaster',
 		),
+		'statistik.bredbandskollen.se' => array(
+			'hide_logo' => false,
+			'site'	    => 'statistikbredbandskollen',
+		),
 	);
 
 	/**
@@ -276,6 +280,18 @@ class Se_Fox extends Se_Plugin_Base {
 			'internetmuseum',
 		),
 		'zonemaster.iis.se' => array(
+			'domaner',
+			'webbstjarnan',
+			'bredbandskollen',
+			'internetdagarna',
+			'internetstatistik',
+			'soi',
+			'iisblogg',
+			'guider',
+			'internetfonden',
+			'internetmuseum',
+		),
+		'statistik.bredbandskollen.se' => array(
 			'domaner',
 			'webbstjarnan',
 			'bredbandskollen',
