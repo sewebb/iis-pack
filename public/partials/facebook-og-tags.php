@@ -117,7 +117,9 @@ if ( is_singular() || is_home() || is_archive() || is_front_page() ) {
 
 
 		if ( empty( $str_title ) ) {
-			$str_title = trim( wp_title( '', false, 'right' ) );
+
+			$str_title = trim( wp_title( ' ', false, 'right' ) );
+			$str_title = apply_filters( 'pre_get_document_title', $str_title, $post->ID );
 		}
 
 		$str_title = (strlen( $str_title ) > 0 && ! is_404() ) ? $str_title : get_bloginfo( 'name' );
