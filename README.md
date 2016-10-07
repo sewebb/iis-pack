@@ -29,6 +29,10 @@ Installation
 
 Changelog
 =========
+#### 1.4.3
+* New Translations of texts by @rich_brat
+* Pages (for example Sajtkollen) can modify og:title
+
 #### 1.4.2
 * Buggfix för FaceBook & Twitterboxar på Evenemang IND
 

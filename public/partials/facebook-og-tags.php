@@ -117,8 +117,9 @@ if ( is_singular() || is_home() || is_archive() || is_front_page() ) {
 
 
 		if ( empty( $str_title ) ) {
-
 			$str_title = trim( wp_title( ' ', false, 'right' ) );
+			// If site wants to modify title
+			// @since      1.4.3
 			$str_title = apply_filters( 'pre_get_document_title', $str_title, $post->ID );
 		}
 
