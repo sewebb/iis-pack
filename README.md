@@ -29,6 +29,9 @@ Installation
 
 Changelog
 =========
+#### 1.4.4
+* www.soi2016.se added to fox (not actual meny, just site being able to show fox)
+
 #### 1.4.3
 * New Translations of texts by @rich_brat
 * Pages (for example Sajtkollen) can modify og:title

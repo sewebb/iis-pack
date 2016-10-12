@@ -80,6 +80,10 @@ class Se_Fox extends Se_Plugin_Base {
 			'hide_logo' => false,
 			'site'	    => 'statistikbredbandskollen',
 		),
+		'www.soi2016.se' => array(
+			'hide_logo' => false,
+			'site'	    => 'soi2016',
+		),
 	);
 
 	/**
@@ -298,6 +302,17 @@ class Se_Fox extends Se_Plugin_Base {
 			'internetdagarna',
 			'internetstatistik',
 			'soi',
+			'iisblogg',
+			'guider',
+			'internetfonden',
+			'internetmuseum',
+		),
+		'www.soi2016.se' => array(
+			'domaner',
+			'webbstjarnan',
+			'bredbandskollen',
+			'internetdagarna',
+			'internetstatistik',
 			'iisblogg',
 			'guider',
 			'internetfonden',
