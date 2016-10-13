@@ -293,6 +293,19 @@ module.exports = function(grunt) {
 					host: '<%= rsync.options.hostservers.prodserver %>'
 				}
 			},
+			// statistik.bredbandskollen.se
+			stage_statistik_bbk: {
+				options: {
+					dest: '<%= rsync.options.basefolder %>stage.statistik.bredbandskollen.se<%= rsync.options.pluginfolder %>',
+					host: '<%= rsync.options.hostservers.stageserver %>'
+				}
+			},
+			prod_statistik_bbk: {
+				options: {
+					dest: '<%= rsync.options.basefolder %>statistik.bredbandskollen.se<%= rsync.options.pluginfolder %>',
+					host: '<%= rsync.options.hostservers.prodserver %>'
+				}
+			},
 			// // Speciella hostservrar och sökvägar för webbpedagog.se
 			// stage_webbpedagog: {
 			// 	options: {
@@ -417,6 +430,13 @@ module.exports = function(grunt) {
 			prod_kurser: {
 				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
 			},
+			// statistik.bredbandskollen.se
+			stage_statistik_bbk: {
+				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
+			},
+			prod_statistik_bbk: {
+				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
+			},
 			// // webbpedagog.se
 			// stage_webbpedagog: {
 			// 	text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
@@ -425,6 +445,12 @@ module.exports = function(grunt) {
 			// 	text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
 			// },
 			//nästa sajt som ska gå att deploya till
+			stage_all: {
+				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
+			},
+			prod_all: {
+				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
+			},
 		},
 		version: {
 			assets: {
@@ -472,8 +498,47 @@ module.exports = function(grunt) {
 		grunt.task.run('uglify');
 		grunt.task.run('version');
 		grunt.task.run('gitinfo');
-		// grunt.task.run('slack:' + target);
+		grunt.task.run('slack:' + target);
 		grunt.task.run('rsync:' + target);
+	});
+
+	// task needs to be updated with new sites when they are added
+	grunt.registerTask('deploy_all', 'deploy code to stage or prod -all sites', function(target) {
+		if (target == null) {
+			return grunt.warn('Build target must be specified, like deploy_all:stage_all');
+		}
+		var deploy_env = 'stage_';
+		if (target === 'prod_all') {
+			deploy_env = 'prod_'
+		}
+		grunt.task.run('clean');
+		grunt.task.run('sass');
+		grunt.task.run('cssmin');
+		grunt.task.run('uglify');
+		grunt.task.run('version');
+		grunt.task.run('gitinfo');
+		grunt.task.run('rsync:' + deploy_env + 'sajtkollen');
+		grunt.task.run('rsync:' + deploy_env + 'webbstjarnan');
+		grunt.task.run('rsync:' + deploy_env + 'iis');
+		grunt.task.run('rsync:' + deploy_env + 'internetdagarna');
+		grunt.task.run('rsync:' + deploy_env + 'internetfonden');
+		grunt.task.run('rsync:' + deploy_env + 'internetstatistik');
+		grunt.task.run('rsync:' + deploy_env + 'internetmuseum');
+		grunt.task.run('rsync:' + deploy_env + 'soi2013');
+		grunt.task.run('rsync:' + deploy_env + 'sambi');
+		grunt.task.run('rsync:' + deploy_env + 'sedirekt');
+		grunt.task.run('rsync:' + deploy_env + 'skolfederation');
+		grunt.task.run('rsync:' + deploy_env + 'internetarkiv');
+		grunt.task.run('rsync:' + deploy_env + 'datahotell');
+		grunt.task.run('rsync:' + deploy_env + 'kurser');
+		grunt.task.run('rsync:' + deploy_env + 'zonemaster');
+		//statistik_bbk lacks stage
+		if ( deploy_env === 'prod_' ) {
+			grunt.task.run('rsync:' + deploy_env + 'statistik_bbk');
+		}
+
+		grunt.task.run('slack:' + target);
+
 	});
 
 	// Register tasks
