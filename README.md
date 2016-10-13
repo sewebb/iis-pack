@@ -29,6 +29,9 @@ Installation
 
 Changelog
 =========
+#### 1.4.5
+* soi links to soi2016
+
 #### 1.4.4
 * www.soi2016.se added to fox (not actual meny, just site being able to show fox)
 

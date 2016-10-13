@@ -361,11 +361,11 @@ class Se_Fox extends Se_Plugin_Base {
 			'linktext' => 'Till internetstatistik.se',
 		),
 		'soi' => array(
-			'link' => 'http://www.soi2015.se',
+			'link' => 'http://www.soi2016.se',
 			'hashtags' => '',
 			'name' => 'Svenskarna & internet',
 			'content' => 'Sveriges viktigaste undersökning om svenskarnas internetvanor',
-			'linktext' => 'Till soi2015.se',
+			'linktext' => 'Till soi2016.se',
 		),
 		'iisblogg' => array(
 			'link' => 'https://www.iis.se/blogg',
@@ -454,7 +454,7 @@ class Se_Fox extends Se_Plugin_Base {
 		$domain = str_replace( 'stage.internetdagarna.', 'internetdagarna.', $domain );
 		$domain = str_replace( 'stage.', 'www.', $domain );
 		$domain = str_replace( 'iis.web1.common.', 'www.', $domain );
-		$domain = str_replace( 'soi.se', 'www.soi2015.se', $domain );
+		$domain = str_replace( 'soi.se', 'www.soi2016.se', $domain );
 		return $domain;
 	}
 
