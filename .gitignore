@@ -1,10 +1,10 @@
 # Sajtspecifikt
 public/js/iis-pack-public.min.js
-public/js/iis-pack-public.*.min.js
+# public/js/iis-pack-public.*.min.js
 
 public/css/iis-pack-public.css
 public/css/iis-pack-public.min.css
-public/css/iis-pack-public.*.min.css
+# public/css/iis-pack-public.*.min.css
 
 # Mac OS X stuff
 .DS_Store
