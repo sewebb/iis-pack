@@ -446,10 +446,10 @@ module.exports = function(grunt) {
 			// },
 			//nästa sajt som ska gå att deploya till
 			stage_all: {
-				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
+				text: '[IIS Pack] Trying to deploy to all stage sites. Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
 			},
 			prod_all: {
-				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
+				text: '[IIS Pack] Trying to deploy to all prod sites. Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
 			},
 		},
 		version: {
@@ -511,6 +511,9 @@ module.exports = function(grunt) {
 		if (target === 'prod_all') {
 			deploy_env = 'prod_'
 		}
+
+		// grunt.task.run('slack:' + target);
+
 		grunt.task.run('clean');
 		grunt.task.run('sass');
 		grunt.task.run('cssmin');
@@ -536,8 +539,6 @@ module.exports = function(grunt) {
 		if ( deploy_env === 'prod_' ) {
 			grunt.task.run('rsync:' + deploy_env + 'statistik_bbk');
 		}
-
-		grunt.task.run('slack:' + target);
 
 	});
 
