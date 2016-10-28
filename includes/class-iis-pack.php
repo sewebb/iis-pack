@@ -69,7 +69,7 @@ class Iis_Pack {
 	public function __construct() {
 
 		$this->plugin_name = 'iis-pack';
-		$this->version = '1.4.4';
+		$this->version = '1.4.6';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -176,6 +176,8 @@ class Iis_Pack {
 		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'iis_pack_comment_stuff' );
 		// Admin, filnamn
 		$this->loader->add_action( 'plugins_loaded', $plugin_admin, 'iis_pack_sanitize_filename' );
+
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'iis_pack_admin_enqueue_scripts' );
 	}
 
 	/**
