@@ -29,6 +29,9 @@ Installation
 
 Changelog
 =========
+#### 1.4.6
+* Getting data from Flickr is now done with javascript and gives users feedback
+
 #### 1.4.5
 * soi links to soi2016
 
