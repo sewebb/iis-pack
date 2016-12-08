@@ -455,7 +455,11 @@ class Se_Fox extends Se_Plugin_Base {
 
 	function get_site_config() {
 		$domain = $this::get_fox_domain();
-		return self::$fox_site_config[ $domain ];
+		$domain_is_declared = isset( self::$fox_mapping[ $domain ] );
+		if ( $domain_is_declared ) {
+			return self::$fox_site_config[ $domain ];
+		}
+
 	}
 
 	function add_foxbar() {
@@ -496,30 +500,34 @@ class Se_Fox extends Se_Plugin_Base {
 
 				<ul class="brand-nav-list">
 					<?php
-					foreach ( self::$fox_mapping[ $domain ] as $fox_item ) :
-						$fi   = self::$fox_items[ $fox_item ];
-						$link = $fi['link'];
-						// Vi vill inte ha med 'utm_source' när det är "interna" IIS-länkar
-						if ( 'www_iis_se' === $utm_source && strpos( $link, 'www.iis.se' ) !== false ) {
-							$link_utm_source = '';
-						} else {
-							$link_utm_source = '&utm_source=' . $utm_source;
-						}
+					$domain_is_declared = isset( self::$fox_mapping[ $domain ] );
+					if ( $domain_is_declared ) {
+						foreach ( self::$fox_mapping[ $domain ] as $fox_item ) :
+							$fi   = self::$fox_items[ $fox_item ];
+							$link = $fi['link'];
+							// Vi vill inte ha med 'utm_source' när det är "interna" IIS-länkar
+							if ( 'www_iis_se' === $utm_source && strpos( $link, 'www.iis.se' ) !== false ) {
+								$link_utm_source = '';
+							} else {
+								$link_utm_source = '&utm_source=' . $utm_source;
+							}
 
-						?>
-						<li>
-							<a href="<?php echo $link; ?>?utm_medium=fox&utm_campaign=Fox<?php echo $fi['hashtags']; ?><?php echo $link_utm_source; ?>" class="brand-nav-headline"><?php echo $fi['name']; ?></a>
-								<section>
-								<a href="<?php echo $link; ?>?utm_medium=fox&utm_campaign=Fox<?php echo $fi['hashtags']; ?><?php echo $link_utm_source; ?>">
-									<span class="linkedelement">
-										<span class="filcontent"><?php echo $fi['content']; ?></span>
-										<span class="fillinktext"><?php echo $fi['linktext']; ?> ›</span>
-									</span>
-								</a>
-								</section>
+							?>
+							<li>
+								<a href="<?php echo $link; ?>?utm_medium=fox&utm_campaign=Fox<?php echo $fi['hashtags']; ?><?php echo $link_utm_source; ?>" class="brand-nav-headline"><?php echo $fi['name']; ?></a>
+									<section>
+									<a href="<?php echo $link; ?>?utm_medium=fox&utm_campaign=Fox<?php echo $fi['hashtags']; ?><?php echo $link_utm_source; ?>">
+										<span class="linkedelement">
+											<span class="filcontent"><?php echo $fi['content']; ?></span>
+											<span class="fillinktext"><?php echo $fi['linktext']; ?> ›</span>
+										</span>
+									</a>
+									</section>
 
-						</li>
-					<?php endforeach; ?>
+							</li>
+						<?php endforeach;
+					}
+					?>
 				</ul>
 			</section>
 		</section>
