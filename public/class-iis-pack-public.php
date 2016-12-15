@@ -101,7 +101,16 @@ class Iis_Pack_Public {
 	public function iis_pack_enqueue_scripts() {
 
 		// Sammanslagen js för samtliga plugin
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/iis-pack-public.46b9b579.min.js', array( 'jquery' ), null, true );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/iis-pack-public.3ddf7b7c.min.js', array( 'jquery' ), null, true );
+		// Settings transfered to javascript, and language
+		$defs = array(
+			'pluginsUrl'  => plugin_dir_url( __FILE__ ),
+		);
+		wp_localize_script(
+			$this->plugin_name,
+			'iispackDefs',
+			$defs
+		);
 	}
 
 	/**

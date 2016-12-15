@@ -166,7 +166,7 @@
 	        $(document).on('click', facebookclick, function(e) {
 	            //if we don't have facebook_appid belonging to this site, we share without the app
 	            if ("" !== facebook_appid && undefined !== facebook_appid) {
-	                var redirect = protocol + "//" + domain + "/wp-content/plugins/iis-pack/public/assets/close-popup.html";
+	                var redirect = iispackDefs.pluginsUrl + "assets/close-popup.html";
 	                facebookurl = protocol + "//www.facebook.com/dialog/feed?app_id=" + facebook_appid + "&link=" + pageurl + "&name=" + pagetitle + "&description=" + pagedescription + "&display=popup&redirect_uri=" + redirect + facebookpicture;
 	            } else {
 	                facebookurl = protocol + "//www.facebook.com/sharer.php?u=" + pageurl;

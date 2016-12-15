@@ -29,6 +29,10 @@ Installation
 
 Changelog
 =========
+#### 1.4.7
+* Plugins url in javascript is set with iispackDefs
+* Local enviroment, no debug.log messages from fox menu on sites not yet ready
+
 #### 1.4.6
 * Getting data from Flickr is now done with javascript and gives users feedback
 
