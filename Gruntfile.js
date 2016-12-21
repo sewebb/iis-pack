@@ -98,6 +98,15 @@ module.exports = function(grunt) {
 				hostservers: {
 					stageserver: 'extweb1.stage.iis.se',
 					prodserver: 'extweb1.common.iis.se'
+				},
+				// Sites on Holger
+				holger: {
+					basefolder: '/var/www/',
+					pluginfolder: '/wp/wp-content/plugins/iis-pack',
+					hostservers: {
+						// stageserver: '',
+						prodserver: 'www-adm@79.99.1.121'
+					},
 				}
 			},
 
@@ -111,10 +120,11 @@ module.exports = function(grunt) {
 					host: '<%= rsync.options.hostservers.stageserver %>'
 				}
 			},
+			// HOLGER
 			prod_sajtkollen: {
 				options: {
-					dest: '<%= rsync.options.basefolder %>sajtkollen.se<%= rsync.options.pluginfolder %>',
-					host: '<%= rsync.options.hostservers.prodserver %>'
+					dest: '<%= rsync.options.holger.basefolder %>sajtkollen.se<%= rsync.options.holger.pluginfolder %>',
+					host: '<%= rsync.options.holger.hostservers.prodserver %>'
 				}
 			},
 			stage_webbstjarnan: {
