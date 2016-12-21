@@ -70,12 +70,13 @@ if ( is_singular() || is_home() || is_archive() || is_front_page() ) {
 
 			$before_filter_og_image = $og_image;
 			$og_img_set      = true;
-
 		} else {
 			$og_image = $default_og_image;
 		}
 
-		$og_image = apply_filters( 'iis_og_image' , $og_image, $post->ID, $og_img_set );
+		$og_image        = apply_filters( 'iis_og_image' , $og_image, $post->ID, $og_img_set );
+		$og_image_width  = apply_filters( 'iis_og_image_width' , $og_image_width, $post->ID );
+		$og_image_height = apply_filters( 'iis_og_image_height' , $og_image_height, $post->ID );
 
 		if ( is_front_page() || is_home() || is_archive() ) {
 			$og_type = 'website';
@@ -127,7 +128,8 @@ if ( is_singular() || is_home() || is_archive() || is_front_page() ) {
 
 		$ogprint .= '<meta property="og:image" content="' . $og_image . '" />';
 		$ogprint .= "\n";
-		if ( $before_filter_og_image === $og_image && '' !== $before_filter_og_image ) {
+
+		if ( '' !== $og_image_width && '' !== $og_image_height ){
 			$ogprint .= '<meta property="og:image:width" content="' . $og_image_width . '" /><meta property="og:image:height" content="' . $og_image_height . '" />';
 			$ogprint .= "\n";
 		}

@@ -29,6 +29,9 @@ Installation
 
 Changelog
 =========
+#### 1.4.8
+* Added filters to be able to set og:image height and width (Helps FB show the image on the first share)
+
 #### 1.4.7
 * Plugins url in javascript is set with iispackDefs
 * Local enviroment, no debug.log messages from fox menu on sites not yet ready
@@ -89,4 +92,3 @@ Changelog
 
 #### 1.0.0
 * Första commiten
-
