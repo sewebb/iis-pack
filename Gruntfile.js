@@ -94,7 +94,7 @@ module.exports = function(grunt) {
 				pluginname: 'IIS Pack',
 				basefolder: '/var/www/sites/',
 				pluginfolder: '/wordpress/wp-content/plugins/iis-pack',
-				nowordpressfolder: '/wp-content/plugins/iis-pack',
+				alternative_pluginfolder: '/wp-content/plugins/iis-pack',
 				hostservers: {
 					stageserver: 'extweb1.stage.iis.se',
 					prodserver: 'extweb1.common.iis.se'
@@ -225,16 +225,16 @@ module.exports = function(grunt) {
 					host: '<%= rsync.options.hostservers.prodserver %>'
 				}
 			},
-			// seDirekt - saknar vanliga /wordpress/-foldern, använder "nowordpressfolder"
+			// seDirekt - saknar vanliga /wordpress/-foldern, använder "alternative_pluginfolder"
 			stage_sedirekt: {
 				options: {
-					dest: '<%= rsync.options.basefolder %>stage.sedirekt.se<%= rsync.options.nowordpressfolder %>',
+					dest: '<%= rsync.options.basefolder %>stage.sedirekt.se<%= rsync.options.alternative_pluginfolder %>',
 					host: '<%= rsync.options.hostservers.stageserver %>'
 				}
 			},
 			prod_sedirekt: {
 				options: {
-					dest: '<%= rsync.options.basefolder %>sedirekt.se<%= rsync.options.nowordpressfolder %>',
+					dest: '<%= rsync.options.basefolder %>sedirekt.se<%= rsync.options.alternative_pluginfolder %>',
 					host: '<%= rsync.options.hostservers.prodserver %>'
 				}
 			},
@@ -316,21 +316,13 @@ module.exports = function(grunt) {
 					host: '<%= rsync.options.hostservers.prodserver %>'
 				}
 			},
-			// // Speciella hostservrar och sökvägar för webbpedagog.se
-			// stage_webbpedagog: {
-			// 	options: {
-			// 		dest: '<%= rsync.options.basefolder %>webbpedagog.se<%= rsync.options.pluginfolder %>',
-			// 		// TODO correct server
-			// 		// host: 'www-adm@extweb5.iis.se'
-			// 	}
-			// },
-			// prod_webbpedagog: {
-			// 	options: {
-			// 		dest: '<%= rsync.options.basefolder %>webbpedagog.se<%= rsync.options.pluginfolder %>',
-			// 		// TODO correct server
-			// 		// host: 'www-adm@extweb6.iis.se'
-			// 	}
-			// },
+			// webbpedagog, har en egen server
+			prod_webbpedagog: {
+				options: {
+					dest: 'webbpedagog.se.se<%= rsync.options.alternative_pluginfolder %>',
+					host: 'webbpedagog'
+				}
+			},
 			//nästa sajt som ska gå att deploya till
 		},
 		slack: {
@@ -448,12 +440,9 @@ module.exports = function(grunt) {
 				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
 			},
 			// // webbpedagog.se
-			// stage_webbpedagog: {
-			// 	text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
-			// },
-			// prod_webbpedagog: {
-			// 	text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
-			// },
+			prod_webbpedagog: {
+				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
+			},
 			//nästa sajt som ska gå att deploya till
 			stage_all: {
 				text: '[IIS Pack] Trying to deploy to all stage sites. Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
@@ -545,9 +534,10 @@ module.exports = function(grunt) {
 		grunt.task.run('rsync:' + deploy_env + 'datahotell');
 		grunt.task.run('rsync:' + deploy_env + 'kurser');
 		grunt.task.run('rsync:' + deploy_env + 'zonemaster');
-		//statistik_bbk lacks stage
+		//statistik_bbk lacks stage, so do webbpedagog
 		if ( deploy_env === 'prod_' ) {
 			grunt.task.run('rsync:' + deploy_env + 'statistik_bbk');
+			grunt.task.run('rsync:' + deploy_env + 'prod_webbpedagog');
 		}
 
 	});
