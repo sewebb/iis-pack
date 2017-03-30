@@ -69,7 +69,7 @@ class Iis_Pack {
 	public function __construct() {
 
 		$this->plugin_name = 'iis-pack';
-		$this->version = '1.4.8';
+		$this->version = '1.4.9';
 
 		$this->load_dependencies();
 		$this->set_locale();

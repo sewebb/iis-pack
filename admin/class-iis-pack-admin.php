@@ -499,6 +499,15 @@ class Iis_Pack_Admin {
 	}
 
 	/**
+	 * Underrubrik Bildattribution
+	 *
+	 * @since  1.0.1
+	 */
+	public function iis_pack_object_credits_cb() {
+		return false;
+	}
+
+	/**
 	 * Underrubrik Facebook OG-taggar
 	 *
 	 * @since  1.0.0
@@ -506,6 +515,43 @@ class Iis_Pack_Admin {
 	public function iis_pack_og_tags_cb() {
 		echo '<p>' . __( 'Settings for Facebook open graph tags per site ', 'iis-pack' ) . '</p>';
 	}
+
+	/**
+	 * Underrubrik Twitter cards
+	 *
+	 * @since  1.0.0
+	 */
+	public function iis_pack_twitter_cards_cb() {
+		return false;
+	}
+
+	/**
+	 * Underrubrik Google Analytics
+	 *
+	 * @since  1.0.0
+	 */
+	public function iis_pack_google_analytics_cb() {
+		return false;
+	}
+
+	/**
+	 * Underrubrik Fox menyn
+	 *
+	 * @since  1.0.0
+	 */
+	public function iis_pack_fox_menu_cb() {
+		return false;
+	}
+
+	/**
+	 * Underrubrik Other stuff
+	 *
+	 * @since  1.0.0
+	 */
+	public function iis_pack_other_stuff_cb() {
+		return false;
+	}
+
 
 	// INPUT FÄLT
 	/**
