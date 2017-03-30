@@ -47,6 +47,9 @@
       top: 32px;
     }
   }
+  a:hover {
+    background-color: transparent;
+  }
 }
 
 .logged-in.admin-bar {
