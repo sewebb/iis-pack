@@ -31,6 +31,8 @@ Changelog
 =========
 #### 1.4.9
 * Added back callback functions that was removed some time ago and was causing errors
+* Added goto.se to Fox menu
+
 #### 1.4.8
 * Added filters to be able to set og:image height and width (Helps FB show the image on the first share)
 

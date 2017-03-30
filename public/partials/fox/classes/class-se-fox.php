@@ -84,6 +84,10 @@ class Se_Fox extends Se_Plugin_Base {
 			'hide_logo' => false,
 			'site'	    => 'soi2016',
 		),
+		'www.goto10.se' => array(
+			'hide_logo' => false,
+			'site'	    => 'goto10',
+		),
 	);
 
 	/**
@@ -308,6 +312,17 @@ class Se_Fox extends Se_Plugin_Base {
 			'bredbandskollen',
 			'internetdagarna',
 			'internetstatistik',
+			'iisblogg',
+			'guider',
+			'internetfonden',
+			'internetmuseum',
+		),
+		'www.goto10.se' => array(
+			'domaner',
+			'webbstjarnan',
+			'bredbandskollen',
+			'internetdagarna',
+			'soi',
 			'iisblogg',
 			'guider',
 			'internetfonden',
