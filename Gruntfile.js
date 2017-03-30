@@ -104,7 +104,7 @@ module.exports = function(grunt) {
 					basefolder: '/var/www/',
 					pluginfolder: '/wp/wp-content/plugins/iis-pack',
 					hostservers: {
-						// stageserver: '',
+						stageserver: 'www-adm@46.21.104.169',
 						prodserver: 'www-adm@79.99.1.121'
 					},
 				}
@@ -113,11 +113,13 @@ module.exports = function(grunt) {
 		// speca respektive sajt här, kopiera stage respektive prod och
 		// ändra taskname (ex. "stage_sajtkollen") samt ändra sajtnamnet (ex. stage.sajtkollen.se)
 		// Kopiera på samma sätt i "slack" (nästa grunt-task)
-			//sajtkollen
+
+		// OBSERVERA olika servermiljöer Holger & "gamla"
+			//sajtkollen Holger
 			stage_sajtkollen: {
 				options: {
-					dest: '<%= rsync.options.basefolder %>stage.sajtkollen.se<%= rsync.options.pluginfolder %>',
-					host: '<%= rsync.options.hostservers.stageserver %>'
+					dest: '<%= rsync.options.holger.basefolder %>sajtkollen.se<%= rsync.options.pluginfolder %>',
+					host: '<%= rsync.options.holger.hostservers.stageserver %>'
 				}
 			},
 			// HOLGER
@@ -323,6 +325,19 @@ module.exports = function(grunt) {
 					host: 'webbpedagog'
 				}
 			},
+			// goto10.se HOLGER
+			stage_goto10: {
+				options: {
+					dest: '<%= rsync.options.holger.basefolder %>goto10.se<%= rsync.options.pluginfolder %>',
+					host: '<%= rsync.options.holger.hostservers.stageserver %>'
+				}
+			},
+			prod_goto10: {
+				options: {
+					dest: '<%= rsync.options.holger.basefolder %>goto10.se<%= rsync.options.holger.pluginfolder %>',
+					host: '<%= rsync.options.holger.hostservers.prodserver %>'
+				}
+			},
 			//nästa sajt som ska gå att deploya till
 		},
 		slack: {
@@ -336,10 +351,10 @@ module.exports = function(grunt) {
 			// speca respektive sajt här, kopiera och ändra taskname (ex. "stage_sajtkollen")
 			//sajtkollen
 			stage_sajtkollen: {
-				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
+				text: '[IIS Plugin: <%= rsync.options.pluginname %>] holger-stage-Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
 			},
 			prod_sajtkollen: {
-				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
+				text: '[IIS Plugin: <%= rsync.options.pluginname %>] holger-Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
 			},
 			stage_webbstjarnan: {
 				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
@@ -442,6 +457,13 @@ module.exports = function(grunt) {
 			// // webbpedagog.se
 			prod_webbpedagog: {
 				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
+			},
+			// goto10.se
+			stage_goto10: {
+				text: '[IIS Plugin: <%= rsync.options.pluginname %>] holger-stage-Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
+			},
+			prod_goto10: {
+				text: '[IIS Plugin: <%= rsync.options.pluginname %>] holger-Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
 			},
 			//nästa sajt som ska gå att deploya till
 			stage_all: {
