@@ -36,7 +36,7 @@ Changelog
     'container'       => 'ul',
     'container_class' => ‘my-ul-class’,
 );
-if ( ! Iis_Pack_Security::is_strong_password( 'PasswordAttTesta', $msg, $options ) ) {
+if ( ! Iis_Pack_Security::is_strong_password( 'PasswordAttTesta', $msg, $args ) ) {
     echo $msg;
 }</code>
 Prints as an example:
