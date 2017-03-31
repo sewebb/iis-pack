@@ -9,7 +9,6 @@
 
 /**
  * Adopted from Ws_security webbstjarnan
- * Todo: Know what it's doing..
  */
 class Iis_Pack_Security {
 	/**
@@ -86,15 +85,18 @@ class Iis_Pack_Security {
 	 */
 	public function validate_complex_password( $errors ) {
 		$input_password = esc_html( $_POST['pass1'] );
-		$password = ( isset( $input_password ) && trim( $input_password ) ) ? $input_password : null;
+		$password       = ( isset( $input_password ) && trim( $input_password ) ) ? $input_password : null;
 
 		// no password or already has password error
 		if ( empty( $password ) || ( $errors->get_error_data( 'pass' ) ) ) {
 			return $errors;
 		}
 
+		$args = array(
+					'container' => 'ul',
+		);
 		// validate
-		if ( ! self::is_strong_password( $password, $msg ) ) {
+		if ( ! self::is_strong_password( $password, $msg, $args ) ) {
 			$errors->add( 'pass', sprintf( '<strong>ERROR</strong>: %s', $msg ) );
 		}
 
@@ -122,7 +124,7 @@ class Iis_Pack_Security {
 		$args     = wp_parse_args( $args, $defaults );
 
 		if ( mb_strlen( $password ) < 9 ) {
-			$msg = 'Lösenord måste vara minst nio tecken långa';
+			$msg = 'Lösenordet måste vara minst nio tecken långt';
 			return false;
 		}
 
