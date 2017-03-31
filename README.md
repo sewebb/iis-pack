@@ -29,6 +29,19 @@ Installation
 
 Changelog
 =========
+#### 1.5.0
+* Added class Iis_Pack_Security that adds default password checking on wordpress backend user profiles.
+* Iis_Pack_Security::is_strong_password( 'myPassToTest' ) could be used in IIS themes like this:
+<code php>$args  = array(
+    'container'       => 'ul',
+    'container_class' => ‘my-ul-class’,
+);
+if ( ! Iis_Pack_Security::is_strong_password( 'PasswordAttTesta', $msg, $options ) ) {
+    echo $msg;
+}</code>
+Prints as an example:
+<code html>Lösenordet saknar tecken från en av dessa grupper<ul class="my-ul-class"><li>[ siffror (0-9) ]</li><li>[ specialtecken (!@#$%&*) ]</li></ul></code>
+
 #### 1.4.9
 * Added back callback functions that was removed some time ago and was causing errors
 * Added goto.se to Fox menu

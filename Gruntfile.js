@@ -556,6 +556,7 @@ module.exports = function(grunt) {
 		grunt.task.run('rsync:' + deploy_env + 'datahotell');
 		grunt.task.run('rsync:' + deploy_env + 'kurser');
 		grunt.task.run('rsync:' + deploy_env + 'zonemaster');
+		grunt.task.run('rsync:' + deploy_env + 'goto10');
 		//statistik_bbk lacks stage, so do webbpedagog
 		if ( deploy_env === 'prod_' ) {
 			grunt.task.run('rsync:' + deploy_env + 'statistik_bbk');

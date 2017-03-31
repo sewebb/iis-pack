@@ -69,7 +69,7 @@ class Iis_Pack {
 	public function __construct() {
 
 		$this->plugin_name = 'iis-pack';
-		$this->version = '1.4.9';
+		$this->version = '1.5.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -125,6 +125,11 @@ class Iis_Pack {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/fox/fox.php';
 
 		$this->loader = new Iis_Pack_Loader();
+
+		/**
+		 * We need to clean up IIS Pack. For now, add security like this
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'security/class-iis-pack-security.php';
 
 	}
 
