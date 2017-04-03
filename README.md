@@ -29,6 +29,9 @@ Installation
 
 Changelog
 =========
+#### 1.5.1
+* Bugfix for validating password in frontend form (wp-login.php)
+
 #### 1.5.0
 * Added class Iis_Pack_Security that adds default password checking on wordpress backend user profiles.
 * Iis_Pack_Security::is_strong_password( 'myPassToTest' ) could be used in IIS themes like this:

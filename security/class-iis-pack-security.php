@@ -69,10 +69,10 @@ class Iis_Pack_Security {
 	 * @author  Jonas Nordström <jonas.nordstrom@gmail.com>
 	 * @param   WP_Error $errors Error object
 	 * @param   stdClass $userData User data
+	 * @since   1.5.1 Bugfix for WP_Error &$errors --> WP_Error $errors
 	 * @return  WP_Error
 	 */
-	public function validate_password_reset( WP_Error &$errors, $userData ) {
-
+	public function validate_password_reset( WP_Error $errors, $userData ) {
 		return $this->validate_complex_password( $errors );
 	}
 
