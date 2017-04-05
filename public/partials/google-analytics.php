@@ -4,6 +4,7 @@
  *
  * @link       https://www.iis.se
  * @since      1.0.0
+ * @since      1.5.2 Changed from analyzing is_user_logged_in() -> current_user_can( 'edit_others_pages' )
  *
  * @package    Iis_Pack
  * @subpackage Iis_Pack/public/partials
@@ -22,7 +23,7 @@ if ( '' !== $iis_ga_option_trackingid ) {
  */
 function add_iis_google_analytics() {
 
-	if ( false === is_user_logged_in() ) {
+	if ( false === current_user_can( 'edit_others_pages' ) ) {
 
 		global $post;
 

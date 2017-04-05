@@ -29,6 +29,9 @@ Installation
 
 Changelog
 =========
+#### 1.5.2
+* Google Anlytics: Changed from analyzing is_user_logged_in() -> current_user_can( 'edit_others_pages' )
+
 #### 1.5.1
 * Bugfix for validating password in frontend form (wp-login.php)
 
