@@ -23,7 +23,7 @@ if ( '' !== $iis_ga_option_trackingid ) {
  */
 function add_iis_google_analytics() {
 
-	if ( false === current_user_can( 'edit_others_pages' ) ) {
+	if ( ! current_user_can( 'edit_others_pages' ) ) {
 
 		global $post;
 
