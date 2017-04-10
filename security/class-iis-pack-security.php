@@ -81,10 +81,12 @@ class Iis_Pack_Security {
 	 *
 	 * @author  Jonas Nordström <jonas.nordstrom@gmail.com>
 	 * @param   WP_Error $errors Errors
+	 * @since   1.5.3 Check if isset pass1
+	 *
 	 * @return  WP_Error
 	 */
 	public function validate_complex_password( $errors ) {
-		$input_password = esc_html( $_POST['pass1'] );
+		$input_password = isset( $_POST['pass1'] ) ? esc_html( $_POST['pass1'] ) : '';
 		$password       = ( isset( $input_password ) && trim( $input_password ) ) ? $input_password : null;
 
 		// no password or already has password error
