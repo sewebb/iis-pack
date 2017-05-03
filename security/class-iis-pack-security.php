@@ -122,12 +122,16 @@ class Iis_Pack_Security {
 		$defaults = array(
 						'container'       => '',
 						'container_class' => '',
+						'sec_level'       => 'max',
 		);
 		$args     = wp_parse_args( $args, $defaults );
 
 		if ( mb_strlen( $password ) < 9 ) {
 			$msg = 'Lösenordet måste vara minst nio tecken långt';
 			return false;
+		}
+		if ( 'goto10' === $args['sec_level'] ) {
+			return true;
 		}
 
 		$lower_case = false;
