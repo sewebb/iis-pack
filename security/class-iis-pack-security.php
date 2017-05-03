@@ -126,13 +126,19 @@ class Iis_Pack_Security {
 		);
 		$args     = wp_parse_args( $args, $defaults );
 
-		if ( mb_strlen( $password ) < 9 ) {
-			$msg = 'Lösenordet måste vara minst nio tecken långt';
-			return false;
-		}
 		if ( 'goto10' === $args['sec_level'] ) {
+			if ( mb_strlen( $password ) < 6 ) {
+				$msg = 'Lösenordet måste vara minst sex tecken långt';
+				return false;
+			}
 			return true;
+		} else {
+			if ( mb_strlen( $password ) < 9 ) {
+				$msg = 'Lösenordet måste vara minst nio tecken långt';
+				return false;
+			}
 		}
+
 
 		$lower_case = false;
 		$upper_case = false;
