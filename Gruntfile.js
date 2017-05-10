@@ -541,7 +541,7 @@ module.exports = function(grunt) {
 		grunt.task.run('uglify');
 		grunt.task.run('version');
 		grunt.task.run('gitinfo');
-		grunt.task.run('rsync:' + deploy_env + 'sajtkollen');
+
 		grunt.task.run('rsync:' + deploy_env + 'webbstjarnan');
 		grunt.task.run('rsync:' + deploy_env + 'iis');
 		grunt.task.run('rsync:' + deploy_env + 'internetdagarna');
@@ -559,6 +559,7 @@ module.exports = function(grunt) {
 		grunt.task.run('rsync:' + deploy_env + 'goto10');
 		//statistik_bbk lacks stage, so do webbpedagog
 		if ( deploy_env === 'prod_' ) {
+			grunt.task.run('rsync:' + deploy_env + 'sajtkollen');
 			grunt.task.run('rsync:' + deploy_env + 'statistik_bbk');
 			grunt.task.run('rsync:' + deploy_env + 'prod_webbpedagog');
 		}
