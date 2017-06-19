@@ -29,6 +29,10 @@ Installation
 
 Changelog
 =========
+
+#### 1.5.4
+* Fast social [fastsocial] shortcode was added to late in some cases
+
 #### 1.5.2
 * Google Anlytics: Changed from analyzing is_user_logged_in() -> current_user_can( 'edit_others_pages' )
 

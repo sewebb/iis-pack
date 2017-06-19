@@ -86,9 +86,17 @@ class Iis_Pack_Public {
 	public function iis_pack_filter_the_content() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/add-license-to-images.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/responsive-oembed.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/fast-social-share-buttons.php';
 	}
 
+	/**
+	 * Start shortcode for fast social
+	 *
+	 * @since 1.5.4 Changed to start on differen hook
+	 *
+	 */
+	public function iis_pack_fast_social() {
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/fast-social-share-buttons.php';
+	}
 	/**
 	 * Ta bort alla emojisar
 	 *

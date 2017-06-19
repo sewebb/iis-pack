@@ -69,7 +69,7 @@ class Iis_Pack {
 	public function __construct() {
 
 		$this->plugin_name = 'iis-pack';
-		$this->version = '1.5.3';
+		$this->version = '1.5.4';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -208,6 +208,9 @@ class Iis_Pack {
 		$this->loader->add_action( 'the_post', $plugin_public, 'iis_pack_filter_the_content' );
 
 		$this->loader->add_action( 'init', $plugin_public, 'iis_pack_disable_all_emojis' );
+
+		// Since 1.5.4, add shortcode not just when the_content / the_post is loaded
+		$this->loader->add_action( 'wp_print_scripts', $plugin_public, 'iis_pack_fast_social' );
 
 
 	}
