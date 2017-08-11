@@ -30,6 +30,9 @@ Installation
 Changelog
 =========
 
+#### 1.5.5
+* Filter iis_og_title added
+
 #### 1.5.4
 * Fast social [fastsocial] shortcode was added to late in some cases
 
