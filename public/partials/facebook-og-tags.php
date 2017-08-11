@@ -122,6 +122,9 @@ if ( is_singular() || is_home() || is_archive() || is_front_page() ) {
 			// If site wants to modify title
 			// @since      1.4.3
 			$str_title = apply_filters( 'pre_get_document_title', $str_title, $post->ID );
+			// @since      1.5.5
+			// We should have used our own filter instead
+			$str_title = apply_filters( 'iis_og_title', $str_title, $post->ID );
 		}
 
 		$str_title = (strlen( $str_title ) > 0 && ! is_404() ) ? $str_title : get_bloginfo( 'name' );
