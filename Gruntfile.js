@@ -26,6 +26,9 @@ module.exports = function(grunt) {
 				files: {
 					'public/js/iis-pack-public.min.js': [
 						'public/js/iis-pack-public.js',
+					],
+					'public/js/password-strength-meter-mediator.min.js': [
+						'public/js/password-strength-meter-mediator.js',
 					]
 				}
 			}
@@ -34,7 +37,9 @@ module.exports = function(grunt) {
 			dist: [
 				'public/js/iis-pack-public.min.js',
 				'public/js/iis-pack-public.*.min.js',
-				'public/css/iis-pack-public.*.min.css'
+				'public/css/iis-pack-public.*.min.css',
+				'public/js/password-strength-meter-mediator.min.js',
+				'public/js/password-strength-meter-mediator.*.min.js'
 			]
 		},
 		watch: {
@@ -49,6 +54,7 @@ module.exports = function(grunt) {
 				files: [
 					'<%= jshint.all %>',
 					'public/js/iis-pack-public.js',
+					'public/js/password-strength-meter-mediator.js',
 				],
 				tasks: ['uglify', 'version'],
 				options: {
@@ -475,7 +481,7 @@ module.exports = function(grunt) {
 		},
 		version: {
 			assets: {
-				src: ['public/js/iis-pack-public.min.js','public/css/iis-pack-public.min.css'],
+				src: ['public/js/iis-pack-public.min.js','public/js/password-strength-meter-mediator.min.js','public/css/iis-pack-public.min.css'],
 				dest: 'public/class-iis-pack-public.php'
 			}
 		},

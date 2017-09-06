@@ -1,5 +1,6 @@
 # Sajtspecifikt
 public/js/iis-pack-public.min.js
+public/js/password-strength-meter-mediator.min.js
 # public/js/iis-pack-public.*.min.js
 
 public/css/iis-pack-public.css

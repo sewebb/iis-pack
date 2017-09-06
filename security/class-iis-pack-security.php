@@ -39,6 +39,42 @@ class Iis_Pack_Security {
 	}
 
 	/**
+	 * AMEL will give us a blacklist to be used
+	 *
+	 * @return array
+	 */
+	public function iis_blacklist() {
+		return [ 'iis','event','evenemang','kostnadsfritt' ];
+	}
+
+	/**
+	 * Takes care of ajax calls
+	 *
+	 * @return void
+	 */
+	public function ajax_get_functions() {
+
+		$iispack_action = isset( $_REQUEST['iispack_action'] ) ? $_REQUEST['iispack_action'] : '';
+
+		if ( ! empty( $iispack_action ) ) {
+
+			if ( 'getWordPressGeneratedPassword' === $iispack_action ) {
+				$length               = isset( $_REQUEST['length'] ) ? absint( $_REQUEST['length'] ) : 12;
+				$special_chars        = isset( $_REQUEST['special_chars'] ) ? sanitize_text_field( $_REQUEST['special_chars'] ) : true;
+				$extra_special_chars  = isset( $_REQUEST['extra_special_chars'] ) ? sanitize_text_field( $_REQUEST['extra_special_chars'] ) : false;
+				$generated_password   = [];
+
+				$generated_password['randpassw'] = wp_generate_password( $length, $special_chars, $extra_special_chars );
+				header( 'Content-Type: application/json' );
+				echo json_encode( $generated_password );
+				exit;
+			}
+		} // End if(). iispack_action not empty
+	}
+
+
+
+	/**
 	 * Validate profile update
 	 *
 	 * @author  Jonas Nordström <jonas.nordstrom@gmail.com>
@@ -122,11 +158,17 @@ class Iis_Pack_Security {
 		$defaults = array(
 						'container'       => '',
 						'container_class' => '',
-						'sec_level'       => 'max',
+						'sec_level'       => 'iis_default',
 		);
 		$args     = wp_parse_args( $args, $defaults );
 
 		if ( 'goto10' === $args['sec_level'] ) {
+			if ( mb_strlen( $password ) < 6 ) {
+				$msg = 'Lösenordet måste vara minst sex tecken långt';
+				return false;
+			}
+			return true;
+		} elseif ( 'iis_default' === $args['sec_level'] ) {
 			if ( mb_strlen( $password ) < 6 ) {
 				$msg = 'Lösenordet måste vara minst sex tecken långt';
 				return false;
@@ -227,3 +269,6 @@ class Iis_Pack_Security {
 }
 
 add_action( 'init', array( Iis_Pack_Security::get_instance(), 'setup' ) );
+if ( ! is_admin() ) {
+	add_action( 'init', array( Iis_Pack_Security::get_instance(), 'ajax_get_functions' ) );
+}

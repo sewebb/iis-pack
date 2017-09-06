@@ -125,6 +125,23 @@ class Iis_Pack_Public {
 			'iispackDefs',
 			$defs
 		);
+
+		if ( ! is_user_logged_in() ) {
+
+			// if ( WP_DEBUG ) {
+			// 	$version = 1;
+			// 	wp_enqueue_script( 'password-strength-meter-mediator', plugin_dir_url( __FILE__ ) . 'js/password-strength-meter-mediator.js', array( 'password-strength-meter' ), $version, true );
+			// } else {
+				wp_enqueue_script( 'password-strength-meter-mediator', plugin_dir_url( __FILE__ ) . 'js/password-strength-meter-mediator.834bc0a1.min.js', array( 'password-strength-meter' ), null, true );
+			// }
+
+			// Fetch the blacklisted words
+			$blacklist_arr = Iis_Pack_Security::iis_blacklist();
+
+			wp_localize_script( 'password-strength-meter-mediator', 'iisPackJsPassw', array(
+				'blacklist' => $blacklist_arr,
+			) );
+		}
 	}
 
 	/**
