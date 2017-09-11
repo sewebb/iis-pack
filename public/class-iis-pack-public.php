@@ -128,23 +128,29 @@ class Iis_Pack_Public {
 
 		if ( ! is_user_logged_in() ) {
 
-			// if ( WP_DEBUG ) {
-			// 	$version = 1;
-			// 	wp_enqueue_script( 'password-strength-meter-mediator', plugin_dir_url( __FILE__ ) . 'js/password-strength-meter-mediator.js', array( 'password-strength-meter' ), $version, true );
-			// } else {
-				wp_enqueue_script( 'password-strength-meter-mediator', plugin_dir_url( __FILE__ ) . 'js/password-strength-meter-mediator.834bc0a1.min.js', array( 'password-strength-meter' ), null, true );
-			// }
+			if ( WP_DEBUG ) {
+				$version = 1;
+				wp_enqueue_script( 'iis-pack-password-strength-meter', plugin_dir_url( __FILE__ ) . 'js/iis-pack-password-strength-meter.js', array( 'zxcvbn-async' ), $version, true );
+			} else {
+				wp_enqueue_script( 'iis-pack-password-strength-meter', plugin_dir_url( __FILE__ ) . 'js/iis-pack-password-strength-meter.834bc0a1.min.js', array( 'zxcvbn-async' ), null, true );
+			}
 
 			// Fetch the blacklisted words
 			$blacklist_arr = Iis_Pack_Security::iis_blacklist();
 
-			wp_localize_script( 'password-strength-meter-mediator', 'iisPackJsPassw', array(
+			wp_localize_script( 'iis-pack-password-strength-meter', 'iisPackJsPassw', array(
 				'blacklist' => $blacklist_arr,
+				'unknown' => 'Password strength unknown',
+				'short' => 'Very weak',
+				'bad' => 'Weak',
+				'good' => 'Medium',
+				'strong' => 'Strong',
+				'mismatch' => 'Mismatch',
 			) );
 		}
 	}
 
-	/**
+	/**iis-pack-password-strength-meter
 	 * Register the stylesheets for the public-facing side of the site.
 	 * Ska aktiveras i define_public_hooks() i class-iis-pack.php när vi ev. ngn gång behöver en css-fil för vårt IIS Pack
 	 *

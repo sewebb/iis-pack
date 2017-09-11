@@ -27,8 +27,8 @@ module.exports = function(grunt) {
 					'public/js/iis-pack-public.min.js': [
 						'public/js/iis-pack-public.js',
 					],
-					'public/js/password-strength-meter-mediator.min.js': [
-						'public/js/password-strength-meter-mediator.js',
+					'public/js/iis-pack-password-strength-meter.min.js': [
+						'public/js/iis-pack-password-strength-meter.js',
 					]
 				}
 			}
@@ -38,8 +38,8 @@ module.exports = function(grunt) {
 				'public/js/iis-pack-public.min.js',
 				'public/js/iis-pack-public.*.min.js',
 				'public/css/iis-pack-public.*.min.css',
-				'public/js/password-strength-meter-mediator.min.js',
-				'public/js/password-strength-meter-mediator.*.min.js'
+				'public/js/iis-pack-password-strength-meter.min.js',
+				'public/js/iis-pack-password-strength-meter.*.min.js'
 			]
 		},
 		watch: {
@@ -54,7 +54,7 @@ module.exports = function(grunt) {
 				files: [
 					'<%= jshint.all %>',
 					'public/js/iis-pack-public.js',
-					'public/js/password-strength-meter-mediator.js',
+					'public/js/iis-pack-password-strength-meter.js',
 				],
 				tasks: ['uglify', 'version'],
 				options: {
@@ -481,7 +481,7 @@ module.exports = function(grunt) {
 		},
 		version: {
 			assets: {
-				src: ['public/js/iis-pack-public.min.js','public/js/password-strength-meter-mediator.min.js','public/css/iis-pack-public.min.css'],
+				src: ['public/js/iis-pack-public.min.js','public/js/iis-pack-password-strength-meter.min.js','public/css/iis-pack-public.min.css'],
 				dest: 'public/class-iis-pack-public.php'
 			}
 		},
@@ -583,7 +583,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('multiversion', 'more than one file to wp-version', function(mode) {
 		var config = {
 			assets: {
-				src: ['public/js/iis-pack-public.min.js','public/css/iis-pack-public.min.css'],
+				src: ['public/js/iis-pack-public.min.js','public/js/iis-pack-password-strength-meter.min.js','public/css/iis-pack-public.min.css'],
 				dest: 'public/class-iis-pack-public.php'
 			}
 		};
