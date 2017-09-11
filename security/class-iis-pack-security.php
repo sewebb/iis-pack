@@ -41,6 +41,8 @@ class Iis_Pack_Security {
 	/**
 	 * AMEL will give us a blacklist to be used
 	 *
+	 * @since      1.6.0
+	 *
 	 * @return array
 	 */
 	public function iis_blacklist() {
@@ -49,6 +51,8 @@ class Iis_Pack_Security {
 
 	/**
 	 * Takes care of ajax calls
+	 *
+	 * @since      1.6.0
 	 *
 	 * @return void
 	 */
@@ -169,14 +173,14 @@ class Iis_Pack_Security {
 			}
 			return true;
 		} elseif ( 'iis_default' === $args['sec_level'] ) {
-			if ( mb_strlen( $password ) < 6 ) {
-				$msg = 'Lösenordet måste vara minst sex tecken långt';
+			if ( mb_strlen( $password ) < 12 ) {
+				$msg = 'Lösenordet måste vara minst tolv tecken långt';
 				return false;
 			}
 			return true;
 		} else {
-			if ( mb_strlen( $password ) < 9 ) {
-				$msg = 'Lösenordet måste vara minst nio tecken långt';
+			if ( mb_strlen( $password ) < 12 ) {
+				$msg = 'Lösenordet måste vara minst tolv tecken långt';
 				return false;
 			}
 		}
