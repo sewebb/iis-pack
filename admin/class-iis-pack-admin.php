@@ -231,6 +231,7 @@ class Iis_Pack_Admin {
 	 * [register_setting description]
 	 * @since 1.0.0
 	 * @since 1.0.2 Fast Social Share buttons
+	 * @since 1.6.0 Settings for password strength script
 	 */
 	public function register_setting() {
 		// _cb = callback
@@ -456,6 +457,57 @@ class Iis_Pack_Admin {
 
 		register_setting( $this->plugin_name, $this->option_name . '_show_fox_menu', array( $this, $this->option_name . '_sanitize_true_false' ) );
 
+		// Add section for password strength checking
+		add_settings_section(
+			$this->option_name . '_password_strength',
+			'<hr>' . __( 'Check frontend registration password', 'iis-pack' ),
+			array( $this, $this->option_name . '_password_strength_cb' ),
+			$this->plugin_name
+		);
+
+		add_settings_field(
+			$this->option_name . '_show_password_strength',
+			__( 'Use script for password strength?', 'iis-pack' ),
+			array( $this, $this->option_name . '_show_password_strength_cb' ),
+			$this->plugin_name,
+			$this->option_name . '_password_strength',
+			array( 'label_for' => $this->option_name . '_show_password_strength' )
+		);
+
+		add_settings_field(
+			$this->option_name . '_password_strength_length',
+			__( 'Password length', 'iis-pack' ),
+			array( $this, $this->option_name . '_password_strength_length_cb' ),
+			$this->plugin_name,
+			$this->option_name . '_password_strength',
+			array( 'label_for' => $this->option_name . '_password_strength_length' )
+		);
+
+		add_settings_field(
+			$this->option_name . '_add_pass_check_to_type',
+			__( 'Add to types', 'iis-pack' ),
+			array( $this, $this->option_name . '_add_pass_check_to_type_cb' ),
+			$this->plugin_name,
+			$this->option_name . '_password_strength',
+			array( 'label_for' => $this->option_name . '_add_pass_check_to_type' )
+		);
+
+		add_settings_field(
+			$this->option_name . '_add_pass_check_to_template',
+			__( 'Add to templates', 'iis-pack' ),
+			array( $this, $this->option_name . '_add_pass_check_to_template_cb' ),
+			$this->plugin_name,
+			$this->option_name . '_password_strength',
+			array( 'label_for' => $this->option_name . '_add_pass_check_to_template' )
+		);
+
+		register_setting( $this->plugin_name, $this->option_name . '_password_strength_length', 'sanitize_text_field' );
+
+		register_setting( $this->plugin_name, $this->option_name . '_add_pass_check_to_type', 'sanitize_text_field' );
+		register_setting( $this->plugin_name, $this->option_name . '_add_pass_check_to_template', 'sanitize_text_field' );
+
+		register_setting( $this->plugin_name, $this->option_name . '_show_password_strength', array( $this, $this->option_name . '_sanitize_true_false' ) );
+
 		// Diverse av och på
 		add_settings_section(
 			$this->option_name . '_other_stuff',
@@ -540,6 +592,15 @@ class Iis_Pack_Admin {
 	 * @since  1.0.0
 	 */
 	public function iis_pack_fox_menu_cb() {
+		return false;
+	}
+
+	/**
+	 * Subtitle password strength
+	 *
+	 * @since  1.6.0
+	 */
+	public function iis_pack_password_strength_cb() {
 		return false;
 	}
 
@@ -756,6 +817,67 @@ class Iis_Pack_Admin {
 	}
 
 	/**
+	 * Input radio buttons Password strength
+	 *
+	 * @since  1.6.0
+	 */
+	public function iis_pack_show_password_strength_cb() {
+
+		$show_password_strength = get_option( $this->option_name . '_show_password_strength' );
+		?>
+			<fieldset>
+				<label>
+					<input type="radio" name="<?php echo $this->option_name . '_show_password_strength' ?>" id="<?php echo $this->option_name . '_show_password_strength' ?>" value="true" <?php checked( $show_password_strength, 'true' ); ?>>
+					<?php _e( 'Use password strength script', 'iis-pack' ); ?>
+				</label>
+				<br>
+				<label>
+					<input type="radio" name="<?php echo $this->option_name . '_show_password_strength' ?>" value="false" <?php checked( $show_password_strength, 'false' ); ?>>
+					<?php _e( 'Disable password strength script (default)', 'iis-pack' ); ?>
+				</label>
+			</fieldset>
+		<?php
+	}
+
+	/**
+	 * Site specific demands for password length
+	 *
+	 * @since  1.6.0
+	 */
+	public function iis_pack_password_strength_length_cb() {
+		$p_length = get_option( $this->option_name . '_password_strength_length' );
+		echo '<input type="text" class="" name="' . $this->option_name . '_password_strength_length' . '" id="' . $this->option_name . '_password_strength_length' . '" value="' . $p_length . '"> ';
+		echo '<p class="description">' . __( 'Number of characters if this site uses non-default password length (which is 12)', 'iis-pack' ) . '</p>';
+	}
+
+	/**
+	 * When to include script
+	 *
+	 * @since  1.6.0 Anger fält för post types (page, post, custom post type)
+	 */
+	public function iis_pack_add_pass_check_to_type_cb() {
+		$args = array(
+			'public'   => true,
+		);
+		$add_pass_check_to_type = get_option( $this->option_name . '_add_pass_check_to_type' );
+		echo '<input type="text" class="large-text" name="' . $this->option_name . '_add_pass_check_to_type' . '" id="' . $this->option_name . '_add_pass_check_to_type' . '" value="' . $add_pass_check_to_type . '"> ';
+		echo '<p class="description">' . __( 'Add post types to use password strength script even if user is logged in. (ex: se-tech,guide)', 'iis-pack' ) . '</p>';
+		echo '<p>' . __( 'Choose from theese post types: ', 'iis-pack' ) . __( '( <em>see help menu</em> ) ', 'iis-pack' ) . '</p>';
+	}
+
+	/**
+	 * When to include script - TEMPLATES
+	 *
+	 * @since  1.6.0 Anger fält för page template (tpl-guidelista.php, ect)
+	 */
+	public function iis_pack_add_pass_check_to_template_cb() {
+		$add_pass_check_to_template = get_option( $this->option_name . '_add_pass_check_to_template' );
+		echo '<input type="text" class="large-text" name="' . $this->option_name . '_add_pass_check_to_template' . '" id="' . $this->option_name . '_add_pass_check_to_template' . '" value="' . $add_pass_check_to_template . '"> ';
+		echo '<p class="description">' . __( 'Add templates to use password strength script even if user is logged in.', 'iis-pack' ) . '</p>';
+		echo '<p>' . __( 'Choose from theese templates: ', 'iis-pack' ) . __( '( <em>see help menu</em> ) ', 'iis-pack' ) . '</p>';
+	}
+
+	/**
 	 * Input för radioknappar visa /dölj emojisar
 	 *
 	 * @since  1.0.1
@@ -888,7 +1010,7 @@ class Iis_Pack_Admin {
 		return $new_input;
 	}
 	/**
-	 * Sanera true / false för Foxmenyn, Bildattribution
+	 * Sanera true / false för Foxmenyn, Bildattribution, Password Strength
 	 *
 	 * @param  string $true_false $_POST value
 	 * @since  1.0.0

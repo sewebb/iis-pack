@@ -45,7 +45,7 @@ class Iis_Pack_Security {
 	 *
 	 * @return array
 	 */
-	public function iis_blacklist() {
+	public static function iis_blacklist() {
 		return [ 'iis','event','evenemang','kostnadsfritt' ];
 	}
 
@@ -155,9 +155,7 @@ class Iis_Pack_Security {
 	 * @return  boolean
 	 */
 	public static function is_strong_password( $password, &$msg, $args = array() ) {
-		/* Lösenord måste vara minst nio tecken långa, ingen maxlängd.
-		 * Lösenord måste innehålla tecken från minst tre av följande grupper:
-		 * Stora bokstäver, små bokstäver, siffror eller specialtecken (!@#$%&*)
+		/* Lösenord måste vara minst 12 tecken långa (som standard), ingen maxlängd.
 		 */
 		$defaults = array(
 						'container'       => '',
@@ -166,25 +164,29 @@ class Iis_Pack_Security {
 		);
 		$args     = wp_parse_args( $args, $defaults );
 
-		if ( 'goto10' === $args['sec_level'] ) {
-			if ( mb_strlen( $password ) < 6 ) {
-				$msg = 'Lösenordet måste vara minst sex tecken långt';
-				return false;
-			}
-			return true;
-		} elseif ( 'iis_default' === $args['sec_level'] ) {
-			if ( mb_strlen( $password ) < 12 ) {
-				$msg = 'Lösenordet måste vara minst tolv tecken långt';
+		// New option setting since 1.6.0
+		$p_length = absint( get_option( 'iis_pack_password_strength_length', '12' ) );
+
+		if ( 'iis_default' === $args['sec_level'] ) {
+			if ( mb_strlen( $password ) < $p_length ) {
+				$msg = 'Lösenordet måste vara minst ' . $p_length . ' tecken långt';
 				return false;
 			}
 			return true;
 		} else {
-			if ( mb_strlen( $password ) < 12 ) {
-				$msg = 'Lösenordet måste vara minst tolv tecken långt';
+			if ( mb_strlen( $password ) < $p_length ) {
+				$msg = 'Lösenordet måste vara minst ' . $p_length . ' tecken långt';
 				return false;
 			}
 		}
 
+		// ... else if other 'sec_level'
+
+		/* Option to set higher security per site
+		 * Currently not used beacuse IIS password rules says 12 characters only
+		 * Lösenord måste innehålla tecken från minst tre av följande grupper:
+		 * Stora bokstäver, små bokstäver, siffror eller specialtecken (!@#$%&*)
+		 */
 
 		$lower_case = false;
 		$upper_case = false;
