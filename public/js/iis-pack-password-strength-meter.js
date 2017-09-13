@@ -62,7 +62,6 @@
 
 	function getWordPressGeneratedPassword() {
 		// If page lacks correct fields, avoid js-errors
-		console.log( '$password.length',$password.length );
 		if ( 0 < $password.length ) {
 			// If password length set in IIS pack settings is shorter than 12 characters - at least
 			// suggest a better password
