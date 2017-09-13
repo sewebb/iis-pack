@@ -128,7 +128,7 @@ class Iis_Pack_Public {
 
 		if ( $this->script_should_be_included() ) {
 			// js/wp-password-strength-meter.js is built into this file during grunt
-			wp_enqueue_script( 'iis-pack-password-strength-meter', plugin_dir_url( __FILE__ ) . 'js/iis-pack-password-strength-meter.3e0b2466.min.js', array( 'zxcvbn-async' ), null, true );
+			wp_enqueue_script( 'iis-pack-password-strength-meter', plugin_dir_url( __FILE__ ) . 'js/iis-pack-password-strength-meter.c3b67f09.min.js', array( 'zxcvbn-async' ), null, true );
 
 			// Fetch the blacklisted words
 			$blacklist_arr = Iis_Pack_Security::iis_blacklist();

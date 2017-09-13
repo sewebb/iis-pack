@@ -61,28 +61,33 @@
 	}
 
 	function getWordPressGeneratedPassword() {
-		// If password length set in IIS pack settings is shorter than 12 characters - at least
-		// suggest a better password
-		var passwordLength = iisPackJsPassw.pLength;
-		if ( passwordLength < 12 ) {
-			passwordLength = 12;
+		// If page lacks correct fields, avoid js-errors
+		console.log( '$password.length',$password.length );
+		if ( 0 < $password.length ) {
+			// If password length set in IIS pack settings is shorter than 12 characters - at least
+			// suggest a better password
+			var passwordLength = iisPackJsPassw.pLength;
+			if ( passwordLength < 12 ) {
+				passwordLength = 12;
+			}
+			var data = {
+						'iispack_action': 'getWordPressGeneratedPassword',
+						'length': passwordLength,
+						'special_chars' : '1',
+						'extra_special_chars' : '0'
+					};
+
+			var posting = $.post('/', data );
+
+			posting.done( function( data ) {
+				var generatedPassw = data.randpassw;
+				generatePassword( generatedPassw );
+			});
 		}
-		var data = {
-					'iispack_action': 'getWordPressGeneratedPassword',
-					'length': passwordLength,
-					'special_chars' : '1',
-					'extra_special_chars' : '0'
-				};
-
-		var posting = $.post('/', data );
-
-		posting.done( function( data ) {
-			var generatedPassw = data.randpassw;
-			generatePassword( generatedPassw );
-		});
 	}
 
 	function generatePassword( generatedPassw ) {
+
 		if ( typeof generatedPassw != 'undefined' ) {
 			suggested_password = generatedPassw;
 		}
