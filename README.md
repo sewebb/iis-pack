@@ -30,6 +30,11 @@ Installation
 Changelog
 =========
 
+#### 1.6.0
+* Support for adding javascript password strenght to frontend register forms
+* Two parts, one check in the browser and one serverside (optional both)
+* Explanations on how to implement in a site is in README inside folder /security/
+
 #### 1.5.5
 * Filter iis_og_title added
 

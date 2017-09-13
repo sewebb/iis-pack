@@ -26,6 +26,10 @@ module.exports = function(grunt) {
 				files: {
 					'public/js/iis-pack-public.min.js': [
 						'public/js/iis-pack-public.js',
+					],
+					'public/js/iis-pack-password-strength-meter.min.js': [
+						'public/js/wp-password-strength-meter.js',
+						'public/js/iis-pack-password-strength-meter.js',
 					]
 				}
 			}
@@ -34,7 +38,9 @@ module.exports = function(grunt) {
 			dist: [
 				'public/js/iis-pack-public.min.js',
 				'public/js/iis-pack-public.*.min.js',
-				'public/css/iis-pack-public.*.min.css'
+				'public/css/iis-pack-public.*.min.css',
+				'public/js/iis-pack-password-strength-meter.min.js',
+				'public/js/iis-pack-password-strength-meter.*.min.js'
 			]
 		},
 		watch: {
@@ -49,6 +55,7 @@ module.exports = function(grunt) {
 				files: [
 					'<%= jshint.all %>',
 					'public/js/iis-pack-public.js',
+					'public/js/iis-pack-password-strength-meter.js',
 				],
 				tasks: ['uglify', 'version'],
 				options: {
@@ -175,18 +182,6 @@ module.exports = function(grunt) {
 			prod_internetfonden: {
 				options: {
 					dest: '<%= rsync.options.basefolder %>internetfonden.se<%= rsync.options.pluginfolder %>',
-					host: '<%= rsync.options.hostservers.prodserver %>'
-				}
-			},
-			stage_internetstatistik: {
-				options: {
-					dest: '<%= rsync.options.basefolder %>stage.internetstatistik.se<%= rsync.options.pluginfolder %>',
-					host: '<%= rsync.options.hostservers.stageserver %>'
-				}
-			},
-			prod_internetstatistik: {
-				options: {
-					dest: '<%= rsync.options.basefolder %>internetstatistik.se<%= rsync.options.pluginfolder %>',
 					host: '<%= rsync.options.hostservers.prodserver %>'
 				}
 			},
@@ -328,7 +323,7 @@ module.exports = function(grunt) {
 			// goto10.se HOLGER
 			stage_goto10: {
 				options: {
-					dest: '<%= rsync.options.holger.basefolder %>goto10.se<%= rsync.options.pluginfolder %>',
+					dest: '<%= rsync.options.holger.basefolder %>goto10.se<%= rsync.options.holger.pluginfolder %>',
 					host: '<%= rsync.options.holger.hostservers.stageserver %>'
 				}
 			},
@@ -378,12 +373,6 @@ module.exports = function(grunt) {
 				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
 			},
 			prod_internetfonden: {
-				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
-			},
-			stage_internetstatistik: {
-				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
-			},
-			prod_internetstatistik: {
 				text: '[IIS Plugin: <%= rsync.options.pluginname %>] Deploy <%= grunt.task.current.nameArgs %>. OS-user: ' + username + ' GIT user: <%= gitinfo.local.branch.current.currentUser %> Commit number: <%= gitinfo.local.branch.current.shortSHA %> Branch: <%= gitinfo.local.branch.current.name %>'
 			},
 			stage_internetmuseum: {
@@ -475,7 +464,7 @@ module.exports = function(grunt) {
 		},
 		version: {
 			assets: {
-				src: ['public/js/iis-pack-public.min.js','public/css/iis-pack-public.min.css'],
+				src: ['public/js/iis-pack-public.min.js','public/js/iis-pack-password-strength-meter.min.js','public/css/iis-pack-public.min.css'],
 				dest: 'public/class-iis-pack-public.php'
 			}
 		},
@@ -546,7 +535,6 @@ module.exports = function(grunt) {
 		grunt.task.run('rsync:' + deploy_env + 'iis');
 		grunt.task.run('rsync:' + deploy_env + 'internetdagarna');
 		grunt.task.run('rsync:' + deploy_env + 'internetfonden');
-		grunt.task.run('rsync:' + deploy_env + 'internetstatistik');
 		grunt.task.run('rsync:' + deploy_env + 'internetmuseum');
 		grunt.task.run('rsync:' + deploy_env + 'soi2013');
 		grunt.task.run('rsync:' + deploy_env + 'sambi');
@@ -577,7 +565,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('multiversion', 'more than one file to wp-version', function(mode) {
 		var config = {
 			assets: {
-				src: ['public/js/iis-pack-public.min.js','public/css/iis-pack-public.min.css'],
+				src: ['public/js/iis-pack-public.min.js','public/js/iis-pack-password-strength-meter.min.js','public/css/iis-pack-public.min.css'],
 				dest: 'public/class-iis-pack-public.php'
 			}
 		};

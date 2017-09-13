@@ -39,6 +39,46 @@ class Iis_Pack_Security {
 	}
 
 	/**
+	 * AMEL will give us a blacklist to be used
+	 *
+	 * @since      1.6.0
+	 *
+	 * @return array
+	 */
+	public static function iis_blacklist() {
+		return [ 'iis','event','evenemang','kostnadsfritt' ];
+	}
+
+	/**
+	 * Takes care of ajax calls
+	 *
+	 * @since      1.6.0
+	 *
+	 * @return void
+	 */
+	public function ajax_get_functions() {
+
+		$iispack_action = isset( $_REQUEST['iispack_action'] ) ? $_REQUEST['iispack_action'] : '';
+
+		if ( ! empty( $iispack_action ) ) {
+
+			if ( 'getWordPressGeneratedPassword' === $iispack_action ) {
+				$length               = isset( $_REQUEST['length'] ) ? absint( $_REQUEST['length'] ) : 12;
+				$special_chars        = isset( $_REQUEST['special_chars'] ) ? sanitize_text_field( $_REQUEST['special_chars'] ) : true;
+				$extra_special_chars  = isset( $_REQUEST['extra_special_chars'] ) ? sanitize_text_field( $_REQUEST['extra_special_chars'] ) : false;
+				$generated_password   = [];
+
+				$generated_password['randpassw'] = wp_generate_password( $length, $special_chars, $extra_special_chars );
+				header( 'Content-Type: application/json' );
+				echo json_encode( $generated_password );
+				exit;
+			}
+		} // End if(). iispack_action not empty
+	}
+
+
+
+	/**
 	 * Validate profile update
 	 *
 	 * @author  Jonas Nordström <jonas.nordstrom@gmail.com>
@@ -115,30 +155,38 @@ class Iis_Pack_Security {
 	 * @return  boolean
 	 */
 	public static function is_strong_password( $password, &$msg, $args = array() ) {
-		/* Lösenord måste vara minst nio tecken långa, ingen maxlängd.
-		 * Lösenord måste innehålla tecken från minst tre av följande grupper:
-		 * Stora bokstäver, små bokstäver, siffror eller specialtecken (!@#$%&*)
+		/* Lösenord måste vara minst 12 tecken långa (som standard), ingen maxlängd.
 		 */
 		$defaults = array(
 						'container'       => '',
 						'container_class' => '',
-						'sec_level'       => 'max',
+						'sec_level'       => 'iis_default',
 		);
 		$args     = wp_parse_args( $args, $defaults );
 
-		if ( 'goto10' === $args['sec_level'] ) {
-			if ( mb_strlen( $password ) < 6 ) {
-				$msg = 'Lösenordet måste vara minst sex tecken långt';
+		// New option setting since 1.6.0
+		$p_length = absint( get_option( 'iis_pack_password_strength_length', '12' ) );
+
+		if ( 'iis_default' === $args['sec_level'] ) {
+			if ( mb_strlen( $password ) < $p_length ) {
+				$msg = 'Lösenordet måste vara minst ' . $p_length . ' tecken långt';
 				return false;
 			}
 			return true;
 		} else {
-			if ( mb_strlen( $password ) < 9 ) {
-				$msg = 'Lösenordet måste vara minst nio tecken långt';
+			if ( mb_strlen( $password ) < $p_length ) {
+				$msg = 'Lösenordet måste vara minst ' . $p_length . ' tecken långt';
 				return false;
 			}
 		}
 
+		// ... else if other 'sec_level'
+
+		/* Option to set higher security per site
+		 * Currently not used beacuse IIS password rules says 12 characters only
+		 * Lösenord måste innehålla tecken från minst tre av följande grupper:
+		 * Stora bokstäver, små bokstäver, siffror eller specialtecken (!@#$%&*)
+		 */
 
 		$lower_case = false;
 		$upper_case = false;
@@ -227,3 +275,6 @@ class Iis_Pack_Security {
 }
 
 add_action( 'init', array( Iis_Pack_Security::get_instance(), 'setup' ) );
+if ( ! is_admin() ) {
+	add_action( 'init', array( Iis_Pack_Security::get_instance(), 'ajax_get_functions' ) );
+}

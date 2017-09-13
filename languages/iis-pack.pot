@@ -3,16 +3,15 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: IIS Pack\n"
-"POT-Creation-Date: 2016-06-08 08:05+0200\n"
-"PO-Revision-Date: 2016-02-03 14:06+0100\n"
+"POT-Creation-Date: 2017-09-13 19:06+0200\n"
+"PO-Revision-Date: 2017-09-13 14:46+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.7\n"
-"X-Poedit-Basepath: ../../../../../../vvv.iis.se/wordpress/wp-content/plugins/"
-"iis-pack\n"
+"X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: iis-pack.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -21,20 +20,20 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: admin/class-iis-pack-admin.php:144
+#: admin/class-iis-pack-admin.php:154
 msgid "IIS Pack Settings"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
-#: admin/class-iis-pack-admin.php:145
+#: admin/class-iis-pack-admin.php:155
 msgid "IIS Pack"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:164 admin/class-iis-pack-admin.php:230
+#: admin/class-iis-pack-admin.php:174 admin/class-iis-pack-admin.php:241
 msgid "Share buttons"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:165
+#: admin/class-iis-pack-admin.php:175
 msgid ""
 "<h4>How it works:</h4>\n"
 "\t\t\t\t\t<p>Default setting is no buttons showing on pages/posts without an "
@@ -65,19 +64,21 @@ msgid ""
 "to post content (in editor)</p>"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:185 admin/class-iis-pack-admin.php:587
+#: admin/class-iis-pack-admin.php:195 admin/class-iis-pack-admin.php:659
+#: admin/class-iis-pack-admin.php:877
 msgid "Choose from theese templates: "
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:196 admin/class-iis-pack-admin.php:574
+#: admin/class-iis-pack-admin.php:206 admin/class-iis-pack-admin.php:646
+#: admin/class-iis-pack-admin.php:865
 msgid "Choose from theese post types: "
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:203 admin/class-iis-pack-admin.php:316
+#: admin/class-iis-pack-admin.php:213 admin/class-iis-pack-admin.php:327
 msgid "Object attribution"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:204
+#: admin/class-iis-pack-admin.php:214
 msgid ""
 "<h4>Adding license to images</h4>\n"
 "\t\t\t\t\t<p>In the media library there are fields for each object that can "
@@ -86,201 +87,227 @@ msgid ""
 "each image - or you use your own function in your theme</p>"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:237
+#: admin/class-iis-pack-admin.php:248
 msgid "Print buttons before content"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:246
+#: admin/class-iis-pack-admin.php:257
 msgid "Print buttons after content"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:255
+#: admin/class-iis-pack-admin.php:266
 msgid "Remove from types"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:264
+#: admin/class-iis-pack-admin.php:275
 msgid "Remove from templates"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:273
+#: admin/class-iis-pack-admin.php:284
 msgid "Activate Facebook"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:281
+#: admin/class-iis-pack-admin.php:292
 msgid "Activate Twitter"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:289
+#: admin/class-iis-pack-admin.php:300
 msgid "Activate LinkedIn"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:297
+#: admin/class-iis-pack-admin.php:308
 msgid "Activate Pinterest"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:323
+#: admin/class-iis-pack-admin.php:334
 msgid "Print Object attribution?"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:332
+#: admin/class-iis-pack-admin.php:343
 msgid "Hide on featured image"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:345
+#: admin/class-iis-pack-admin.php:356
 msgid "Facebook open graph"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:353
+#: admin/class-iis-pack-admin.php:364
 msgid "Default og:image"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:362
+#: admin/class-iis-pack-admin.php:373
 msgid "Protocol"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:371
+#: admin/class-iis-pack-admin.php:382
 msgid "ev. Facebook AppId"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:380
+#: admin/class-iis-pack-admin.php:391
 msgid "ev. Facebook Admin(s)"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:395 admin/partials/class-twitter.php:42
+#: admin/class-iis-pack-admin.php:406 admin/partials/class-twitter.php:43
 msgid "Twitter Cards"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:402
+#: admin/class-iis-pack-admin.php:413
 msgid "Twitter site"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:414
+#: admin/class-iis-pack-admin.php:425
 msgid "Google Analytics"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:421
+#: admin/class-iis-pack-admin.php:432
 msgid "Google Analytics ID"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:433
+#: admin/class-iis-pack-admin.php:444
 msgid "Fox Menu"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:440
+#: admin/class-iis-pack-admin.php:451
 msgid "Use Fox menu?"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:452
+#: admin/class-iis-pack-admin.php:463
+msgid "Check frontend registration password"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:470
+msgid "Use script for password strength?"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:479
+msgid "Password length"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:488
+msgid "Add to types"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:497
+msgid "Add to templates"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:514
 msgid "Other stuff"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:459
+#: admin/class-iis-pack-admin.php:521
 msgid "Remove emoji scripts"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:467
+#: admin/class-iis-pack-admin.php:529
 msgid "Local Profile Picture"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:471
+#: admin/class-iis-pack-admin.php:533
 msgid ""
 "Only allow users with file upload capabilities to upload local profile "
 "pictures (Authors and above)"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:488
+#: admin/class-iis-pack-admin.php:550
 msgid ""
 "Choose where social share buttons should be shown. See Help menu for more "
 "info (under \"Hi, {logged in user}\")"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:497
-msgid "Should this site fetch and print attachement credits "
-msgstr ""
-
-#: admin/class-iis-pack-admin.php:506
+#: admin/class-iis-pack-admin.php:568
 msgid "Settings for Facebook open graph tags per site "
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:515
-msgid "Global settings for Twitter Cards"
-msgstr ""
-
-#: admin/class-iis-pack-admin.php:524
-msgid "Settings for Google Analytics"
-msgstr ""
-
-#: admin/class-iis-pack-admin.php:533
-msgid "Should this site show the Fox menu on top of pages?"
-msgstr ""
-
-#: admin/class-iis-pack-admin.php:542
-msgid "Bits and pieces"
-msgstr ""
-
-#: admin/class-iis-pack-admin.php:573
+#: admin/class-iis-pack-admin.php:645
 msgid ""
 "Add post types to be avoided if above setting is set to Print before or "
 "Print after content. (ex: se-tech,guide)"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:574 admin/class-iis-pack-admin.php:587
+#: admin/class-iis-pack-admin.php:646 admin/class-iis-pack-admin.php:659
+#: admin/class-iis-pack-admin.php:865 admin/class-iis-pack-admin.php:877
 msgid "( <em>see help menu</em> ) "
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:586
+#: admin/class-iis-pack-admin.php:658
 msgid ""
 "Add templates to be avoided if above setting is set to Print before or Print "
 "after content."
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:622
+#: admin/class-iis-pack-admin.php:694
 msgid "Show Object Attribution"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:627
+#: admin/class-iis-pack-admin.php:699
 msgid "Hide Object Attribution"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:646
+#: admin/class-iis-pack-admin.php:718
 msgid ""
 "If you choose \"Show\" you can tick this to hide on featured image. "
 "<em>(Then your theme rolls its own variant)</em>"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:658
+#: admin/class-iis-pack-admin.php:730
 msgid "Complete url. Default image is IIS logo"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:672
+#: admin/class-iis-pack-admin.php:744
 msgid "https (SSL)"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:677
+#: admin/class-iis-pack-admin.php:749
 msgid "http"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:701
+#: admin/class-iis-pack-admin.php:773
 msgid "If the site has more than one admin, seperate them with comma (,)"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:712
+#: admin/class-iis-pack-admin.php:784
 msgid "The sites main account, for example @iis on www.iis.se"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:736
+#: admin/class-iis-pack-admin.php:808
 msgid "Show Fox menu"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:741
+#: admin/class-iis-pack-admin.php:813
 msgid "Hide Fox menu"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:758
+#: admin/class-iis-pack-admin.php:831
+msgid "Use password strength script"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:836
+msgid "Disable password strength script (default)"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:850
+msgid ""
+"Number of characters if this site uses non-default password length (which is "
+"12)"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:864
+msgid ""
+"Add post types to use password strength script even if user is logged in. "
+"(ex: se-tech,guide)"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:876
+msgid ""
+"Add templates to use password strength script even if user is logged in."
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:891
 msgid "Remove emojis (default)"
 msgstr ""
 
-#: admin/class-iis-pack-admin.php:763
+#: admin/class-iis-pack-admin.php:896
 msgid "Use Emojis"
 msgstr ""
 
@@ -382,34 +409,62 @@ msgid ""
 "picture, contact the blog administrator."
 msgstr ""
 
-#: admin/partials/class-twitter.php:56
+#: admin/partials/class-twitter.php:57
 msgid "Alternative twitter:title"
 msgstr ""
 
-#: admin/partials/class-twitter.php:57
+#: admin/partials/class-twitter.php:58
 msgid ""
 "If you want a different title for the page when shared on Twitter. If you "
 "want the same as on Facebook - just leave it empty"
 msgstr ""
 
-#: admin/partials/class-twitter.php:62
+#: admin/partials/class-twitter.php:63
 msgid "twitter:description"
 msgstr ""
 
-#: admin/partials/class-twitter.php:63
+#: admin/partials/class-twitter.php:64
 msgid ""
 "Add a nice descriptive text then page is shared on Twitter. If you want the "
 "same as on Facebook - just leave it empty"
 msgstr ""
 
-#: admin/partials/class-twitter.php:68
+#: admin/partials/class-twitter.php:69
 msgid "Hashtags"
 msgstr ""
 
-#: admin/partials/class-twitter.php:69
+#: admin/partials/class-twitter.php:70
 msgid ""
 "Add hashtags for this page. If more than one - seperate with comma, no "
 "spaces. (internetguider,iis)"
+msgstr ""
+
+#: public/class-iis-pack-public.php:139
+msgid "Password strength unknown"
+msgstr ""
+
+#: public/class-iis-pack-public.php:140
+msgid "Very weak"
+msgstr ""
+
+#: public/class-iis-pack-public.php:141
+msgid "Weak"
+msgstr ""
+
+#: public/class-iis-pack-public.php:142
+msgid "Medium"
+msgstr ""
+
+#: public/class-iis-pack-public.php:143
+msgid "Strong"
+msgstr ""
+
+#: public/class-iis-pack-public.php:144
+msgid "Mismatch"
+msgstr ""
+
+#: public/class-iis-pack-public.php:145
+msgid "Use unsecure password"
 msgstr ""
 
 #: public/partials/add-license-to-images.php:62
@@ -434,10 +489,10 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Gemensamma plugin för IIS sajter: GA, OG-taggar, Bildattribution, Share "
-"buttons, Foxmeny, Lokala Avatarer etc"
+"Gemensamma plugins för IIS sajter: GA, OG-taggar, bildattribution, dela-"
+"knappar, Foxmeny, lokala avatarer etc"
 msgstr ""
 
 #. Author of the plugin/theme
-msgid "The IIS Team"
+msgid "IIS Web Team"
 msgstr ""

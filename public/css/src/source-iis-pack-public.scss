@@ -495,3 +495,24 @@ $small-font-size: 13px;
 		margin-top: -20px;
 	}
 }
+/*PASSWORD meter*/
+.iis-pack-short, .iis-pack-bad, .iis-pack-good, .iis-pack-strong {
+    display: block;
+    margin-top: -16px;
+    margin-top: -1rem;
+    margin-bottom: 16px;
+    margin-bottom: 1rem;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-size: .75rem;
+    font-weight: 700;
+
+    background: #e31948;
+    color: #fff;
+  }
+  .iis-pack-good {
+    background: #ff7900;
+  }
+  .iis-pack-strong {
+    background: #34b233;
+  }

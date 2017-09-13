@@ -125,18 +125,91 @@ class Iis_Pack_Public {
 			'iispackDefs',
 			$defs
 		);
+
+		if ( $this->script_should_be_included() ) {
+			// js/wp-password-strength-meter.js is built into this file during grunt
+			wp_enqueue_script( 'iis-pack-password-strength-meter', plugin_dir_url( __FILE__ ) . 'js/iis-pack-password-strength-meter.c3b67f09.min.js', array( 'zxcvbn-async' ), null, true );
+
+			// Fetch the blacklisted words
+			$blacklist_arr = Iis_Pack_Security::iis_blacklist();
+			$p_length      = absint( get_option( 'iis_pack_password_strength_length', '12' ) );
+
+			wp_localize_script( 'iis-pack-password-strength-meter', 'iisPackJsPassw', array(
+				'blacklist' => $blacklist_arr,
+				'unknown' => __( 'Password strength unknown', 'iis-pack' ),
+				'short' => __( 'Very weak', 'iis-pack' ),
+				'bad' => __( 'Weak', 'iis-pack' ),
+				'good' => __( 'Medium', 'iis-pack' ),
+				'strong' => __( 'Strong', 'iis-pack' ),
+				'mismatch' => __( 'Mismatch', 'iis-pack' ),
+				'useUnsecure' => __( 'Use unsecure password', 'iis-pack' ),
+				'pLength' => $p_length,
+			) );
+		}
+	}
+
+	private function script_should_be_included() {
+		// ps => password_strength
+		$activate_script     = get_option( 'iis_pack_show_password_strength' );
+
+		if ( 'true' !== $activate_script ) {
+			// _log( 'Script should not be used, return false directly');
+			return false;
+		}
+
+		$show_on_this_type     = array();
+		$show_on_this_template = array();
+
+		$add_to_type           = false;
+		$add_to_template       = false;
+
+		$iis_add_pass_check_to_type     = get_option( 'iis_pack_add_pass_check_to_type', '' );
+		$iis_add_pass_check_to_template = get_option( 'iis_pack_add_pass_check_to_template', '' );
+
+		if ( '' !== $iis_add_pass_check_to_type || '' !== $iis_add_pass_check_to_template ) {
+
+			if ( '' !== $iis_add_pass_check_to_type ) {
+				$iis_add_pass_check_to_type  = explode( ',', $iis_add_pass_check_to_type );
+				$arrlength = count( $iis_add_pass_check_to_type );
+				for ( $x = 0; $x < $arrlength; $x++ ) {
+					array_push( $show_on_this_type, $iis_add_pass_check_to_type[ $x ] );
+				}
+				$add_to_type = is_singular( $show_on_this_type );
+			}
+
+			if ( '' !== $iis_add_pass_check_to_template ) {
+				$iis_add_pass_check_to_template  = explode( ',', $iis_add_pass_check_to_template );
+				$arrlength = count( $iis_add_pass_check_to_template );
+				for ( $x = 0; $x < $arrlength; $x++ ) {
+					array_push( $show_on_this_template, $iis_add_pass_check_to_template[ $x ] );
+				}
+				$add_to_template = is_page_template( $show_on_this_template );
+			}
+		}
+
+		if ( ! is_user_logged_in() ) {
+			// _log( 'User not logged in, use script' );
+			return true;
+		}
+
+		if ( is_user_logged_in() && ( $add_to_type || $add_to_template ) ) {
+			// _log( 'Everything checks out, use script' );
+			return true;
+		}
+
+		// _log( 'No hit in function, returns false by default' );
+		return false;
 	}
 
 	/**
 	 * Register the stylesheets for the public-facing side of the site.
-	 * Ska aktiveras i define_public_hooks() i class-iis-pack.php när vi ev. ngn gång behöver en css-fil för vårt IIS Pack
 	 *
 	 * @since    1.0.0
 	 */
 	public function iis_pack_enqueue_styles() {
 		// Sammanslagen css för samtliga plugin
 		// Inte använd ännu
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/iis-pack-public.b9c0255a.min.css', array(), null, 'screen' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/iis-pack-public.9d6c9b18.min.css', array(), null, 'screen' );
 
 	}
 }
