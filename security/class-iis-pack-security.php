@@ -36,17 +36,30 @@ class Iis_Pack_Security {
 		add_action( 'user_profile_update_errors', array( $this, 'validate_profile_update' ), 10, 3 );
 		add_filter( 'registration_errors', array( $this, 'validate_registration' ), 10, 3 );
 		add_action( 'validate_password_reset', array( $this, 'validate_password_reset' ), 10, 2 );
+
+		add_filter( 'password_hint', function( $hint ) {
+			// New option setting since 1.6.0
+			$p_length = absint( get_option( 'iis_pack_password_strength_length', '12' ) );
+			$hint = str_replace( 'bör vara', 'ska vara', $hint );
+			if ( 12 <> $p_length ) {
+				$hint = str_replace( 'tolv tecken', $p_length . ' tecken', $hint );
+				$hint = str_replace( 'twelve characters', $p_length . ' characters', $hint );
+				return $hint;
+			}
+			return $hint;
+		} );
 	}
 
 	/**
 	 * AMEL will give us a blacklist to be used
+	 * Example for now
 	 *
 	 * @since      1.6.0
 	 *
 	 * @return array
 	 */
 	public static function iis_blacklist() {
-		return [ 'iis','event','evenemang','kostnadsfritt' ];
+		return [ 'event','evenemang','kostnadsfritt' ];
 	}
 
 	/**
