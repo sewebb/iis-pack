@@ -59,7 +59,7 @@ class Iis_Pack_Security {
 	 * @return array
 	 */
 	public static function iis_blacklist() {
-		return [ 'event','evenemang','kostnadsfritt' ];
+		return array( 'event','evenemang','kostnadsfritt' );
 	}
 
 	/**
@@ -86,7 +86,7 @@ class Iis_Pack_Security {
 				echo json_encode( $generated_password );
 				exit;
 			}
-		} // End if(). iispack_action not empty
+		} // End if().
 	}
 
 

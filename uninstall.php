@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Fired when the plugin is uninstalled.
  *
@@ -32,11 +31,12 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 
 /**
  * Förberett för avinstallation av pluggen och detta fallet för att ta bort lokala bilder
+ *
  * @since 1.1
  */
 function simple_local_avatars_uninstall() {
 	$simple_local_avatars = new simple_local_avatars;
-	$users = get_users_of_blog();
+	$users = get_users();
 
 	foreach ( $users as $user ) {
 		$simple_local_avatars->avatar_delete( $user->user_id );

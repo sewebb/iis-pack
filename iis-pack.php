@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The plugin bootstrap file
  *
@@ -70,6 +69,5 @@ function run_iis_pack() {
 
 	$plugin = new Iis_Pack();
 	$plugin->run();
-
 }
 run_iis_pack();
