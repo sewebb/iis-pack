@@ -79,7 +79,7 @@ class Iis_Pack_Security {
 				$length               = isset( $_REQUEST['length'] ) ? absint( $_REQUEST['length'] ) : 12;
 				$special_chars        = isset( $_REQUEST['special_chars'] ) ? sanitize_text_field( $_REQUEST['special_chars'] ) : true;
 				$extra_special_chars  = isset( $_REQUEST['extra_special_chars'] ) ? sanitize_text_field( $_REQUEST['extra_special_chars'] ) : false;
-				$generated_password   = [];
+				$generated_password   = array();
 
 				$generated_password['randpassw'] = wp_generate_password( $length, $special_chars, $extra_special_chars );
 				header( 'Content-Type: application/json' );
