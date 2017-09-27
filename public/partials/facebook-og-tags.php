@@ -4,6 +4,7 @@
  *
  * @link       https://www.iis.se
  * @since      1.0.0
+ * @since      1.6.1 Apply filters without postid, change output for q-string
  *
  * @package    Iis_Pack
  * @subpackage Iis_Pack/public/partials
@@ -26,7 +27,7 @@ if ( ! empty( $fbadmins ) ) {
 	$fbadmins  = explode( ',', $fbadmins );
 	$arrlength = count( $fbadmins );
 	for ( $x = 0; $x < $arrlength; $x++ ) {
-	    $ogprint .= '<meta property="fb:admins" content="' . $fbadmins[ $x ] .'" />';
+	    $ogprint .= '<meta property="fb:admins" content="' . $fbadmins[ $x ] . '" />';
 	}
 	$ogprint .= "\n";
 }
@@ -36,8 +37,13 @@ if ( ! empty( $fbappid ) ) {
 	$ogprint .= "\n";
 }
 
-// Bättre med SERVER-variabler än get_permalink så att og:url alltid får ett korrelt värde även på arkivsidor
-$ogprint .= '<meta property="og:url" content="' . $protocol . '://' . $servername . esc_attr( strip_tags( $_SERVER['REQUEST_URI'] ) ) . '" />';
+// Bättre med SERVER-variabler än get_permalink så att og:url alltid får ett korrekt värde även på arkivsidor
+$baseurl   = strtok( esc_attr( strip_tags( $_SERVER['REQUEST_URI'] ) ), '?' );
+$query_str = $_SERVER['QUERY_STRING'];
+if ( ! empty( $query_str ) ) {
+	$query_str = '?' . $query_str;
+}
+$ogprint .= '<meta property="og:url" content="' . $protocol . '://' . $servername . $baseurl . $query_str . '" />';
 $ogprint .= "\n";
 // Ersätts om möjligt längre ner
 $str_excerpt            = '';
@@ -132,7 +138,7 @@ if ( is_singular() || is_home() || is_archive() || is_front_page() ) {
 		$ogprint .= '<meta property="og:image" content="' . $og_image . '" />';
 		$ogprint .= "\n";
 
-		if ( '' !== $og_image_width && '' !== $og_image_height ){
+		if ( '' !== $og_image_width && '' !== $og_image_height ) {
 			$ogprint .= '<meta property="og:image:width" content="' . $og_image_width . '" /><meta property="og:image:height" content="' . $og_image_height . '" />';
 			$ogprint .= "\n";
 		}
@@ -141,12 +147,31 @@ if ( is_singular() || is_home() || is_archive() || is_front_page() ) {
 		$ogprint .= '<meta property="og:description" content="' . $str_excerpt . '" />';
 		$ogprint .= "\n";
 	} else {
+
+		$og_image        = apply_filters( 'iis_og_image' , $og_image, null, $og_img_set );
+		$og_image_width  = apply_filters( 'iis_og_image_width' , $og_image_width, null );
+		$og_image_height = apply_filters( 'iis_og_image_height' , $og_image_height, null );
+		$str_title       = apply_filters( 'iis_og_title', $str_title, null );
+		$str_excerpt     = apply_filters( 'iis_og_description', $str_excerpt, null );
+
+		if ( ! empty( $og_image ) ) {
+			$default_og_image = $og_image;
+		}
+		if ( ! empty( $str_title ) ) {
+			$servername = $str_title;
+		}
 		// Skicka aldrig utan og:taggar
+		$ogprint .= '<meta property="og:type" contet="website" />';
+		$ogprint .= "\n";
+		if ( '' !== $og_image_width && '' !== $og_image_height ) {
+			$ogprint .= '<meta property="og:image:width" content="' . $og_image_width . '" /><meta property="og:image:height" content="' . $og_image_height . '" />';
+			$ogprint .= "\n";
+		}
 		$ogprint .= '<meta property="og:image" content="' . $default_og_image . '" />';
 		$ogprint .= "\n";
 		$ogprint .= '<meta property="og:title" content="' . $servername . '" />';
 		$ogprint .= "\n";
-		$ogprint .= '<meta property="og:description" content="" />';
+		$ogprint .= '<meta property="og:description" content="' . $str_excerpt . '" />';
 		$ogprint .= "\n";
 	}
 

@@ -15,7 +15,7 @@
  * Plugin Name:       IIS Pack
  * Plugin URI:        https://www.iis.se
  * Description:       Gemensamma plugins för IIS sajter: GA, OG-taggar, bildattribution, dela-knappar, Foxmeny, lokala avatarer etc
- * Version:           1.6.0
+ * Version:           1.6.1
  * Author:            IIS Web Team
  * Author URI:        https://www.iis.se
  * License:           GPL-2.0+

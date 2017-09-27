@@ -30,6 +30,10 @@ Installation
 Changelog
 =========
 
+#### 1.6.1
+* Mainly for Digitala Lektioner startpage - correction of og:url (querystrings)
+* Mainly for Digitala Lektioner startpage - if no postid apply filters anyway
+
 #### 1.6.0
 * Support for adding javascript password strenght to frontend register forms
 * Two parts, one check in the browser and one serverside (optional both)
