@@ -157,11 +157,11 @@ if ( is_singular() || is_home() || is_archive() || is_front_page() ) {
 		if ( ! empty( $og_image ) ) {
 			$default_og_image = $og_image;
 		}
-		if ( ! empty( $str_title ) ) {
-			$servername = $str_title;
+		if ( empty( $str_title ) ) {
+			$str_title = get_bloginfo();
 		}
 		// Skicka aldrig utan og:taggar
-		$ogprint .= '<meta property="og:type" contet="website" />';
+		$ogprint .= '<meta property="og:type" content="website" />';
 		$ogprint .= "\n";
 		if ( '' !== $og_image_width && '' !== $og_image_height ) {
 			$ogprint .= '<meta property="og:image:width" content="' . $og_image_width . '" /><meta property="og:image:height" content="' . $og_image_height . '" />';
@@ -169,7 +169,7 @@ if ( is_singular() || is_home() || is_archive() || is_front_page() ) {
 		}
 		$ogprint .= '<meta property="og:image" content="' . $default_og_image . '" />';
 		$ogprint .= "\n";
-		$ogprint .= '<meta property="og:title" content="' . $servername . '" />';
+		$ogprint .= '<meta property="og:title" content="' . $str_title . '" />';
 		$ogprint .= "\n";
 		$ogprint .= '<meta property="og:description" content="' . $str_excerpt . '" />';
 		$ogprint .= "\n";
