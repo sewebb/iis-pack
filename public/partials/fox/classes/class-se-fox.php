@@ -88,6 +88,10 @@ class Se_Fox extends Se_Plugin_Base {
 			'hide_logo' => false,
 			'site'	    => 'goto10',
 		),
+		'www.soi2017.se' => array(
+			'hide_logo' => false,
+			'site'	    => 'soi2017',
+		),
 	);
 
 	/**
@@ -297,7 +301,6 @@ class Se_Fox extends Se_Plugin_Base {
 			'soi',
 			'iisblogg',
 			'guider',
-			'internetfonden',
 			'internetmuseum',
 		),
 		'statistik.bredbandskollen.se' => array(
@@ -329,6 +332,17 @@ class Se_Fox extends Se_Plugin_Base {
 			'bredbandskollen',
 			'internetdagarna',
 			'soi',
+			'iisblogg',
+			'guider',
+			'internetfonden',
+			'internetmuseum',
+		),
+		'www.soi2017.se' => array(
+			'domaner',
+			'webbstjarnan',
+			'bredbandskollen',
+			'internetdagarna',
+			'goto10',
 			'iisblogg',
 			'guider',
 			'internetfonden',
@@ -377,11 +391,11 @@ class Se_Fox extends Se_Plugin_Base {
 			'linktext' => 'Till goto10.se',
 		),
 		'soi' => array(
-			'link' => 'http://www.soi2016.se',
+			'link' => 'http://www.svenskarnaochinternet.se',
 			'hashtags' => '',
 			'name' => 'Svenskarna & internet',
 			'content' => 'Sveriges viktigaste undersökning om svenskarnas internetvanor',
-			'linktext' => 'Till soi2016.se',
+			'linktext' => 'Till svenskarnaochinternet.se',
 		),
 		'iisblogg' => array(
 			'link' => 'https://www.iis.se/blogg',
@@ -470,7 +484,7 @@ class Se_Fox extends Se_Plugin_Base {
 		$domain = str_replace( 'stage.internetdagarna.', 'internetdagarna.', $domain );
 		$domain = str_replace( 'stage.', 'www.', $domain );
 		$domain = str_replace( 'iis.web1.common.', 'www.', $domain );
-		$domain = str_replace( 'soi.se', 'www.soi2016.se', $domain );
+		$domain = str_replace( 'soi.se', 'www.soi2017.se', $domain );
 		return $domain;
 	}
 
