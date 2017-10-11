@@ -30,6 +30,11 @@ Installation
 Changelog
 =========
 
+#### 1.6.2
+* Fox menu: soi2016.se changed to svenskarnaochinternet.se
+* Added settings for soi2017.se
+* Deleted internetfonden from zonemaster (menu was to wide)
+
 #### 1.6.1
 * Mainly for Digitala Lektioner startpage - correction of og:url (querystrings)
 * Mainly for Digitala Lektioner startpage - if no postid apply filters anyway
