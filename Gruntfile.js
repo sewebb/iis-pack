@@ -110,6 +110,7 @@ module.exports = function(grunt) {
 				holger: {
 					basefolder: '/var/www/',
 					pluginfolder: '/wp/wp-content/plugins/iis-pack',
+					alternative_pluginfolder: '/wordpress/wp-content/plugins/iis-pack',
 					hostservers: {
 						stageserver: 'www-adm@46.21.104.169',
 						prodserver: 'www-adm@79.99.1.121'
@@ -209,17 +210,18 @@ module.exports = function(grunt) {
 					host: '<%= rsync.options.hostservers.prodserver %>'
 				}
 			},
-			// Sambi
-			stage_sambi: {
-				options: {
-					dest: '<%= rsync.options.basefolder %>stage.sambi.se<%= rsync.options.pluginfolder %>',
-					host: '<%= rsync.options.hostservers.stageserver %>'
-				}
-			},
+			// Sambi //stageserver not on Holger yet
+			// stage_sambi: {
+			// 	options: {
+			// 		dest: '<%= rsync.options.holger.basefolder %>sambi.se<%= rsync.options.alternative_pluginfolder %>',
+			// 		host: '<%= rsync.options.holger.hostservers.stageserver %>'
+			// 	}
+			// },
+			 // HOLGER
 			prod_sambi: {
 				options: {
-					dest: '<%= rsync.options.basefolder %>sambi.se<%= rsync.options.pluginfolder %>',
-					host: '<%= rsync.options.hostservers.prodserver %>'
+					dest: '<%= rsync.options.holger.basefolder %>sambi.se<%= rsync.options.holger.alternative_pluginfolder %>',
+					host: '<%= rsync.options.holger.hostservers.prodserver %>'
 				}
 			},
 			// seDirekt - saknar vanliga /wordpress/-foldern, använder "alternative_pluginfolder"
@@ -235,17 +237,18 @@ module.exports = function(grunt) {
 					host: '<%= rsync.options.hostservers.prodserver %>'
 				}
 			},
-			// Skolfederation
-			stage_skolfederation: {
-				options: {
-					dest: '<%= rsync.options.basefolder %>stage.www.skolfederation.se<%= rsync.options.pluginfolder %>',
-					host: '<%= rsync.options.hostservers.stageserver %>'
-				}
-			},
+			// Skolfederation //stageserver not on Holger yet
+			// stage_skolfederation: {
+			// 	options: {
+			// 		dest: '<%= rsync.options.basefolder %>stage.www.skolfederation.se<%= rsync.options.pluginfolder %>',
+			// 		host: '<%= rsync.options.hostservers.stageserver %>'
+			// 	}
+			// },
+			// holger
 			prod_skolfederation: {
 				options: {
-					dest: '<%= rsync.options.basefolder %>skolfederation.se<%= rsync.options.pluginfolder %>',
-					host: '<%= rsync.options.hostservers.prodserver %>'
+					dest: '<%= rsync.options.holger.basefolder %>skolfederation.se<%= rsync.options.holger.alternative_pluginfolder %>',
+					host: '<%= rsync.options.holger.hostservers.prodserver %>'
 				}
 			},
 			// arkiv.internetmuseum
