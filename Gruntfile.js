@@ -224,17 +224,18 @@ module.exports = function(grunt) {
 					host: '<%= rsync.options.holger.hostservers.prodserver %>'
 				}
 			},
-			// seDirekt - saknar vanliga /wordpress/-foldern, använder "alternative_pluginfolder"
-			stage_sedirekt: {
-				options: {
-					dest: '<%= rsync.options.basefolder %>stage.sedirekt.se<%= rsync.options.alternative_pluginfolder %>',
-					host: '<%= rsync.options.hostservers.stageserver %>'
-				}
-			},
+			// seDirekt -
+			//stageserver not on Holger yet
+			// stage_sedirekt: {
+			// 	options: {
+			// 		dest: '<%= rsync.options.holger.basefolder %>sedirekt.se<%= rsync.options.holger.pluginfolder %>',
+			// 		host: '<%= rsync.options.holger.hostservers.stageserver %>'
+			// 	}
+			// },
 			prod_sedirekt: {
 				options: {
-					dest: '<%= rsync.options.basefolder %>sedirekt.se<%= rsync.options.alternative_pluginfolder %>',
-					host: '<%= rsync.options.hostservers.prodserver %>'
+					dest: '<%= rsync.options.holger.basefolder %>sedirekt.se<%= rsync.options.holger.pluginfolder %>',
+					host: '<%= rsync.options.holger.hostservers.prodserver %>'
 				}
 			},
 			// Skolfederation //stageserver not on Holger yet
