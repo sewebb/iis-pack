@@ -154,6 +154,10 @@ if ( is_singular() || is_home() || is_archive() || is_front_page() ) {
 		$str_title       = apply_filters( 'iis_og_title', $str_title, null );
 		$str_excerpt     = apply_filters( 'iis_og_description', $str_excerpt, null );
 
+		if ( empty( $str_excerpt ) ) {
+			$str_excerpt = apply_filters( 'iis_og_description', $site_description, null );
+		}
+
 		if ( ! empty( $og_image ) ) {
 			$default_og_image = $og_image;
 		}
