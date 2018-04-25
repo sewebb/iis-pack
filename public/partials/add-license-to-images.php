@@ -53,7 +53,7 @@ function attach_image_credit( $images ) {
 		$license_holder_name = get_post_meta( $match[1] /* Captured image ID */, '_iis_pack_license_holder_name', true );
 
 		if ( ( ! empty( $license ) && '' !== $license )  || ( ! empty( $license_holder_name ) && '' !== $license_holder_name ) ) {
-			$return .= '<div class="iis-pack-credits-container in-page">';
+			$return .= '<span class="iis-pack-credits-container in-page">';
 
 			$object_url  = get_post_meta( $match[1], '_iis_pack_object_url', true );
 			$object_name = get_post_meta( $match[1], '_iis_pack_object_name', true );
@@ -101,7 +101,7 @@ function attach_image_credit( $images ) {
 			if ( '' !== $license ) {
 				$return .= ')</span>';
 			}
-			$return .= '</div>';
+			$return .= '</span>';
 		}
 	}
 
@@ -191,4 +191,3 @@ function filter_featured_image( $html, $post_id, $post_image_id ) {
 
 
 }
-
