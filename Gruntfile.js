@@ -342,7 +342,7 @@ module.exports = function(grunt) {
 		slack: {
 			options: {
 				endpoint: 'https://hooks.slack.com/services/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',
-				channel: '#webbgruppen',
+				channel: '#devlog',
 				username: 'gruntbot',
 				icon_emoji: ':rocket:',
 				icon_url: 'https://slack.com/img/icons/app-57.png' // if icon_emoji not specified
