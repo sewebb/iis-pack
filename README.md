@@ -30,6 +30,10 @@ Installation
 Changelog
 =========
 
+#### 1.6.3
+* Fallback to site description on og:description
+* Changed image license container to span
+
 #### 1.6.2
 * Fox menu: soi2016.se changed to svenskarnaochinternet.se
 * Added settings for soi2017.se
