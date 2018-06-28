@@ -40,9 +40,9 @@ class Se_Fox extends Se_Plugin_Base {
 			'hide_logo' => false,
 			'site'	    => 'soi2015',
 		),
-		'www.webbstjarnan.se' => array(
+		'digitalalektioner.iis.se' => array(
 			'hide_logo' => false,
-			'site'	    => 'webbstjarnan',
+			'site'	    => 'digitalalektioner',
 		),
 		'www.poi2014.se' => array(
 			'hide_logo' => false,
@@ -97,13 +97,13 @@ class Se_Fox extends Se_Plugin_Base {
 	/**
 	 * Decide which links to display for each site
 	 * To add a new site, you insert a new item into the array $fox_mapping, example:
-	 * $fox_mapping['www.the-new-site-com'] = array( 'webbstjarnan', 'bredbandskollen', 'soi' );
+	 * $fox_mapping['www.the-new-site-com'] = array( 'digitalalektioner', 'bredbandskollen', 'soi' );
 	 * @since 1.2.1 arkiv.internetmuseum.se
 	*/
 	private static $fox_mapping = array(
 		'www.iis.se' => array(
 			'domaner',
-			'webbstjarnan',
+			'digitalalektioner',
 			'bredbandskollen',
 			'internetdagarna',
 			'goto10',
@@ -115,7 +115,7 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'internetdagarna.se' => array(
 			'domaner',
-			'webbstjarnan',
+			'digitalalektioner',
 			'bredbandskollen',
 			'goto10',
 			'soi',
@@ -126,7 +126,7 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'stage.internetdagarna.se' => array(
 			'domaner',
-			'webbstjarnan',
+			'digitalalektioner',
 			'bredbandskollen',
 			'goto10',
 			'soi',
@@ -137,7 +137,7 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'www.internetfonden.se' => array(
 			'domaner',
-			'webbstjarnan',
+			'digitalalektioner',
 			'bredbandskollen',
 			'internetdagarna',
 			'goto10',
@@ -148,7 +148,7 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'www.internetstatistik.se' => array(
 			'domaner',
-			'webbstjarnan',
+			'digitalalektioner',
 			'bredbandskollen',
 			'internetdagarna',
 			'goto10',
@@ -160,7 +160,7 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'www.internetmuseum.se' => array(
 			'domaner',
-			'webbstjarnan',
+			'digitalalektioner',
 			'bredbandskollen',
 			'internetdagarna',
 			'goto10',
@@ -170,7 +170,7 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'www.soi2013.se' => array(
 			'domaner',
-			'webbstjarnan',
+			'digitalalektioner',
 			'bredbandskollen',
 			'internetdagarna',
 			'goto10',
@@ -181,7 +181,7 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'www.soi2014.se' => array(
 			'domaner',
-			'webbstjarnan',
+			'digitalalektioner',
 			'bredbandskollen',
 			'internetdagarna',
 			'goto10',
@@ -192,7 +192,7 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'www.soi2015.se' => array(
 			'domaner',
-			'webbstjarnan',
+			'digitalalektioner',
 			'bredbandskollen',
 			'internetdagarna',
 			'goto10',
@@ -203,7 +203,7 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'www.poi2014.se' => array(
 			'domaner',
-			'webbstjarnan',
+			'digitalalektioner',
 			'bredbandskollen',
 			'internetdagarna',
 			'goto10',
@@ -213,7 +213,7 @@ class Se_Fox extends Se_Plugin_Base {
 			'internetfonden',
 			'internetmuseum',
 		),
-		'www.webbstjarnan.se' => array(
+		'digitalalektioner.iis.se' => array(
 			'domaner',
 			'bredbandskollen',
 			'internetdagarna',
@@ -248,7 +248,7 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'arkiv.internetmuseum.se' => array(
 			'domaner',
-			'webbstjarnan',
+			'digitalalektioner',
 			'bredbandskollen',
 			'internetdagarna',
 			'goto10',
@@ -258,7 +258,7 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'kurser.iis.se' => array(
 			'domaner',
-			'webbstjarnan',
+			'digitalalektioner',
 			'bredbandskollen',
 			'internetdagarna',
 			'goto10',
@@ -270,7 +270,7 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'www.datahotell.se' => array(
 			'domaner',
-			'webbstjarnan',
+			'digitalalektioner',
 			'bredbandskollen',
 			'internetdagarna',
 			'goto10',
@@ -282,7 +282,7 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'webbpedagog.se' => array(
 			'domaner',
-			'webbstjarnan',
+			'digitalalektioner',
 			'bredbandskollen',
 			'internetdagarna',
 			'goto10',
@@ -294,7 +294,7 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'zonemaster.iis.se' => array(
 			'domaner',
-			'webbstjarnan',
+			'digitalalektioner',
 			'bredbandskollen',
 			'internetdagarna',
 			'goto10',
@@ -305,7 +305,7 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'statistik.bredbandskollen.se' => array(
 			'domaner',
-			'webbstjarnan',
+			'digitalalektioner',
 			'bredbandskollen',
 			'internetdagarna',
 			'goto10',
@@ -317,7 +317,7 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'www.soi2016.se' => array(
 			'domaner',
-			'webbstjarnan',
+			'digitalalektioner',
 			'bredbandskollen',
 			'internetdagarna',
 			'goto10',
@@ -328,7 +328,7 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'www.goto10.se' => array(
 			'domaner',
-			'webbstjarnan',
+			'digitalalektioner',
 			'bredbandskollen',
 			'internetdagarna',
 			'soi',
@@ -339,7 +339,7 @@ class Se_Fox extends Se_Plugin_Base {
 		),
 		'www.soi2017.se' => array(
 			'domaner',
-			'webbstjarnan',
+			'digitalalektioner',
 			'bredbandskollen',
 			'internetdagarna',
 			'goto10',
@@ -369,12 +369,12 @@ class Se_Fox extends Se_Plugin_Base {
 			'content' => 'Verktyget som hjälper dig att testa uppkopplingen på ditt bredband',
 			'linktext' => 'Till bredbandskollen.se',
 		),
-		'webbstjarnan' => array(
-			'link' => 'https://www.webbstjarnan.se',
+		'digitalalektioner' => array(
+			'link' => 'https://digitalalektioner.iis.se',
 			'hashtags' => '',
-			'name' => 'Webbstjärnan',
-			'content' => 'Skoltävling där lärare och elever lär sig att skapa webbplatser',
-			'linktext' => 'Till webbstjärnan.se',
+			'name' => 'Digitala lektioner',
+			'content' => 'Fritt material för lärare i digital kompetens',
+			'linktext' => 'Till digitalalektioner.iis.se',
 		),
 		'internetdagarna' => array(
 			'link' => 'https://internetdagarna.se',
