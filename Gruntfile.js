@@ -176,26 +176,26 @@ module.exports = function(grunt) {
 			},
 			stage_internetfonden: {
 				options: {
-					dest: '<%= rsync.options.basefolder %>stage.internetfonden.se<%= rsync.options.pluginfolder %>',
-					host: '<%= rsync.options.hostservers.stageserver %>'
+					dest: '<%= rsync.options.holger.basefolder %>internetfonden.se/wp<%= rsync.options.holger.alternative_pluginfolder %>',
+					host: '<%= rsync.options.holger.hostservers.stageserver %>'
 				}
 			},
 			prod_internetfonden: {
 				options: {
-					dest: '<%= rsync.options.basefolder %>internetfonden.se<%= rsync.options.pluginfolder %>',
-					host: '<%= rsync.options.hostservers.prodserver %>'
+					dest: '<%= rsync.options.holger.basefolder %>internetfonden.se/wp<%= rsync.options.holger.alternative_pluginfolder %>',
+					host: '<%= rsync.options.holger.hostservers.prodserver %>'
 				}
 			},
 			stage_internetmuseum: {
 				options: {
-					dest: '<%= rsync.options.basefolder %>stage.internetmuseum.se<%= rsync.options.pluginfolder %>',
-					host: '<%= rsync.options.hostservers.stageserver %>'
+					dest: '<%= rsync.options.holger.basefolder %>internetmuseum.se/wp<%= rsync.options.holger.alternative_pluginfolder %>',
+					host: '<%= rsync.options.holger.hostservers.stageserver %>'
 				}
 			},
 			prod_internetmuseum: {
 				options: {
-					dest: '<%= rsync.options.basefolder %>internetmuseum.se<%= rsync.options.pluginfolder %>',
-					host: '<%= rsync.options.hostservers.prodserver %>'
+					dest: '<%= rsync.options.holger.basefolder %>internetmuseum.se/wp<%= rsync.options.holger.alternative_pluginfolder %>',
+					host: '<%= rsync.options.holger.hostservers.prodserver %>'
 				}
 			},
 			stage_soi2013: {
@@ -255,14 +255,14 @@ module.exports = function(grunt) {
 			// arkiv.internetmuseum
 			stage_internetarkiv: {
 				options: {
-					dest: '<%= rsync.options.basefolder %>stage.arkiv.internetmuseum.se<%= rsync.options.pluginfolder %>',
-					host: '<%= rsync.options.hostservers.stageserver %>'
+					dest: '<%= rsync.options.holger.basefolder %>arkiv.internetmuseum.se/wp<%= rsync.options.holger.alternative_pluginfolder %>',
+					host: '<%= rsync.options.holger.hostservers.stageserver %>'
 				}
 			},
 			prod_internetarkiv: {
 				options: {
-					dest: '<%= rsync.options.basefolder %>arkiv.internetmuseum.se<%= rsync.options.pluginfolder %>',
-					host: '<%= rsync.options.hostservers.prodserver %>'
+					dest: '<%= rsync.options.holger.basefolder %>arkiv.internetmuseum.se/wp<%= rsync.options.holger.alternative_pluginfolder %>',
+					host: '<%= rsync.options.holger.hostservers.prodserver %>'
 				}
 			},
 			// datahotell.se
