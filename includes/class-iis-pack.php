@@ -119,11 +119,6 @@ class Iis_Pack {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-iis-pack-public.php';
 
-		/**
-		 * Kanske inte rätt sätt att hantera fox, men det funkar..
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/fox/fox.php';
-
 		$this->loader = new Iis_Pack_Loader();
 
 		/**
