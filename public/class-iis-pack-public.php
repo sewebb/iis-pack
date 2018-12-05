@@ -89,15 +89,6 @@ class Iis_Pack_Public {
 	}
 
 	/**
-	 * Start shortcode for fast social
-	 *
-	 * @since 1.5.4 Changed to start on differen hook
-	 *
-	 */
-	public function iis_pack_fast_social() {
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/fast-social-share-buttons.php';
-	}
-	/**
 	 * Ta bort alla emojisar
 	 *
 	 * @since 1.0.1
@@ -115,7 +106,7 @@ class Iis_Pack_Public {
 	public function iis_pack_enqueue_scripts() {
 
 		// Sammanslagen js för samtliga plugin
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/iis-pack-public.3ddf7b7c.min.js', array( 'jquery' ), null, true );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/iis-pack-public.fe9602a4.min.js', array( 'jquery' ), null, true );
 		// Settings transfered to javascript, and language
 		$defs = array(
 			'pluginsUrl'  => plugin_dir_url( __FILE__ ),
@@ -128,7 +119,7 @@ class Iis_Pack_Public {
 
 		if ( $this->script_should_be_included() ) {
 			// js/wp-password-strength-meter.js is built into this file during grunt
-			wp_enqueue_script( 'iis-pack-password-strength-meter', plugin_dir_url( __FILE__ ) . 'js/iis-pack-password-strength-meter.5383b414.min.js', array( 'zxcvbn-async' ), null, true );
+			wp_enqueue_script( 'iis-pack-password-strength-meter', plugin_dir_url( __FILE__ ) . 'js/iis-pack-password-strength-meter.9999b354.min.js', array( 'zxcvbn-async' ), null, true );
 
 			// Fetch the blacklisted words
 			$blacklist_arr = Iis_Pack_Security::iis_blacklist();
@@ -209,7 +200,7 @@ class Iis_Pack_Public {
 	public function iis_pack_enqueue_styles() {
 		// Sammanslagen css för samtliga plugin
 		// Inte använd ännu
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/iis-pack-public.b418ab95.min.css', array(), null, 'screen' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/iis-pack-public.07f57a92.min.css', array(), null, 'screen' );
 
 	}
 }

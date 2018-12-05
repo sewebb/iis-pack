@@ -169,23 +169,6 @@ class Iis_Pack_Admin {
 		$allposttypes = '';
 		$screen       = get_current_screen();
 
-		$screen->add_help_tab( array(
-				'id'      => 'fss_share_buttons',
-				'title'   => __( 'Share buttons', 'iis-pack' ),
-				'content' => __( '<h4>How it works:</h4>
-					<p>Default setting is no buttons showing on pages/posts without an added shortcode <code>[fastsocial]</code> either in the content or added with the page template.</p>
-					<p>BUT - you can choose to print before or after the content and still avoide printing on certain post types.
-					For example, if you dont want any buttons on normal pages add "<code>page</code>" to the <em>"Remove from"</em> field.
-					Or if you use a special template to show for example Internetguider - add "<code>guide</code>" to the field. (Or a combination like "<code>page,guide</code>")</code></p>
-					<p><em>"Activate"</em>-settings are default for the hole site. If you activate all networks you can still choose not to show a certain button on / in a post or template
-					with for example <code>[fastsocial pinterest=no]</code> (or if a network is not choosen for all pages - activate it with <code>[fastsocial pinterest=yes]</code></p>
-						<p>On each page / post you can also add a special Facebook App ID, <strong>different</strong> from the sitewide ID.
-						Or you can add it to the do_shortcode in a template with <code>[fastsocial fbappid=<em>{idnumber}</em>]</code></p>
-						<p>Hashtags for the Twitter-button could be added in the same manner (per post/page or by shortcode) <code>[fastsocial hashtags=internetguider,internetstiftelsen]</code></p>
-						<p>To remove fastsocial for a specific page / post that would normaly magically add the buttons, add <code>[fastsocial remove=yes]</code> to post content (in editor)</p>', 'iis-pack' ),
-				)
-		);
-
 		$templates = get_page_templates();
 		foreach ( $templates as $template_name => $template_filename ) {
 			$alltemplates .= "<em>$template_name:</em> <code>$template_filename</code>&nbsp;&nbsp;";
@@ -234,93 +217,6 @@ class Iis_Pack_Admin {
 	 * @since 1.6.0 Settings for password strength script
 	 */
 	public function register_setting() {
-		// _cb = callback
-		// Lägg till section för Fast Social Share
-		add_settings_section(
-			$this->option_name . '_fast_social_share',
-			__( 'Share buttons', 'iis-pack' ),
-			array( $this, $this->option_name . '_fast_social_share_cb' ),
-			$this->plugin_name
-		);
-
-		add_settings_field(
-			$this->option_name . '_fss_beforecontent',
-			__( 'Print buttons before content', 'iis-pack' ),
-			array( $this, $this->option_name . '_show_fast_social_share_cb' ),
-			$this->plugin_name,
-			$this->option_name . '_fast_social_share',
-			array( $this->option_name . '_fss_beforecontent', 'label_for' => $this->option_name . '_fss_beforecontent' )
-		);
-
-		add_settings_field(
-			$this->option_name . '_fss_aftercontent',
-			__( 'Print buttons after content', 'iis-pack' ),
-			array( $this, $this->option_name . '_show_fast_social_share_cb' ),
-			$this->plugin_name,
-			$this->option_name . '_fast_social_share',
-			array( $this->option_name . '_fss_aftercontent', 'label_for' => $this->option_name . '_fss_aftercontent' )
-		);
-
-		add_settings_field(
-			$this->option_name . '_remove_fss_from_type',
-			__( 'Remove from types', 'iis-pack' ),
-			array( $this, $this->option_name . '_remove_fss_from_type_cb' ),
-			$this->plugin_name,
-			$this->option_name . '_fast_social_share',
-			array( 'label_for' => $this->option_name . '_remove_fss_from_type' )
-		);
-
-		add_settings_field(
-			$this->option_name . '_remove_fss_from_template',
-			__( 'Remove from templates', 'iis-pack' ),
-			array( $this, $this->option_name . '_remove_fss_from_template_cb' ),
-			$this->plugin_name,
-			$this->option_name . '_fast_social_share',
-			array( 'label_for' => $this->option_name . '_remove_fss_from_template' )
-		);
-
-		add_settings_field(
-			$this->option_name . '_enable_facebook',
-			__( 'Activate Facebook', 'iis-pack' ),
-			array( $this, $this->option_name . '_checkbox_enable_cb' ),
-			$this->plugin_name,
-			$this->option_name . '_fast_social_share',
-			array( $this->option_name . '_enable_facebook', 'facebook', 'label_for' => $this->option_name . '_enable_facebook' )
-		);
-		add_settings_field(
-			$this->option_name . '_enable_twitter',
-			__( 'Activate Twitter', 'iis-pack' ),
-			array( $this, $this->option_name . '_checkbox_enable_cb' ),
-			$this->plugin_name,
-			$this->option_name . '_fast_social_share',
-			array( $this->option_name . '_enable_twitter', 'twitter', 'label_for' => $this->option_name . '_enable_twitter' )
-		);
-		add_settings_field(
-			$this->option_name . '_enable_linkedin',
-			__( 'Activate LinkedIn', 'iis-pack' ),
-			array( $this, $this->option_name . '_checkbox_enable_cb' ),
-			$this->plugin_name,
-			$this->option_name . '_fast_social_share',
-			array( $this->option_name . '_enable_linkedin', 'linkedin', 'label_for' => $this->option_name . '_enable_linkedin' )
-		);
-		add_settings_field(
-			$this->option_name . '_enable_pinterest',
-			__( 'Activate Pinterest', 'iis-pack' ),
-			array( $this, $this->option_name . '_checkbox_enable_cb' ),
-			$this->plugin_name,
-			$this->option_name . '_fast_social_share',
-			array( $this->option_name . '_enable_pinterest', 'pinterest', 'label_for' => $this->option_name . '_enable_pinterest' )
-		);
-
-		register_setting( $this->plugin_name, $this->option_name . '_show_fast_social_share', array( $this, $this->option_name . '_sanitize_checkbox' ) );
-		register_setting( $this->plugin_name, $this->option_name . '_remove_fss_from_type', 'sanitize_text_field' );
-		register_setting( $this->plugin_name, $this->option_name . '_remove_fss_from_template', 'sanitize_text_field' );
-		register_setting(
-			$this->plugin_name, // Option group
-			$this->option_name . '_choose_social_share', // Option name
-			array( $this, $this->option_name . '_sanitize_checkbox' ) // Sanitize
-		);
-
 		// Lägg till sektion för Foto-credits
 		add_settings_section(
 			$this->option_name . '_object_credits',
@@ -542,15 +438,6 @@ class Iis_Pack_Admin {
 	}
 
 	/**
-	 * Underrubrik Fast Social share
-	 *
-	 * @since  1.0.2
-	 */
-	public function iis_pack_fast_social_share_cb() {
-		echo '<p>' . __( 'Choose where social share buttons should be shown. See Help menu for more info (under "Hi, {logged in user}")', 'iis-pack' ) . '</p>';
-	}
-
-	/**
 	 * Underrubrik Bildattribution
 	 *
 	 * @since  1.0.1
@@ -615,20 +502,6 @@ class Iis_Pack_Admin {
 
 
 	// INPUT FÄLT
-	/**
-	 * Input för checkboxar - var ska Fast Social Share -knapparna visas
-	 * @param array $args knapparnas läge
-	 * @since  1.0.2
-	 */
-	public function iis_pack_show_fast_social_share_cb( $args ) {
-		$options = get_option( $this->option_name . '_show_fast_social_share' );
-	?>
-		<input id="<?php echo $args[0]; ?>" name="iis_pack_show_fast_social_share[<?php echo $args[0]; ?>]"  type="checkbox" value="1" <?php
-		if ( isset( $options[ $args[0] ] ) ) {
-			checked( $options[ $args[0] ], 1 );
-		} ?> />
-	<?php
-	}
 
 	/**
 	 * Inställningsfält för extra finlir var knapparna ska hamna - TYPES
@@ -657,27 +530,6 @@ class Iis_Pack_Admin {
 		echo '<input type="text" class="large-text" name="' . $this->option_name . '_remove_fss_from_template' . '" id="' . $this->option_name . '_remove_fss_from_template' . '" value="' . $remove_fss_from_template . '"> ';
 		echo '<p class="description">' . __( 'Add templates to be avoided if above setting is set to Print before or Print after content.', 'iis-pack' ) . '</p>';
 		echo '<p>' . __( 'Choose from theese templates: ', 'iis-pack' ) . __( '( <em>see help menu</em> ) ', 'iis-pack' ) . '</p>';
-	}
-
-	/**
-	 * Checkbox var vilka nätverk ska visas
-	 *
-	 * @since 1.0.2
-	 * @param array $args nätverken
-	 */
-	public function iis_pack_checkbox_enable_cb( $args ) {
-		$options = get_option( $this->option_name . '_choose_social_share' ); ?>
-		<input id="<?php echo $args[0]; ?>" name="iis_pack_choose_social_share[<?php echo $args[0]; ?>]"  type="checkbox" value="1"
-		<?php
-		if ( isset( $options[ $args[0] ] ) ) {
-			checked( $options[ $args[0] ], 1 );
-		} ?> />
-		<?php
-		if ( '' != $args[1] ) { ?>
-			<small>[fastsocial <?php echo $args[1]; ?>="yes"]</small>
-		 <?php
-		}
-
 	}
 
 	/**
