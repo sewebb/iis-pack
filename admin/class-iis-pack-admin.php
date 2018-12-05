@@ -334,25 +334,6 @@ class Iis_Pack_Admin {
 
 		register_setting( $this->plugin_name, $this->option_name . '_ga_id', 'sanitize_text_field' );
 
-		// Lägg till sektion för Fox menu
-		add_settings_section(
-			$this->option_name . '_fox_menu',
-			'<hr>' . __( 'Fox Menu', 'iis-pack' ),
-			array( $this, $this->option_name . '_fox_menu_cb' ),
-			$this->plugin_name
-		);
-
-		add_settings_field(
-			$this->option_name . '_show_fox_menu',
-			__( 'Use Fox menu?', 'iis-pack' ),
-			array( $this, $this->option_name . '_show_fox_menu_cb' ),
-			$this->plugin_name,
-			$this->option_name . '_fox_menu',
-			array( 'label_for' => $this->option_name . '_show_fox_menu' )
-		);
-
-		register_setting( $this->plugin_name, $this->option_name . '_show_fox_menu', array( $this, $this->option_name . '_sanitize_true_false' ) );
-
 		// Add section for password strength checking
 		add_settings_section(
 			$this->option_name . '_password_strength',
@@ -470,15 +451,6 @@ class Iis_Pack_Admin {
 	 * @since  1.0.0
 	 */
 	public function iis_pack_google_analytics_cb() {
-		return false;
-	}
-
-	/**
-	 * Underrubrik Fox menyn
-	 *
-	 * @since  1.0.0
-	 */
-	public function iis_pack_fox_menu_cb() {
 		return false;
 	}
 
@@ -644,28 +616,6 @@ class Iis_Pack_Admin {
 	public function iis_pack_ga_id_cb() {
 		$ga_id = get_option( $this->option_name . '_ga_id' );
 		echo '<input type="text" class="" name="' . $this->option_name . '_ga_id' . '" id="' . $this->option_name . '_ga_id' . '" value="' . $ga_id . '"> ';
-	}
-
-	/**
-	 * Input för radioknappar visa /dölj Foxmenyn
-	 *
-	 * @since  1.0.0
-	 */
-	public function iis_pack_show_fox_menu_cb() {
-		$show_fox_menu = get_option( $this->option_name . '_show_fox_menu' );
-		?>
-			<fieldset>
-				<label>
-					<input type="radio" name="<?php echo $this->option_name . '_show_fox_menu' ?>" id="<?php echo $this->option_name . '_show_fox_menu' ?>" value="true" <?php checked( $show_fox_menu, 'true' ); ?>>
-					<?php _e( 'Show Fox menu', 'iis-pack' ); ?>
-				</label>
-				<br>
-				<label>
-					<input type="radio" name="<?php echo $this->option_name . '_show_fox_menu' ?>" value="false" <?php checked( $show_fox_menu, 'false' ); ?>>
-					<?php _e( 'Hide Fox menu', 'iis-pack' ); ?>
-				</label>
-			</fieldset>
-		<?php
 	}
 
 	/**
