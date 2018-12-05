@@ -90,6 +90,7 @@ function attach_image_credit( $images ) {
 			}
 
 			$license_url = get_post_meta( $match[1], '_iis_pack_license_url', true );
+
 			if ( '' !== $license ) {
 				$return      .= '<span class="iis-pack-license">(';
 			}
@@ -101,7 +102,17 @@ function attach_image_credit( $images ) {
 			if ( '' !== $license ) {
 				$return .= ')</span>';
 			}
+
 			$return .= '</span>';
+
+			$return = apply_filters( 'iis_pack_image_license', $return, $images[0], [
+				'license' => $license,
+				'license_holder_name' => $license_holder_name,
+				'license_holder_url' => $license_holder_url,
+				'license_url' => $license_url,
+				'object_name' => $object_name,
+				'object_url' => $object_url
+			] );
 		}
 	}
 
