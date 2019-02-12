@@ -94,12 +94,8 @@ class Iis_Pack_Admin {
 	 * @since  1.0.1 CC-fält på images (class-images-meta.php)
 	 */
 	public function iis_pack_include_meta_fields() {
-		include_once 'partials/class-facebook.php';
-		include_once 'partials/class-twitter.php';
 		include_once 'partials/class-images-meta.php';
 
-		call_facebook();
-		call_twitter();
 		call_images_media();
 	}
 
@@ -574,38 +570,6 @@ class Iis_Pack_Admin {
 				</label>
 			</fieldset>
 		<?php
-	}
-
-	/**
-	 * Input för facebook app id
-	 *
-	 * @since  1.0.0
-	 */
-	public function iis_pack_fbappid_cb() {
-		$fbappid = get_option( $this->option_name . '_fbappid' );
-		echo '<input type="text" name="' . $this->option_name . '_fbappid' . '" id="' . $this->option_name . '_fbappid' . '" value="' . $fbappid . '"> ';
-	}
-
-	/**
-	 * Input för facebook admins
-	 *
-	 * @since  1.0.0
-	 */
-	public function iis_pack_fbadmins_cb() {
-		$fbadmins = get_option( $this->option_name . '_fbadmins' );
-		echo '<input type="text" class="regular-text code" name="' . $this->option_name . '_fbadmins' . '" id="' . $this->option_name . '_fbadmins' . '" value="' . $fbadmins . '"> ';
-		echo '<p class="description">' . __( 'If the site has more than one admin, seperate them with comma (,)', 'iis-pack' ) . '</p>';
-	}
-
-	/**
-	 * Input för Twitter sajtövergripande handle
-	 *
-	 * @since  1.0.0
-	 */
-	public function iis_pack_twitter_site_cb() {
-		$twitter_site = get_option( $this->option_name . '_twitter_site' );
-		echo '<input type="text" class="" name="' . $this->option_name . '_twitter_site' . '" id="' . $this->option_name . '_twitter_site' . '" value="' . $twitter_site . '"> ';
-		echo '<p class="description">' . __( 'The sites main account, for example @iis on www.iis.se', 'iis-pack' ) . '</p>';
 	}
 
 	/**
