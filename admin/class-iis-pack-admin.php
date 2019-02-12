@@ -242,14 +242,6 @@ class Iis_Pack_Admin {
 		register_setting( $this->plugin_name, $this->option_name . '_show_object_credits', array( $this, $this->option_name . '_sanitize_true_false' ) );
 		register_setting( $this->plugin_name, $this->option_name . '_show_object_credits_featured', array( $this, $this->option_name . '_sanitize_checkbox' ) );
 
-		// Lägg till sektion för Facebook OG taggar
-		add_settings_section(
-			$this->option_name . '_og_tags',
-			'<hr>' . __( 'Facebook open graph', 'iis-pack' ),
-			array( $this, $this->option_name . '_og_tags_cb' ),
-			$this->plugin_name
-		);
-
 		// Fälten för Facebook
 		add_settings_field(
 			$this->option_name . '_default_og_image',
@@ -421,15 +413,6 @@ class Iis_Pack_Admin {
 	 */
 	public function iis_pack_object_credits_cb() {
 		return false;
-	}
-
-	/**
-	 * Underrubrik Facebook OG-taggar
-	 *
-	 * @since  1.0.0
-	 */
-	public function iis_pack_og_tags_cb() {
-		echo '<p>' . __( 'Settings for Facebook open graph tags per site ', 'iis-pack' ) . '</p>';
 	}
 
 	/**
@@ -729,38 +712,6 @@ class Iis_Pack_Admin {
 		}
 		if ( isset( $input[ $this->option_name . '_fss_aftercontent' ] ) ) {
 			$new_input[ $this->option_name . '_fss_aftercontent' ] = absint( $input[ $this->option_name . '_fss_aftercontent' ] );
-		}
-		// Activate networks
-		if ( isset( $input[ $this->option_name . '_enable_facebook' ] ) ) {
-
-			$new_input[ $this->option_name . '_enable_facebook' ] = absint( $input[ $this->option_name . '_enable_facebook' ] );
-		} else {
-
-			$new_input[ $this->option_name . '_enable_facebook' ] = 'no';
-		}
-
-		if ( isset( $input[ $this->option_name . '_enable_twitter' ] ) ) {
-
-			$new_input[ $this->option_name . '_enable_twitter' ] = absint( $input[ $this->option_name . '_enable_twitter' ] );
-		} else {
-
-			$new_input[ $this->option_name . '_enable_twitter' ] = 'no';
-		}
-
-		if ( isset( $input[ $this->option_name . '_enable_linkedin' ] ) ) {
-
-			$new_input[ $this->option_name . '_enable_linkedin' ] = absint( $input[ $this->option_name . '_enable_linkedin' ] );
-		} else {
-
-			$new_input[ $this->option_name . '_enable_linkedin' ] = 'no';
-		}
-
-		if ( isset( $input[ $this->option_name . '_enable_pinterest' ] ) ) {
-
-			$new_input[ $this->option_name . '_enable_pinterest' ] = absint( $input[ $this->option_name . '_enable_pinterest' ] );
-		} else {
-
-			$new_input[ $this->option_name . '_enable_pinterest' ] = 'no';
 		}
 
 		// Lokala avatarer / profile picture
