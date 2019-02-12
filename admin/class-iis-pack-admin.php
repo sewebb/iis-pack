@@ -281,27 +281,6 @@ class Iis_Pack_Admin {
 
 		register_setting( $this->plugin_name, $this->option_name . '_default_og_image', 'sanitize_text_field' );
 		register_setting( $this->plugin_name, $this->option_name . '_protocol', array( $this, $this->option_name . '_sanitize_protocol' ) );
-		register_setting( $this->plugin_name, $this->option_name . '_fbappid', 'intval' );
-		register_setting( $this->plugin_name, $this->option_name . '_fbadmins', 'sanitize_text_field' );
-
-		// Lägg till sektion för Twitter Cards
-		add_settings_section(
-			$this->option_name . '_twitter_cards',
-			'<hr>' . __( 'Twitter Cards', 'iis-pack' ),
-			array( $this, $this->option_name . '_twitter_cards_cb' ),
-			$this->plugin_name
-		);
-
-		add_settings_field(
-			$this->option_name . '_twitter_site',
-			__( 'Twitter site', 'iis-pack' ),
-			array( $this, $this->option_name . '_twitter_site_cb' ),
-			$this->plugin_name,
-			$this->option_name . '_twitter_cards',
-			array( 'label_for' => $this->option_name . '_twitter_site' )
-		);
-
-		register_setting( $this->plugin_name, $this->option_name . '_twitter_site', 'sanitize_text_field' );
 
 		// Lägg till sektion för Google Analytics
 		add_settings_section(
@@ -412,15 +391,6 @@ class Iis_Pack_Admin {
 	 * @since  1.0.1
 	 */
 	public function iis_pack_object_credits_cb() {
-		return false;
-	}
-
-	/**
-	 * Underrubrik Twitter cards
-	 *
-	 * @since  1.0.0
-	 */
-	public function iis_pack_twitter_cards_cb() {
 		return false;
 	}
 
