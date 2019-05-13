@@ -24,7 +24,7 @@ class LocalAvatars {
 	 */
 
 	public function __construct() {
-		add_filter( 'get_avatar', array( $this, 'get_avatar' ), 10, 5 );
+		add_filter( 'get_avatar', array( $this, 'get_avatar' ), 10, 6 );
 
 		add_action( 'show_user_profile', array( $this, 'edit_user_profile' ) );
 		add_action( 'edit_user_profile', array( $this, 'edit_user_profile' ) );
@@ -44,7 +44,8 @@ class LocalAvatars {
 	 * @param  boolean $alt         [description]
 	 * @return [type]  $avatar;     [description]
 	 */
-	public function get_avatar( $avatar = '', $id_or_email, $size = '96', $default = '', $alt = false ) {
+	public function get_avatar( $avatar = '', $id_or_email, $size = '96', $default = '', $alt = false, $args = null ) {
+
 		if ( is_numeric( $id_or_email ) ) {
 			$user_id = (int) $id_or_email;
 		} elseif ( is_string( $id_or_email ) ) {
@@ -96,8 +97,9 @@ class LocalAvatars {
 			$simple_local_avatars[ $size ] = home_url( $simple_local_avatars[ $size ] );
 		}
 
-		$author_class = is_author( $user_id ) ? ' current-author' : '' ;
-		$avatar = '<img alt="' . esc_attr( $alt ) . '" src="' . $simple_local_avatars[ $size ] . '" class="avatar avatar-{$size}{$author_class} photo" height="{$size}" width="{$size}" />';
+		$author_class = is_author( $user_id ) ? ' current-author' : '';
+		$extra_class  = $args['class'];
+		$avatar       = '<img alt="' . esc_attr( $alt ) . '" src="' . $simple_local_avatars[ $size ] . '" class="avatar avatar-' . $size . ' ' . $author_class . ' photo ' . $extra_class . '" height="' . $size . '" width="' . $size . '" />';
 
 		return $avatar;
 	}
