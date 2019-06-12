@@ -195,7 +195,7 @@ class Iis_Pack_Public {
 	public function iis_pack_enqueue_styles() {
 		// Sammanslagen css för samtliga plugin
 		// Inte använd ännu
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/iis-pack-public.07f57a92.min.css', array(), null, 'screen' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/iis-pack-public.96d07e01.min.css', array(), null, 'screen' );
 
 	}
 }

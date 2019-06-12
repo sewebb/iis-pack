@@ -1,85 +1,3 @@
-//css for outdated browser
-.buorg {
-	position: absolute;
-	z-index: 9999;
-	width: 100%;
-	top: 0;
-	left: 0;
-	//Av naturliga reasons finns denna kod i .js-filen
-	//background: #fff399 no-repeat 13px center url(//browser-update.org/img/small/" + this.op.browser.n + ".png);
-	text-align: left;
-	cursor: pointer;
-	color:#000;
-	font-size: 11px;
-	border-bottom: 1px solid #e6cb00;
-
-	div {
-		padding:11px 36px 9px 40px;
-	}
-
-	a,
-	a:visited  {
-		color: #3284bf; text-decoration: underline;
-	}
-
-	#buorgclose {
-		position: absolute;
-		right: 13px;
-		top: 3px;
-		line-height: normal;
-		height: 20px;
-		width: 12px;
-		font-weight: bold;
-		font-size: 25px;
-		padding: 0;
-	}
-}//.buorg
-
-.buorg {
-	top: 32px !important;
-}
-
-.sewebb-nav-space {
-	&.webbstjarnan .buorg {
-		margin-top: -64px;
-	}
-
-	&.internetfonden .buorg {
-		margin-top: -68px;
-	}
-}
-
-@media (max-width: 1023px) {
-	.sewebb-nav-space {
-		border: 0;
-	}
-
-	.buorg {
-		top: 0 !important;
-	}
-
-	.sewebb-nav-space {
-		&.webbstjarnan {
-			> #header {
-				margin-top: 0;
-			}
-
-			.buorg {
-				margin-top: -32px;
-			}
-		}
-
-		&.internetfonden .buorg {
-			margin-top: -35px;
-		}
-	}
-}
-
-
-iframe {
-	max-width: 100%;
-}
-
 //Just nu mest for YouTube
 .embed-container {
 	position: relative;
@@ -97,19 +15,6 @@ iframe {
 	}
 }
 
-/*
- * Bildattribution
- */
-.iis-pack-credits-container {
-	padding: 3px 1px;
-	line-height: 1.2;
-	font-size: 90%;
-	display: block;
-
-	&.in-page {
-		margin-top: -20px;
-	}
-}
 /*PASSWORD meter*/
 .iis-pack-short, .iis-pack-bad, .iis-pack-good, .iis-pack-strong {
     display: block;
