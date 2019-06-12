@@ -60,6 +60,7 @@ class Iis_Pack_Public {
 	 * @since 1.0
 	 */
 	public function iis_pack_include_in_head() {
+        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/google-tag-manager.php';
 	}
 
 	/**
