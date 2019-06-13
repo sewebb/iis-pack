@@ -23,7 +23,7 @@ class SanitizeFilename {
 	 * Hook into the appropriate filters when the class is constructed.
 	 */
 	public function __construct() {
-		add_filter( 'wp_handle_upload_prefilter', array( $this, 'sanitize_decomposed_utf8_file' ) );
+		add_filter( 'wp_handle_upload_prefilter', array( $this, 'sanitize_file_name' ) );
 	}
 
 	/**
@@ -32,8 +32,14 @@ class SanitizeFilename {
 	 * @param  array $file In file
 	 * @return array       Out file
 	 */
-	public function sanitize_decomposed_utf8_file( $file ) {
-		$file['name'] = $this->sanitize_decomposed_utf8_string( $file['name'] );
+	public function sanitize_file_name( $file ) {
+		$filename     = $this->sanitize_decomposed_utf8_string( $file['name'] );
+		$parts        = explode( '.', $filename );
+		$extension    = array_pop( $parts );
+		$filename     = implode( '-', $parts );
+		$filename     = strtolower( remove_accents( $filename ) );
+		$file['name'] = preg_replace( '/[^a-z0-9]+/', '-', $filename ) . '.' . $extension;
+
 		return $file;
 	}
 
