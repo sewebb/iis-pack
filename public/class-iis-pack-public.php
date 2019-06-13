@@ -74,6 +74,7 @@ class Iis_Pack_Public {
 	 */
 	public function iis_pack_include_in_footer() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/google-analytics.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/browserwarning.php';
 	}
 
 	/**
