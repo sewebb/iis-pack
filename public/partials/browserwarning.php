@@ -43,18 +43,30 @@ ob_start();
 		} catch (err) {
 			return false;
 		}
-	}();
+	};
 
-	if (!supportsES6) {
+	window.browserTest = window.browserTest || supportsES6;
+
+	if (!window.browserTest()) {
 		var warningMessage = '<p><?php echo $message; ?></p>';
 		var warning = document.createElement('div');
 		var site = document.getElementById('site');
-		var namespace = 'iis-pack-browser-warning-';
+		var namespace = '';
+
+		if (site && site.hasAttribute('data-namespace')) {
+			namespace = site.getAttribute('data-namespace');
+		} else {
+			namespace = '<?php esc_attr( apply_filters( 'iis_namespace', 'iis-' ) ); ?>';
+		}
 
 		warning.innerHTML = warningMessage;
 		warning.className = namespace + 'm-alert ' + namespace + 'm-alert--warning u-m-b-0';
 
-		site.parentNode.insertBefore(warning, site);
+		if (site) {
+			site.parentNode.insertBefore(warning, site);
+		} else {
+			document.body.insertBefore(warning, document.body.firstNode);
+		}
 	}
 </script>
 <?php echo ob_get_clean();
