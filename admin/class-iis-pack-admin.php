@@ -157,47 +157,6 @@ class Iis_Pack_Admin {
 	}
 
 	/**
-	 * Lägger till hjälptexter för inställningssidan
-	 * @since 1.0.2
-	 */
-	public function iis_pack_add_help_tab () {
-		$alltemplates = '';
-		$allposttypes = '';
-		$screen       = get_current_screen();
-
-		$templates = get_page_templates();
-		foreach ( $templates as $template_name => $template_filename ) {
-			$alltemplates .= "<em>$template_name:</em> <code>$template_filename</code>&nbsp;&nbsp;";
-		}
-		$screen->add_help_tab( array(
-				'id'      => 'fss_template_files',
-				'title'   => __( 'Choose from theese templates: ', 'iis-pack' ),
-				'content' => '<p>' . $alltemplates . '</p>',
-				)
-		);
-
-		$post_types = get_post_types();
-		foreach ( $post_types as $post_type ) {
-			$allposttypes .= '<code>' . $post_type . '</code>&nbsp;&nbsp;';
-		}
-		$screen->add_help_tab( array(
-				'id'      => 'fss_post_types',
-				'title'   => __( 'Choose from theese post types: ', 'iis-pack' ),
-				'content' => '<p>' . $allposttypes . '</p>',
-				)
-		);
-
-		$screen->add_help_tab( array(
-				'id'      => 'fss_object_attribution',
-				'title'   => __( 'Object attribution', 'iis-pack' ),
-				'content' => __( '<h4>Adding license to images</h4>
-					<p>In the media library there are fields for each object that can hold object attributions.</p>
-					<p>If added to an image it could be printed automatically under each image - or you use your own function in your theme</p>', 'iis-pack' ),
-				)
-		);
-	}
-
-	/**
 	 * Skapa inställningssidan
 	 * @since 1.0.0
 	 * @since 1.0.2 Fast Social Share buttons
@@ -318,59 +277,6 @@ class Iis_Pack_Admin {
             array( 'label_for' => $this->option_name . '_gtm_id' )
         );
 
-        register_setting( $this->plugin_name, $this->option_name . '_gtm_id', 'sanitize_text_field' );
-
-		// Add section for password strength checking
-		add_settings_section(
-			$this->option_name . '_password_strength',
-			'<hr>' . __( 'Check frontend registration password', 'iis-pack' ),
-			array( $this, $this->option_name . '_password_strength_cb' ),
-			$this->plugin_name
-		);
-
-		add_settings_field(
-			$this->option_name . '_show_password_strength',
-			__( 'Use script for password strength?', 'iis-pack' ),
-			array( $this, $this->option_name . '_show_password_strength_cb' ),
-			$this->plugin_name,
-			$this->option_name . '_password_strength',
-			array( 'label_for' => $this->option_name . '_show_password_strength' )
-		);
-
-		add_settings_field(
-			$this->option_name . '_password_strength_length',
-			__( 'Password length', 'iis-pack' ),
-			array( $this, $this->option_name . '_password_strength_length_cb' ),
-			$this->plugin_name,
-			$this->option_name . '_password_strength',
-			array( 'label_for' => $this->option_name . '_password_strength_length' )
-		);
-
-		add_settings_field(
-			$this->option_name . '_add_pass_check_to_type',
-			__( 'Add to types', 'iis-pack' ),
-			array( $this, $this->option_name . '_add_pass_check_to_type_cb' ),
-			$this->plugin_name,
-			$this->option_name . '_password_strength',
-			array( 'label_for' => $this->option_name . '_add_pass_check_to_type' )
-		);
-
-		add_settings_field(
-			$this->option_name . '_add_pass_check_to_template',
-			__( 'Add to templates', 'iis-pack' ),
-			array( $this, $this->option_name . '_add_pass_check_to_template_cb' ),
-			$this->plugin_name,
-			$this->option_name . '_password_strength',
-			array( 'label_for' => $this->option_name . '_add_pass_check_to_template' )
-		);
-
-		register_setting( $this->plugin_name, $this->option_name . '_password_strength_length', 'sanitize_text_field' );
-
-		register_setting( $this->plugin_name, $this->option_name . '_add_pass_check_to_type', 'sanitize_text_field' );
-		register_setting( $this->plugin_name, $this->option_name . '_add_pass_check_to_template', 'sanitize_text_field' );
-
-		register_setting( $this->plugin_name, $this->option_name . '_show_password_strength', array( $this, $this->option_name . '_sanitize_true_false' ) );
-
 		// Diverse av och på
 		add_settings_section(
 			$this->option_name . '_other_stuff',
@@ -449,37 +355,7 @@ class Iis_Pack_Admin {
 		return false;
 	}
 
-
 	// INPUT FÄLT
-
-	/**
-	 * Inställningsfält för extra finlir var knapparna ska hamna - TYPES
-	 * Om det är inställt på att skrivas ut i content EXKLUDERAS värdena, om det är valt att skrivas med shortcode INKLUDERAS värdena
-	 *
-	 * @since  1.0.2 Anger fält för post types (page, post, custom post type)
-	 */
-	public function iis_pack_remove_fss_from_type_cb() {
-		$args = array(
-			'public'   => true,
-		);
-		$remove_fss_from_type = get_option( $this->option_name . '_remove_fss_from_type' );
-		echo '<input type="text" class="large-text" name="' . $this->option_name . '_remove_fss_from_type' . '" id="' . $this->option_name . '_remove_fss_from_type' . '" value="' . $remove_fss_from_type . '"> ';
-		echo '<p class="description">' . __( 'Add post types to be avoided if above setting is set to Print before or Print after content. (ex: se-tech,guide)', 'iis-pack' ) . '</p>';
-		echo '<p>' . __( 'Choose from theese post types: ', 'iis-pack' ) . __( '( <em>see help menu</em> ) ', 'iis-pack' ) . '</p>';
-	}
-
-	/**
-	 * Inställningsfält för extra finlir var knapparna ska hamna - TEMPLATES
-	 * Om det är inställt på att skrivas ut i content EXKLUDERAS värdena, om det är valt att skrivas med shortcode INKLUDERAS värdena
-	 *
-	 * @since  1.0.2 Anger fält för page template (tpl-guidelista.php, ect)
-	 */
-	public function iis_pack_remove_fss_from_template_cb() {
-		$remove_fss_from_template = get_option( $this->option_name . '_remove_fss_from_template' );
-		echo '<input type="text" class="large-text" name="' . $this->option_name . '_remove_fss_from_template' . '" id="' . $this->option_name . '_remove_fss_from_template' . '" value="' . $remove_fss_from_template . '"> ';
-		echo '<p class="description">' . __( 'Add templates to be avoided if above setting is set to Print before or Print after content.', 'iis-pack' ) . '</p>';
-		echo '<p>' . __( 'Choose from theese templates: ', 'iis-pack' ) . __( '( <em>see help menu</em> ) ', 'iis-pack' ) . '</p>';
-	}
 
 	/**
 	 * Input för radioknappar visa /dölj utskrift av Bildattribution
@@ -572,67 +448,6 @@ class Iis_Pack_Admin {
         $gtm_id = get_option( $this->option_name . '_gtm_id' );
         echo '<input type="text" class="" name="' . $this->option_name . '_gtm_id' . '" id="' . $this->option_name . '_gtm_id' . '" value="' . $gtm_id . '"> ';
     }
-
-	/**
-	 * Input radio buttons Password strength
-	 *
-	 * @since  1.6.0
-	 */
-	public function iis_pack_show_password_strength_cb() {
-
-		$show_password_strength = get_option( $this->option_name . '_show_password_strength' );
-		?>
-			<fieldset>
-				<label>
-					<input type="radio" name="<?php echo $this->option_name . '_show_password_strength' ?>" id="<?php echo $this->option_name . '_show_password_strength' ?>" value="true" <?php checked( $show_password_strength, 'true' ); ?>>
-					<?php _e( 'Use password strength script', 'iis-pack' ); ?>
-				</label>
-				<br>
-				<label>
-					<input type="radio" name="<?php echo $this->option_name . '_show_password_strength' ?>" value="false" <?php checked( $show_password_strength, 'false' ); ?>>
-					<?php _e( 'Disable password strength script (default)', 'iis-pack' ); ?>
-				</label>
-			</fieldset>
-		<?php
-	}
-
-	/**
-	 * Site specific demands for password length
-	 *
-	 * @since  1.6.0
-	 */
-	public function iis_pack_password_strength_length_cb() {
-		$p_length = get_option( $this->option_name . '_password_strength_length' );
-		echo '<input type="text" class="" name="' . $this->option_name . '_password_strength_length' . '" id="' . $this->option_name . '_password_strength_length' . '" value="' . $p_length . '"> ';
-		echo '<p class="description">' . __( 'Number of characters if this site uses non-default password length (which is 12)', 'iis-pack' ) . '</p>';
-	}
-
-	/**
-	 * When to include script
-	 *
-	 * @since  1.6.0 Anger fält för post types (page, post, custom post type)
-	 */
-	public function iis_pack_add_pass_check_to_type_cb() {
-		$args = array(
-			'public'   => true,
-		);
-		$add_pass_check_to_type = get_option( $this->option_name . '_add_pass_check_to_type' );
-		echo '<input type="text" class="large-text" name="' . $this->option_name . '_add_pass_check_to_type' . '" id="' . $this->option_name . '_add_pass_check_to_type' . '" value="' . $add_pass_check_to_type . '"> ';
-		echo '<p class="description">' . __( 'Add post types to use password strength script even if user is logged in. (ex: se-tech,guide)', 'iis-pack' ) . '</p>';
-		echo '<p>' . __( 'Choose from theese post types: ', 'iis-pack' ) . __( '( <em>see help menu</em> ) ', 'iis-pack' ) . '</p>';
-	}
-
-	/**
-	 * When to include script - TEMPLATES
-	 *
-	 * @since  1.6.0 Anger fält för page template (tpl-guidelista.php, ect)
-	 */
-	public function iis_pack_add_pass_check_to_template_cb() {
-		$add_pass_check_to_template = get_option( $this->option_name . '_add_pass_check_to_template' );
-		echo '<input type="text" class="large-text" name="' . $this->option_name . '_add_pass_check_to_template' . '" id="' . $this->option_name . '_add_pass_check_to_template' . '" value="' . $add_pass_check_to_template . '"> ';
-		echo '<p class="description">' . __( 'Add templates to use password strength script even if user is logged in.', 'iis-pack' ) . '</p>';
-		echo '<p>' . __( 'Choose from theese templates: ', 'iis-pack' ) . __( '( <em>see help menu</em> ) ', 'iis-pack' ) . '</p>';
-	}
 
 	/**
 	 * Input för radioknappar visa /dölj emojisar
