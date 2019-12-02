@@ -259,6 +259,7 @@ class Iis_Pack_Admin {
 		);
 
 		register_setting( $this->plugin_name, $this->option_name . '_ga_id', 'sanitize_text_field' );
+		register_setting( $this->plugin_name, $this->option_name . '_gtm_id', 'sanitize_text_field' );
 
         // Lägg till sektion för Google Tag Manager
         add_settings_section(
