@@ -438,6 +438,24 @@ class Iis_Pack_Admin {
 
 		register_setting( $this->plugin_name, $this->option_name . '_ga_id', 'sanitize_text_field' );
 
+		// Lägg till sektion för Google Tag Manager
+		add_settings_section(
+			$this->option_name . '_google_tag_manager',
+			'<hr>' . __( 'Google Tag Manager', 'iis-pack' ),
+			array( $this, $this->option_name . '_google_tag_manager_cb' ),
+			$this->plugin_name
+		);
+		add_settings_field(
+			$this->option_name . '_gtm_id',
+			__( 'Google Tag Manager ID', 'iis-pack' ),
+			array( $this, $this->option_name . '_gtm_id_cb' ),
+			$this->plugin_name,
+			$this->option_name . '_google_tag_manager',
+			array( 'label_for' => $this->option_name . '_gtm_id' )
+		);
+
+		register_setting( $this->plugin_name, $this->option_name . '_gtm_id', 'sanitize_text_field' );
+
 		// Lägg till sektion för Fox menu
 		add_settings_section(
 			$this->option_name . '_fox_menu',
@@ -583,6 +601,15 @@ class Iis_Pack_Admin {
 	 * @since  1.0.0
 	 */
 	public function iis_pack_google_analytics_cb() {
+		return false;
+	}
+
+	/**
+	 * Underrubrik Google Tag Manager
+	 *
+	 * @since  1.0.0
+	 */
+	public function iis_pack_google_tag_manager_cb() {
 		return false;
 	}
 
@@ -792,6 +819,16 @@ class Iis_Pack_Admin {
 	public function iis_pack_ga_id_cb() {
 		$ga_id = get_option( $this->option_name . '_ga_id' );
 		echo '<input type="text" class="" name="' . $this->option_name . '_ga_id' . '" id="' . $this->option_name . '_ga_id' . '" value="' . $ga_id . '"> ';
+	}
+
+	/**
+	 * Input för Google Tag Manager ID
+	 *
+	 * @since  1.0.0
+	 */
+	public function iis_pack_gtm_id_cb() {
+		$gtm_id = get_option( $this->option_name . '_gtm_id' );
+		echo '<input type="text" class="" name="' . $this->option_name . '_gtm_id' . '" id="' . $this->option_name . '_gtm_id' . '" value="' . $gtm_id . '"> ';
 	}
 
 	/**

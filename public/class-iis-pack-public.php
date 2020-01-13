@@ -62,6 +62,7 @@ class Iis_Pack_Public {
 	public function iis_pack_include_in_head() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/facebook-og-tags.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/twitter-cards.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/google-tag-manager.php';
 	}
 
 	/**
