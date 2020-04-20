@@ -65,7 +65,7 @@ module.exports = function(grunt) {
 		},
 		sass: {
 			options: {
-				'sourcemap': 'none'
+				'sourcemap': 'none',
 			},
 			dist: {
 				files: {
