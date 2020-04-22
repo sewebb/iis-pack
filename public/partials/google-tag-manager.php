@@ -35,8 +35,7 @@ function add_iis_google_tag_manager_script() {
             <!-- End Google Tag Manager -->
 		";
 
-		echo $printscript;
-	}
+		echo apply_filters( 'iis_gtm_script', $printscript );	}
 }
 
 function add_iis_google_tag_manager_noscript() {
@@ -53,6 +52,6 @@ function add_iis_google_tag_manager_noscript() {
             <!-- End Google Tag Manager (noscript) -->
 		";
 
-		echo $printscript;
+		echo apply_filters( 'iis_gtm_script', $printscript );
 	}
 }
