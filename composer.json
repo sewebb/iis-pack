@@ -3,7 +3,7 @@
 	"description": "Plugin for IIS WordPress sites, adding some common stuff",
 	"keywords": ["wordpress", "iis"],
 	"homepage": "https://www.iis.se",
-	"version": "1.6.3",
+	"version": "1.6.4",
 	"authors": [
 		{
 			"name": "Richard Brattlund",
