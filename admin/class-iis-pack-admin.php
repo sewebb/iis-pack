@@ -339,15 +339,6 @@ class Iis_Pack_Admin {
     }
 
 	/**
-	 * Subtitle password strength
-	 *
-	 * @since  1.6.0
-	 */
-	public function iis_pack_password_strength_cb() {
-		return false;
-	}
-
-	/**
 	 * Underrubrik Other stuff
 	 *
 	 * @since  1.0.0
