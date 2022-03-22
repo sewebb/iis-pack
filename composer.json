@@ -2,28 +2,28 @@
 	"name": "iis/iis-pack",
 	"description": "Plugin for IIS WordPress sites, adding some common stuff",
 	"keywords": ["wordpress", "iis"],
-	"homepage": "https://www.iis.se",
-	"version": "1.6.4",
+	"homepage": "https://www.internetstiftelsen.se",
+	"version": "2.1.0",
 	"authors": [
 		{
 			"name": "Richard Brattlund",
 			"email": "richard.brattlund@iis.se",
-			"homepage": "https://www.iis.se"
+			"homepage": "https://www.internetstiftelsen.se"
 		},
 		{
-			"name": "Thomas Mårtensson",
-			"email": "thomas@mamilldo.se",
-			"homepage": "http://wpbyran.se"
+			"name": "Tobias Bleckert",
+			"email": "hola@tobiasbleckert.se",
+			"homepage": "https://internetstiftelsen.se"
 		},
 		{
 			"name": "Jonas Nordström",
 			"email": "jonas.nordstrom@gmail.com",
-			"homepage": "http://wpbyran.se"
+			"homepage": "https://wpbyran.se"
 		}
 	],
 	"type": "wordpress-plugin",
 	"require": {
-		"php": ">=5.4",
+		"php": ">=7.4",
 		"composer/installers": "~1.0"
 	}
 }

@@ -1,10 +1,10 @@
 {
 	"name": "iis-pack",
-	"version": "1.1.0",
+	"version": "2.1.0",
 	"author": "iis",
 	"homepage": "https://www.iis.se",
 	"engines": {
-		"node": ">= 5.0.0"
+		"node": ">= 16.0.0"
 	},
 	"scripts": {
 		"production": "grunt"
