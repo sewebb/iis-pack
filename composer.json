@@ -3,17 +3,17 @@
 	"description": "Plugin for IIS WordPress sites, adding some common stuff",
 	"keywords": ["wordpress", "iis"],
 	"homepage": "https://www.iis.se",
-	"version": "2.0.4",
+	"version": "1.6.4",
 	"authors": [
 		{
 			"name": "Richard Brattlund",
-			"email": "richard.brattlund@internetstiftelsen.se",
-			"homepage": "https://internetstiftelsen.se"
+			"email": "richard.brattlund@iis.se",
+			"homepage": "https://www.iis.se"
 		},
 		{
-			"name": "Tobias Bleckert",
-			"email": "hola@tobiasbleckert.se",
-			"homepage": "https://internetstiftelsen.se"
+			"name": "Thomas Mårtensson",
+			"email": "thomas@mamilldo.se",
+			"homepage": "http://wpbyran.se"
 		},
 		{
 			"name": "Jonas Nordström",
@@ -23,7 +23,7 @@
 	],
 	"type": "wordpress-plugin",
 	"require": {
-		"php": "^7.4|^8.1",
+		"php": ">=5.4",
 		"composer/installers": "~1.0"
 	}
 }

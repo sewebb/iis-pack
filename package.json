@@ -6,19 +6,22 @@
 	"engines": {
 		"node": ">= 5.0.0"
 	},
+	"scripts": {
+		"production": "grunt"
+	},
 	"devDependencies": {
-		"grunt": "~1.0.1",
+		"grunt": "^1.0.3",
 		"grunt-contrib-clean": "^2.0.0",
 		"grunt-contrib-cssmin": "^3.0.0",
-		"grunt-contrib-jshint": "^2.1.0",
-		"grunt-contrib-uglify": "^4.0.1",
+		"grunt-contrib-jshint": "^2.0.0",
+		"grunt-contrib-uglify": "^4.0.0",
 		"grunt-contrib-watch": "^1.1.0",
-		"grunt-gitinfo": "^0.1.9",
-		"grunt-rsync": "~1.0.1",
-		"grunt-sass": "~1.2.0",
+		"grunt-gitinfo": "^0.1.8",
+		"grunt-rsync": "^3.0.0",
+		"grunt-sass": "^3.0.2",
 		"grunt-slack-hook": "0.0.4",
 		"grunt-wp-assets": "^0.2.6",
 		"matchdep": "^2.0.0",
-		"node-sass": "^4.13.1"
+		"node-sass": "^4.10.0"
 	}
 }

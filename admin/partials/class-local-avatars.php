@@ -24,7 +24,7 @@ class LocalAvatars {
 	 */
 
 	public function __construct() {
-		add_filter( 'get_avatar', array( $this, 'get_avatar' ), 10, 5 );
+		add_filter( 'get_avatar', array( $this, 'get_avatar' ), 10, 6 );
 
 		add_action( 'show_user_profile', array( $this, 'edit_user_profile' ) );
 		add_action( 'edit_user_profile', array( $this, 'edit_user_profile' ) );
@@ -44,7 +44,7 @@ class LocalAvatars {
 	 * @param  boolean $alt         [description]
 	 * @return [type]  $avatar;     [description]
 	 */
-	public function get_avatar( $avatar = '', $id_or_email, $size = '96', $default = '', $alt = false ) {
+	public function get_avatar( $avatar = '', $id_or_email, $size = '96', $default = '', $alt = false, $args = null ) {
 		if ( is_numeric( $id_or_email ) ) {
 			$user_id = (int) $id_or_email;
 		} elseif ( is_string( $id_or_email ) ) {
@@ -62,7 +62,11 @@ class LocalAvatars {
 		if ( ! isset( $simple_local_avatars ) || empty( $simple_local_avatars ) || ! isset( $simple_local_avatars['full'] ) ) {
 			if ( ! empty( $avatar ) ) {
 				// if called by filter
-				return $avatar;
+				if ( $this->user_has_gravatar( $id_or_email ) ) {
+					return $avatar;
+				} else {
+					return '';
+				}
 			}
 
 			remove_filter( 'get_avatar', 'get_simple_local_avatar' );
@@ -70,6 +74,7 @@ class LocalAvatars {
 			add_filter( 'get_avatar', 'get_simple_local_avatar', 10, 5 );
 			return $avatar;
 		}
+
 		// ensure valid size
 		if ( ! is_numeric( $size ) ) {
 			$size = '96';
@@ -96,8 +101,9 @@ class LocalAvatars {
 			$simple_local_avatars[ $size ] = home_url( $simple_local_avatars[ $size ] );
 		}
 
-		$author_class = is_author( $user_id ) ? ' current-author' : '' ;
-		$avatar = '<img alt="' . esc_attr( $alt ) . '" src="' . $simple_local_avatars[ $size ] . '" class="avatar avatar-{$size}{$author_class} photo" height="{$size}" width="{$size}" />';
+		$author_class = is_author( $user_id ) ? ' current-author' : '';
+		$extra_class  = $args['class'];
+		$avatar       = '<img alt="' . esc_attr( $alt ) . '" src="' . $simple_local_avatars[ $size ] . '" class="avatar avatar-' . $size . ' ' . $author_class . ' photo ' . $extra_class . '" height="' . $size . '" width="' . $size . '" />';
 
 		return $avatar;
 	}
@@ -215,6 +221,52 @@ class LocalAvatars {
 		$old_avatars = get_user_meta( $user_id, 'simple_local_avatar', true );
 
 		delete_user_meta( $user_id, 'simple_local_avatar' );
+	}
+
+	public function user_has_gravatar($id_or_email) {
+		$email = '';
+		if ( is_numeric( $id_or_email ) ) {
+			$id = (int) $id_or_email;
+			$user = get_userdata( $id );
+			if ( $user )
+				$email = $user->user_email;
+		} elseif ( is_object( $id_or_email ) ) {
+			// No avatar for pingbacks or trackbacks
+			$allowed_comment_types = apply_filters( 'get_avatar_comment_types', array( 'comment' ) );
+			if ( ! empty( $id_or_email->comment_type ) && ! in_array( $id_or_email->comment_type, (array) $allowed_comment_types ) )
+				return false;
+
+			if ( ! empty( $id_or_email->user_id ) ) {
+				$id = (int) $id_or_email->user_id;
+				$user = get_userdata( $id );
+				if ( $user)
+					$email = $user->user_email;
+			} elseif ( ! empty( $id_or_email->comment_author_email ) ) {
+				$email = $id_or_email->comment_author_email;
+			}
+		} else {
+			$email = $id_or_email;
+		}
+
+		$hashkey = md5( strtolower( trim( $email ) ) );
+		$uri = 'http://www.gravatar.com/avatar/' . $hashkey . '?d=404';
+
+		$data = wp_cache_get( $hashkey );
+		if ( false === $data ) {
+			$response = wp_remote_head( $uri );
+			if ( is_wp_error( $response ) ) {
+				$data = 'not200';
+			} else {
+				$data = $response['response']['code'];
+			}
+			wp_cache_set( $hashkey, $data, $group = '', $expire = 60 * 5 );
+
+		}
+		if ( $data == '200' ) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
 

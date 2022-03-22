@@ -10,7 +10,6 @@ Vårt generella plugin lägger till följande:
 * FaceBook Open Graph taggar såsom og:image, og:title, og:description, fb:admins (om man har sådana), og:url, og:type (website & article), fb:appid (om sådan finns)
 * Twitter Card av typen "summery_large_image"
 * Google Analytics enligt vår standard
-* Fox menyn med dess utseende inline
 * Metafält för bilder/media
 
 Som grund för IIS Pack används denna boilerplate:
@@ -29,6 +28,9 @@ Installation
 
 Changelog
 =========
+
+#### 2.0.0
+* Removed fox
 
 #### 1.6.3
 * Fallback to site description on og:description

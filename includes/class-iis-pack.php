@@ -69,7 +69,7 @@ class Iis_Pack {
 	public function __construct() {
 
 		$this->plugin_name = 'iis-pack';
-		$this->version = '1.6.2';
+		$this->version = '2.0.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -119,11 +119,6 @@ class Iis_Pack {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-iis-pack-public.php';
 
-		/**
-		 * Kanske inte rätt sätt att hantera fox, men det funkar..
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/fox/fox.php';
-
 		$this->loader = new Iis_Pack_Loader();
 
 		/**
@@ -164,7 +159,6 @@ class Iis_Pack {
 		$plugin_admin = new Iis_Pack_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'iis_pack_add_options_page' );
-		$this->loader->add_action( 'load-settings_page_iis-pack', $plugin_admin, 'iis_pack_add_help_tab' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_setting' );
 
 		// När vi vill ladda vår extra fält för pages, posts, custom post types & mediauppladdaren (CC-fält)
@@ -208,9 +202,6 @@ class Iis_Pack {
 		$this->loader->add_action( 'the_post', $plugin_public, 'iis_pack_filter_the_content' );
 
 		$this->loader->add_action( 'init', $plugin_public, 'iis_pack_disable_all_emojis' );
-
-		// Since 1.5.4, add shortcode not just when the_content / the_post is loaded
-		$this->loader->add_action( 'wp_print_scripts', $plugin_public, 'iis_pack_fast_social' );
 
 
 	}
