@@ -2,8 +2,8 @@
 	"name": "iis/iis-pack",
 	"description": "Plugin for IIS WordPress sites, adding some common stuff",
 	"keywords": ["wordpress", "iis"],
-	"homepage": "https://www.iis.se",
-	"version": "2.0.4",
+	"homepage": "https://www.internetstiftelsen.se",
+	"version": "1.6.4",
 	"authors": [
 		{
 			"name": "Richard Brattlund",
