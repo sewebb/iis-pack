@@ -120,12 +120,6 @@ class Iis_Pack {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-iis-pack-public.php';
 
 		$this->loader = new Iis_Pack_Loader();
-
-		/**
-		 * We need to clean up IIS Pack. For now, add security like this
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'security/class-iis-pack-security.php';
-
 	}
 
 	/**
