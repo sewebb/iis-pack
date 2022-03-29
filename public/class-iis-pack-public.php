@@ -78,6 +78,16 @@ class Iis_Pack_Public {
 	}
 
 	/**
+	 * HTML som skrivs ut efter wp_body_open()
+	 * Koden som innehåller funktionen som skriver ut eventuellt Alert-meddelande överst i markupen
+	 *
+	 * @since 1.0
+	 */
+	public function iis_pack_include_in_body() {
+        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/alert.php';
+	}
+
+	/**
 	 * Åtgärder som filtrerar the_content
 	 *
 	 * @since 1.0.1 Kod som lägger till licensdata på bilder
@@ -122,7 +132,7 @@ class Iis_Pack_Public {
 	public function iis_pack_enqueue_styles() {
 		// Sammanslagen css för samtliga plugin
 		// Inte använd ännu
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/iis-pack-public.css', array(), null, 'screen' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/iis-pack-public.064f9a57.min.css', array(), null, 'screen' );
 
 	}
 }

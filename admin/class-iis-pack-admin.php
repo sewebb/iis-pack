@@ -278,6 +278,25 @@ class Iis_Pack_Admin {
             array( 'label_for' => $this->option_name . '_gtm_id' )
         );
 
+        // Lägg till sektion för Alert
+        add_settings_section(
+            $this->option_name . '_alert',
+            '<hr>' . __( 'Alert', 'iis-pack' ),
+            array( $this, $this->option_name . '_alert_cb' ),
+            $this->plugin_name
+        );
+
+        add_settings_field(
+            $this->option_name . '_alert_text',
+            __( 'Alert-meddelande, visas överst på sajten', 'iis-pack' ),
+            array( $this, $this->option_name . '_alert_text_cb' ),
+            $this->plugin_name,
+            $this->option_name . '_alert',
+            array( 'label_for' => $this->option_name . '_alert_text' )
+        );
+
+		register_setting( $this->plugin_name, $this->option_name . '_alert_text', array( $this, $this->option_name . '_sanitize_false' ) );
+
 		// Diverse av och på
 		add_settings_section(
 			$this->option_name . '_other_stuff',
@@ -335,6 +354,15 @@ class Iis_Pack_Admin {
      * @since  1.0.0
      */
     public function iis_pack_google_tag_manager_cb() {
+        return false;
+    }
+
+	/**
+     * Underrubrik Alert
+     *
+     * @since  2.1.2
+     */
+    public function iis_pack_alert_cb() {
         return false;
     }
 
@@ -440,6 +468,21 @@ class Iis_Pack_Admin {
         $gtm_id = get_option( $this->option_name . '_gtm_id' );
         echo '<input type="text" class="" name="' . $this->option_name . '_gtm_id' . '" id="' . $this->option_name . '_gtm_id' . '" value="' . $gtm_id . '"> ';
     }
+
+	/**
+     * Textarea för Alert
+     *
+     * @since  2.1.2
+     */
+    public function iis_pack_alert_text_cb() {
+        $alert_text = get_option( $this->option_name . '_alert_text' );
+        //echo '<textarea rows="5" cols="50" name="' . $this->option_name . '_alert_text' . '" id="' . $this->option_name . '_alert_text' . '">' . $alert_text . '</textarea> ';
+
+		$content   = $alert_text;
+		$editor_id = $this->option_name . '_alert_text';
+
+		wp_editor( $content, $editor_id );
+	}
 
 	/**
 	 * Input för radioknappar visa /dölj emojisar
