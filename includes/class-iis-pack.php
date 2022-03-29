@@ -184,7 +184,6 @@ class Iis_Pack {
 		// Våra plugins finns som "sub"-plugg i /public/partials
 		// Kallas i class Iis_Plugins_Public
 		$this->loader->add_action( 'wp_head', $plugin_public, 'iis_pack_include_in_head' );
-		$this->loader->add_action( 'wp_footer', $plugin_public, 'iis_pack_include_in_footer' );
 		$this->loader->add_action( 'wp_body_open', $plugin_public, 'iis_pack_include_in_body' );
 		$this->loader->add_action( 'init', $plugin_public, 'iis_pack_disable_all_emojis' );
 
