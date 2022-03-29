@@ -239,6 +239,8 @@ class Iis_Pack_Admin {
         );
 
         // Lägg till sektion för Alert
+		register_setting( $this->plugin_name, $this->option_name . '_alert_text', array( $this, $this->option_name . '_sanitize_true_false' ) );
+
         add_settings_section(
             $this->option_name . '_alert',
             '<hr>' . __( 'Alert', 'iis-pack' ),
@@ -254,8 +256,6 @@ class Iis_Pack_Admin {
             $this->option_name . '_alert',
             array( 'label_for' => $this->option_name . '_alert_text' )
         );
-
-		register_setting( $this->plugin_name, $this->option_name . '_alert_text', array( $this, $this->option_name . '_sanitize_false' ) );
 
 		// Diverse av och på
 		add_settings_section(
