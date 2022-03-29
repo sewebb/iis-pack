@@ -2,7 +2,7 @@
 /**
  * The public-facing functionality of the plugin.
  *
- * @link       https://www.iis.se
+ * @link       https://www.internetstiftelsen.se
  * @since      1.0.0
  *
  * @package    Iis_Pack
@@ -64,19 +64,6 @@ class Iis_Pack_Public {
 	}
 
 	/**
-	 * HTML som skrivs ut i wp_footer()
-	 * För koden i google analytics-filen nedan kollar om man är inloggad och om dett id finns angivet
-	 * skrivs ut i footern, kolla i define_public_hooks()
-	 * Javascriptet som behövs finns inbakat i iis-pack-public.js
-	 *
-	 * @since 1.0
-	 *
-	 */
-	public function iis_pack_include_in_footer() {
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/google-analytics.php';
-	}
-
-	/**
 	 * HTML som skrivs ut efter wp_body_open()
 	 * Koden som innehåller funktionen som skriver ut eventuellt Alert-meddelande överst i markupen
 	 *
@@ -87,7 +74,7 @@ class Iis_Pack_Public {
 	}
 
 	/**
-	 * Ta bort alla emojisar
+	 * Remove emojis
 	 *
 	 * @since 1.0.1
 	 *

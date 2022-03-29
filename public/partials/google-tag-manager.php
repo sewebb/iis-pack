@@ -2,7 +2,7 @@
 /**
  * Provide a public-facing view Google Tag Manager
  *
- * @link       https://www.iis.se
+ * @link       https://www.internetstiftelsen.se
  * @since      2.0.0
  *
  * @package    Iis_Pack

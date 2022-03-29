@@ -121,20 +121,10 @@ class Iis_Pack_Admin {
 	}
 
 	/**
-	 * Register the JavaScript for the admin area.
-	 *
-	 * @since    1.0.1
-	 */
-	public function iis_pack_admin_enqueue_scripts() {
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/iis-pack-admin.js', array( 'jquery' ), $this->version, false );
-	}
-
-	/**
 	 * Lägger till inställningar för vårt plugin under menyn Inställningar
 	 * @since 1.0.0
 	 */
 	public function iis_pack_add_options_page() {
-
 		$this->plugin_screen_hook_suffix = add_options_page(
 			__( 'IIS Pack Settings', 'iis-pack' ),
 			__( 'IIS Pack', 'iis-pack' ),
@@ -142,7 +132,6 @@ class Iis_Pack_Admin {
 			$this->plugin_name,
 			array( $this, 'display_options_page' )
 		);
-
 	}
 
 	/**
@@ -161,64 +150,6 @@ class Iis_Pack_Admin {
 	 * @since 1.6.0 Settings for password strength script
 	 */
 	public function register_setting() {
-		// Fälten för Facebook
-		add_settings_field(
-			$this->option_name . '_default_og_image',
-			__( 'Default og:image', 'iis-pack' ),
-			array( $this, $this->option_name . '_default_og_image_cb' ),
-			$this->plugin_name,
-			$this->option_name . '_og_tags',
-			array( 'label_for' => $this->option_name . '_default_og_image' )
-		);
-
-		add_settings_field(
-			$this->option_name . '_protocol',
-			__( 'Protocol', 'iis-pack' ),
-			array( $this, $this->option_name . '_protocol_cb' ),
-			$this->plugin_name,
-			$this->option_name . '_og_tags',
-			array( 'label_for' => $this->option_name . '_protocol' )
-		);
-
-		add_settings_field(
-			$this->option_name . '_fbappid',
-			__( 'ev. Facebook AppId', 'iis-pack' ),
-			array( $this, $this->option_name . '_fbappid_cb' ),
-			$this->plugin_name,
-			$this->option_name . '_og_tags',
-			array( 'label_for' => $this->option_name . '_fbappid' )
-		);
-
-		add_settings_field(
-			$this->option_name . '_fbadmins',
-			__( 'ev. Facebook Admin(s)', 'iis-pack' ),
-			array( $this, $this->option_name . '_fbadmins_cb' ),
-			$this->plugin_name,
-			$this->option_name . '_og_tags',
-			array( 'label_for' => $this->option_name . '_fbadmins' )
-		);
-
-		register_setting( $this->plugin_name, $this->option_name . '_default_og_image', 'sanitize_text_field' );
-		register_setting( $this->plugin_name, $this->option_name . '_protocol', array( $this, $this->option_name . '_sanitize_protocol' ) );
-
-		// Lägg till sektion för Google Analytics
-		add_settings_section(
-			$this->option_name . '_google_analytics',
-			'<hr>' . __( 'Google Analytics', 'iis-pack' ),
-			array( $this, $this->option_name . '_google_analytics_cb' ),
-			$this->plugin_name
-		);
-
-		add_settings_field(
-			$this->option_name . '_ga_id',
-			__( 'Google Analytics ID', 'iis-pack' ),
-			array( $this, $this->option_name . '_ga_id_cb' ),
-			$this->plugin_name,
-			$this->option_name . '_google_analytics',
-			array( 'label_for' => $this->option_name . '_ga_id' )
-		);
-
-		register_setting( $this->plugin_name, $this->option_name . '_ga_id', 'sanitize_text_field' );
 		register_setting( $this->plugin_name, $this->option_name . '_gtm_id', 'sanitize_text_field' );
 
         // Lägg till sektion för Google Tag Manager
@@ -240,7 +171,6 @@ class Iis_Pack_Admin {
 
         // Lägg till sektion för Alert
 		register_setting( $this->plugin_name, $this->option_name . '_alert_text', array( $this, $this->option_name . '_sanitize_true_false', false ) );
-
         add_settings_section(
             $this->option_name . '_alert',
             '<hr>' . __( 'Alert', 'iis-pack' ),
@@ -290,24 +220,6 @@ class Iis_Pack_Admin {
 		);
 	}
 
-	/**
-	 * Underrubrik Bildattribution
-	 *
-	 * @since  1.0.1
-	 */
-	public function iis_pack_object_credits_cb() {
-		return false;
-	}
-
-	/**
-	 * Underrubrik Google Analytics
-	 *
-	 * @since  1.0.0
-	 */
-	public function iis_pack_google_analytics_cb() {
-		return false;
-	}
-
     /**
      * Underrubrik Google Tag Manager
      *
@@ -337,27 +249,6 @@ class Iis_Pack_Admin {
 
 	// #### Input fields
 
-	/**
-	 * Input för standard og:image
-	 *
-	 * @since  1.0.0
-	 */
-	public function iis_pack_default_og_image_cb() {
-		$default_og_image = get_option( $this->option_name . '_default_og_image' );
-		echo '<input type="text" class="large-text" name="' . $this->option_name . '_default_og_image' . '" id="' . $this->option_name . '_default_og_image' . '" value="' . $default_og_image . '"> ';
-		echo '<p class="description">' . __( 'Complete url. Default image is IIS logo', 'iis-pack' ) . '</p>';
-	}
-
-	/**
-	 * Input för Google Analytics ID
-	 *
-	 * @since  1.0.0
-	 */
-	public function iis_pack_ga_id_cb() {
-		$ga_id = get_option( $this->option_name . '_ga_id' );
-		echo '<input type="text" class="" name="' . $this->option_name . '_ga_id' . '" id="' . $this->option_name . '_ga_id' . '" value="' . $ga_id . '"> ';
-	}
-
     /**
      * Input för Google Tag Manager ID
      *
@@ -384,7 +275,7 @@ class Iis_Pack_Admin {
 	}
 
 	/**
-	 * Input för radioknappar visa /dölj emojisar
+	 * Input show/hide emojis
 	 *
 	 * @since  1.0.1
 	 */
@@ -424,36 +315,6 @@ class Iis_Pack_Admin {
 
 
 	// SANERA
-	/**
-	 * Sanitize protokoll value https / http (mest för att man kan :-)
-	 *
-	 * @param  string $protocol $_POST value
-	 * @since  1.0.0
-	 * @return string           Sanitized value
-	 * @since  1.3.0            Default value should be set to https/ssl
-	 */
-	public function iis_pack_sanitize_protocol( $protocol ) {
-		if ( empty( $protocol ) ) {
-			return 'https';
-		}
-		if ( in_array( $protocol, array( 'https', 'http' ), true ) ) {
-			return $protocol;
-	    }
-	}
-
-	/**
-	 * Sanera beforecontent / aftercontent / shortcode för ex. Fast Social Share
-	 *
-	 * @param  string $beforecontent_aftercontent_shortcode $_POST value
-	 * @since  1.0.2
-	 * @return string           Sanitized value
-	 */
-	public function iis_pack_sanitize_beforecontent_aftercontent_shortcode( $beforecontent_aftercontent_shortcode ) {
-		if ( in_array( $beforecontent_aftercontent_shortcode, array( 'beforecontent', 'aftercontent', 'shortcode' ), true ) ) {
-	        return $beforecontent_aftercontent_shortcode;
-	    }
-	}
-
 	/**
 	 * Sanera checkboxar Fast Social Share
 	 *

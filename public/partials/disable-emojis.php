@@ -21,7 +21,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 /**
  * Ta bort emojis från wordpress
  *
- * @link       https://www.iis.se
+ * @link       https://www.internetstiftelsen.se
  * @since      1.0.1
  *
  * @package    Iis_Pack
