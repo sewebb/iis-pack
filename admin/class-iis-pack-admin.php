@@ -89,17 +89,6 @@ class Iis_Pack_Admin {
 	}
 
 	/**
-	 * Inkludera klasser för extrafält på post & page // extrafält attachements
-	 * @since  1.0.0
-	 * @since  1.0.1 CC-fält på images (class-images-meta.php)
-	 */
-	public function iis_pack_include_meta_fields() {
-		include_once 'partials/class-images-meta.php';
-
-		call_images_media();
-	}
-
-	/**
 	 * Lägger till möjlighet att ladda upp lokal avatar i Användarprofilen
 	 * @since 1.1 Är en kopia av gamla IIS Simple Local Avatars
 	 */
@@ -375,46 +364,7 @@ class Iis_Pack_Admin {
 		return false;
 	}
 
-	// INPUT FÄLT
-
-	/**
-	 * Input för radioknappar visa /dölj utskrift av Bildattribution
-	 *
-	 * @since  1.0.1
-	 */
-	public function iis_pack_show_object_credits_cb() {
-		$show_object_credits = get_option( $this->option_name . '_show_object_credits' );
-		?>
-			<fieldset>
-				<label>
-					<input type="radio" name="<?php echo $this->option_name . '_show_object_credits' ?>" id="<?php echo $this->option_name . '_show_object_credits' ?>" value="true" <?php checked( $show_object_credits, 'true' ); ?>>
-					<?php _e( 'Show Object Attribution', 'iis-pack' ); ?>
-				</label>
-				<br>
-				<label>
-					<input type="radio" name="<?php echo $this->option_name . '_show_object_credits' ?>" value="false" <?php checked( $show_object_credits, 'false' ); ?>>
-					<?php _e( 'Hide Object Attribution', 'iis-pack' ); ?>
-				</label>
-			</fieldset>
-		<?php
-	}
-
-	/**
-	 * Input för checkbox för att dölja bildattribution på featured images (men visa i sidan)
-	 * Används för de fall teman gör egna saker med featured image men ändån vill visa bildattr. på vanliga bilder i posten/sidan
-	 * @param array $args knapparnas läge
-	 * @since  1.1.1
-	 */
-	public function iis_pack_show_object_credits_featured_cb( $args ) {
-		$options = get_option( $this->option_name . '_show_object_credits_featured' );
-	?>
-		<input id="<?php echo $args[0]; ?>" name="iis_pack_show_object_credits_featured[<?php echo $args[0]; ?>]"  type="checkbox" value="1" <?php
-		if ( isset( $options[ $args[0] ] ) ) {
-			checked( $options[ $args[0] ], 1 );
-		} ?> />
-		<?php _e( 'If you choose "Show" you can tick this to hide on featured image. <em>(Then your theme rolls its own variant)</em>', 'iis-pack' ); ?>
-	<?php
-	}
+	// #### Input fields
 
 	/**
 	 * Input för standard og:image

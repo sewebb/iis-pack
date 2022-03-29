@@ -29,6 +29,12 @@ Installation
 Changelog
 =========
 
+#### 2.0.1-2.1.3
+* Remove password strength functions
+* Make GTM ignore Onetrust
+* Migrate to PHP 8.1
+* Remove Grunt and all NPM packages (no CSS left to build and include)
+
 #### 2.0.0
 * Removed fox
 
