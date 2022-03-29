@@ -161,35 +161,6 @@ class Iis_Pack_Admin {
 	 * @since 1.6.0 Settings for password strength script
 	 */
 	public function register_setting() {
-		// Lägg till sektion för Foto-credits
-		add_settings_section(
-			$this->option_name . '_object_credits',
-			'<hr>' . __( 'Object attribution', 'iis-pack' ),
-			array( $this, $this->option_name . '_object_credits_cb' ),
-			$this->plugin_name
-		);
-
-		add_settings_field(
-			$this->option_name . '_show_object_credits',
-			__( 'Print Object attribution?', 'iis-pack' ),
-			array( $this, $this->option_name . '_show_object_credits_cb' ),
-			$this->plugin_name,
-			$this->option_name . '_object_credits',
-			array( 'label_for' => $this->option_name . '_show_object_credits' )
-		);
-
-		add_settings_field(
-			$this->option_name . '_show_object_credits_featured',
-			__( 'Hide on featured image', 'iis-pack' ),
-			array( $this, $this->option_name . '_show_object_credits_featured_cb' ),
-			$this->plugin_name,
-			$this->option_name . '_object_credits',
-			array( $this->option_name . '_show_object_credits_featured', 'label_for' => $this->option_name . '_show_object_credits_featured' )
-		);
-
-		register_setting( $this->plugin_name, $this->option_name . '_show_object_credits', array( $this, $this->option_name . '_sanitize_true_false' ) );
-		register_setting( $this->plugin_name, $this->option_name . '_show_object_credits_featured', array( $this, $this->option_name . '_sanitize_checkbox' ) );
-
 		// Fälten för Facebook
 		add_settings_field(
 			$this->option_name . '_default_og_image',
@@ -378,28 +349,6 @@ class Iis_Pack_Admin {
 	}
 
 	/**
-	 * Input för radioknappar protokoll
-	 *
-	 * @since  1.0.0
-	 */
-	public function iis_pack_protocol_cb() {
-		$protocol = get_option( $this->option_name . '_protocol' );
-		?>
-			<fieldset>
-				<label>
-					<input type="radio" name="<?php echo $this->option_name . '_protocol' ?>" id="<?php echo $this->option_name . '_protocol' ?>" value="https" <?php checked( $protocol, 'https' ); ?>>
-					<?php _e( 'https (SSL)', 'iis-pack' ); ?>
-				</label>
-				<br>
-				<label>
-					<input type="radio" name="<?php echo $this->option_name . '_protocol' ?>" value="http" <?php checked( $protocol, 'http' ); ?>>
-					<?php _e( 'http', 'iis-pack' ); ?>
-				</label>
-			</fieldset>
-		<?php
-	}
-
-	/**
 	 * Input för Google Analytics ID
 	 *
 	 * @since  1.0.0
@@ -514,28 +463,16 @@ class Iis_Pack_Admin {
 	 */
 	public function iis_pack_sanitize_checkbox( $input ) {
 		$new_input = array();
-		// Where to put the buttons
-		if ( isset( $input[ $this->option_name . '_fss_beforecontent' ] ) ) {
-			$new_input[ $this->option_name . '_fss_beforecontent' ] = absint( $input[ $this->option_name . '_fss_beforecontent' ] );
-		}
-		if ( isset( $input[ $this->option_name . '_fss_aftercontent' ] ) ) {
-			$new_input[ $this->option_name . '_fss_aftercontent' ] = absint( $input[ $this->option_name . '_fss_aftercontent' ] );
-		}
 
 		// Lokala avatarer / profile picture
 		if ( isset( $input[ $this->option_name . '_simple_local_avatars_caps' ] ) ) {
 			$new_input[ $this->option_name . '_simple_local_avatars_caps' ] = absint( $input[ $this->option_name . '_simple_local_avatars_caps' ] );
 		}
 
-		// Bildattribution
-		if ( isset( $input[ $this->option_name . '_show_object_credits_featured' ] ) ) {
-			$new_input[ $this->option_name . '_show_object_credits_featured' ] = absint( $input[ $this->option_name . '_show_object_credits_featured' ] );
-		}
-
 		return $new_input;
 	}
 	/**
-	 * Sanera true / false för Foxmenyn, Bildattribution, Password Strength
+	 * Sanera true/false
 	 *
 	 * @param  string $true_false $_POST value
 	 * @since  1.0.0

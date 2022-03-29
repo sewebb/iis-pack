@@ -7,17 +7,17 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              https://www.iis.se
+ * @link              https://www.internetstiftelsen.se
  * @since             1.0.0
  * @package           Iis_Pack
  *
  * @wordpress-plugin
  * Plugin Name:       IIS Pack
- * Plugin URI:        https://www.iis.se
- * Description:       Gemensamma plugins för IIS sajter: GA, OG-taggar, bildattribution, dela-knappar, Fox-menyn, lokala avatarer etc
- * Version:           2.1.2
+ * Plugin URI:        https://www.internetstiftelsen.se
+ * Description:       GTM, lokala avatarer etc
+ * Version:           2.1.3
  * Author:            IIS Web Team
- * Author URI:        https://www.iis.se
+ * Author URI:        https://www.internetstiftelsen.se
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       iis-pack

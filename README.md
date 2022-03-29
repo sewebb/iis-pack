@@ -34,6 +34,7 @@ Changelog
 * Make GTM ignore Onetrust
 * Migrate to PHP 8.1
 * Remove Grunt and all NPM packages (no CSS left to build and include)
+* Remove protocol selection (http/https)
 
 #### 2.0.0
 * Removed fox
