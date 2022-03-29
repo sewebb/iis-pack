@@ -74,7 +74,6 @@ class Iis_Pack_Public {
 	 */
 	public function iis_pack_include_in_footer() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/google-analytics.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/browserwarning.php';
 	}
 
 	/**
@@ -95,22 +94,5 @@ class Iis_Pack_Public {
 	 */
 	public function iis_pack_disable_all_emojis() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/disable-emojis.php';
-	}
-
-	/**
-	 * Register the JavaScript for the public-facing side of the site.
-	 *
-	 * @since    1.0.0
-	 */
-	public function iis_pack_enqueue_scripts() {
-		// Settings transfered to javascript, and language
-		$defs = array(
-			'pluginsUrl'  => plugin_dir_url( __FILE__ ),
-		);
-		wp_localize_script(
-			$this->plugin_name,
-			'iispackDefs',
-			$defs
-		);
 	}
 }

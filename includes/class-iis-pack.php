@@ -155,11 +155,9 @@ class Iis_Pack {
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'iis_pack_add_options_page' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_setting' );
 
-		// När vi vill ladda vår extra fält för pages, posts, custom post types & mediauppladdaren (CC-fält)
-		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'iis_pack_include_meta_fields' );
-
 		// Om det saknas support för featured image
 		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'iis_pack_add_support_for_featured_image' );
+
 		// Om det saknas support för page excerpt
 		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'iis_pack_add_support_for_page_excerpt' );
 
@@ -167,10 +165,9 @@ class Iis_Pack {
 		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'iis_pack_in_user_profile' );
 
 		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'iis_pack_comment_stuff' );
+
 		// Admin, filnamn
 		$this->loader->add_action( 'plugins_loaded', $plugin_admin, 'iis_pack_sanitize_filename' );
-
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'iis_pack_admin_enqueue_scripts' );
 	}
 
 	/**
@@ -184,18 +181,11 @@ class Iis_Pack {
 
 		$plugin_public = new Iis_Pack_Public( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'iis_pack_enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'iis_pack_enqueue_scripts' );
-
 		// Våra plugins finns som "sub"-plugg i /public/partials
 		// Kallas i class Iis_Plugins_Public
 		$this->loader->add_action( 'wp_head', $plugin_public, 'iis_pack_include_in_head' );
 		$this->loader->add_action( 'wp_footer', $plugin_public, 'iis_pack_include_in_footer' );
 		$this->loader->add_action( 'wp_body_open', $plugin_public, 'iis_pack_include_in_body' );
-
-		// Content filters. T.ex. filter för bilder så att vi kan visa licensdatan
-		$this->loader->add_action( 'the_post', $plugin_public, 'iis_pack_filter_the_content' );
-
 		$this->loader->add_action( 'init', $plugin_public, 'iis_pack_disable_all_emojis' );
 
 
