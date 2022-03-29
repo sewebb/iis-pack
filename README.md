@@ -29,7 +29,12 @@ Installation
 Changelog
 =========
 
-#### 2.0.1-2.1.4
+#### 2.2.0
+* Remove Google Anlytics
+* Remove unused code
+* Add alert GUI
+
+#### 2.0.1-2.1.5
 * Remove password strength functions
 * Make GTM ignore Onetrust
 * Migrate to PHP 8.1
