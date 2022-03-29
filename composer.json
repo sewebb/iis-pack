@@ -3,11 +3,11 @@
 	"description": "Plugin for IIS WordPress sites, adding some common stuff",
 	"keywords": ["wordpress", "iis"],
 	"homepage": "https://www.internetstiftelsen.se",
-	"version": "2.1.4",
+	"version": "2.1.5",
 	"authors": [
 		{
 			"name": "Richard Brattlund",
-			"email": "richard.brattlund@iis.se",
+			"email": "richard.brattlund@internetstiftelsen.se",
 			"homepage": "https://www.internetstiftelsen.se"
 		},
 		{
