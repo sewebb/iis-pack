@@ -239,6 +239,7 @@ class Iis_Pack_Admin {
         );
 
         // Lägg till sektion för Alert
+		register_setting( $this->plugin_name, $this->option_name . '_alert_text', array( $this, $this->option_name . '_sanitize_true_false', false ) );
 
         add_settings_section(
             $this->option_name . '_alert',
