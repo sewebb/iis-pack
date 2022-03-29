@@ -191,6 +191,7 @@ class Iis_Pack {
 		// Kallas i class Iis_Plugins_Public
 		$this->loader->add_action( 'wp_head', $plugin_public, 'iis_pack_include_in_head' );
 		$this->loader->add_action( 'wp_footer', $plugin_public, 'iis_pack_include_in_footer' );
+		$this->loader->add_action( 'wp_body_open', $plugin_public, 'iis_pack_include_in_body' );
 
 		// Content filters. T.ex. filter för bilder så att vi kan visa licensdatan
 		$this->loader->add_action( 'the_post', $plugin_public, 'iis_pack_filter_the_content' );
