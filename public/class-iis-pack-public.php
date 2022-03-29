@@ -123,16 +123,4 @@ class Iis_Pack_Public {
 			$defs
 		);
 	}
-
-	/**
-	 * Register the stylesheets for the public-facing side of the site.
-	 *
-	 * @since    1.0.0
-	 */
-	public function iis_pack_enqueue_styles() {
-		// Sammanslagen css för samtliga plugin
-		// Inte använd ännu
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/iis-pack-public.064f9a57.min.css', array(), null, 'screen' );
-
-	}
 }
