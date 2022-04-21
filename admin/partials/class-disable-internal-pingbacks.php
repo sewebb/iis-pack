@@ -31,10 +31,10 @@ class DisableInternalPingbacks {
 	 * @return void
 	 */
 	function disable_self_trackback( &$links ) {
+        $home_url = get_option( 'home' );
 
 		foreach ( $links as $l => $link ) {
-
-			if ( 0 === strpos( $link, get_option( 'home' ) ) ) {
+			if ( 0 === strpos( $link, $home_url ) ) {
 				unset( $links[ $l ] );
 			}
 		}
