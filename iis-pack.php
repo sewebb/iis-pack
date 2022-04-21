@@ -15,7 +15,7 @@
  * Plugin Name:       IIS Pack
  * Plugin URI:        https://www.internetstiftelsen.se
  * Description:       GTM, lokala avatarer etc
- * Version:           2.2.0
+ * Version:           2.2.1
  * Author:            IIS Web Team
  * Author URI:        https://www.internetstiftelsen.se
  * License:           GPL-2.0+
