@@ -7,17 +7,17 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              https://www.internetstiftelsen.se
+ * @link              https://internetstiftelsen.se
  * @since             1.0.0
  * @package           Iis_Pack
  *
  * @wordpress-plugin
  * Plugin Name:       IIS Pack
- * Plugin URI:        https://www.internetstiftelsen.se
+ * Plugin URI:        https://internetstiftelsen.se
  * Description:       Functions for GTM, local avatars, removal of emoji scripts etc
- * Version:           2.2.1
+ * Version:           2.3.0
  * Author:            The Swedish Internet Foundation
- * Author URI:        https://www.internetstiftelsen.se
+ * Author URI:        https://internetstiftelsen.se
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       iis-pack
