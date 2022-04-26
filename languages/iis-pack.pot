@@ -1,0 +1,498 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: IIS Pack\n"
+"POT-Creation-Date: 2017-09-13 19:06+0200\n"
+"PO-Revision-Date: 2017-09-13 14:46+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: iis-pack.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: admin/class-iis-pack-admin.php:154
+msgid "IIS Pack Settings"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+#: admin/class-iis-pack-admin.php:155
+msgid "IIS Pack"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:174 admin/class-iis-pack-admin.php:241
+msgid "Share buttons"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:175
+msgid ""
+"<h4>How it works:</h4>\n"
+"\t\t\t\t\t<p>Default setting is no buttons showing on pages/posts without an "
+"added shortcode <code>[fastsocial]</code> either in the content or added "
+"with the page template.</p>\n"
+"\t\t\t\t\t<p>BUT - you can choose to print before or after the content and "
+"still avoide printing on certain post types.\n"
+"\t\t\t\t\tFor example, if you dont want any buttons on normal pages add "
+"\"<code>page</code>\" to the <em>\"Remove from\"</em> field.\n"
+"\t\t\t\t\tOr if you use a special template to show for example "
+"Internetguider - add \"<code>guide</code>\" to the field. (Or a combination "
+"like \"<code>page,guide</code>\")</code></p>\n"
+"\t\t\t\t\t<p><em>\"Activate\"</em>-settings are default for the hole site. "
+"If you activate all networks you can still choose not to show a certain "
+"button on / in a post or template\n"
+"\t\t\t\t\twith for example <code>[fastsocial pinterest=no]</code> (or if a "
+"network is not choosen for all pages - activate it with <code>[fastsocial "
+"pinterest=yes]</code></p>\n"
+"\t\t\t\t\t\t<p>On each page / post you can also add a special Facebook App "
+"ID, <strong>different</strong> from the sitewide ID.\n"
+"\t\t\t\t\t\tOr you can add it to the do_shortcode in a template with "
+"<code>[fastsocial fbappid=<em>{idnumber}</em>]</code></p>\n"
+"\t\t\t\t\t\t<p>Hashtags for the Twitter-button could be added in the same "
+"manner (per post/page or by shortcode) <code>[fastsocial "
+"hashtags=internetguider,internetstiftelsen]</code></p>\n"
+"\t\t\t\t\t\t<p>To remove fastsocial for a specific page / post that would "
+"normaly magically add the buttons, add <code>[fastsocial remove=yes]</code> "
+"to post content (in editor)</p>"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:195 admin/class-iis-pack-admin.php:659
+#: admin/class-iis-pack-admin.php:877
+msgid "Choose from theese templates: "
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:206 admin/class-iis-pack-admin.php:646
+#: admin/class-iis-pack-admin.php:865
+msgid "Choose from theese post types: "
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:213 admin/class-iis-pack-admin.php:327
+msgid "Object attribution"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:214
+msgid ""
+"<h4>Adding license to images</h4>\n"
+"\t\t\t\t\t<p>In the media library there are fields for each object that can "
+"hold object attributions.</p>\n"
+"\t\t\t\t\t<p>If added to an image it could be printed automatically under "
+"each image - or you use your own function in your theme</p>"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:248
+msgid "Print buttons before content"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:257
+msgid "Print buttons after content"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:266
+msgid "Remove from types"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:275
+msgid "Remove from templates"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:284
+msgid "Activate Facebook"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:292
+msgid "Activate Twitter"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:300
+msgid "Activate LinkedIn"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:308
+msgid "Activate Pinterest"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:334
+msgid "Print Object attribution?"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:343
+msgid "Hide on featured image"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:356
+msgid "Facebook open graph"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:364
+msgid "Default og:image"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:373
+msgid "Protocol"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:382
+msgid "ev. Facebook AppId"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:391
+msgid "ev. Facebook Admin(s)"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:406 admin/partials/class-twitter.php:43
+msgid "Twitter Cards"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:413
+msgid "Twitter site"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:425
+msgid "Google Analytics"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:432
+msgid "Google Analytics ID"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:444
+msgid "Fox Menu"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:451
+msgid "Use Fox menu?"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:463
+msgid "Check frontend registration password"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:470
+msgid "Use script for password strength?"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:479
+msgid "Password length"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:488
+msgid "Add to types"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:497
+msgid "Add to templates"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:514
+msgid "Other stuff"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:521
+msgid "Remove emoji scripts"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:529
+msgid "Local Profile Picture"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:533
+msgid ""
+"Only allow users with file upload capabilities to upload local profile "
+"pictures (Authors and above)"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:550
+msgid ""
+"Choose where social share buttons should be shown. See Help menu for more "
+"info (under \"Hi, {logged in user}\")"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:568
+msgid "Settings for Facebook open graph tags per site "
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:645
+msgid ""
+"Add post types to be avoided if above setting is set to Print before or "
+"Print after content. (ex: se-tech,guide)"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:646 admin/class-iis-pack-admin.php:659
+#: admin/class-iis-pack-admin.php:865 admin/class-iis-pack-admin.php:877
+msgid "( <em>see help menu</em> ) "
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:658
+msgid ""
+"Add templates to be avoided if above setting is set to Print before or Print "
+"after content."
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:694
+msgid "Show Object Attribution"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:699
+msgid "Hide Object Attribution"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:718
+msgid ""
+"If you choose \"Show\" you can tick this to hide on featured image. "
+"<em>(Then your theme rolls its own variant)</em>"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:730
+msgid "Complete url. Default image is IIS logo"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:744
+msgid "https (SSL)"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:749
+msgid "http"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:773
+msgid "If the site has more than one admin, seperate them with comma (,)"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:784
+msgid "The sites main account, for example @iis on www.iis.se"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:808
+msgid "Show Fox menu"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:813
+msgid "Hide Fox menu"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:831
+msgid "Use password strength script"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:836
+msgid "Disable password strength script (default)"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:850
+msgid ""
+"Number of characters if this site uses non-default password length (which is "
+"12)"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:864
+msgid ""
+"Add post types to use password strength script even if user is logged in. "
+"(ex: se-tech,guide)"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:876
+msgid ""
+"Add templates to use password strength script even if user is logged in."
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:891
+msgid "Remove emojis (default)"
+msgstr ""
+
+#: admin/class-iis-pack-admin.php:896
+msgid "Use Emojis"
+msgstr ""
+
+#: admin/partials/class-facebook.php:42
+msgid "FaceBook og: tags"
+msgstr ""
+
+#: admin/partials/class-facebook.php:56
+msgid "Alternative og:title"
+msgstr ""
+
+#: admin/partials/class-facebook.php:57
+msgid "If you want a different title for the page when shared on FaceBook"
+msgstr ""
+
+#: admin/partials/class-facebook.php:62
+msgid "og:description"
+msgstr ""
+
+#: admin/partials/class-facebook.php:63
+msgid "Add a nice descriptive text then page is shared on Facebook"
+msgstr ""
+
+#: admin/partials/class-facebook.php:68
+msgid "FB App id"
+msgstr ""
+
+#: admin/partials/class-facebook.php:69
+msgid ""
+"If this page belongs to a special App ID (for example internetguider) - add "
+"idnumber"
+msgstr ""
+
+#: admin/partials/class-images-meta.php:20
+msgid "Object URL"
+msgstr ""
+
+#: admin/partials/class-images-meta.php:24
+msgid "Fetch data from Flickr"
+msgstr ""
+
+#: admin/partials/class-images-meta.php:28
+msgid "Object name"
+msgstr ""
+
+#: admin/partials/class-images-meta.php:33
+msgid "License (ex. CC-BY)"
+msgstr ""
+
+#: admin/partials/class-images-meta.php:39
+msgid "License field is required"
+msgstr ""
+
+#: admin/partials/class-images-meta.php:45
+msgid "License URL"
+msgstr ""
+
+#: admin/partials/class-images-meta.php:49
+msgid "Licens holder name"
+msgstr ""
+
+#: admin/partials/class-images-meta.php:53
+msgid "Licens holder URL"
+msgstr ""
+
+#: admin/partials/class-local-avatars.php:111
+msgid ""
+"Locale Profile Picture.  Replaces your Gravatar picture ONLY FOR THIS SITE."
+msgstr ""
+
+#: admin/partials/class-local-avatars.php:115
+msgid "Upload profile picture"
+msgstr ""
+
+#: admin/partials/class-local-avatars.php:130
+msgid ""
+"No local profile picture is set. Use the upload field to add a local avatar "
+"for this site."
+msgstr ""
+
+#: admin/partials/class-local-avatars.php:133
+msgid "Delete local profile picture"
+msgstr ""
+
+#: admin/partials/class-local-avatars.php:134
+msgid ""
+"Replace the local profile picture by uploading a new image, or erase the "
+"local profile picture (falling back to a Gravatar) by checking the delete "
+"option."
+msgstr ""
+
+#: admin/partials/class-local-avatars.php:139
+msgid "No local avatar is set. Set up your avatar at Gravatar.com."
+msgstr ""
+
+#: admin/partials/class-local-avatars.php:142
+msgid ""
+"You do not have media management permissions. To change your local profile "
+"picture, contact the blog administrator."
+msgstr ""
+
+#: admin/partials/class-twitter.php:57
+msgid "Alternative twitter:title"
+msgstr ""
+
+#: admin/partials/class-twitter.php:58
+msgid ""
+"If you want a different title for the page when shared on Twitter. If you "
+"want the same as on Facebook - just leave it empty"
+msgstr ""
+
+#: admin/partials/class-twitter.php:63
+msgid "twitter:description"
+msgstr ""
+
+#: admin/partials/class-twitter.php:64
+msgid ""
+"Add a nice descriptive text then page is shared on Twitter. If you want the "
+"same as on Facebook - just leave it empty"
+msgstr ""
+
+#: admin/partials/class-twitter.php:69
+msgid "Hashtags"
+msgstr ""
+
+#: admin/partials/class-twitter.php:70
+msgid ""
+"Add hashtags for this page. If more than one - seperate with comma, no "
+"spaces. (internetguider,iis)"
+msgstr ""
+
+#: public/class-iis-pack-public.php:139
+msgid "Password strength unknown"
+msgstr ""
+
+#: public/class-iis-pack-public.php:140
+msgid "Very weak"
+msgstr ""
+
+#: public/class-iis-pack-public.php:141
+msgid "Weak"
+msgstr ""
+
+#: public/class-iis-pack-public.php:142
+msgid "Medium"
+msgstr ""
+
+#: public/class-iis-pack-public.php:143
+msgid "Strong"
+msgstr ""
+
+#: public/class-iis-pack-public.php:144
+msgid "Mismatch"
+msgstr ""
+
+#: public/class-iis-pack-public.php:145
+msgid "Use unsecure password"
+msgstr ""
+
+#: public/partials/add-license-to-images.php:62
+#: public/partials/add-license-to-images.php:134
+msgid "Photo: "
+msgstr ""
+
+#: public/partials/add-license-to-images.php:78
+#: public/partials/add-license-to-images.php:151
+msgid "by "
+msgstr ""
+
+#: public/partials/add-license-to-images.php:80
+#: public/partials/add-license-to-images.php:153
+msgid "Photo by "
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "https://www.iis.se"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Gemensamma plugins för IIS sajter: GA, OG-taggar, bildattribution, dela-"
+"knappar, Foxmeny, lokala avatarer etc"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "IIS Web Team"
+msgstr ""

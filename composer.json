@@ -1,0 +1,34 @@
+{
+	"name": "iis/iis-pack",
+	"description": "Plugin for The Swedish Internet Foundation's WordPress sites",
+	"keywords": ["wordpress", "iis"],
+	"homepage": "https://www.internetstiftelsen.se",
+	"version": "2.2.1",
+	"authors": [
+		{
+			"name": "Richard Brattlund",
+			"email": "richard.brattlund@internetstiftelsen.se",
+			"homepage": "https://www.internetstiftelsen.se"
+		},
+		{
+			"name": "Robert Hedman",
+			"email": "robert.hedman@internetstiftelsen.se",
+			"homepage": "https://www.internetstiftelsen.se"
+		},
+		{
+			"name": "Tobias Bleckert",
+			"email": "hola@tobiasbleckert.se",
+			"homepage": "https://internetstiftelsen.se"
+		},
+		{
+			"name": "Jonas Nordström",
+			"email": "jonas.nordstrom@gmail.com",
+			"homepage": "https://wpbyran.se"
+		}
+	],
+	"type": "wordpress-plugin",
+	"require": {
+		"php": ">=7.4",
+		"composer/installers": "~1.0"
+	}
+}
