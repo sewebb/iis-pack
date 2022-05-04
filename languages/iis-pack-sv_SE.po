@@ -1,18 +1,19 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: IIS Pack\n"
-"POT-Creation-Date: 2017-09-13 19:06+0200\n"
-"PO-Revision-Date: 2017-09-13 19:07+0200\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/iis-pack\n"
+"POT-Creation-Date: 2022-05-04T12:30:53+00:00\n"
+"PO-Revision-Date: 2022-05-04 14:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: iis-pack.php\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
@@ -20,226 +21,61 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: admin/class-iis-pack-admin.php:154
-msgid "IIS Pack Settings"
-msgstr "Inställningarna för IIS-Pack"
-
-#. Plugin Name of the plugin/theme
-#: admin/class-iis-pack-admin.php:155
+#. Plugin Name of the plugin
+#: admin/class-iis-pack-admin.php:126
 msgid "IIS Pack"
 msgstr "IIS Pack"
 
-#: admin/class-iis-pack-admin.php:174 admin/class-iis-pack-admin.php:241
-msgid "Share buttons"
-msgstr "Dela-knappar"
-
-#: admin/class-iis-pack-admin.php:175
-msgid ""
-"<h4>How it works:</h4>\n"
-"\t\t\t\t\t<p>Default setting is no buttons showing on pages/posts without an "
-"added shortcode <code>[fastsocial]</code> either in the content or added "
-"with the page template.</p>\n"
-"\t\t\t\t\t<p>BUT - you can choose to print before or after the content and "
-"still avoide printing on certain post types.\n"
-"\t\t\t\t\tFor example, if you dont want any buttons on normal pages add "
-"\"<code>page</code>\" to the <em>\"Remove from\"</em> field.\n"
-"\t\t\t\t\tOr if you use a special template to show for example "
-"Internetguider - add \"<code>guide</code>\" to the field. (Or a combination "
-"like \"<code>page,guide</code>\")</code></p>\n"
-"\t\t\t\t\t<p><em>\"Activate\"</em>-settings are default for the hole site. "
-"If you activate all networks you can still choose not to show a certain "
-"button on / in a post or template\n"
-"\t\t\t\t\twith for example <code>[fastsocial pinterest=no]</code> (or if a "
-"network is not choosen for all pages - activate it with <code>[fastsocial "
-"pinterest=yes]</code></p>\n"
-"\t\t\t\t\t\t<p>On each page / post you can also add a special Facebook App "
-"ID, <strong>different</strong> from the sitewide ID.\n"
-"\t\t\t\t\t\tOr you can add it to the do_shortcode in a template with "
-"<code>[fastsocial fbappid=<em>{idnumber}</em>]</code></p>\n"
-"\t\t\t\t\t\t<p>Hashtags for the Twitter-button could be added in the same "
-"manner (per post/page or by shortcode) <code>[fastsocial "
-"hashtags=internetguider,internetstiftelsen]</code></p>\n"
-"\t\t\t\t\t\t<p>To remove fastsocial for a specific page / post that would "
-"normaly magically add the buttons, add <code>[fastsocial remove=yes]</code> "
-"to post content (in editor)</p>"
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://internetstiftelsen.se"
 msgstr ""
-"<h4>Hur det fungerar:</h4>\n"
-"\t\t\t\t\t<p>Standardinställningen är att knapparna inte syns automatiskt på "
-"sidor utan att man lagt till  shortcode <code>[fastsocial]</code> antingen i "
-"editor-fältet eller i sidmallen.</p>\n"
-"\t\t\t\t\t<p>MEN - man kan välja att lägga ut knapparna före eller efter "
-"content och ändån undvika att de skrivs ut på speciella sidor, posttyper "
-"eller sidmallar.\n"
-"\t\t\t\t\tTill exempel, om du inte vill ha knapparna på vanliga sidor, lägg "
-"till \"<code>page</code>\" i  <em>”Lägg inte ut på typerna”</em> fältet\n"
-"\t\t\t\t\tEller om du använder en special sidmall för att visa t ex "
-"internetguider - ange \"<code>guide</code>\" i fältet. (Eller en kombination "
-"\"<code>page,guide</code>\")</code></p>\n"
-"\t\t\t\t\t<p><em>”Aktivera”</em>-inställningen är standard för hela sajten. "
-"Om du aktiverar alla nätverken kan du ändån explicit välja bort vissa "
-"nätverk i en sida eller i en mall \n"
-"\t\t\t\t\tmed t.ex. <code>[fastsocial pinterest=no]</code> (eller om inga "
-"nätverk är valda för sajten - aktivera med <code>[fastsocial pinterest=yes]</"
-"code></p>\n"
-"\t\t\t\t\t\t<p>På varje sida / post kan du också lägga till ett speciellt "
-"Facebook App ID, <strong>skiljt från</strong> sajtens standard App ID.\n"
-"\t\t\t\t\t\tEller så kan du lägga till det i  do_shortcode i en sidmall med "
-"<code>[fastsocial fbappid=<em>{idnummer}</em>]</code></p>\n"
-"\t\t\t\t\t\t<p>Hashtaggar för Twitter-knappen kan läggas till på samma sätt "
-"(per post / sida eller med shortcode) <code>[fastsocial "
-"hashtags=internetguider,internetstiftelsen]</code></p>\n"
-"\t\t\t\t\t\t<p>Om du vill ta bort fastsocial (knapparna) för en specifik "
-"sida / post som normalt automatiskt skulle haft knapparna, lägg till "
-"<code>[fastsocial remove=yes]</code> i post content (i editorn)</p>"
 
-#: admin/class-iis-pack-admin.php:195 admin/class-iis-pack-admin.php:659
-#: admin/class-iis-pack-admin.php:877
-msgid "Choose from theese templates: "
-msgstr "Välj från dessa sidmallar: "
-
-#: admin/class-iis-pack-admin.php:206 admin/class-iis-pack-admin.php:646
-#: admin/class-iis-pack-admin.php:865
-msgid "Choose from theese post types: "
-msgstr "Välj från dessa posttyper: "
-
-#: admin/class-iis-pack-admin.php:213 admin/class-iis-pack-admin.php:327
-msgid "Object attribution"
-msgstr "Bildattribution"
-
-#: admin/class-iis-pack-admin.php:214
-msgid ""
-"<h4>Adding license to images</h4>\n"
-"\t\t\t\t\t<p>In the media library there are fields for each object that can "
-"hold object attributions.</p>\n"
-"\t\t\t\t\t<p>If added to an image it could be printed automatically under "
-"each image - or you use your own function in your theme</p>"
+#. Description of the plugin
+msgid "Functions for GTM, local avatars, removal of emoji scripts etc"
 msgstr ""
-"<h4>Lägg till licenser på bilder</h4>\n"
-"\t\t\t\t\t<p>I Media biblioteket finns fält för varje bild som kan "
-"säkerställa bildattributionen.</p>\n"
-"\t\t\t\t\t<p>Om det läggs till data till en bild kan detta skrivas ut "
-"automatiskt under varje bild - eller så kan du använda din egen funktion i "
-"ditt tema.</p>"
 
-#: admin/class-iis-pack-admin.php:248
-msgid "Print buttons before content"
-msgstr "Knappar innan sidans text"
+#. Author of the plugin
+msgid "The Swedish Internet Foundation"
+msgstr "Internetstiftelsen"
 
-#: admin/class-iis-pack-admin.php:257
-msgid "Print buttons after content"
-msgstr "Knappar efter sidans text"
+#: admin/class-iis-pack-admin.php:125
+msgid "IIS Pack Settings"
+msgstr "Inställningarna för IIS-Pack"
 
-#: admin/class-iis-pack-admin.php:266
-msgid "Remove from types"
-msgstr "Lägg inte ut på typerna"
-
-#: admin/class-iis-pack-admin.php:275
-msgid "Remove from templates"
-msgstr "Lägg inte ut i sidmallarna"
-
-#: admin/class-iis-pack-admin.php:284
-msgid "Activate Facebook"
-msgstr "Aktivera Facebook"
-
-#: admin/class-iis-pack-admin.php:292
-msgid "Activate Twitter"
-msgstr "Aktivera Twitter"
-
-#: admin/class-iis-pack-admin.php:300
-msgid "Activate LinkedIn"
-msgstr "Aktivera LinkedIn"
-
-#: admin/class-iis-pack-admin.php:308
-msgid "Activate Pinterest"
-msgstr "Aktivera Pinterest"
-
-#: admin/class-iis-pack-admin.php:334
-msgid "Print Object attribution?"
-msgstr "Skriv ut bildattribution under bilder på sidorna?"
-
-#: admin/class-iis-pack-admin.php:343
-msgid "Hide on featured image"
-msgstr "Dölj på utvald bild"
-
-#: admin/class-iis-pack-admin.php:356
-msgid "Facebook open graph"
-msgstr "Facebook open graph"
-
-#: admin/class-iis-pack-admin.php:364
-msgid "Default og:image"
-msgstr "Standard og:image"
-
-#: admin/class-iis-pack-admin.php:373
-msgid "Protocol"
-msgstr "Protokoll för sajten"
-
-#: admin/class-iis-pack-admin.php:382
-msgid "ev. Facebook AppId"
-msgstr "ev. Facebook AppID"
-
-#: admin/class-iis-pack-admin.php:391
-msgid "ev. Facebook Admin(s)"
-msgstr "ev. Facebook Admin(s)"
-
-#: admin/class-iis-pack-admin.php:406 admin/partials/class-twitter.php:43
-msgid "Twitter Cards"
-msgstr "Twitter-kort"
-
-#: admin/class-iis-pack-admin.php:413
-msgid "Twitter site"
-msgstr "Twitterkonto för sajten"
-
-#: admin/class-iis-pack-admin.php:425
-msgid "Google Analytics"
-msgstr "Google Analytics"
-
-#: admin/class-iis-pack-admin.php:432
-msgid "Google Analytics ID"
-msgstr "Google Analytics ID"
-
-#: admin/class-iis-pack-admin.php:444
-msgid "Fox Menu"
-msgstr "Foxmenyn"
-
-#: admin/class-iis-pack-admin.php:451
-msgid "Use Fox menu?"
-msgstr "Använd Foxmenyn?"
-
-#: admin/class-iis-pack-admin.php:463
-msgid "Check frontend registration password"
+#: admin/class-iis-pack-admin.php:153
+msgid "Google Tag Manager"
 msgstr ""
-"Använd script för att föreslå lösenord samt kontrollera lösenordets styrka. "
-"Läs mer om funktionen i /public/security/Readme.md"
 
-#: admin/class-iis-pack-admin.php:470
-msgid "Use script for password strength?"
-msgstr "Använd script"
+#: admin/class-iis-pack-admin.php:160
+msgid "Google Tag Manager ID"
+msgstr ""
 
-#: admin/class-iis-pack-admin.php:479
-msgid "Password length"
-msgstr "Lösenordslängd"
+#: admin/class-iis-pack-admin.php:170
+msgid "Alert message"
+msgstr "Alert-meddelande"
 
-#: admin/class-iis-pack-admin.php:488
-msgid "Add to types"
-msgstr "Posttyper"
+#: admin/class-iis-pack-admin.php:177
+msgid "Message type"
+msgstr "Typ av meddelande"
 
-#: admin/class-iis-pack-admin.php:497
-msgid "Add to templates"
-msgstr "Template-filer"
+#: admin/class-iis-pack-admin.php:186
+msgid "Message text"
+msgstr "Meddelande-text"
 
-#: admin/class-iis-pack-admin.php:514
+#: admin/class-iis-pack-admin.php:199
 msgid "Other stuff"
 msgstr "Övrigt"
 
-#: admin/class-iis-pack-admin.php:521
+#: admin/class-iis-pack-admin.php:206
 msgid "Remove emoji scripts"
 msgstr "Ta bort emoji-script"
 
-#: admin/class-iis-pack-admin.php:529
+#: admin/class-iis-pack-admin.php:214
 msgid "Local Profile Picture"
 msgstr "Lokal profilbild"
 
-#: admin/class-iis-pack-admin.php:533
+#: admin/class-iis-pack-admin.php:218
 msgid ""
 "Only allow users with file upload capabilities to upload local profile "
 "pictures (Authors and above)"
@@ -247,202 +83,45 @@ msgstr ""
 "Kryssa i om enbart ”Författare” och uppåt ska få lov att ändra sina "
 "profilbilder."
 
-#: admin/class-iis-pack-admin.php:550
-msgid ""
-"Choose where social share buttons should be shown. See Help menu for more "
-"info (under \"Hi, {logged in user}\")"
-msgstr ""
-"Välj var knapparna för att dela på social nätverk ska synas. Se “Hjälp” uppe "
-"till höger på denna sidan för mer info."
+#: admin/class-iis-pack-admin.php:244
+msgid "Message shown above site content."
+msgstr "Meddelande som visas högst upp på sajten."
 
-#: admin/class-iis-pack-admin.php:568
-msgid "Settings for Facebook open graph tags per site "
-msgstr "Inställningar för Facebook open graph-taggar per webbplats"
+#: admin/class-iis-pack-admin.php:296
+msgid "Info (blue)"
+msgstr "Info (blå)"
 
-#: admin/class-iis-pack-admin.php:645
-msgid ""
-"Add post types to be avoided if above setting is set to Print before or "
-"Print after content. (ex: se-tech,guide)"
-msgstr ""
-"Lägg till posttyper som inte ska få knapparna utskrivna om något av “Lägg "
-"ut”-valen ovan är valt."
+#: admin/class-iis-pack-admin.php:297
+msgid "Warning (yellow)"
+msgstr "Warning (gul)"
 
-#: admin/class-iis-pack-admin.php:646 admin/class-iis-pack-admin.php:659
-#: admin/class-iis-pack-admin.php:865 admin/class-iis-pack-admin.php:877
-msgid "( <em>see help menu</em> ) "
-msgstr "( <em>se vilka du kan välja mellan i hjälpmenyn</em> ) "
+#: admin/class-iis-pack-admin.php:298
+msgid "Error (red)"
+msgstr "Error (röd)"
 
-#: admin/class-iis-pack-admin.php:658
-msgid ""
-"Add templates to be avoided if above setting is set to Print before or Print "
-"after content."
-msgstr ""
-"Lägg till sidmallar som inte ska ha knapparna automatiskt. (hela filnamnet)"
+#: admin/class-iis-pack-admin.php:300
+msgid "Choose Alert message type"
+msgstr "Välj typ av Alert-meddelande"
 
-#: admin/class-iis-pack-admin.php:694
-msgid "Show Object Attribution"
-msgstr "Visa"
-
-#: admin/class-iis-pack-admin.php:699
-msgid "Hide Object Attribution"
-msgstr "Dölj"
-
-#: admin/class-iis-pack-admin.php:718
-msgid ""
-"If you choose \"Show\" you can tick this to hide on featured image. "
-"<em>(Then your theme rolls its own variant)</em>"
-msgstr ""
-"Om du valt “Visa” kan du kryssa i denna för att dölja "
-"bildattributionsutskriften från IIS Pack på “Utvald bild”. <em>(När temat "
-"har en egen variant sedan förr)</em>"
-
-#: admin/class-iis-pack-admin.php:730
-msgid "Complete url. Default image is IIS logo"
-msgstr "Fullständig sökväg till bilden. IIS logotyp visas som standard."
-
-#: admin/class-iis-pack-admin.php:744
-msgid "https (SSL)"
-msgstr "https"
-
-#: admin/class-iis-pack-admin.php:749
-msgid "http"
-msgstr "http"
-
-#: admin/class-iis-pack-admin.php:773
-msgid "If the site has more than one admin, seperate them with comma (,)"
-msgstr ""
-"Om sajten har mer än en Facebook-administratör så används kommatecken som "
-"avskiljare, t ex ”12,34,56”."
-
-#: admin/class-iis-pack-admin.php:784
-msgid "The sites main account, for example @iis on www.iis.se"
-msgstr ""
-"Sajtens huvudsakliga Twitter-konto, t ex @iis för www.iis.se eller "
-"@internetmuseum för internetmuseum.se."
-
-#: admin/class-iis-pack-admin.php:808
-msgid "Show Fox menu"
-msgstr "Visa"
-
-#: admin/class-iis-pack-admin.php:813
-msgid "Hide Fox menu"
-msgstr "Dölj"
-
-#: admin/class-iis-pack-admin.php:831
-msgid "Use password strength script"
-msgstr "Använd script för kontroll av lösenord"
-
-#: admin/class-iis-pack-admin.php:836
-msgid "Disable password strength script (default)"
-msgstr "Avaktivera script för kontroll av lösenord (standard)"
-
-#: admin/class-iis-pack-admin.php:850
-msgid ""
-"Number of characters if this site uses non-default password length (which is "
-"12)"
-msgstr ""
-"Krav på antal tecken om denna sajten använder något annat än standard (12 "
-"tecken)"
-
-#: admin/class-iis-pack-admin.php:864
-msgid ""
-"Add post types to use password strength script even if user is logged in. "
-"(ex: se-tech,guide)"
-msgstr ""
-"Vanligen används inte scriptet om användaren är inloggad. Lägg till de "
-"posttyper du behöver scriptet på även när användaren är inloggad.  (se "
-"hjälpmenyn för valbara posttyper)"
-
-#: admin/class-iis-pack-admin.php:876
-msgid ""
-"Add templates to use password strength script even if user is logged in."
-msgstr ""
-"Lägg till de sidmallar du behöver scriptet på även när användaren är "
-"inloggad. (se hjälpmenyn för sökvägar)"
-
-#: admin/class-iis-pack-admin.php:891
+#: admin/class-iis-pack-admin.php:317
 msgid "Remove emojis (default)"
 msgstr "Skriv inte ut emoji-script (standard)"
 
-#: admin/class-iis-pack-admin.php:896
-msgid "Use Emojis"
-msgstr "Använd Emojis"
+#: admin/class-iis-pack-admin.php:322
+msgid "Use emojis"
+msgstr "Använd emojis"
 
-#: admin/partials/class-facebook.php:42
-msgid "FaceBook og: tags"
-msgstr "FaceBook og: taggar"
-
-#: admin/partials/class-facebook.php:56
-msgid "Alternative og:title"
-msgstr "Alternativ og:title"
-
-#: admin/partials/class-facebook.php:57
-msgid "If you want a different title for the page when shared on FaceBook"
-msgstr "Anpassad titel för sidan när den delas på Facebook."
-
-#: admin/partials/class-facebook.php:62
-msgid "og:description"
-msgstr "og: description"
-
-#: admin/partials/class-facebook.php:63
-msgid "Add a nice descriptive text then page is shared on Facebook"
-msgstr "Anpassad beskrivande text för sidan när den delas på Facebook."
-
-#: admin/partials/class-facebook.php:68
-msgid "FB App id"
-msgstr "FB App id"
-
-#: admin/partials/class-facebook.php:69
-msgid ""
-"If this page belongs to a special App ID (for example internetguider) - add "
-"idnumber"
+#: admin/partials/class-local-avatars.php:117
+msgid "Local profile image. Replaces your Gravatar image for this site only."
 msgstr ""
-"Om just den här sidan tillhör ett speciellt App ID (t ex Internetguider)."
-
-#: admin/partials/class-images-meta.php:20
-msgid "Object URL"
-msgstr "Bildens URL"
-
-#: admin/partials/class-images-meta.php:24
-msgid "Fetch data from Flickr"
-msgstr "Hämta data från Flickr"
-
-#: admin/partials/class-images-meta.php:28
-msgid "Object name"
-msgstr "Bildens namn"
-
-#: admin/partials/class-images-meta.php:33
-msgid "License (ex. CC-BY)"
-msgstr "Licenstyp (t ex CC BY)"
-
-#: admin/partials/class-images-meta.php:39
-msgid "License field is required"
-msgstr "Licensfältet är obligatoriskt."
-
-#: admin/partials/class-images-meta.php:45
-msgid "License URL"
-msgstr "Licens-URL"
-
-#: admin/partials/class-images-meta.php:49
-msgid "Licens holder name"
-msgstr "Fotografens namn"
-
-#: admin/partials/class-images-meta.php:53
-msgid "Licens holder URL"
-msgstr "Fotografens URL"
-
-#: admin/partials/class-local-avatars.php:111
-msgid ""
-"Locale Profile Picture.  Replaces your Gravatar picture ONLY FOR THIS SITE."
-msgstr ""
-"Sajtspecifik profilbild. Ersätter din Gravatarbild - men enbart på denna "
+"Sajtspecifik profilbild. Ersätter din Gravatar-bild - men enbart på denna "
 "sajten."
 
-#: admin/partials/class-local-avatars.php:115
+#: admin/partials/class-local-avatars.php:121
 msgid "Upload profile picture"
 msgstr "Ladda upp lokal profilbild"
 
-#: admin/partials/class-local-avatars.php:130
+#: admin/partials/class-local-avatars.php:138
 msgid ""
 "No local profile picture is set. Use the upload field to add a local avatar "
 "for this site."
@@ -450,11 +129,11 @@ msgstr ""
 "Ingen lokal profilbild är vald. Använd uppladdningsknappen för att lägga "
 "till en egen lokal profilbild för denna sajten."
 
-#: admin/partials/class-local-avatars.php:133
+#: admin/partials/class-local-avatars.php:141
 msgid "Delete local profile picture"
-msgstr "Ta bort den lokala profilbilden."
+msgstr "Ta bort den lokala profilbilden"
 
-#: admin/partials/class-local-avatars.php:134
+#: admin/partials/class-local-avatars.php:142
 msgid ""
 "Replace the local profile picture by uploading a new image, or erase the "
 "local profile picture (falling back to a Gravatar) by checking the delete "
@@ -464,13 +143,13 @@ msgstr ""
 "lokala bilden genom att kryssa i ”Ta bort”, har du en ”Gravatar” kommer den "
 "i så fall att visas istället."
 
-#: admin/partials/class-local-avatars.php:139
+#: admin/partials/class-local-avatars.php:147
 msgid "No local avatar is set. Set up your avatar at Gravatar.com."
 msgstr ""
 "Ingen lokal profilbild finns. Du kan skapa en på gravatar.com som är kopplad "
 "till din e-postadress."
 
-#: admin/partials/class-local-avatars.php:142
+#: admin/partials/class-local-avatars.php:149
 msgid ""
 "You do not have media management permissions. To change your local profile "
 "picture, contact the blog administrator."
@@ -478,99 +157,375 @@ msgstr ""
 "Du kan tyvärr inte själv byta din lokala profilbild. Kontakta "
 "administratören för hjälp."
 
-#: admin/partials/class-twitter.php:57
-msgid "Alternative twitter:title"
-msgstr "Alternativ twitter:title"
+#: public/partials/alert.php:21
+msgid "Close"
+msgstr "Stäng"
 
-#: admin/partials/class-twitter.php:58
-msgid ""
-"If you want a different title for the page when shared on Twitter. If you "
-"want the same as on Facebook - just leave it empty"
-msgstr ""
-"Anpassad titel för sidan när den delas på Twitter. Om du vill ha samma som "
-"på Facebook - lämna fältet tomt."
+#~ msgid "Alert"
+#~ msgstr "Alert-meddelande"
 
-#: admin/partials/class-twitter.php:63
-msgid "twitter:description"
-msgstr "twitter: description"
+#~ msgid "Share buttons"
+#~ msgstr "Dela-knappar"
 
-#: admin/partials/class-twitter.php:64
-msgid ""
-"Add a nice descriptive text then page is shared on Twitter. If you want the "
-"same as on Facebook - just leave it empty"
-msgstr ""
-"Anpassad beskrivande text för sidan när den delas på Twitter. Om du vill ha "
-"samma som på Facebook - lämna fältet tomt."
+#~ msgid ""
+#~ "<h4>How it works:</h4>\n"
+#~ "\t\t\t\t\t<p>Default setting is no buttons showing on pages/posts without "
+#~ "an added shortcode <code>[fastsocial]</code> either in the content or "
+#~ "added with the page template.</p>\n"
+#~ "\t\t\t\t\t<p>BUT - you can choose to print before or after the content "
+#~ "and still avoide printing on certain post types.\n"
+#~ "\t\t\t\t\tFor example, if you dont want any buttons on normal pages add "
+#~ "\"<code>page</code>\" to the <em>\"Remove from\"</em> field.\n"
+#~ "\t\t\t\t\tOr if you use a special template to show for example "
+#~ "Internetguider - add \"<code>guide</code>\" to the field. (Or a "
+#~ "combination like \"<code>page,guide</code>\")</code></p>\n"
+#~ "\t\t\t\t\t<p><em>\"Activate\"</em>-settings are default for the hole "
+#~ "site. If you activate all networks you can still choose not to show a "
+#~ "certain button on / in a post or template\n"
+#~ "\t\t\t\t\twith for example <code>[fastsocial pinterest=no]</code> (or if "
+#~ "a network is not choosen for all pages - activate it with "
+#~ "<code>[fastsocial pinterest=yes]</code></p>\n"
+#~ "\t\t\t\t\t\t<p>On each page / post you can also add a special Facebook "
+#~ "App ID, <strong>different</strong> from the sitewide ID.\n"
+#~ "\t\t\t\t\t\tOr you can add it to the do_shortcode in a template with "
+#~ "<code>[fastsocial fbappid=<em>{idnumber}</em>]</code></p>\n"
+#~ "\t\t\t\t\t\t<p>Hashtags for the Twitter-button could be added in the same "
+#~ "manner (per post/page or by shortcode) <code>[fastsocial "
+#~ "hashtags=internetguider,internetstiftelsen]</code></p>\n"
+#~ "\t\t\t\t\t\t<p>To remove fastsocial for a specific page / post that would "
+#~ "normaly magically add the buttons, add <code>[fastsocial remove=yes]</"
+#~ "code> to post content (in editor)</p>"
+#~ msgstr ""
+#~ "<h4>Hur det fungerar:</h4>\n"
+#~ "\t\t\t\t\t<p>Standardinställningen är att knapparna inte syns automatiskt "
+#~ "på sidor utan att man lagt till  shortcode <code>[fastsocial]</code> "
+#~ "antingen i editor-fältet eller i sidmallen.</p>\n"
+#~ "\t\t\t\t\t<p>MEN - man kan välja att lägga ut knapparna före eller efter "
+#~ "content och ändån undvika att de skrivs ut på speciella sidor, posttyper "
+#~ "eller sidmallar.\n"
+#~ "\t\t\t\t\tTill exempel, om du inte vill ha knapparna på vanliga sidor, "
+#~ "lägg till \"<code>page</code>\" i  <em>”Lägg inte ut på typerna”</em> "
+#~ "fältet\n"
+#~ "\t\t\t\t\tEller om du använder en special sidmall för att visa t ex "
+#~ "internetguider - ange \"<code>guide</code>\" i fältet. (Eller en "
+#~ "kombination \"<code>page,guide</code>\")</code></p>\n"
+#~ "\t\t\t\t\t<p><em>”Aktivera”</em>-inställningen är standard för hela "
+#~ "sajten. Om du aktiverar alla nätverken kan du ändån explicit välja bort "
+#~ "vissa nätverk i en sida eller i en mall \n"
+#~ "\t\t\t\t\tmed t.ex. <code>[fastsocial pinterest=no]</code> (eller om inga "
+#~ "nätverk är valda för sajten - aktivera med <code>[fastsocial "
+#~ "pinterest=yes]</code></p>\n"
+#~ "\t\t\t\t\t\t<p>På varje sida / post kan du också lägga till ett speciellt "
+#~ "Facebook App ID, <strong>skiljt från</strong> sajtens standard App ID.\n"
+#~ "\t\t\t\t\t\tEller så kan du lägga till det i  do_shortcode i en sidmall "
+#~ "med <code>[fastsocial fbappid=<em>{idnummer}</em>]</code></p>\n"
+#~ "\t\t\t\t\t\t<p>Hashtaggar för Twitter-knappen kan läggas till på samma "
+#~ "sätt (per post / sida eller med shortcode) <code>[fastsocial "
+#~ "hashtags=internetguider,internetstiftelsen]</code></p>\n"
+#~ "\t\t\t\t\t\t<p>Om du vill ta bort fastsocial (knapparna) för en specifik "
+#~ "sida / post som normalt automatiskt skulle haft knapparna, lägg till "
+#~ "<code>[fastsocial remove=yes]</code> i post content (i editorn)</p>"
 
-#: admin/partials/class-twitter.php:69
-msgid "Hashtags"
-msgstr "Hashtaggar"
+#~ msgid "Choose from theese templates: "
+#~ msgstr "Välj från dessa sidmallar: "
 
-#: admin/partials/class-twitter.php:70
-msgid ""
-"Add hashtags for this page. If more than one - seperate with comma, no "
-"spaces. (internetguider,iis)"
-msgstr ""
-"Lägg till hashtaggar för den här sidan. Om du har mer en en så separera med "
-"kommatecken utan mellanslag, t ex ”internetguider,iis”."
+#~ msgid "Object attribution"
+#~ msgstr "Bildattribution"
 
-#: public/class-iis-pack-public.php:139
-msgid "Password strength unknown"
-msgstr "Lösenordets styrka går inte att bestämma"
+#~ msgid ""
+#~ "<h4>Adding license to images</h4>\n"
+#~ "\t\t\t\t\t<p>In the media library there are fields for each object that "
+#~ "can hold object attributions.</p>\n"
+#~ "\t\t\t\t\t<p>If added to an image it could be printed automatically under "
+#~ "each image - or you use your own function in your theme</p>"
+#~ msgstr ""
+#~ "<h4>Lägg till licenser på bilder</h4>\n"
+#~ "\t\t\t\t\t<p>I Media biblioteket finns fält för varje bild som kan "
+#~ "säkerställa bildattributionen.</p>\n"
+#~ "\t\t\t\t\t<p>Om det läggs till data till en bild kan detta skrivas ut "
+#~ "automatiskt under varje bild - eller så kan du använda din egen funktion "
+#~ "i ditt tema.</p>"
 
-#: public/class-iis-pack-public.php:140
-msgid "Very weak"
-msgstr "Mycket svagt lösenord"
+#~ msgid "Print buttons before content"
+#~ msgstr "Knappar innan sidans text"
 
-#: public/class-iis-pack-public.php:141
-msgid "Weak"
-msgstr "Svagt lösenord"
+#~ msgid "Print buttons after content"
+#~ msgstr "Knappar efter sidans text"
 
-#: public/class-iis-pack-public.php:142
-msgid "Medium"
-msgstr "Ganska bra lösenord"
+#~ msgid "Remove from types"
+#~ msgstr "Lägg inte ut på typerna"
 
-#: public/class-iis-pack-public.php:143
-msgid "Strong"
-msgstr "Starkt lösenord"
+#~ msgid "Remove from templates"
+#~ msgstr "Lägg inte ut i sidmallarna"
 
-#: public/class-iis-pack-public.php:144
-msgid "Mismatch"
-msgstr "Matchar inte"
+#~ msgid "Activate Facebook"
+#~ msgstr "Aktivera Facebook"
 
-#: public/class-iis-pack-public.php:145
-msgid "Use unsecure password"
-msgstr "Använd osäkert lösenord"
+#~ msgid "Activate Twitter"
+#~ msgstr "Aktivera Twitter"
 
-#: public/partials/add-license-to-images.php:62
-#: public/partials/add-license-to-images.php:134
-msgid "Photo: "
-msgstr "Foto: "
+#~ msgid "Activate LinkedIn"
+#~ msgstr "Aktivera LinkedIn"
 
-#: public/partials/add-license-to-images.php:78
-#: public/partials/add-license-to-images.php:151
-msgid "by "
-msgstr "av "
+#~ msgid "Activate Pinterest"
+#~ msgstr "Aktivera Pinterest"
 
-#: public/partials/add-license-to-images.php:80
-#: public/partials/add-license-to-images.php:153
-msgid "Photo by "
-msgstr "Foto av "
+#~ msgid "Print Object attribution?"
+#~ msgstr "Skriv ut bildattribution under bilder på sidorna?"
 
-#. Plugin URI of the plugin/theme
-#. Author URI of the plugin/theme
-msgid "https://www.iis.se"
-msgstr "https://www.iis.se"
+#~ msgid "Hide on featured image"
+#~ msgstr "Dölj på utvald bild"
 
-#. Description of the plugin/theme
-msgid ""
-"Gemensamma plugins för IIS sajter: GA, OG-taggar, bildattribution, dela-"
-"knappar, Foxmeny, lokala avatarer etc"
-msgstr ""
+#~ msgid "Facebook open graph"
+#~ msgstr "Facebook open graph"
 
-#. Author of the plugin/theme
-msgid "IIS Web Team"
-msgstr ""
+#~ msgid "Default og:image"
+#~ msgstr "Standard og:image"
+
+#~ msgid "Protocol"
+#~ msgstr "Protokoll för sajten"
+
+#~ msgid "ev. Facebook AppId"
+#~ msgstr "ev. Facebook AppID"
+
+#~ msgid "ev. Facebook Admin(s)"
+#~ msgstr "ev. Facebook Admin(s)"
+
+#~ msgid "Twitter Cards"
+#~ msgstr "Twitter-kort"
+
+#~ msgid "Twitter site"
+#~ msgstr "Twitterkonto för sajten"
+
+#~ msgid "Google Analytics"
+#~ msgstr "Google Analytics"
+
+#~ msgid "Fox Menu"
+#~ msgstr "Foxmenyn"
+
+#~ msgid "Use Fox menu?"
+#~ msgstr "Använd Foxmenyn?"
+
+#~ msgid "Check frontend registration password"
+#~ msgstr ""
+#~ "Använd script för att föreslå lösenord samt kontrollera lösenordets "
+#~ "styrka. Läs mer om funktionen i /public/security/Readme.md"
+
+#~ msgid "Use script for password strength?"
+#~ msgstr "Använd script"
+
+#~ msgid "Password length"
+#~ msgstr "Lösenordslängd"
+
+#~ msgid "Add to types"
+#~ msgstr "Posttyper"
+
+#~ msgid "Add to templates"
+#~ msgstr "Template-filer"
+
+#~ msgid ""
+#~ "Choose where social share buttons should be shown. See Help menu for more "
+#~ "info (under \"Hi, {logged in user}\")"
+#~ msgstr ""
+#~ "Välj var knapparna för att dela på social nätverk ska synas. Se “Hjälp” "
+#~ "uppe till höger på denna sidan för mer info."
+
+#~ msgid "Settings for Facebook open graph tags per site "
+#~ msgstr "Inställningar för Facebook open graph-taggar per webbplats"
+
+#~ msgid ""
+#~ "Add post types to be avoided if above setting is set to Print before or "
+#~ "Print after content. (ex: se-tech,guide)"
+#~ msgstr ""
+#~ "Lägg till posttyper som inte ska få knapparna utskrivna om något av “Lägg "
+#~ "ut”-valen ovan är valt."
+
+#~ msgid "( <em>see help menu</em> ) "
+#~ msgstr "( <em>se vilka du kan välja mellan i hjälpmenyn</em> ) "
+
+#~ msgid ""
+#~ "Add templates to be avoided if above setting is set to Print before or "
+#~ "Print after content."
+#~ msgstr ""
+#~ "Lägg till sidmallar som inte ska ha knapparna automatiskt. (hela "
+#~ "filnamnet)"
+
+#~ msgid "Show Object Attribution"
+#~ msgstr "Visa"
+
+#~ msgid "Hide Object Attribution"
+#~ msgstr "Dölj"
+
+#~ msgid ""
+#~ "If you choose \"Show\" you can tick this to hide on featured image. "
+#~ "<em>(Then your theme rolls its own variant)</em>"
+#~ msgstr ""
+#~ "Om du valt “Visa” kan du kryssa i denna för att dölja "
+#~ "bildattributionsutskriften från IIS Pack på “Utvald bild”. <em>(När temat "
+#~ "har en egen variant sedan förr)</em>"
+
+#~ msgid "Complete url. Default image is IIS logo"
+#~ msgstr "Fullständig sökväg till bilden. IIS logotyp visas som standard."
+
+#~ msgid "https (SSL)"
+#~ msgstr "https"
+
+#~ msgid "http"
+#~ msgstr "http"
+
+#~ msgid "If the site has more than one admin, seperate them with comma (,)"
+#~ msgstr ""
+#~ "Om sajten har mer än en Facebook-administratör så används kommatecken som "
+#~ "avskiljare, t ex ”12,34,56”."
+
+#~ msgid "The sites main account, for example @iis on www.iis.se"
+#~ msgstr ""
+#~ "Sajtens huvudsakliga Twitter-konto, t ex @iis för www.iis.se eller "
+#~ "@internetmuseum för internetmuseum.se."
+
+#~ msgid "Show Fox menu"
+#~ msgstr "Visa"
+
+#~ msgid "Hide Fox menu"
+#~ msgstr "Dölj"
+
+#~ msgid "Use password strength script"
+#~ msgstr "Använd script för kontroll av lösenord"
+
+#~ msgid "Disable password strength script (default)"
+#~ msgstr "Avaktivera script för kontroll av lösenord (standard)"
+
+#~ msgid ""
+#~ "Number of characters if this site uses non-default password length (which "
+#~ "is 12)"
+#~ msgstr ""
+#~ "Krav på antal tecken om denna sajten använder något annat än standard (12 "
+#~ "tecken)"
+
+#~ msgid ""
+#~ "Add post types to use password strength script even if user is logged in. "
+#~ "(ex: se-tech,guide)"
+#~ msgstr ""
+#~ "Vanligen används inte scriptet om användaren är inloggad. Lägg till de "
+#~ "posttyper du behöver scriptet på även när användaren är inloggad.  (se "
+#~ "hjälpmenyn för valbara posttyper)"
+
+#~ msgid ""
+#~ "Add templates to use password strength script even if user is logged in."
+#~ msgstr ""
+#~ "Lägg till de sidmallar du behöver scriptet på även när användaren är "
+#~ "inloggad. (se hjälpmenyn för sökvägar)"
+
+#~ msgid "FaceBook og: tags"
+#~ msgstr "FaceBook og: taggar"
+
+#~ msgid "Alternative og:title"
+#~ msgstr "Alternativ og:title"
+
+#~ msgid "If you want a different title for the page when shared on FaceBook"
+#~ msgstr "Anpassad titel för sidan när den delas på Facebook."
+
+#~ msgid "og:description"
+#~ msgstr "og: description"
+
+#~ msgid "Add a nice descriptive text then page is shared on Facebook"
+#~ msgstr "Anpassad beskrivande text för sidan när den delas på Facebook."
+
+#~ msgid "FB App id"
+#~ msgstr "FB App id"
+
+#~ msgid ""
+#~ "If this page belongs to a special App ID (for example internetguider) - "
+#~ "add idnumber"
+#~ msgstr ""
+#~ "Om just den här sidan tillhör ett speciellt App ID (t ex Internetguider)."
+
+#~ msgid "Object URL"
+#~ msgstr "Bildens URL"
+
+#~ msgid "Fetch data from Flickr"
+#~ msgstr "Hämta data från Flickr"
+
+#~ msgid "Object name"
+#~ msgstr "Bildens namn"
+
+#~ msgid "License (ex. CC-BY)"
+#~ msgstr "Licenstyp (t ex CC BY)"
+
+#~ msgid "License field is required"
+#~ msgstr "Licensfältet är obligatoriskt."
+
+#~ msgid "License URL"
+#~ msgstr "Licens-URL"
+
+#~ msgid "Licens holder name"
+#~ msgstr "Fotografens namn"
+
+#~ msgid "Licens holder URL"
+#~ msgstr "Fotografens URL"
+
+#~ msgid "Alternative twitter:title"
+#~ msgstr "Alternativ twitter:title"
+
+#~ msgid ""
+#~ "If you want a different title for the page when shared on Twitter. If you "
+#~ "want the same as on Facebook - just leave it empty"
+#~ msgstr ""
+#~ "Anpassad titel för sidan när den delas på Twitter. Om du vill ha samma "
+#~ "som på Facebook - lämna fältet tomt."
+
+#~ msgid "twitter:description"
+#~ msgstr "twitter: description"
+
+#~ msgid ""
+#~ "Add a nice descriptive text then page is shared on Twitter. If you want "
+#~ "the same as on Facebook - just leave it empty"
+#~ msgstr ""
+#~ "Anpassad beskrivande text för sidan när den delas på Twitter. Om du vill "
+#~ "ha samma som på Facebook - lämna fältet tomt."
+
+#~ msgid "Hashtags"
+#~ msgstr "Hashtaggar"
+
+#~ msgid ""
+#~ "Add hashtags for this page. If more than one - seperate with comma, no "
+#~ "spaces. (internetguider,iis)"
+#~ msgstr ""
+#~ "Lägg till hashtaggar för den här sidan. Om du har mer en en så separera "
+#~ "med kommatecken utan mellanslag, t ex ”internetguider,iis”."
+
+#~ msgid "Password strength unknown"
+#~ msgstr "Lösenordets styrka går inte att bestämma"
+
+#~ msgid "Very weak"
+#~ msgstr "Mycket svagt lösenord"
+
+#~ msgid "Weak"
+#~ msgstr "Svagt lösenord"
+
+#~ msgid "Medium"
+#~ msgstr "Ganska bra lösenord"
+
+#~ msgid "Strong"
+#~ msgstr "Starkt lösenord"
+
+#~ msgid "Mismatch"
+#~ msgstr "Matchar inte"
+
+#~ msgid "Use unsecure password"
+#~ msgstr "Använd osäkert lösenord"
+
+#~ msgid "Photo: "
+#~ msgstr "Foto: "
+
+#~ msgid "by "
+#~ msgstr "av "
+
+#~ msgid "Photo by "
+#~ msgstr "Foto av "
+
+#~ msgid "https://www.iis.se"
+#~ msgstr "https://www.iis.se"
 
 #~ msgid "Should this site fetch and print attachement credits "
 #~ msgstr ""

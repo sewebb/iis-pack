@@ -149,24 +149,14 @@ class Iis_Pack {
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
-
 		$plugin_admin = new Iis_Pack_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'iis_pack_add_options_page' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_setting' );
-
-		// Om det saknas support för featured image
 		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'iis_pack_add_support_for_featured_image' );
-
-		// Om det saknas support för page excerpt
 		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'iis_pack_add_support_for_page_excerpt' );
-
-		// I User profile
 		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'iis_pack_in_user_profile' );
-
 		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'iis_pack_comment_stuff' );
-
-		// Admin, filnamn
 		$this->loader->add_action( 'plugins_loaded', $plugin_admin, 'iis_pack_sanitize_filename' );
 	}
 

@@ -165,22 +165,33 @@ class Iis_Pack_Admin {
         );
 
         // Add settings section for header alert messages
-		register_setting( $this->plugin_name, $this->option_name . '_alert_text', array( $this, $this->option_name . '_sanitize_true_false', false ) );
         add_settings_section(
             $this->option_name . '_alert',
-            '<hr>' . __( 'Alert', 'iis-pack' ),
+            '<hr>' . __( 'Alert message', 'iis-pack' ),
             array( $this, $this->option_name . '_alert_cb' ),
             $this->plugin_name
         );
 
         add_settings_field(
+            $this->option_name . '_alert_type',
+            __( 'Message type', 'iis-pack' ),
+            array( $this, $this->option_name . '_alert_type_cb' ),
+            $this->plugin_name,
+            $this->option_name . '_alert',
+            array( 'label_for' => $this->option_name . '_alert_type' )
+        );
+
+        add_settings_field(
             $this->option_name . '_alert_text',
-            __( 'Alert-meddelande, visas överst på sajten', 'iis-pack' ),
+            __( 'Message text', 'iis-pack' ),
             array( $this, $this->option_name . '_alert_text_cb' ),
             $this->plugin_name,
             $this->option_name . '_alert',
             array( 'label_for' => $this->option_name . '_alert_text' )
         );
+
+		register_setting( $this->plugin_name, $this->option_name . '_alert_type', array( $this, $this->option_name . '_sanitize_true_false', false ) );
+		register_setting( $this->plugin_name, $this->option_name . '_alert_text', array( $this, $this->option_name . '_sanitize_true_false', false ) );
 
 		// Add settings for emoji scripts and local avatars
 		add_settings_section(
@@ -230,7 +241,7 @@ class Iis_Pack_Admin {
      * @since  2.1.2
      */
     public function iis_pack_alert_cb() {
-        return false;
+        echo '<p>' . __( 'Message shown above site content.', 'iis-pack' ) . '</p>';
     }
 
 	/**
@@ -263,12 +274,33 @@ class Iis_Pack_Admin {
      */
     public function iis_pack_alert_text_cb() {
         $alert_text = get_option( $this->option_name . '_alert_text' );
-        //echo '<textarea rows="5" cols="50" name="' . $this->option_name . '_alert_text' . '" id="' . $this->option_name . '_alert_text' . '">' . $alert_text . '</textarea> ';
 
 		$content   = $alert_text;
 		$editor_id = $this->option_name . '_alert_text';
 
 		wp_editor( $content, $editor_id );
+	}
+
+	/**
+     * Alert type select for alert message styling
+     *
+     * @since  2.3.1
+     */
+    public function iis_pack_alert_type_cb() {
+        $alert_type = get_option( $this->option_name . '_alert_type' );
+
+		?>
+			<fieldset>
+				<label>
+					<select name="<?php echo $this->option_name . '_alert_type' ?>">
+						<option value="info" <?php selected( $alert_type, 'info' ); ?>><?php _e( 'Info (blue)', 'iis-pack' ); ?></option>
+						<option value="warning" <?php selected( $alert_type, 'warning' ); ?>><?php _e( 'Warning (yellow)', 'iis-pack' ); ?></option>
+						<option value="error" <?php selected( $alert_type, 'error' ); ?>><?php _e( 'Error (red)', 'iis-pack' ); ?></option>
+					</select>
+					<?php _e( 'Choose Alert message type', 'iis-pack' ); ?>
+				</label>
+			</fieldset>
+		<?php
 	}
 
 	/**
@@ -287,7 +319,7 @@ class Iis_Pack_Admin {
 				<br>
 				<label>
 					<input type="radio" name="<?php echo $this->option_name . '_disable_emojis' ?>" value="false" <?php checked( $disable_emojis, 'false' ); ?>>
-					<?php _e( 'Use Emojis', 'iis-pack' ); ?>
+					<?php _e( 'Use emojis', 'iis-pack' ); ?>
 				</label>
 			</fieldset>
 		<?php
