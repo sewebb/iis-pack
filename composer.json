@@ -3,7 +3,7 @@
 	"description": "Plugin for The Swedish Internet Foundation's WordPress sites",
 	"keywords": ["wordpress", "iis"],
 	"homepage": "https://www.internetstiftelsen.se",
-	"version": "2.3.0",
+	"version": "2.3.1",
 	"authors": [
 		{
 			"name": "Richard Brattlund",

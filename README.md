@@ -23,5 +23,8 @@ Installation
 Changelog
 =========
 
+#### 2.3.1
+Add alert message type – info, warning, error
+
 #### 2.3.0
 Initial public commit
