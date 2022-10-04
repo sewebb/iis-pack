@@ -251,7 +251,7 @@ class LocalAvatars {
 		}
 
 		$hashkey = md5( strtolower( trim( $email ) ) );
-		$uri = 'http://www.gravatar.com/avatar/' . $hashkey . '?d=404';
+		$uri = 'https://www.gravatar.com/avatar/' . $hashkey . '?d=404';
 
 		$data = wp_cache_get( $hashkey );
 		if ( false === $data ) {
