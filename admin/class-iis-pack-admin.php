@@ -218,7 +218,16 @@ class Iis_Pack_Admin {
 			array( $this->option_name . '_simple_local_avatars_caps', __( 'Only allow users with file upload capabilities to upload local profile pictures (Authors and above)', 'iis-pack' ), 'label_for' => $this->option_name . '_simple_local_avatars_caps' )
 		);
 
+        add_settings_field( $this->option_name . '_disable_password_change_notifications',
+            __( 'Disable user password change notifications', 'iis-pack' ),
+            array( $this, $this->option_name . '_disable_password_notifications_cb' ),
+            $this->plugin_name,
+            $this->option_name . '_other_stuff',
+	        array( 'label_for' => $this->option_name . '_disable_password_change_notifications' )
+        );
+
 		register_setting( $this->plugin_name, $this->option_name . '_disable_emojis', array( $this, $this->option_name . '_sanitize_true_false' ) );
+		register_setting( $this->plugin_name, $this->option_name . '_disable_password_change_notifications', array( $this, $this->option_name . '_sanitize_true_false' ) );
 		register_setting(
 			$this->plugin_name, // Option group
 			$this->option_name . '_simple_local_avatars_caps', // Option name
@@ -341,6 +350,23 @@ class Iis_Pack_Admin {
 			echo $args[1];
 		}
 	}
+
+    /**
+     * Input show/hide emojis
+     *
+     * @since  1.0.1
+     */
+    public function iis_pack_disable_password_notifications_cb() {
+        $disable_notifications = get_option( $this->option_name . '_disable_password_change_notifications' ); ?>
+        <input
+            id="<?php echo $this->option_name . '_disable_password_change_notifications' ?>"
+            name="<?php echo $this->option_name . '_disable_password_change_notifications' ?>"
+            type="checkbox"
+            value="true"
+	        <?php checked( $disable_notifications, 'true' ); ?>
+        >
+        <?php
+    }
 
 
 	/**

@@ -81,4 +81,18 @@ class Iis_Pack_Public {
 	public function iis_pack_disable_all_emojis() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/disable-emojis.php';
 	}
+
+	/**
+	 * Disable password change notifications
+	 *
+	 * @since 2.4.0
+	 *
+	 */
+	public function iis_pack_disable_password_change_notifications(): void {
+		$iis_disable_notifications = get_option( 'iis_pack_disable_password_change_notifications' );
+
+		if ( 'true' === $iis_disable_notifications && ! function_exists( 'wp_password_change_notification' ) ) {
+			remove_action( 'after_password_reset', 'wp_password_change_notification' );
+		}
+	}
 }
