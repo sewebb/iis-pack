@@ -70,4 +70,9 @@ function run_iis_pack() {
 	$plugin = new Iis_Pack();
 	$plugin->run();
 }
+
 run_iis_pack();
+
+$iis_disable_notifications = get_option( 'iis_pack_disable_password_change_notifications' );
+
+if ( $iis_disable_notifications && ! function_exists( 'wp_password_change_notification' ) ) { function wp_password_change_notification() {} }
