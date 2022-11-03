@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IIS Pack\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/iis-pack\n"
-"POT-Creation-Date: 2022-05-04T12:30:53+00:00\n"
-"PO-Revision-Date: 2022-05-04 14:31+0200\n"
+"POT-Creation-Date: 2022-11-03T14:33:38+00:00\n"
+"PO-Revision-Date: 2022-11-03 15:36+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: iis-pack.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -33,7 +33,7 @@ msgstr ""
 
 #. Description of the plugin
 msgid "Functions for GTM, local avatars, removal of emoji scripts etc"
-msgstr ""
+msgstr "Inställningar för GTM, avatarer, inaktivering av emoji-script etc"
 
 #. Author of the plugin
 msgid "The Swedish Internet Foundation"
@@ -83,31 +83,35 @@ msgstr ""
 "Kryssa i om enbart ”Författare” och uppåt ska få lov att ändra sina "
 "profilbilder."
 
-#: admin/class-iis-pack-admin.php:244
+#: admin/class-iis-pack-admin.php:222
+msgid "Disable user password change notifications"
+msgstr "Stäng av utskick av mejlnotiser för lösenordsändringar"
+
+#: admin/class-iis-pack-admin.php:253
 msgid "Message shown above site content."
 msgstr "Meddelande som visas högst upp på sajten."
 
-#: admin/class-iis-pack-admin.php:296
+#: admin/class-iis-pack-admin.php:305
 msgid "Info (blue)"
 msgstr "Info (blå)"
 
-#: admin/class-iis-pack-admin.php:297
+#: admin/class-iis-pack-admin.php:306
 msgid "Warning (yellow)"
 msgstr "Warning (gul)"
 
-#: admin/class-iis-pack-admin.php:298
+#: admin/class-iis-pack-admin.php:307
 msgid "Error (red)"
 msgstr "Error (röd)"
 
-#: admin/class-iis-pack-admin.php:300
+#: admin/class-iis-pack-admin.php:309
 msgid "Choose Alert message type"
 msgstr "Välj typ av Alert-meddelande"
 
-#: admin/class-iis-pack-admin.php:317
+#: admin/class-iis-pack-admin.php:326
 msgid "Remove emojis (default)"
 msgstr "Skriv inte ut emoji-script (standard)"
 
-#: admin/class-iis-pack-admin.php:322
+#: admin/class-iis-pack-admin.php:331
 msgid "Use emojis"
 msgstr "Använd emojis"
 
