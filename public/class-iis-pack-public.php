@@ -81,4 +81,16 @@ class Iis_Pack_Public {
 	public function iis_pack_disable_all_emojis() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/disable-emojis.php';
 	}
+
+	public function iis_nocookie( $html, $url ): string {
+		$segments = wp_parse_url( $url );
+		$is_yt    = preg_match( '/^((m|www)\.)?youtube\.com|youtu\.be$/i', $segments['host'] );
+
+		if ( ! $is_yt ) {
+			return $html;
+		}
+
+		return str_replace( 'youtube.com/embed', 'youtube-nocookie.com/embed', $html );
+	}
+
 }

@@ -176,6 +176,7 @@ class Iis_Pack {
 		$this->loader->add_action( 'wp_head', $plugin_public, 'iis_pack_include_in_head' );
 		$this->loader->add_action( 'wp_body_open', $plugin_public, 'iis_pack_include_in_body' );
 		$this->loader->add_action( 'init', $plugin_public, 'iis_pack_disable_all_emojis' );
+		$this->loader->add_filter( 'embed_oembed_html', $plugin_public, 'iis_nocookie', 10 ,2 );
 	}
 
 	/**
