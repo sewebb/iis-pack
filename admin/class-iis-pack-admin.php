@@ -152,7 +152,7 @@ class Iis_Pack_Admin {
 		add_settings_section(
 			$this->option_name . '_matomo',
 			'<hr>' . __( 'Matomo Tag Manager', 'iis-pack' ),
-			array( $this, $this->option_name . '_matomo_cb' ),
+			array( $this, $this->option_name . '_matomo_tag_manager_cb' ),
 			$this->plugin_name
 		);
 
