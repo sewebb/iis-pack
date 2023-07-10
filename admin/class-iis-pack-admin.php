@@ -253,7 +253,16 @@ class Iis_Pack_Admin {
 		);
 	}
 
-    /**
+	/**
+	 * Subtitle Matomo Tag Manager
+	 *
+	 * @since  2.4.2
+	 */
+	public function iis_pack_matomo_tag_manager_cb() {
+		return false;
+	}
+
+	/**
      * Subtitle Google Tag Manager
      *
      * @since  1.0.0
