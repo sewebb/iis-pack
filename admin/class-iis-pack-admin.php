@@ -150,7 +150,7 @@ class Iis_Pack_Admin {
 
 		// Add settings section for Matomo Tag Manager
 		add_settings_section(
-			$this->option_name . '_matomo',
+			$this->option_name . '_matomo_tag_manager',
 			'<hr>' . __( 'Matomo Tag Manager', 'iis-pack' ),
 			array( $this, $this->option_name . '_matomo_tag_manager_cb' ),
 			$this->plugin_name
@@ -161,7 +161,7 @@ class Iis_Pack_Admin {
 			__( 'Matomo Manager ID', 'iis-pack' ),
 			array( $this, $this->option_name . '_mtm_id_cb' ),
 			$this->plugin_name,
-			$this->option_name . '_matomo',
+			$this->option_name . '_matomo_tag_manager',
 			array( 'label_for' => $this->option_name . '_mtm_id' )
 		);
 
