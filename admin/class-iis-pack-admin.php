@@ -158,7 +158,7 @@ class Iis_Pack_Admin {
 
 		add_settings_field(
 			$this->option_name . '_mtm_id',
-			__( 'Matomo Manager ID', 'iis-pack' ),
+			__( 'Matomo Tag Manager ID', 'iis-pack' ),
 			array( $this, $this->option_name . '_mtm_id_cb' ),
 			$this->plugin_name,
 			$this->option_name . '_matomo_tag_manager',
