@@ -145,7 +145,25 @@ class Iis_Pack_Admin {
 	 * @since 1.6.0 Settings for password strength script
 	 */
 	public function register_setting() {
+		register_setting( $this->plugin_name, $this->option_name . '_mtm_id', 'sanitize_text_field' );
 		register_setting( $this->plugin_name, $this->option_name . '_gtm_id', 'sanitize_text_field' );
+
+		// Add settings section for Matomo Tag Manager
+		add_settings_section(
+			$this->option_name . '_matomo',
+			'<hr>' . __( 'Matomo Tag Manager', 'iis-pack' ),
+			array( $this, $this->option_name . '_matomo_cb' ),
+			$this->plugin_name
+		);
+
+		add_settings_field(
+			$this->option_name . '_mtm_id',
+			__( 'Matomo Manager ID', 'iis-pack' ),
+			array( $this, $this->option_name . '_mtm_id_cb' ),
+			$this->plugin_name,
+			$this->option_name . '_matomo',
+			array( 'label_for' => $this->option_name . '_mtm_id' )
+		);
 
         // Add settings section for Google Tag Manager
         add_settings_section(
@@ -266,7 +284,17 @@ class Iis_Pack_Admin {
 
 	// #### Input fields
 
-    /**
+	/**
+	 * Input fields for Matomo Tag Manager ID
+	 *
+	 * @since  1.0.0
+	 */
+	public function iis_pack_mtm_id_cb() {
+		$mtm_id = get_option( $this->option_name . '_mtm_id' );
+		echo '<input type="text" class="" name="' . $this->option_name . '_mtm_id' . '" id="' . $this->option_name . '_mtm_id' . '" value="' . $mtm_id . '"> ';
+	}
+
+	/**
      * Input fields for Google Tag Manager ID
      *
      * @since  1.0.0
