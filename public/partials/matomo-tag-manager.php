@@ -27,14 +27,23 @@ function add_iis_matomo_tag_manager_script() {
 			<!-- Matomo Tag Manager -->
 			<script>
 				var _mtm = window._mtm = window._mtm || [];
-                var _otag = window.OnetrustActiveGroups || '';
-                if (_otag.includes('C0002')) {
-					_mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
-					(function() {
-						var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-						g.async=true; g.src='https://matomo.internetstiftelsen.se/js/container_{$iis_mtm_option_trackingid}.js'; s.parentNode.insertBefore(g,s);
-					})();
-                }
+				window.dataLayer = window.dataLayer || []
+
+				let syncDataLayer = function(array, callback) {
+				    array.push = function(e) {
+				        Array.prototype.push.call(array, e);
+				        callback(array);
+				    };
+				};
+
+				syncDataLayer(window.dataLayer, function(e) {
+				    window._mtm.push(dataLayer.at(-1))
+				});
+				_mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+				(function() {
+					var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+					g.async=true; g.src='https://matomo.internetstiftelsen.se/js/container_{$iis_mtm_option_trackingid}.js'; s.parentNode.insertBefore(g,s);
+				})();
 			</script>
 			<!-- End Matomo Tag Manager -->
 		";
