@@ -436,4 +436,13 @@ class Iis_Pack_Admin {
 	        return $true_false;
 	    }
 	}
+
+	public function site_status_tests( $tests ) {
+		unset(
+			$tests['async']['background_updates'],
+			$tests['direct']['theme_version']
+		);
+		return $tests;
+	}
+
 }

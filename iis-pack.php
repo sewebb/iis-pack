@@ -15,7 +15,7 @@
  * Plugin Name:       IIS Pack
  * Plugin URI:        https://internetstiftelsen.se
  * Description:       Functions for GTM, local avatars, removal of emoji scripts etc
- * Version:           2.4.4
+ * Version:           2.4.5
  * Author:            The Swedish Internet Foundation
  * Author URI:        https://internetstiftelsen.se
  * License:           GPL-2.0+
