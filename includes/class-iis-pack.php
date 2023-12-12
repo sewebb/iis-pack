@@ -46,7 +46,7 @@ class Iis_Pack {
 	 * @access   protected
 	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
 	 */
-	protected $plugin_name;
+	protected string $plugin_name;
 
 	/**
 	 * The current version of the plugin.
@@ -55,7 +55,7 @@ class Iis_Pack {
 	 * @access   protected
 	 * @var      string    $version    The current version of the plugin.
 	 */
-	protected $version;
+	protected string $version;
 
 	/**
 	 * Define the core functionality of the plugin.
@@ -69,13 +69,12 @@ class Iis_Pack {
 	public function __construct() {
 
 		$this->plugin_name = 'iis-pack';
-		$this->version = '2.4.5';
+		$this->version     = '2.4.6';
 
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
-
 	}
 
 	/**
@@ -162,13 +161,13 @@ class Iis_Pack {
 	}
 
 	/**
-	 * Register all of the hooks related to the public-facing functionality
+	 * Register all the hooks related to the public-facing functionality
 	 * of the plugin.
 	 *
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function define_public_hooks() {
+	private function define_public_hooks(): void {
 
 		$plugin_public = new Iis_Pack_Public( $this->get_plugin_name(), $this->get_version() );
 
@@ -177,11 +176,13 @@ class Iis_Pack {
 		$this->loader->add_action( 'wp_head', $plugin_public, 'iis_pack_include_in_head' );
 		$this->loader->add_action( 'wp_body_open', $plugin_public, 'iis_pack_include_in_body' );
 		$this->loader->add_action( 'init', $plugin_public, 'iis_pack_disable_all_emojis' );
-		$this->loader->add_filter( 'embed_oembed_html', $plugin_public, 'iis_nocookie', 10 ,2 );
+		$this->loader->add_filter( 'embed_oembed_html', $plugin_public, 'iis_nocookie', 10, 2 );
+		$this->loader->add_filter( 'imagify_picture_attributes', $plugin_public, 'keep_attributes_off_picture_tags', 10, 0 );
+		$this->loader->add_filter( 'imagify_picture_img_attributes', $plugin_public, 'prep_attributes_for_img_tags', 10, 2 );
 	}
 
 	/**
-	 * Run the loader to execute all of the hooks with WordPress.
+	 * Run the loader to execute all the hooks with WordPress.
 	 *
 	 * @since    1.0.0
 	 */

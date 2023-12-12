@@ -94,4 +94,17 @@ class Iis_Pack_Public {
 		return str_replace( 'youtube.com/embed', 'youtube-nocookie.com/embed', $html );
 	}
 
+	public function keep_attributes_off_picture_tags(): array {
+		return [];
+	}
+
+	public function prep_attributes_for_img_tags( $attributes, $image ) {
+		if ( is_array( $image ) && is_array( $image['attributes'] ) ) {
+			foreach ( $image['attributes'] as $attribute => $attribute_val ) {
+				$attributes[ $attribute ] = $attribute_val;
+			}
+		}
+		return $attributes;
+	}
+
 }
