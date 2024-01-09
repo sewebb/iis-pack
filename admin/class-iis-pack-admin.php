@@ -445,4 +445,21 @@ class Iis_Pack_Admin {
 		return $tests;
 	}
 
+	public function custom_core_messages(): void
+	{
+		if ( wp_script_is( 'wp-i18n' ) ) :
+
+			$data = [
+				'Are you sure you want to unpublish this post?' => [
+					'Vill du verkligen avpublicera inlägget? Görs detta behöver också en omdirigering göras. Kontakta Webbgruppen vid frågor.',
+				],
+			];
+			?>
+			<script>
+				wp.i18n.setLocaleData(<?php echo wp_json_encode( $data ); ?>);
+			</script>
+		<?php
+		endif;
+	}
+
 }
