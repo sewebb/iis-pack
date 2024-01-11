@@ -60,6 +60,15 @@ class Iis_Pack_Admin {
 	 */
 	private $option_name = 'iis_pack';
 
+    /**
+     * The plugin screen hook suffix.
+     *
+     * @since    1.0.0
+     * @access   private
+     * @var      string    $plugin_screen_hook_suffix    The plugin screen hook suffix.
+     */
+    private $plugin_screen_hook_suffix = null; // TODO: Do we really need this? It's only written to, never read.
+
 	/**
 	 * Add support for WordPress featured images
 	 * @since 1.0.0
