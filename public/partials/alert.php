@@ -11,10 +11,28 @@
 
 defined( 'WPINC' ) || die;
 
-$iis_alert_type = get_option( 'iis_pack_alert_type' );
-$iis_alert_text = get_option( 'iis_pack_alert_text' );
+$iis_alert_type = get_field( 'message_type', 'option' );
+$iis_alert_text = get_field( 'message_text', 'option' );
+$should_display_alert = ! empty( $iis_alert_text );
 
-if ( ! empty( $iis_alert_text ) ) {
+if ( $should_display_alert && have_rows('display_dates', 'option') ) {
+    $should_display_alert = false;
+
+    while( have_rows('display_dates', 'option') ) {
+        the_row();
+
+        $start_date = get_sub_field('start_date');
+        $end_date = get_sub_field('end_date');
+        $today = wp_date('Y-m-d H:i:s');
+
+        if( $today >= $start_date && $today <= $end_date ) {
+            $should_display_alert = true;
+            break;
+        }
+    }
+}
+
+if ( $should_display_alert ) {
 	?>
 	<div id="alert-1" role="alert" class="<?php imns( 'm-alert m-alert--' . $iis_alert_type . ' m-alert--dismissable' ); ?> u-m-b-0 js-dismiss-alert" aria-hidden="true">
 		<button class="<?php imns('a-button a-button--icon a-button--standalone-icon a-button--icon'); ?>" data-a11y-toggle="alert-1">

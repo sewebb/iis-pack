@@ -191,35 +191,6 @@ class Iis_Pack_Admin {
             array( 'label_for' => $this->option_name . '_gtm_id' )
         );
 
-        // Add settings section for header alert messages
-        add_settings_section(
-            $this->option_name . '_alert',
-            '<hr>' . __( 'Alert message', 'iis-pack' ),
-            array( $this, $this->option_name . '_alert_cb' ),
-            $this->plugin_name
-        );
-
-        add_settings_field(
-            $this->option_name . '_alert_type',
-            __( 'Message type', 'iis-pack' ),
-            array( $this, $this->option_name . '_alert_type_cb' ),
-            $this->plugin_name,
-            $this->option_name . '_alert',
-            array( 'label_for' => $this->option_name . '_alert_type' )
-        );
-
-        add_settings_field(
-            $this->option_name . '_alert_text',
-            __( 'Message text', 'iis-pack' ),
-            array( $this, $this->option_name . '_alert_text_cb' ),
-            $this->plugin_name,
-            $this->option_name . '_alert',
-            array( 'label_for' => $this->option_name . '_alert_text' )
-        );
-
-		register_setting( $this->plugin_name, $this->option_name . '_alert_type', array( $this, $this->option_name . '_sanitize_true_false', false ) );
-		register_setting( $this->plugin_name, $this->option_name . '_alert_text', array( $this, $this->option_name . '_sanitize_true_false', false ) );
-
 		// Add settings for emoji scripts and local avatars
 		add_settings_section(
 			$this->option_name . '_other_stuff',
@@ -281,15 +252,6 @@ class Iis_Pack_Admin {
     }
 
 	/**
-     * Subtitle Alert
-     *
-     * @since  2.1.2
-     */
-    public function iis_pack_alert_cb() {
-        echo '<p>' . __( 'Message shown above site content.', 'iis-pack' ) . '</p>';
-    }
-
-	/**
 	 * Subtitle Other stuff
 	 *
 	 * @since  1.0.0
@@ -321,42 +283,6 @@ class Iis_Pack_Admin {
         $gtm_id = get_option( $this->option_name . '_gtm_id' );
         echo '<input type="text" class="" name="' . $this->option_name . '_gtm_id' . '" id="' . $this->option_name . '_gtm_id' . '" value="' . $gtm_id . '"> ';
     }
-
-	/**
-     * Textarea for alert message
-     *
-     * @since  2.1.2
-     */
-    public function iis_pack_alert_text_cb() {
-        $alert_text = get_option( $this->option_name . '_alert_text' );
-
-		$content   = $alert_text;
-		$editor_id = $this->option_name . '_alert_text';
-
-		wp_editor( $content, $editor_id );
-	}
-
-	/**
-     * Alert type select for alert message styling
-     *
-     * @since  2.3.1
-     */
-    public function iis_pack_alert_type_cb() {
-        $alert_type = get_option( $this->option_name . '_alert_type' );
-
-		?>
-			<fieldset>
-				<label>
-					<select name="<?php echo $this->option_name . '_alert_type' ?>">
-						<option value="info" <?php selected( $alert_type, 'info' ); ?>><?php _e( 'Info (blue)', 'iis-pack' ); ?></option>
-						<option value="warning" <?php selected( $alert_type, 'warning' ); ?>><?php _e( 'Warning (yellow)', 'iis-pack' ); ?></option>
-						<option value="error" <?php selected( $alert_type, 'error' ); ?>><?php _e( 'Error (red)', 'iis-pack' ); ?></option>
-					</select>
-					<?php _e( 'Choose Alert message type', 'iis-pack' ); ?>
-				</label>
-			</fieldset>
-		<?php
-	}
 
 	/**
 	 * Input show/hide emojis
@@ -470,5 +396,159 @@ class Iis_Pack_Admin {
 		<?php
 		endif;
 	}
+
+    public function acf_hooks() {
+	    add_action( 'acf/include_fields', function() {
+		    if ( ! function_exists( 'acf_add_local_field_group' ) ) {
+			    return;
+		    }
+
+		    acf_add_local_field_group( array(
+			    'key' => 'group_65eeba43f02bb',
+			    'title' => 'Alert message fields',
+			    'fields' => array(
+				    array(
+					    'key' => 'field_65eebe2f62f97',
+					    'label' => 'Message type',
+					    'name' => 'message_type',
+					    'aria-label' => '',
+					    'type' => 'select',
+					    'instructions' => '',
+					    'required' => 0,
+					    'conditional_logic' => 0,
+					    'wrapper' => array(
+						    'width' => '',
+						    'class' => '',
+						    'id' => '',
+					    ),
+					    'choices' => array(
+						    'info' => 'Info (blue)',
+						    'warning' => 'Warning (yellow)',
+						    'error' => 'Error (red)',
+					    ),
+					    'default_value' => 'info',
+					    'return_format' => 'value',
+					    'multiple' => 0,
+					    'allow_null' => 0,
+					    'ui' => 0,
+					    'ajax' => 0,
+					    'placeholder' => '',
+				    ),
+				    array(
+					    'key' => 'field_65eeba4462f96',
+					    'label' => 'Message text',
+					    'name' => 'message_text',
+					    'aria-label' => '',
+					    'type' => 'wysiwyg',
+					    'instructions' => '',
+					    'required' => 0,
+					    'conditional_logic' => 0,
+					    'wrapper' => array(
+						    'width' => '',
+						    'class' => '',
+						    'id' => '',
+					    ),
+					    'default_value' => '',
+					    'tabs' => 'all',
+					    'toolbar' => 'full',
+					    'media_upload' => 1,
+					    'delay' => 0,
+				    ),
+				    array(
+					    'key' => 'field_65eeda95e8295',
+					    'label' => 'Display dates',
+					    'name' => 'display_dates',
+					    'aria-label' => '',
+					    'type' => 'repeater',
+					    'instructions' => '',
+					    'required' => 1,
+					    'conditional_logic' => 0,
+					    'wrapper' => array(
+						    'width' => '',
+						    'class' => '',
+						    'id' => '',
+					    ),
+					    'layout' => 'table',
+					    'pagination' => 0,
+					    'min' => 1,
+					    'max' => 0,
+					    'collapsed' => '',
+					    'button_label' => 'Add Date',
+					    'rows_per_page' => 20,
+					    'sub_fields' => array(
+						    array(
+							    'key' => 'field_65eedabce8296',
+							    'label' => 'Start date',
+							    'name' => 'start_date',
+							    'aria-label' => '',
+							    'type' => 'date_time_picker',
+							    'instructions' => '',
+							    'required' => 1,
+							    'conditional_logic' => 0,
+							    'wrapper' => array(
+								    'width' => '',
+								    'class' => '',
+								    'id' => '',
+							    ),
+							    'display_format' => 'Y-m-d H:i:s',
+							    'return_format' => 'Y-m-d H:i:s',
+							    'first_day' => 1,
+							    'parent_repeater' => 'field_65eeda95e8295',
+						    ),
+						    array(
+							    'key' => 'field_65eedadfe8297',
+							    'label' => 'End date',
+							    'name' => 'end_date',
+							    'aria-label' => '',
+							    'type' => 'date_time_picker',
+							    'instructions' => '',
+							    'required' => 0,
+							    'conditional_logic' => 0,
+							    'wrapper' => array(
+								    'width' => '',
+								    'class' => '',
+								    'id' => '',
+							    ),
+							    'display_format' => 'Y-m-d H:i:s',
+							    'return_format' => 'Y-m-d H:i:s',
+							    'first_day' => 1,
+							    'parent_repeater' => 'field_65eeda95e8295',
+						    ),
+					    ),
+				    ),
+			    ),
+			    'location' => array(
+				    array(
+					    array(
+						    'param' => 'options_page',
+						    'operator' => '==',
+						    'value' => 'alert-message',
+					    ),
+				    ),
+			    ),
+			    'menu_order' => 0,
+			    'position' => 'normal',
+			    'style' => 'default',
+			    'label_placement' => 'top',
+			    'instruction_placement' => 'label',
+			    'hide_on_screen' => '',
+			    'active' => true,
+			    'description' => '',
+			    'show_in_rest' => 0,
+		    ) );
+	    } );
+
+	    add_action( 'acf/init', function() {
+		    acf_add_options_page( array(
+			    'page_title' => 'Alert message',
+			    'menu_slug' => 'alert-message',
+			    'icon_url' => 'dashicons-megaphone',
+			    'menu_title' => 'Alert',
+			    'position' => '',
+			    'redirect' => false,
+			    'updated_message' => 'Updated',
+		    ) );
+	    } );
+    }
 
 }

@@ -159,6 +159,8 @@ class Iis_Pack {
 		$this->loader->add_action( 'plugins_loaded', $plugin_admin, 'iis_pack_sanitize_filename' );
 		$this->loader->add_filter( 'site_status_tests', $plugin_admin, 'site_status_tests' );
 		$this->loader->add_action( 'admin_print_footer_scripts', $plugin_admin, 'custom_core_messages', 11 );
+
+		$plugin_admin->acf_hooks();
 	}
 
 	/**
