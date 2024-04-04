@@ -22,6 +22,9 @@ Installation
 
 Changelog
 =========
+#### 3.0.0
+Rewrite of alert message functionality. Moved to a dedicated page and requires time ranges for visibility.
+Changes underlying data structure for alerts so old, active alerts, will not be visible.
 
 #### 2.3.1
 Add alert message type – info, warning, error
